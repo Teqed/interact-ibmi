@@ -46,10 +46,6 @@ async function handleAnswer(answer) {
         spinner.stop();
         await sshconnect();
         await sshcmd();
-        const spinner2 = createSpinner('Exiting...').start();
-        await sleep();
-        spinner.error({ test: `Exited cleanly. Goodbye, ${User.loginID}!` });
-        process.exit(1);
     }
     else if(answer == '4. SSH') {
         const spinner = createSpinner('Connecting to SSH...').start();
