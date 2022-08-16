@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+import chalk from 'chalk';
+import inquirer from 'inquirer';
+import gradient from 'gradient-string';
+import chalkAnimation from 'chalk-animation';
+import figlet from 'figlet';
+import { createSpinner } from 'nanospinner';
+import { sshf } from './ssh.mjs';
+
+const sleep = (ms = 500) => new Promise((r) => setTimeout(r, ms));
+
+export async function welcome() {
+    const rainbowTitle = chalkAnimation.rainbow(
+        'Hello universe! \n'
+    );
+
+    await sleep();
+    rainbowTitle.stop();
+}
+
+export async function mainmenu() {
+    
+    const menu = await inquirer.prompt({
+        name: 'main',
+        type: 'list',
+        message: `
+    ${chalk.bgBlue('MAIN MENU')}
+    Select options below.
+    `,
+        choices: [
+            '1. Diagnose',
+            '2. Backup',
+            '3. Update',
+            '4. SSH',
+        ],
+    });
+
+    return handleAnswer(menu.main);
+}
+
+export async function handleAnswer(answer) {
+    if(answer == '4. SSH') {
+        const spinner = createSpinner('Connecting to SSH...').start();
+        await sleep();
+        spinner.stop();
+        return sshf();
+    } else {
+        const spinner = createSpinner('Exiting...').start();
+        await sleep();
+        spinner.error({ test: `Exited cleanly. Goodbye, ${User.loginID}!` });
+        process.exit(1);
+    }
+}
