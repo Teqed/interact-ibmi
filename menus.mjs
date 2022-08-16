@@ -7,6 +7,7 @@ import figlet from 'figlet';
 import { createSpinner } from 'nanospinner';
 import { sshcmd, sshconnect, sshinteractive } from './ssh.mjs';
 import { User } from './login.mjs';
+import { sqlcmd } from './sql.mjs';
 
 const sleep = (ms = 500) => new Promise((r) => setTimeout(r, ms));
 
@@ -45,7 +46,7 @@ async function handleAnswer(answer) {
         await sleep();
         spinner.stop();
         await sshconnect();
-        await sshcmd();
+        await sqlcmd();
     }
     else if(answer == '4. SSH') {
         const spinner = createSpinner('Connecting to SSH...').start();

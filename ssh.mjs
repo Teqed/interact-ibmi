@@ -15,11 +15,12 @@ await ssh.connect({
 })
 }
 
-export async function sshcmd() {
-    await ssh.execCommand('system "call qzdfmdb2 PARM(\'select * from teq1.tq001ap\')"').then(function(result){
-        console.log(result.stdout)
-    })
+export async function sshcmd(input) {
+    const cmd = input.cmd;
+    const comm = await ssh.execCommand(cmd)
+    console.log(comm.stdout)
     ssh.dispose()
+    return comm
 }
 
 export async function sshinteractive() {
