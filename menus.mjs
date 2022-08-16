@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-
 import chalk from 'chalk';
 import inquirer from 'inquirer';
 import gradient from 'gradient-string';
 import chalkAnimation from 'chalk-animation';
 import figlet from 'figlet';
 import { createSpinner } from 'nanospinner';
-import { sshf } from './ssh.mjs';
+import { sshcmd, sshconnect, sshinteractive } from './ssh.mjs';
+import { User } from './login.mjs';
 
 const sleep = (ms = 500) => new Promise((r) => setTimeout(r, ms));
 
@@ -39,12 +39,23 @@ export async function mainmenu() {
     return handleAnswer(menu.main);
 }
 
-export async function handleAnswer(answer) {
-    if(answer == '4. SSH') {
+async function handleAnswer(answer) {
+    if(answer == '1. Diagnose') {
+        const spinner = createSpinner('Checking...').start();
+        await sleep();
+        spinner.stop();
+        await sshconnect();
+        await sshcmd();
+        const spinner2 = createSpinner('Exiting...').start();
+        await sleep();
+        spinner.error({ test: `Exited cleanly. Goodbye, ${User.loginID}!` });
+        process.exit(1);
+    }
+    else if(answer == '4. SSH') {
         const spinner = createSpinner('Connecting to SSH...').start();
         await sleep();
         spinner.stop();
-        return sshf();
+        return sshinteractive();
     } else {
         const spinner = createSpinner('Exiting...').start();
         await sleep();

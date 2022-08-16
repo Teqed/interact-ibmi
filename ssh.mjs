@@ -2,17 +2,28 @@
 import { NodeSSH } from 'node-ssh';
 import { User } from './login.mjs';
 
-export async function sshf() {
-    const ssh = new NodeSSH()
-    await ssh.connect({
-        host: 'PUB400.COM',
-        username: User.loginID,
-        privateKeyPath: `C:/Users/Teq/.ssh/id_rsa`,
-        port:2222,
-        agent: process.env.SSH_AUTH_SOCK,
-        compress: true,
-    })
+const ssh = new NodeSSH()
 
+export async function sshconnect() {
+await ssh.connect({
+    host: 'PUB400.COM',
+    username: User.loginID,
+    privateKeyPath: `C:/Users/Teq/.ssh/id_rsa`,
+    port:2222,
+    agent: process.env.SSH_AUTH_SOCK,
+    compress: true,
+})
+}
+
+export async function sshcmd() {
+    await ssh.execCommand('system "call qzdfmdb2 PARM(\'select * from teq1.tq001ap\')"').then(function(result){
+        console.log(result.stdout)
+    })
+    ssh.dispose()
+}
+
+export async function sshinteractive() {
+    await sshconnect()
     const pipeStream = stream => {
         const {stdin, stdout, stderr} = process
         const {isTTY} = stdout

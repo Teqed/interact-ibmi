@@ -9,11 +9,9 @@ class Person {
         console.log(`Your login ID is ${this.#loginID}`);
     }
     get loginID() {
-        console.log('get triggered!')
         return this.#loginID.toUpperCase();
     }
     set loginID(newloginID) {
-        console.log('set triggered!')
         this.#loginID = newloginID;
     }
 }
