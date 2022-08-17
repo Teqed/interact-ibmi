@@ -15,17 +15,18 @@ await ssh.connect({
 })
 }
 
-export async function sshcmd(input) {
+export async function sshcmd(input: { cmd: any; stdin: any; }) {
     const cmd = input.cmd;
-    const comm = await ssh.execCommand(cmd)
-    console.log(comm.stdout)
+    const comm = await ssh.execCommand(cmd, {
+        stdin: input.stdin
+    })
     ssh.dispose()
     return comm
 }
-
+/* 
 export async function sshinteractive() {
     await sshconnect()
-    const pipeStream = stream => {
+    const pipeStream = (stream: { on: any; pipe?: any; stderr?: any; setWindow?: any; once?: any; unpipe?: any; }) => {
         const {stdin, stdout, stderr} = process
         const {isTTY} = stdout
 
@@ -52,7 +53,7 @@ export async function sshinteractive() {
     }
 
     await new Promise((resolve, reject) => {
-        ssh.connection.shell({term: process.env.TERM || 'vt100'}, (err, stream) => {
+        ssh.connection.shell({term: process.env.TERM || 'vt100'}, (err: any, stream: { on: (arg0: string, arg1: () => void) => void; }) => {
             if (err) {
                 reject(err)
                 return
@@ -63,4 +64,4 @@ export async function sshinteractive() {
     })
 
     ssh.dispose()
-}
+} */

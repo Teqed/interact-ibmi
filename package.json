@@ -2,7 +2,7 @@
   "name": "nodejs-menu-driver",
   "version": "1.0.0",
   "description": "Menu driver system using NodeJS.",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +20,15 @@
     "node-ssh": "^13.0.0",
     "vorpal": "^1.12.0",
     "vorpal-repl": "^1.1.8"
+  },
+  "devDependencies": {
+    "@types/chalk-animation": "^1.6.1",
+    "@types/figlet": "^1.5.4",
+    "@types/gradient-string": "^1.1.2",
+    "@types/inquirer": "^9.0.1",
+    "@types/node": "^18.7.6",
+    "@types/vorpal": "^1.12.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.7.4"
   }
 }

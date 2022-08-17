@@ -12,7 +12,7 @@ class Person {
         return this.#loginID.toUpperCase();
     }
     set loginID(newloginID) {
-        this.#loginID = newloginID;
+        this.#loginID = newloginID.toUpperCase();
     }
 }
 export let User = new Person;
