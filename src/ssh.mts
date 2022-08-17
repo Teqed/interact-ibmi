@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env ts-node
 import { NodeSSH } from 'node-ssh';
 import { User } from './login.mjs';
 
