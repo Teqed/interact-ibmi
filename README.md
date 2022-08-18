@@ -1,2 +1,2 @@
 # nodejs-menu-driver
- Menu driver system using NodeJS.
+ Menus for interacting with IBMi AS400 using NodeJS, Typescript, `vorpal`, `node-ssh` and `node-odbc` packages.
