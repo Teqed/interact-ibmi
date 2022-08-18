@@ -16,9 +16,6 @@ import odbc from 'odbc';
 
 class OdbcConf {
     constructor(public host: string, public username: string, public password: string) {
-        this.host = host;
-        this.username = username;
-        this.password = password;
     }
 }
 

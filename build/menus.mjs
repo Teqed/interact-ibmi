@@ -18,9 +18,6 @@ class OdbcConf {
         this.host = host;
         this.username = username;
         this.password = password;
-        this.host = host;
-        this.username = username;
-        this.password = password;
     }
 }
 async function testODBC() {
