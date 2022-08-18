@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-menu-driver",
+  "name": "interact-ibmi",
   "version": "1.0.0",
-  "description": "Menu driver system using NodeJS.",
+  "description": "Menus for interacting with IBMi AS400 using NodeJS and vorpal.",
   "main": "build/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
