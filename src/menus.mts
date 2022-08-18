@@ -9,6 +9,31 @@ import { createSpinner } from 'nanospinner';
 import { sshcmd, sshconnect } from './ssh.mjs';
 import { User } from './login.mjs';
 import { sqlcmd } from './sql.mjs';
+import odbc from 'odbc';
+
+//const odbcconf: { host: string; username: string; password: string; };
+//const conf = new odbcconf();
+
+class OdbcConf {
+    constructor(public host: string, public username: string, public password: string) {
+        this.host = host;
+        this.username = username;
+        this.password = password;
+    }
+}
+
+async function testODBC() {
+    const myConf = new OdbcConf('PUB400.COM', User.loginID, User.loginPW);
+    const connectionString = `DRIVER=IBM i Access ODBC Driver;SYSTEM=${myConf.host};UID=${myConf.username};PWD=${myConf.password};`;
+    const connection = await odbc.connect(connectionString);
+    const query: odbc.Result<any> = await connection.query('SELECT * FROM TEQ1.TQ002AP');
+    console.log(query);
+    let v1 = 'Carol';
+    let v2 = query[0][query.columns[1].name]
+    let v3 = query[0][query.columns[2].name]
+    const update: odbc.Result<any> = await connection.query(`INSERT INTO TEQ1.TQ002AP VALUES('${v1}', '${v2}', '${v3}')`);
+    console.log(update);
+}
 
 const sleep = (ms = 500) => new Promise((r) => setTimeout(r, ms));
 
@@ -31,9 +56,9 @@ export async function mainmenu() {
     Select options below.
     `,
         choices: [
-            '1. Diagnose',
-            '2. Backup',
-            '3. Update',
+            '1. Call DB2',
+            '2. ODBC',
+            '3. Exit',
             '4. SSH',
         ],
     });
@@ -42,12 +67,15 @@ export async function mainmenu() {
 }
 
 async function handleAnswer(answer: string) {
-    if(answer == '1. Diagnose') {
+    if(answer == '1. Call DB2') {
         const spinner = createSpinner('Checking...').start();
         await sleep();
         spinner.stop();
         await sshconnect();
         await sqlcmd();
+    }
+    else if(answer == '2. ODBC') {
+        await testODBC();
     }
     else if(answer == '4. SSH') {
         const spinner = createSpinner('Connecting to SSH...').start();

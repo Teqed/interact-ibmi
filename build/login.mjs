@@ -1,10 +1,8 @@
-#!/usr/bin/env node
+#!/usr/bin/env ts-node
 import inquirer from 'inquirer';
 class Person {
     #loginID;
-    constructor() {
-        this.#loginID = 'Anon';
-    }
+    #loginPW;
     what() {
         console.log(`Your login ID is ${this.#loginID}`);
     }
@@ -13,6 +11,12 @@ class Person {
     }
     set loginID(newloginID) {
         this.#loginID = newloginID.toUpperCase();
+    }
+    get loginPW() {
+        return this.#loginPW;
+    }
+    set loginPW(newloginPW) {
+        this.#loginPW = newloginPW;
     }
 }
 export let User = new Person;
@@ -25,5 +29,11 @@ export async function login() {
             return 'Anon';
         },
     });
+    const loginpw = await inquirer.prompt({
+        name: 'login_pw',
+        type: 'input',
+        message: 'What is your password?',
+    });
     User.loginID = loginid.login_name;
+    User.loginPW = loginpw.login_pw;
 }

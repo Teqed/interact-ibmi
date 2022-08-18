@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env ts-node
 import Vorpal from 'vorpal';
 //import repl from 'vorpal-repl';
 import { login } from './login.mjs';
