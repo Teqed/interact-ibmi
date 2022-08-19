@@ -36,7 +36,8 @@ export async function login() {
 	});
 	const loginpw = await inquirer.prompt({
 		name: 'login_pw',
-		type: 'input',
+		type: 'password',
+		mask: '*',
 		message: 'What is your password?',
 	});
 	loginUser.loginId = loginid.login_name as string;

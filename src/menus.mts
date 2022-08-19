@@ -8,28 +8,9 @@ import {createSpinner} from 'nanospinner';
 // Remove: import { sshcmd, sshconnect, sshinteractive } from './ssh.mjs';
 import {sshcmd, sshconnect} from './ssh.mjs';
 import {loginUser} from './login.mjs';
-import odbc from 'odbc';
+import {testOdbc, freeOdbc} from './odbc.mjs';
 // eslint-disable-next-line no-promise-executor-return
 const sleep = async (ms = 500) => new Promise(r => setTimeout(r, ms));
-
-async function testOdbc() {
-	const connectionString = `DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginUser.loginId};PWD=${loginUser.loginPw};`;
-	const connection = await odbc.connect(connectionString);
-	const query: odbc.Result<any> = await connection.query('SELECT * FROM TEQ1.TQ002AP');
-	console.log(query);
-	const v1 = 'Carol';
-	const v2 = query[0][query.columns[1].name] as string;
-	const v3 = query[0][query.columns[2].name] as string;
-	const update: odbc.Result<any> = await connection.query(`INSERT INTO TEQ1.TQ002AP VALUES('${v1}', '${v2}', '${v3}')`);
-	console.log(update);
-}
-
-async function freeOdbc(statement: string) {
-	const connectionString = `DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginUser.loginId};PWD=${loginUser.loginPw};`;
-	const connection = await odbc.connect(connectionString);
-	const query: odbc.Result<any> = await connection.query(statement);
-	return query;
-}
 
 export async function welcome() {
 	const rainbowTitle = chalkAnimation.rainbow(
@@ -81,6 +62,7 @@ async function handleAnswer(answer: string) {
 		});
 		/* Find the output from rtnCommand */
 		console.log(rtnCommand.stdout);
+		console.log(rtnCommand.stderr);
 	} else if (answer === '2. ODBC') {
 		await testOdbc();
 	} else if (answer === '3. FreeODBC') {

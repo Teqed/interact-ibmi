@@ -8,7 +8,7 @@ await welcome();
 await login();
 vorpal
 	.command('start', 'Runs start().')
-	.action(async (args: Vorpal.Args) => start());
+	.action(async () => start());
 vorpal
 	.delimiter('driver~$')
 //    .use(repl)
