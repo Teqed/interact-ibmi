@@ -1,3 +1,6 @@
+#!/usr/bin/env ts-node
+/* This is the module for making ODBC database connections to the IBMi AS400.
+It has prepared statements as well as allowing custom statements from user input. */
 import {loginUser} from './login.mjs';
 import odbc from 'odbc';
 

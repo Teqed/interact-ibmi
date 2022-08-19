@@ -1,4 +1,6 @@
 #!/usr/bin/env ts-node
+/* This is the menu system for the application. It shows the user options and lets them choose what they want to do.
+ They can send commands to the IBMi or run SQL statements over ODBC connections. */
 import chalk from 'chalk';
 import inquirer, {PromptModule} from 'inquirer';
 import gradient from 'gradient-string';
