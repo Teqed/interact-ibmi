@@ -1,13 +1,13 @@
 #!/usr/bin/env ts-node
 import {NodeSSH} from 'node-ssh';
-import {User} from './login.mjs';
+import {loginUser} from './login.mjs';
 
 const ssh = new NodeSSH();
 
 export async function sshconnect() {
 	await ssh.connect({
 		host: 'PUB400.COM',
-		username: User.loginID,
+		username: loginUser.loginId,
 		privateKeyPath: 'C:/Users/Teq/.ssh/id_rsa',
 		port: 2222,
 		agent: process.env.SSH_AUTH_SOCK,
