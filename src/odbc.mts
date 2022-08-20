@@ -3,7 +3,7 @@
 It has prepared statements as well as allowing custom statements from user input. */
 import odbc from 'odbc';
 import {connection} from './index.mjs';
-import {loginUser} from './loginUser.mjs';
+import loginUser from './loginUser.mjs';
 
 const getrows = (query: odbc.Result<Array<number | string>>) => {
 	// Get the number of rows in the result set.
@@ -25,6 +25,8 @@ const getvalues = (query: odbc.Result<Array<number | string>>) => {
 		// Get the current row.
 		const row = query[index] as unknown as number;
 		// Iterate over the columns in the row.
+		// ? This for..loop may need to be replaced with an array iteration.
+		// eslint-disable-next-line no-restricted-syntax
 		for (const element of query.columns) {
 			// Get the current column.
 			const column = element;
@@ -34,10 +36,8 @@ const getvalues = (query: odbc.Result<Array<number | string>>) => {
 	}
 };
 
-export const queryOdbc = async (statement: string): Promise<odbc.Result<Array<number | string>>> => {
-	// Execute the prepared statement.
-	return connection.query(statement);
-};
+export const queryOdbc = async (statement: string): Promise<odbc.Result<Array<number | string>>> =>
+connection.query(statement);
 
 export const testOdbc = async (command: string) => {
 	const query: odbc.Result<Array<number | string>> = await queryOdbc(command);

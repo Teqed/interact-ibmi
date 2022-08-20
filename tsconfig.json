@@ -43,8 +43,8 @@
     // "moduleDetection": "auto",                        /* Control what method is used to detect module-format JS files. */
 
     /* Modules */
-    "module": "NodeNext",                                    /* Specify the root folder within your source files. */
-    "moduleResolution": "nodenext",                                      /* Enable all strict type-checking options. */
+    "module": "esnext",                                    /* Specify the root folder within your source files. */
+    "moduleResolution": "node",                                      /* Enable all strict type-checking options. */
     "noImplicitAny": true,                                     /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */
     // "checkJs": true,                                  /* Enable error reporting in type-checked JavaScript files. */
     // "maxNodeModuleJsDepth": 1,                        /* Specify the maximum folder depth used for checking JavaScript files from 'node_modules'. Only applicable with 'allowJs'. */
@@ -62,7 +62,7 @@
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
     // "types": ["node"],                                      /* Specify type package names to be included without being referenced in a source file. */
     // "allowUmdGlobalAccess": true,                     /* Allow accessing UMD globals from modules. */
-    // "moduleSuffixes": [".mts",".ejs",".js",".ts"],                             /* List of file name suffixes to search when resolving a module. */
+    // "moduleSuffixes": [".mts",".ejs",".js",".ts", ".d.ts", ".d.js"],                             /* List of file name suffixes to search when resolving a module. */
     "resolveJsonModule": true,
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
@@ -103,5 +103,7 @@
     "strict": true                                 /* Skip type checking all .d.ts files. */
   },
   "ts-node": {"esm": true,
-    "experimentalSpecifierResolution": "node"}
+    "experimentalSpecifierResolution": "node"},
+    "include": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+    "exclude": ["node_modules"]
 }

@@ -17,4 +17,4 @@ class Person {
         this.#loginPw = newloginPW;
     }
 }
-export const loginUser = new Person();
+export default new Person();

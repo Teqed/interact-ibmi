@@ -1,17 +1,19 @@
 #!/usr/bin/env ts-node
-/* This is the menu system for the application. It shows the user options and lets them choose what they want to do.
+/* This is the menu system for the application.
+ It shows the user options and lets them choose what they want to do.
  They can send commands to the IBMi or run SQL statements over ODBC connections. */
 import chalk from 'chalk';
 import chalkAnimation from 'chalk-animation';
 import inquirer, {type PromptModule} from 'inquirer';
 import {createSpinner} from 'nanospinner';
 // Remove: import { sshcmd, sshconnect, sshinteractive } from './ssh.mjs';
-import {loginUser} from './loginUser.mjs';
+import loginUser from './loginUser.mjs';
 import {testOdbc,
 	queryOdbc,
 	findUser} from './odbc.mjs';
 import {sshcmd,
-	sshconnect} from './ssh.mjs';
+	sshconnect,
+	sshinteractive} from './ssh.mjs';
 import {sleep} from './util.mjs';
 
 export const welcome = async () => {
@@ -57,7 +59,7 @@ const handleAnswer = async (answer: string) => {
 		const spinner = createSpinner('Connecting to SSH...').start();
 		await sleep();
 		spinner.stop();
-		// Remove        return sshinteractive();
+		return sshinteractive();
 	} else if (answer === '5. Find User') {
 		const spinner = createSpinner('Checking...').start();
 		await findUser('TEQ');
@@ -72,6 +74,8 @@ const handleAnswer = async (answer: string) => {
 		});
 		process.exit(1);
 	}
+
+	return handleAnswer;
 };
 
 export const mainmenu = async () => {

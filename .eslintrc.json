@@ -1,4 +1,7 @@
 {
+	"globals": {
+		"NodeJS": true
+	},
 	"env": {
 		"browser": true,
 		"es6": true,
@@ -9,8 +12,10 @@
 		"canonical",
 		"canonical/typescript",
 		"plugin:@typescript-eslint/recommended",
+		"xo",
 		"xo-typescript",
-		"xo"
+		"airbnb-base",
+		"airbnb-typescript"
 	],
 	  "rules": {
 		"import/extensions": [
@@ -20,7 +25,9 @@
 			 "js": "never",
 			 "jsx": "never",
 			 "ts": "never",
-			 "tsx": "never"
+			 "tsx": "never",
+			 "mts": "never",
+			 "mjs": "never"
 		   }
 		],
 		"no-console": "off",
@@ -33,6 +40,25 @@
 			"ObjectPattern": { "multiline": true },
 			"ImportDeclaration": "never",
 			"ExportDeclaration": { "multiline": true, "minProperties": 3 }
-		}]
-	  }
+		}],
+		"object-curly-spacing": ["off"],
+		"@typescript-eslint/object-curly-spacing": "off",
+		"react/jsx-filename-extension": [0],
+		"@babel/semi": "off",
+		"max-len": "warn",
+		"no-plusplus":  ["warn", {"allowForLoopAfterthoughts": true}],
+		"implicit-arrow-linebreak": ["warn", "below"]
+	  },
+	  "settings": {
+		"import/resolver": {
+			"typescript": {
+				"alwaysTryTypes": true,
+				"allowMembersWithDots": true
+			},
+			"node": {
+				"extensions": [".js", ".jsx", ".ts", ".tsx"],
+				"moduleDirectory": ["node_modules", "src/"]
+			}
+		  }
+	}
 }

@@ -26,12 +26,16 @@
     "@types/vorpal": "^1.12.2",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
+    "airbnb": "^0.0.2",
     "eslint": "^8.22.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-canonical": "^37.0.3",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-xo": "^0.41.0",
     "eslint-config-xo-typescript": "^0.52.0",
+    "eslint-formatter-pretty": "^4.1.0",
+    "eslint-import-resolver-typescript": "^3.4.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -40,15 +44,16 @@
     "prettier": "2.7.1",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.0",
-    "typescript": "^4.9.0-dev.20220819"
+    "typescript": "^4.9.0-dev.20220819",
+    "xo": "^0.51.0"
   },
   "keywords": [],
   "license": "MIT",
   "main": "build/index.mjs",
   "name": "interact-ibmi",
   "scripts": {
-    "lint": "eslint . --ext .ts,.mts,.tsx",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint --format=pretty . --ext .ts,.mts,.tsx",
+    "test": "xo"
   },
   "type": "module",
   "version": "1.0.0"
