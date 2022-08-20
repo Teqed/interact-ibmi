@@ -9,8 +9,7 @@ import { createSpinner } from 'nanospinner';
 import { sshcmd, sshconnect } from './ssh.mjs';
 import { loginUser } from './login.mjs';
 import { testOdbc, queryOdbc, findUser } from './odbc.mjs';
-// eslint-disable-next-line no-promise-executor-return
-const sleep = async (ms = 500) => new Promise(r => setTimeout(r, ms));
+import { sleep } from './util.mjs';
 export async function welcome() {
     const rainbowTitle = chalkAnimation.rainbow('Hello universe! \n');
     await sleep();
