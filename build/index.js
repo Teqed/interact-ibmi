@@ -10,7 +10,9 @@ await welcome();
 export const connection = await login();
 vorpal
     .command('start', 'Runs start().')
-    .action(async () => start());
+    .action(async () => {
+    await start();
+});
 vorpal
     .delimiter('driver~$')
     .use(repl)

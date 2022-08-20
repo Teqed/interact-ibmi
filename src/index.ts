@@ -5,12 +5,15 @@ import Vorpal from 'vorpal';
 import repl from 'vorpal-repl';
 import {login} from './login.mjs';
 import {welcome, mainmenu} from './menus.mjs';
+
 const vorpal = new Vorpal();
 await welcome();
 export const connection = await login();
 vorpal
 	.command('start', 'Runs start().')
-	.action(async () => start());
+	.action(async () => {
+		await start();
+	});
 vorpal
 	.delimiter('driver~$')
 	.use(repl)

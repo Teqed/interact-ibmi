@@ -14,29 +14,21 @@ import {testOdbc, queryOdbc, findUser} from './odbc.mjs';
 import {sleep} from './util.mjs';
 
 export async function welcome() {
-	const rainbowTitle = chalkAnimation.rainbow(
-		'Hello universe! \n',
-	);
+	const rainbowTitle = chalkAnimation.rainbow('Hello universe! \n');
 	await sleep();
 	rainbowTitle.stop();
 }
 
 export async function mainmenu() {
-	const menu = await inquirer.prompt({
+	const menu = (await inquirer.prompt({
 		name: 'main',
 		type: 'list',
 		message: `
     ${chalk.bgBlue('MAIN MENU')}
     Select options below.
     `,
-		choices: [
-			'1. Send System Command',
-			'2. Test ODBC',
-			'3. FreeODBC',
-			'4. SSH',
-			'5. Find User',
-		],
-	}) as PromptModule;
+		choices: ['1. Send System Command', '2. Test ODBC', '3. FreeODBC', '4. SSH', '5. Find User'],
+	})) as PromptModule;
 	// eslint-disable-next-line @typescript-eslint/no-base-to-string
 	return handleAnswer(menu['main' as keyof PromptModule].toString());
 }
@@ -80,15 +72,12 @@ async function handleAnswer(answer: string) {
 
 async function getCommand() {
 	// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-	const command = await inquirer.prompt(
-		{
-			name: 'cmdinput',
-			type: 'input',
-			message: 'Enter statement to send:',
-		},
-	) as PromptModule;
+	const command = (await inquirer.prompt({
+		name: 'cmdinput',
+		type: 'input',
+		message: 'Enter statement to send:',
+	})) as PromptModule;
 	// eslint-disable-next-line @typescript-eslint/no-base-to-string
 	const statement: string = command['cmdinput' as keyof PromptModule].toString();
 	return statement;
 }
-
