@@ -1,4 +1,5 @@
 #!/usr/bin/env ts-node
+/* This is the module for running SQL commands using DB2. It is depreciated and never called. */
 import { sshcmd } from './ssh.mjs';
 export async function sqlcmd() {
     const comm = await sshcmd({

@@ -1,6 +1,7 @@
 #!/usr/bin/env ts-node
 /* This is the login module. It asks for the user's name and password, which is used for logging in to the IBMi AS400. */
 import inquirer from 'inquirer';
+import {connectOdbc} from './odbc.mjs';
 class Person {
 	#loginId!: string;
 	#loginPw!: string;
@@ -43,4 +44,5 @@ export async function login() {
 	});
 	loginUser.loginId = loginid.login_name as string;
 	loginUser.loginPw = loginpw.login_pw as string;
+	return connectOdbc();
 }
