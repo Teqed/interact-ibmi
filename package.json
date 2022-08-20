@@ -43,7 +43,7 @@
   },
   "keywords": [],
   "license": "MIT",
-  "main": "build/index.js",
+  "main": "build/index.mjs",
   "name": "interact-ibmi",
   "scripts": {
     "lint": "eslint . --ext .ts,.mts,.tsx",

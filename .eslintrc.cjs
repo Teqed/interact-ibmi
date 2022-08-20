@@ -8,69 +8,11 @@ module.exports = {
 	extends: [
 		"canonical",
 		"canonical/prettier",
+		"canonical/typescript",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking",
+		'xo-typescript',
+		"xo",
 	],
-	overrides: [
-		{
-		  extends: [
-			"eslint:recommended",
-			"xo",
-			'xo-typescript',
-			"plugin:@typescript-eslint/eslint-recommended",
-			"plugin:@typescript-eslint/recommended",
-			"canonical/typescript",
-		  ],
-		  "files": "*.ts",
-		  "parserOptions": {
-			"project": "./tsconfig.json"
-		  }
-		},
-		{
-		  extends: [
-			"eslint:recommended",
-			"xo",
-			'xo-typescript',
-			"plugin:@typescript-eslint/eslint-recommended",
-			"plugin:@typescript-eslint/recommended",
-			"canonical/typescript",
-			"canonical/jsx-a11y",
-			"canonical/react",
-		  ],
-		  "files": "*.tsx",
-		  "parserOptions": {
-			"project": "./tsconfig.json"
-		  }
-		},
-		{
-		  extends: [
-			"canonical/jest"
-		  ],
-		  "files": "*.test.{ts,tsx}",
-		  "parserOptions": {
-			"project": "./tsconfig.json"
-		  }
-		},
-		{
-		  extends: [
-			"canonical/json"
-		  ],
-		  "files": "*.json"
-		},
-		{
-		  extends: [
-			"canonical/yaml"
-		  ],
-		  "files": "*.yaml"
-		},
-		{
-		  extends: [
-			"canonical/graphql"
-		  ],
-		  "files": "*.graphql"
-		}
-	  ],
-	  parser: "@typescript-eslint/parser",
-	plugins: ["prettier", "@typescript-eslint"],
-	"root": true,
 	  rules: {
 		"import/extensions": [
 		   "error",
@@ -82,6 +24,9 @@ module.exports = {
 			 "tsx": "never"
 		   }
 		],
-		"no-console": "off"
+		"no-console": "off",
+		"@typescript-eslint/indent" : "off",
+		"@typescript-eslint/no-explicit-any" : "warn",
+		"@typescript-eslint/return-await" : "off",
 	  }
 };

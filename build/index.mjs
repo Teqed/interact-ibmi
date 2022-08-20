@@ -6,17 +6,9 @@ import repl from 'vorpal-repl';
 import { login } from './login.mjs';
 import { welcome, mainmenu } from './menus.mjs';
 const vorpal = new Vorpal();
+vorpal.command('start', 'Runs mainmenu().').action(async () => {
+    await mainmenu();
+});
 await welcome();
 export const connection = await login();
-vorpal
-    .command('start', 'Runs start().')
-    .action(async () => {
-    await start();
-});
-vorpal
-    .delimiter('driver~$')
-    .use(repl)
-    .show();
-async function start() {
-    await mainmenu();
-}
+vorpal.delimiter('driver~$').use(repl).show();

@@ -1,29 +1,29 @@
 #!/usr/bin/env ts-node
 /* This is the module for connecting to the IBMi AS400 using SSH and allowing the user to send custom commands. */
-import { NodeSSH } from "node-ssh";
-import { loginUser } from "./login.mjs";
+import {NodeSSH} from 'node-ssh';
+import {loginUser} from './loginUser.mjs';
 
 const ssh = new NodeSSH();
 
-export async function sshconnect() {
+export const sshconnect = async () => {
 	await ssh.connect({
-		host: "PUB400.COM",
-		username: loginUser.loginId,
-		privateKeyPath: "C:/Users/Teq/.ssh/id_rsa",
-		port: 2222,
 		agent: process.env.SSH_AUTH_SOCK,
 		compress: true,
+		host: 'PUB400.COM',
+		port: 2_222,
+		privateKeyPath: 'C:/Users/Teq/.ssh/id_rsa',
+		username: loginUser.loginId,
 	});
-}
+};
 
-export async function sshcmd(input: { cmd: string; stdin: string }) {
-	const { cmd } = input;
+export const sshcmd = async (input: {cmd: string; stdin: string}) => {
+	const {cmd} = input;
 	const comm = await ssh.execCommand(cmd, {
 		stdin: input.stdin,
 	});
 	ssh.dispose();
 	return comm;
-}
+};
 /*
 Remove export async function sshinteractive() {
     await sshconnect()
