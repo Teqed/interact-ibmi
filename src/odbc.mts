@@ -1,9 +1,9 @@
 #!/usr/bin/env ts-node
 /* This is the module for making ODBC database connections to the IBMi AS400.
 It has prepared statements as well as allowing custom statements from user input. */
-import {loginUser} from './login.mjs';
-import {connection} from './index.js';
-import odbc from 'odbc';
+import { loginUser } from "./login.mjs";
+import { connection } from "./index.mjs";
+import odbc from "odbc";
 
 export async function testOdbc(command: string) {
 	const query: odbc.Result<any> = await queryOdbc(command);
@@ -11,12 +11,14 @@ export async function testOdbc(command: string) {
 }
 
 export async function updateOdbc() {
-	const query: odbc.Result<any> = await queryOdbc('SELECT * FROM TEQ1.TQ002AP');
+	const query: odbc.Result<any> = await queryOdbc("SELECT * FROM TEQ1.TQ002AP");
 	getvalues(query);
-	const v1 = 'Carol';
+	const v1 = "Carol";
 	const v2 = query[0][query.columns[1].name] as string;
 	const v3 = query[0][query.columns[2].name] as string;
-	const update: odbc.Result<any> = await queryOdbc(`INSERT INTO TEQ1.TQ002AP VALUES('${v1}', '${v2}', '${v3}')`);
+	const update: odbc.Result<any> = await queryOdbc(
+		`INSERT INTO TEQ1.TQ002AP VALUES('${v1}', '${v2}', '${v3}')`,
+	);
 	console.log(update);
 }
 
@@ -31,7 +33,9 @@ export async function connectOdbc() {
 }
 
 export async function findUser(user: string) {
-	const query: odbc.Result<any> = await connection.query(`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${user}'`);
+	const query: odbc.Result<any> = await connection.query(
+		`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${user}'`,
+	);
 	getvalues(query);
 	return query;
 }

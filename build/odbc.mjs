@@ -1,17 +1,17 @@
 #!/usr/bin/env ts-node
 /* This is the module for making ODBC database connections to the IBMi AS400.
 It has prepared statements as well as allowing custom statements from user input. */
-import { loginUser } from './login.mjs';
-import { connection } from './index.js';
-import odbc from 'odbc';
+import { loginUser } from "./login.mjs";
+import { connection } from "./index.mjs";
+import odbc from "odbc";
 export async function testOdbc(command) {
     const query = await queryOdbc(command);
     getrows(query);
 }
 export async function updateOdbc() {
-    const query = await queryOdbc('SELECT * FROM TEQ1.TQ002AP');
+    const query = await queryOdbc("SELECT * FROM TEQ1.TQ002AP");
     getvalues(query);
-    const v1 = 'Carol';
+    const v1 = "Carol";
     const v2 = query[0][query.columns[1].name];
     const v3 = query[0][query.columns[2].name];
     const update = await queryOdbc(`INSERT INTO TEQ1.TQ002AP VALUES('${v1}', '${v2}', '${v3}')`);

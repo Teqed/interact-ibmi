@@ -1,8 +1,9 @@
 module.exports = {
 	env: {
 		browser: true,
-		es2021: true,
 		es6: true,
+		es2022: true,
+		node: true,
 	},
 	extends: [
 		"canonical",
@@ -11,12 +12,12 @@ module.exports = {
 	overrides: [
 		{
 		  extends: [
-			"canonical/typescript",
-			"plugin:@typescript-eslint/recommended",
-			"plugin:@typescript-eslint/eslint-recommended",
-			'xo-typescript',
-			"xo",
 			"eslint:recommended",
+			"xo",
+			'xo-typescript',
+			"plugin:@typescript-eslint/eslint-recommended",
+			"plugin:@typescript-eslint/recommended",
+			"canonical/typescript",
 		  ],
 		  "files": "*.ts",
 		  "parserOptions": {
@@ -25,14 +26,14 @@ module.exports = {
 		},
 		{
 		  extends: [
-			"canonical/react",
-			"canonical/jsx-a11y",
-			"canonical/typescript",
-			"plugin:@typescript-eslint/recommended",
-			"plugin:@typescript-eslint/eslint-recommended",
-			'xo-typescript',
-			"xo",
 			"eslint:recommended",
+			"xo",
+			'xo-typescript',
+			"plugin:@typescript-eslint/eslint-recommended",
+			"plugin:@typescript-eslint/recommended",
+			"canonical/typescript",
+			"canonical/jsx-a11y",
+			"canonical/react",
 		  ],
 		  "files": "*.tsx",
 		  "parserOptions": {
@@ -67,9 +68,20 @@ module.exports = {
 		  "files": "*.graphql"
 		}
 	  ],
-	  "root": true,
-	parser: "@typescript-eslint/parser",
-	rules: {
-	  },
-	  plugins: ["prettier", "@typescript-eslint"]
+	  parser: "@typescript-eslint/parser",
+	plugins: ["prettier", "@typescript-eslint"],
+	"root": true,
+	  rules: {
+		"import/extensions": [
+		   "error",
+		   "ignorePackages",
+		   {
+			 "js": "never",
+			 "jsx": "never",
+			 "ts": "never",
+			 "tsx": "never"
+		   }
+		],
+		"no-console": "off"
+	  }
 };
