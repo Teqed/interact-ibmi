@@ -4,7 +4,8 @@ Then, they can run the start command to see the main menu. */
 import Vorpal from 'vorpal';
 import repl from 'vorpal-repl';
 import {login} from './login.mjs';
-import {welcome, mainmenu} from './menus.mjs';
+import {welcome,
+	mainmenu} from './menus.mjs';
 
 const vorpal = new Vorpal();
 vorpal.command('start', 'Runs mainmenu().').action(async () => {

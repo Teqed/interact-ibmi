@@ -58,12 +58,16 @@ const handleAnswer = async (answer) => {
     else if (answer === '5. Find User') {
         const spinner = createSpinner('Checking...').start();
         await findUser('TEQ');
-        spinner.success({ text: 'User found!' });
+        spinner.success({
+            text: 'User found!',
+        });
     }
     else {
         const spinner = createSpinner('Exiting...').start();
         await sleep();
-        spinner.error({ text: `Exited cleanly. Goodbye, ${loginUser.loginId}!` });
+        spinner.error({
+            text: `Exited cleanly. Goodbye, ${loginUser.loginId}!`,
+        });
         process.exit(1);
     }
 };

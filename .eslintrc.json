@@ -1,0 +1,38 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true,
+		"es2022": true,
+		"node": true
+	},
+	"extends": [
+		"canonical",
+		"canonical/typescript",
+		"plugin:@typescript-eslint/recommended",
+		"xo-typescript",
+		"xo"
+	],
+	  "rules": {
+		"import/extensions": [
+		   "error",
+		   "ignorePackages",
+		   {
+			 "js": "never",
+			 "jsx": "never",
+			 "ts": "never",
+			 "tsx": "never"
+		   }
+		],
+		"no-console": "off",
+		"@typescript-eslint/indent" : "off",
+		"@typescript-eslint/no-explicit-any" : "warn",
+		"@typescript-eslint/return-await" : "off",
+		"no-tabs" : [ "warn", {"allowIndentationTabs" : true}],
+		"object-curly-newline": ["error", {
+			"ObjectExpression": "always",
+			"ObjectPattern": { "multiline": true },
+			"ImportDeclaration": "never",
+			"ExportDeclaration": { "multiline": true, "minProperties": 3 }
+		}]
+	  }
+}
