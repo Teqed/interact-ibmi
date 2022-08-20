@@ -5,54 +5,51 @@ import odbc from 'odbc';
 import {connection} from './index.mjs';
 import {loginUser} from './loginUser.mjs';
 
-const getrows = (query: odbc.Result<any>) => {
+const getrows = (query: odbc.Result<Array<number | string>>) => {
 	// Get the number of rows in the result set.
 	const numberRows = query.length;
 	// Iterate over the result set.
 	for (let index = 0; index < numberRows; index++) {
 		// Get the current row.
-		const row = query[index] as number;
+		const row = query[index] as unknown as number;
 		// Print the row.
 		console.log(row);
 	}
 };
 
-const getvalues = (query: odbc.Result<any>) => {
+const getvalues = (query: odbc.Result<Array<number | string>>) => {
 	// Get the the name and value of each row and column.
 	const numberRows = query.length;
 	// Iterate over the result set.
 	for (let index = 0; index < numberRows; index++) {
 		// Get the current row.
-		const row = query[index] as number;
+		const row = query[index] as unknown as number;
 		// Iterate over the columns in the row.
 		for (const element of query.columns) {
 			// Get the current column.
 			const column = element;
 			// Print the column name and value.
-			// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-			console.log(`${column.name}: ${row[column.name as keyof typeof row]}`);
+			console.log(`${column.name}: ${row[column.name as keyof typeof row] as unknown as string}`);
 		}
 	}
 };
 
-export const queryOdbc = async (statement: string): Promise<odbc.Result<any>> => {
+export const queryOdbc = async (statement: string): Promise<odbc.Result<Array<number | string>>> => {
 	// Execute the prepared statement.
 	return connection.query(statement);
 };
 
 export const testOdbc = async (command: string) => {
-	const query: odbc.Result<any> = await queryOdbc(command);
+	const query: odbc.Result<Array<number | string>> = await queryOdbc(command);
 	getrows(query);
 };
 
 export const updateOdbc = async () => {
-	const query: odbc.Result<any> = await queryOdbc('SELECT * FROM TEQ1.TQ002AP');
+	const query: odbc.Result<Array<number | string>> = await queryOdbc('SELECT * FROM TEQ1.TQ002AP');
 	const v1 = 'Carol';
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-	const v2 = query[0][query.columns[1].name] as string;
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-	const v3 = query[0][query.columns[2].name] as string;
-	const update: odbc.Result<any> = await queryOdbc(
+	const v2 = query[0][query.columns[1].name as keyof typeof query as number] as string;
+	const v3 = query[0][query.columns[2].name as keyof typeof query as number] as string;
+	const update: odbc.Result<Array<number | string>> = await queryOdbc(
 		`INSERT INTO TEQ1.TQ002AP VALUES('${v1}', '${v2}', '${v3}')`,
 	);
 	console.log(update);
@@ -64,7 +61,7 @@ export const connectOdbc = async () => {
 };
 
 export const findUser = async (user: string) => {
-	const query: odbc.Result<unknown> = await connection.query(
+	const query: odbc.Result<Array<number | string>> = await connection.query(
 		`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${user}'`,
 	);
 	getvalues(query);
