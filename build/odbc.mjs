@@ -27,7 +27,6 @@ const getvalues = (query) => {
             // Get the current column.
             const column = element;
             // Print the column name and value.
-            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
             console.log(`${column.name}: ${row[column.name]}`);
         }
     }
@@ -43,9 +42,7 @@ export const testOdbc = async (command) => {
 export const updateOdbc = async () => {
     const query = await queryOdbc('SELECT * FROM TEQ1.TQ002AP');
     const v1 = 'Carol';
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     const v2 = query[0][query.columns[1].name];
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     const v3 = query[0][query.columns[2].name];
     const update = await queryOdbc(`INSERT INTO TEQ1.TQ002AP VALUES('${v1}', '${v2}', '${v3}')`);
     console.log(update);
