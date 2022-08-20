@@ -1,0 +1,26 @@
+{
+	"editor.formatOnPaste": false, // required
+	"editor.formatOnType": false, // required
+	"editor.formatOnSave": true, // optional
+	"editor.formatOnSaveMode": "file", // required to format on save
+	"files.autoSave": "onFocusChange",
+	"javascript.format.semicolons": "remove",
+	"javascript.inlayHints.enumMemberValues.enabled": true,
+	"javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+	"javascript.inlayHints.parameterNames.enabled": "all",
+	"javascript.inlayHints.parameterTypes.enabled": true,
+	"javascript.inlayHints.propertyDeclarationTypes.enabled": true,
+	"javascript.inlayHints.variableTypes.enabled": true,
+	"js/ts.implicitProjectConfig.target": "ESNext",
+	"typescript.format.semicolons": "remove",
+	"typescript.inlayHints.enumMemberValues.enabled": true,
+	"typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+	"typescript.implementationsCodeLens.enabled": true,
+	"typescript.inlayHints.parameterNames.enabled": "all",
+	"typescript.inlayHints.parameterTypes.enabled": true,
+	"typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+	"typescript.inlayHints.variableTypes.enabled": true,
+	"typescript.referencesCodeLens.enabled": true,
+	"typescript.referencesCodeLens.showOnAllFunctions": true,
+	"typescript.suggest.completeFunctionCalls": true // optional but recommended
+}

@@ -1,15 +1,5 @@
 {
-  "name": "interact-ibmi",
-  "version": "1.0.0",
-  "description": "Menus for interacting with IBMi AS400 using NodeJS and vorpal.",
-  "main": "build/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
   "author": "",
-  "license": "MIT",
-  "type": "module",
   "dependencies": {
     "chalk": "^5.0.1",
     "chalk-animation": "^2.0.2",
@@ -22,6 +12,7 @@
     "vorpal": "^1.12.0",
     "vorpal-repl": "^1.1.8"
   },
+  "description": "Menus for interacting with IBMi AS400 using NodeJS and vorpal.",
   "devDependencies": {
     "@types/chalk-animation": "^1.6.1",
     "@types/figlet": "^1.5.4",
@@ -32,11 +23,28 @@
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
     "eslint": "^8.22.0",
+    "eslint-config-canonical": "^37.0.3",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-config-xo": "^0.41.0",
     "eslint-config-xo-typescript": "^0.52.0",
-    "prettier": "2.7.1",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-xo": "^1.0.0",
+    "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
-  }
+  },
+  "keywords": [],
+  "license": "MIT",
+  "main": "build/index.js",
+  "name": "interact-ibmi",
+  "scripts": {
+    "lint": "eslint . --ext .ts,.mts,.tsx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "version": "1.0.0"
 }
