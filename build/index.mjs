@@ -11,6 +11,6 @@ vorpal.command('start', 'Runs mainmenu().').action(async () => {
 });
 await welcome();
 // eslint-disable-next-line import/prefer-default-export
-export const connection = await login();
+await login();
 await mainmenu();
 vorpal.delimiter('driver~$').use(repl).show();

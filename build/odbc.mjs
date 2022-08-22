@@ -1,7 +1,7 @@
 /* This is the module for making ODBC database connections to the IBMi AS400.
 It has prepared statements as well as allowing custom statements from user input. */
 import odbc from 'odbc';
-import { connection } from './index.mjs';
+import { connection } from './login.mjs';
 import loginUser from './loginUser.mjs';
 const getrows = (query) => {
     // Get the number of rows in the result set.
