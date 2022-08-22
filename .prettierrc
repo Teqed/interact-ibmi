@@ -1,8 +1,22 @@
 {
-  "tabWidth": 2,
-  "useTabs": true,
+  "singleQuote": true,
   "trailingComma": "all",
   "printWidth": 100,
-  "singleQuote": true,
-  "semi": true
+  "tabWidth": 4,
+  "semi": true,
+  "bracketSpacing": true,
+  "jsxBracketSameLine": false,
+  "parser": "typescript",
+  "useTabs": true,
+  "arrowParens": "avoid",
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", ".mts", ".mtx"],
+      "options": {
+        "parser": "typescript"
+      }
+    }
+  ],
+  "endOfLine": "lf",
+  "quoteProps": "as-needed"
 }

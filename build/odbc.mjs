@@ -1,4 +1,3 @@
-#!/usr/bin/env ts-node
 /* This is the module for making ODBC database connections to the IBMi AS400.
 It has prepared statements as well as allowing custom statements from user input. */
 import odbc from 'odbc';
@@ -47,7 +46,8 @@ export const updateOdbc = async () => {
     console.log(update);
 };
 export const connectOdbc = async () => {
-    const connectionString = `DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginUser.loginId};PWD=${loginUser.loginPw};`;
+    const connectionString = `
+DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginUser.loginId};PWD=${loginUser.loginPw};`;
     return odbc.connect(connectionString);
 };
 export const findUser = async (user) => {

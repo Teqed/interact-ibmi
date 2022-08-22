@@ -1,8 +1,7 @@
-#!/usr/bin/env ts-node
 /* This is the module for making ODBC database connections to the IBMi AS400.
 It has prepared statements as well as allowing custom statements from user input. */
 import odbc from 'odbc';
-import {connection} from './index.mjs';
+import { connection } from './index.mjs';
 import loginUser from './loginUser.mjs';
 
 const getrows = (query: odbc.Result<Array<number | string>>) => {
@@ -31,13 +30,15 @@ const getvalues = (query: odbc.Result<Array<number | string>>) => {
 			// Get the current column.
 			const column = element;
 			// Print the column name and value.
-			console.log(`${column.name}: ${row[column.name as keyof typeof row] as unknown as string}`);
+			console.log(
+				`${column.name}: ${row[column.name as keyof typeof row] as unknown as string}`,
+			);
 		}
 	}
 };
 
 export const queryOdbc = async (statement: string): Promise<odbc.Result<Array<number | string>>> =>
-connection.query(statement);
+	connection.query(statement);
 
 export const testOdbc = async (command: string) => {
 	const query: odbc.Result<Array<number | string>> = await queryOdbc(command);
@@ -45,7 +46,9 @@ export const testOdbc = async (command: string) => {
 };
 
 export const updateOdbc = async () => {
-	const query: odbc.Result<Array<number | string>> = await queryOdbc('SELECT * FROM TEQ1.TQ002AP');
+	const query: odbc.Result<Array<number | string>> = await queryOdbc(
+		'SELECT * FROM TEQ1.TQ002AP',
+	);
 	const v1 = 'Carol';
 	const v2 = query[0][query.columns[1].name as keyof typeof query as number] as string;
 	const v3 = query[0][query.columns[2].name as keyof typeof query as number] as string;
@@ -56,7 +59,8 @@ export const updateOdbc = async () => {
 };
 
 export const connectOdbc = async () => {
-	const connectionString = `DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginUser.loginId};PWD=${loginUser.loginPw};`;
+	const connectionString = `
+DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginUser.loginId};PWD=${loginUser.loginPw};`;
 	return odbc.connect(connectionString);
 };
 

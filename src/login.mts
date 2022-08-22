@@ -1,4 +1,3 @@
-#!/usr/bin/env ts-node
 /* This is the login module.
 It asks for the user's name and password, which is used for logging in to the IBMi AS400. */
 import inquirer from 'inquirer';

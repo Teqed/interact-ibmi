@@ -1,4 +1,12 @@
 {
+	"parser": "@typescript-eslint/parser",
+	"plugins": ["@typescript-eslint",
+    "prettier",
+	"unicorn",
+	"import"],
+	"parserOptions": {
+	  "project": ["./tsconfig.json"] // Specify it only for TypeScript files
+	},
 	"globals": {
 		"NodeJS": true
 	},
@@ -10,12 +18,30 @@
 	},
 	"extends": [
 		"canonical",
-		"canonical/typescript",
-		"plugin:@typescript-eslint/recommended",
+		"eslint:recommended",
 		"xo",
-		"xo-typescript",
 		"airbnb-base",
-		"airbnb-typescript"
+		"canonical/prettier",
+		"prettier",
+		"plugin:node/recommended"
+	],
+	"overrides": [
+		{
+		  "files": ["*.ts", "*.tsx", ".mts", ".mtx"], // Your TypeScript files extension
+	
+		  // As mentioned in the comments, you should extend TypeScript plugins here,
+		  // instead of extending them outside the `overrides`.
+		  // If you don't want to extend any rules, you don't need an `extends` attribute.
+		  "extends": [
+			"canonical/typescript",
+			"xo-typescript",
+			"airbnb-typescript",
+			"plugin:@typescript-eslint/eslint-recommended",
+			"plugin:@typescript-eslint/recommended",
+			"plugin:import/recommended",
+			"plugin:import/typescript"
+		  ]
+		}
 	],
 	  "rules": {
 		"import/extensions": [
@@ -45,20 +71,42 @@
 		"@typescript-eslint/object-curly-spacing": "off",
 		"react/jsx-filename-extension": [0],
 		"@babel/semi": "off",
-		"max-len": "warn",
+		"max-len": ["warn", { "code": 120 }],
 		"no-plusplus":  ["warn", {"allowForLoopAfterthoughts": true}],
-		"implicit-arrow-linebreak": ["warn", "below"]
+		"implicit-arrow-linebreak": ["off", "beside"], // Interferes with Prettier
+		"prettier/prettier": [ "warn", {
+			"singleQuote": true,
+			"trailingComma": "all",
+			"printWidth": 100,
+			"tabWidth": 4,
+			"semi": true,
+			"bracketSpacing": true,
+			"jsxBracketSameLine": false,
+			"parser": "typescript",
+			"useTabs": true,
+			"arrowParens": "avoid",
+			"overrides": [
+				{
+					"files": ["*.ts", "*.tsx", ".mts", ".mtx"], // Your TypeScript files extension
+					"options": {
+						"parser": "typescript"
+					}
+				}
+			],
+			"endOfLine": "lf",
+			"quoteProps": "as-needed"
+		}],
+		"canonical/import-specifier-newline": ["off"],
+		"import/no-cycle": "warn",
+		"no-unused-vars": "warn",
+		"node/no-missing-import": 0
 	  },
 	  "settings": {
-		"import/resolver": {
-			"typescript": {
-				"alwaysTryTypes": true,
-				"allowMembersWithDots": true
-			},
-			"node": {
-				"extensions": [".js", ".jsx", ".ts", ".tsx"],
-				"moduleDirectory": ["node_modules", "src/"]
-			}
-		  }
+		"import/resolver":{
+		  "typescript": ["true", {"alwaysTryTypes": "true", "project": "./tsconfig.json"}],
+		  "node": "true"},
+		"import/parsers": {
+			"@typescript-eslint/parser": [".ts", ".tsx", ".mts", ".mtx"]
+		}
 	}
 }
