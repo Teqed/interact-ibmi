@@ -15,5 +15,5 @@
 //	"typescript.inlayHints.variableTypes.enabled": true,
 	"typescript.referencesCodeLens.enabled": true,
 	"typescript.referencesCodeLens.showOnAllFunctions": true,
-	"typescript.suggest.completeFunctionCalls": true // optional but recommended
+	"typescript.suggest.completeFunctionCalls": true, // optional but recommended
 }

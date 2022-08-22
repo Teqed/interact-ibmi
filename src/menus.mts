@@ -7,7 +7,8 @@ import inquirer, { type PromptModule } from 'inquirer';
 import { createSpinner } from 'nanospinner';
 // Remove: import { sshcmd, sshconnect, sshinteractive } from './ssh.mjs';
 import loginUser from './loginUser.mjs';
-import { testOdbc, queryOdbc, findUser } from './odbc.mjs';
+import { queryOdbc } from './odbc.mjs';
+import { testOdbc, findUser } from './testOdbc.mjs';
 import { sshcmd, sshconnect, sshinteractive } from './ssh.mjs';
 import { sleep } from './util.mjs';
 

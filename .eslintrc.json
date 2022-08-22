@@ -39,7 +39,8 @@
 			"plugin:@typescript-eslint/eslint-recommended",
 			"plugin:@typescript-eslint/recommended",
 			"plugin:import/recommended",
-			"plugin:import/typescript"
+			"plugin:import/typescript",
+			"plugin:unicorn/recommended"
 		  ]
 		}
 	],
@@ -99,7 +100,8 @@
 		"canonical/import-specifier-newline": ["off"],
 		"import/no-cycle": "warn",
 		"no-unused-vars": "warn",
-		"node/no-missing-import": 0
+		"node/no-missing-import": 0,
+		"unicorn/no-array-for-each": "off"
 	  },
 	  "settings": {
 		"import/resolver":{

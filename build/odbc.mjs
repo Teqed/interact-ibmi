@@ -1,5 +1,5 @@
 import { connection } from './login.mjs';
-const getrows = (query) => {
+export const getrows = (query) => {
     // Get the number of rows in the result set.
     const numberRows = query.length;
     // Iterate over the result set.
@@ -10,39 +10,20 @@ const getrows = (query) => {
         console.log(row);
     }
 };
-const getvalues = (query) => {
+export const getvalues = (query) => {
     // Get the the name and value of each row and column.
     const numberRows = query.length;
     // Iterate over the result set.
     for (let index = 0; index < numberRows; index++) {
         // Get the current row.
         const row = query[index];
-        // Iterate over the columns in the row.
-        // ? This for..loop may need to be replaced with an array iteration.
-        // eslint-disable-next-line no-restricted-syntax
-        for (const element of query.columns) {
-            // Get the current column.
-            const column = element;
+        /* Iterate over the columns in the row. */
+        query.columns.forEach(column => {
             // Print the column name and value.
             console.log(`${column.name}: ${row[column.name]}`);
-        }
+        });
     }
 };
+// queryOdbc is a function that takes a query and returns a promise that resolves to the result of the query.
+// It does not show the result of the query to the user.
 export const queryOdbc = async (statement) => connection.query(statement);
-export const testOdbc = async (command) => {
-    const query = await queryOdbc(command);
-    getrows(query);
-};
-export const updateOdbc = async () => {
-    const query = await queryOdbc('SELECT * FROM TEQ1.TQ002AP');
-    const v1 = 'Carol';
-    const v2 = query[0][query.columns[1].name];
-    const v3 = query[0][query.columns[2].name];
-    const update = await queryOdbc(`INSERT INTO TEQ1.TQ002AP VALUES('${v1}', '${v2}', '${v3}')`);
-    console.log(update);
-};
-export const findUser = async (user) => {
-    const query = await connection.query(`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${user}'`);
-    getvalues(query);
-    return query;
-};
