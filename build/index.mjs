@@ -10,7 +10,6 @@ vorpal.command('start', 'Runs mainmenu().').action(async () => {
     await mainmenu();
 });
 await welcome();
-// eslint-disable-next-line import/prefer-default-export
 await login();
 await mainmenu();
 vorpal.delimiter('driver~$').use(repl).show();

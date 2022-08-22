@@ -1,8 +1,4 @@
-/* This is the module for making ODBC database connections to the IBMi AS400.
-It has prepared statements as well as allowing custom statements from user input. */
-import odbc from 'odbc';
 import { connection } from './login.mjs';
-import loginUser from './loginUser.mjs';
 const getrows = (query) => {
     // Get the number of rows in the result set.
     const numberRows = query.length;
@@ -44,11 +40,6 @@ export const updateOdbc = async () => {
     const v3 = query[0][query.columns[2].name];
     const update = await queryOdbc(`INSERT INTO TEQ1.TQ002AP VALUES('${v1}', '${v2}', '${v3}')`);
     console.log(update);
-};
-export const connectOdbc = async () => {
-    const connectionString = `
-DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginUser.loginId};PWD=${loginUser.loginPw};`;
-    return odbc.connect(connectionString);
 };
 export const findUser = async (user) => {
     const query = await connection.query(`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${user}'`);

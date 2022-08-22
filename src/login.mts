@@ -26,5 +26,6 @@ export const login = async () => {
 	loginUser.loginPw = loginpw.login_pw as string;
 	const connectionString = `
 DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginUser.loginId};PWD=${loginUser.loginPw};`;
-	return odbc.connect(connectionString);
+	connection = await odbc.connect(connectionString);
+	return connection;
 };
