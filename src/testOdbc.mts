@@ -1,5 +1,5 @@
 import odbc, { NodeOdbcError } from 'odbc';
-import { queryOdbc, getvalues } from './odbc.mjs';
+import { queryOdbc, getvalues, getrows } from './odbc.mjs';
 import { testUser } from './testObjects.mjs';
 import { createUserInterface } from './types.mjs';
 import { convertUserInterface } from './util.mjs';
@@ -9,6 +9,7 @@ import { convertUserInterface } from './util.mjs';
 export const testOdbc = async (command: string) => {
 	try {
 		const query: odbc.Result<(string | number)[]> = await queryOdbc(command);
+		getrows(query);
 		return query;
 	} catch (error) {
 		console.log(error);
