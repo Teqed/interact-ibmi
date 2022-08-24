@@ -101,7 +101,9 @@
 		"import/no-cycle": "warn",
 		"no-unused-vars": "warn",
 		"node/no-missing-import": 0,
-		"unicorn/no-array-for-each": "off"
+		"unicorn/no-array-for-each": "off",
+		"prefer-const": "warn",
+		"unicorn/no-unused-properties": "warn"
 	  },
 	  "settings": {
 		"import/resolver":{

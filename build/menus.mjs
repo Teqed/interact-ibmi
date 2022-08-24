@@ -7,15 +7,14 @@ import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 // Remove: import { sshcmd, sshconnect, sshinteractive } from './ssh.mjs';
 import loginUser from './loginUser.mjs';
-import { queryOdbc } from './odbc.mjs';
-import { testOdbc, findUser } from './testOdbc.mjs';
+import { testOdbc, findUser, copyUser } from './testOdbc.mjs';
 import { sshcmd, sshconnect, sshinteractive } from './ssh.mjs';
 import { sleep } from './util.mjs';
 /* Create an array of strings containing menu choices. */
 const menuChoices = [
     '1. Send System Command',
     '2. Test ODBC',
-    '3. FreeODBC',
+    '3. Test CopyUser',
     '4. SSH',
     '5. Find User',
 ];
@@ -53,8 +52,10 @@ const handleAnswer = async (answer) => {
             break;
         }
         case menuChoices[2]: {
-            const inputCommand = await getCommand();
-            await queryOdbc(inputCommand);
+            const fromUser = await getCommand();
+            const toUser = await getCommand();
+            const toUserText = await getCommand();
+            await copyUser(fromUser, toUser, toUserText);
             break;
         }
         case menuChoices[3]: {

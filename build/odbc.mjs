@@ -11,18 +11,14 @@ export const getrows = (query) => {
     }
 };
 export const getvalues = (query) => {
-    // Get the the name and value of each row and column.
-    const numberRows = query.length;
-    // Iterate over the result set.
-    for (let index = 0; index < numberRows; index++) {
-        // Get the current row.
-        const row = query[index];
-        /* Iterate over the columns in the row. */
+    // Iterate over the results.
+    query.forEach(row => {
+        // Iterate over the columns in the row.
         query.columns.forEach(column => {
             // Print the column name and value.
             console.log(`${column.name}: ${row[column.name]}`);
         });
-    }
+    });
 };
 // queryOdbc is a function that takes a query and returns a promise that resolves to the result of the query.
 // It does not show the result of the query to the user.
