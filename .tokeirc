@@ -1,2 +1,2 @@
 # If set, tokei will only show the languages in `types`.
-types = ["Javascript"]
+types = ["JavaScript"]
