@@ -1,4 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+# Have linguist consider .mts files as TypeScript.
 *.mts linguist-language=TypeScript
-/src/*.mts linguist-language=TypeScript
