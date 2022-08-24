@@ -16,7 +16,7 @@ on:
     # The branches below must be a subset of the branches above
     branches: [ $default-branch ]
   schedule:
-    - cron: $cron-weekly
+    - cron: '0 12 * * sun'
 
 jobs:
   eslint:
