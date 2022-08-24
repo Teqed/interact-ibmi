@@ -104,6 +104,6 @@
   },
   "ts-node": {"esm": true,
     "experimentalSpecifierResolution": "node"},
-    "include": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+    "include": ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts", "test/welcome.menus.test.js"],
     "exclude": ["node_modules"]
 }

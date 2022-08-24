@@ -22,6 +22,7 @@ export const welcome = async () => {
     const rainbowTitle = chalkAnimation.rainbow('Hello universe! \n');
     await sleep();
     rainbowTitle.stop();
+    return 0;
 };
 const getCommand = async () => {
     const command = (await inquirer.prompt({
