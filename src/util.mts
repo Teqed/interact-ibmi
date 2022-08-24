@@ -1,6 +1,6 @@
 /* This contains utility functions for the application. */
 
-import { createUser as createUserInterface, ibmiUserInterface } from "./types.mjs";
+import { createUserInterface, ibmiUserInterface } from './types.mjs';
 
 // Sleep for X milliseconds, or a default of a half second.
 export async function sleep(milliseconds = 500) {
@@ -35,44 +35,49 @@ export function notNull(possiblyNullValue: string | null | undefined): string {
 	if (possiblyNullValue === null) {
 		return '';
 	}
-	if (possiblyNullValue === undefined) {
+	if (typeof possiblyNullValue === 'undefined') {
 		return '';
 	}
-	return possiblyNullValue; // Now definitely not null.
+	if (typeof possiblyNullValue === 'string') {
+		return possiblyNullValue; // Now definitely not null.
+	}
+	throw new Error(`Type unexpected`);
 }
 
-export function convertUserInterface(inputObject: ibmiUserInterface): createUserInterface {
+export function convertUserInterface(
+	copyUser: ibmiUserInterface,
+	newUser: string,
+	newDescription: string,
+): createUserInterface {
 	/* Setup user values for CRTUSRPRF. */
+	const userId = newUser;
+	const userText = newDescription;
 	const userPassword = '*NONE';
-	const userClass = inputObject.USER_CLASS_NAME;
-	// const userInitialProgram = `${fromUser.INITIAL_PROGRAM_LIBRARY_NAME}/${fromUser.INITIAL_PROGRAM_NAME}`;
+	const userClass = copyUser.USER_CLASS_NAME;
 	const userInitialProgram = qualifier(
-		inputObject.INITIAL_PROGRAM_LIBRARY_NAME,
-		inputObject.INITIAL_PROGRAM_NAME,
+		copyUser.INITIAL_PROGRAM_LIBRARY_NAME,
+		copyUser.INITIAL_PROGRAM_NAME,
 	);
 	const userInitialMenu = qualifier(
-		inputObject.INITIAL_MENU_LIBRARY_NAME,
-		inputObject.INITIAL_MENU_NAME,
+		copyUser.INITIAL_MENU_LIBRARY_NAME,
+		copyUser.INITIAL_MENU_NAME,
 	);
-	const userLimitCapabilities = inputObject.LIMIT_CAPABILITIES;
-	const userSpecialAuthority = notNull(inputObject.SPECIAL_AUTHORITIES);
+	const userLimitCapabilities = copyUser.LIMIT_CAPABILITIES;
+	const userSpecialAuthority = notNull(copyUser.SPECIAL_AUTHORITIES);
 	const userJobDescription = qualifier(
-		inputObject.JOB_DESCRIPTION_LIBRARY_NAME,
-		inputObject.JOB_DESCRIPTION_NAME,
+		copyUser.JOB_DESCRIPTION_LIBRARY_NAME,
+		copyUser.JOB_DESCRIPTION_NAME,
 	);
-	const userGroupProfile = inputObject.GROUP_PROFILE_NAME;
-	const userGroupAuthority = inputObject.GROUP_AUTHORITY;
-	const userAccountingCode = notNull(inputObject.ACCOUNTING_CODE);
-	const userDelivery = inputObject.MESSAGE_QUEUE_DELIVERY_METHOD;
-	const userOutqueue = qualifier(
-		inputObject.OUTPUT_QUEUE_LIBRARY_NAME,
-		inputObject.OUTPUT_QUEUE_NAME,
-	);
+	const userGroupProfile = copyUser.GROUP_PROFILE_NAME;
+	const userGroupAuthority = copyUser.GROUP_AUTHORITY;
+	const userAccountingCode = notNull(copyUser.ACCOUNTING_CODE);
+	const userDelivery = copyUser.MESSAGE_QUEUE_DELIVERY_METHOD;
+	const userOutqueue = qualifier(copyUser.OUTPUT_QUEUE_LIBRARY_NAME, copyUser.OUTPUT_QUEUE_NAME);
 	const userAttentionProgram = qualifier(
-		inputObject.ATTENTION_KEY_HANDLING_PROGRAM_LIBRARY_NAME,
-		inputObject.ATTENTION_KEY_HANDLING_PROGRAM_NAME,
+		copyUser.ATTENTION_KEY_HANDLING_PROGRAM_LIBRARY_NAME,
+		copyUser.ATTENTION_KEY_HANDLING_PROGRAM_NAME,
 	);
-	const userSupplementalGroups = notNull(inputObject.SUPPLEMENTAL_GROUP_LIST);
+	const userSupplementalGroups = notNull(copyUser.SUPPLEMENTAL_GROUP_LIST);
 	return {
 		userAccountingCode,
 		userAttentionProgram,
@@ -80,6 +85,7 @@ export function convertUserInterface(inputObject: ibmiUserInterface): createUser
 		userDelivery,
 		userGroupAuthority,
 		userGroupProfile,
+		userId,
 		userInitialMenu,
 		userInitialProgram,
 		userJobDescription,
@@ -88,5 +94,6 @@ export function convertUserInterface(inputObject: ibmiUserInterface): createUser
 		userPassword,
 		userSpecialAuthority,
 		userSupplementalGroups,
+		userText,
 	};
 }

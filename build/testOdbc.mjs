@@ -1,10 +1,18 @@
-import { queryOdbc, getrows, getvalues } from './odbc.mjs';
+import { queryOdbc, getvalues } from './odbc.mjs';
 import { testUser } from './testObjects.mjs';
 import { convertUserInterface } from './util.mjs';
 // testOdbc shows the results of the query to the user, by basic getrows() query.
 export const testOdbc = async (command) => {
-    const query = await queryOdbc(command);
-    getrows(query);
+    try {
+        const query = await queryOdbc(command);
+        return query;
+    }
+    catch (error) {
+        console.log(error);
+        const narrowError = error;
+        console.log(narrowError.odbcErrors.forEach);
+        return error;
+    }
 };
 export const updateOdbc = async () => {
     const query = await queryOdbc('SELECT * FROM TEQ1.TQ002AP');
@@ -32,7 +40,7 @@ export const copyUser = async (copyFromUser, newUser, userDescription) => {
     const fromUserRaw = await queryOdbc(`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser}'`);
     // ! fromUser will be assigned here.
     const fromUser = testUser;
-    let toUser = convertUserInterface(fromUser);
+    const toUser = convertUserInterface(fromUser, newUser, userDescription);
     /* If the result of query is empty, then the user does not exist. */
     if (fromUserRaw.length === 0) {
         console.log(`User ${copyFromUser} does not exist.`);
@@ -58,7 +66,7 @@ export const copyUser = async (copyFromUser, newUser, userDescription) => {
     }
     /* Assemble the user variables into a string using template literals. */
     let qcmdexc = `CRTUSRPRF \
-USRPRF(${newUser}) \
+USRPRF(${toUser.userId}) \
 STATUS(*ENABLED) \
 PASSWORD(${toUser.userPassword}) \
 PWDEXP(*YES) \
@@ -66,7 +74,7 @@ USRCLS(${toUser.userClass}) \
 INLPGM(${toUser.userInitialProgram}) \
 INLMNU(${toUser.userInitialMenu}) \
 LMTCPB(${toUser.userLimitCapabilities}) \
-TEXT(${userDescription}) \
+TEXT(${toUser.userText}) \
 SPCAUT(${toUser.userSpecialAuthority}) \
 JOBD(${toUser.userJobDescription}) \
 GRPPRF(${toUser.userGroupProfile}) \
@@ -78,13 +86,16 @@ ATNPGM(${toUser.userAttentionProgram}) \
 SUPGRPPRF(${toUser.userSupplementalGroups})`;
     console.log(qcmdexc);
     // TODO Send a system command to create user. Monitor for failure.
+    const query4 = await queryOdbc(`CALL QSYS2.QCMDEXC('${qcmdexc}')`);
+    /* If query4 returns an error executing the sql statement, do something. */
+    console.log(query4);
     // sshcmd({
     // cmd: `system -i "CALL PGM(QCMDEXC) PARM(${qcmdexc} 2000)"`,
     // stdin: ``,
     // });
-    const query4 = await queryOdbc(`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser}'`);
+    const query5 = await queryOdbc(`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser}'`);
     /* If the result of query4 is empty, then the user does not exist. */
-    if (query4.length === 0) {
+    if (query5.length === 0) {
         console.log(`User ${newUser} failed to create.`);
     }
     let userPasswordExpirationInterval;
@@ -134,6 +145,6 @@ NEWOWN(QSECOFR)`;
     console.log(qcmdexc);
     /* Check if fromUser exists on any authorization lists, then copy newUser to them. */
     /* This information is on the view AUTHORIZATION_LIST_USER_INFO. */
-    const query5 = await queryOdbc(`SELECT * FROM QSYS2.AUTHORIZATION_LIST_USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser}'`);
-    console.log(query5[0]);
+    const query6 = await queryOdbc(`SELECT * FROM QSYS2.AUTHORIZATION_LIST_USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser}'`);
+    console.log(query6[0]);
 };

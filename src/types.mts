@@ -84,7 +84,9 @@ export type ibmiUserInterface = {
 	AUTHORITY_COLLECTION_REPOSITORY_EXISTS: string;
 	PASE_SHELL_PATH: string | null;
 };
-export type createUser = {
+export type createUserInterface = {
+	userId: string;
+	userText: string;
 	userPassword: string;
 	userClass: string;
 	userInitialProgram: string;
