@@ -3,6 +3,6 @@ columns = 80
 # Sort languages based on the specified column.
 sort = "lines"
 # If set, tokei will only show the languages in `types`.
-types = ["JavaScript"]
+types = ["TypeScript"]
 # Any doc strings (e.g. `"""hello"""` in python) will be counted as comments.
 treat_doc_strings_as_comments = true
