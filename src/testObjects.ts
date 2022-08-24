@@ -1,4 +1,4 @@
-import { ibmiUserInterface } from './types.mjs';
+import { type ibmiUserInterface } from './types.js';
 /* Create an object named fromUser that has the same properties as fromUserRaw[0]. */
 // eslint-disable-next-line import/prefer-default-export
 export const testUser: ibmiUserInterface = {

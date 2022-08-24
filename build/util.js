@@ -33,7 +33,7 @@ export function notNull(possiblyNullValue) {
     if (typeof possiblyNullValue === 'string') {
         return possiblyNullValue; // Now definitely not null.
     }
-    throw new Error(`Type unexpected`);
+    throw new Error('Type unexpected');
 }
 export function convertUserInterface(copyUser, newUser, newDescription) {
     /* Setup user values for CRTUSRPRF. */

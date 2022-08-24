@@ -1,8 +1,9 @@
-import odbc, { NodeOdbcError } from 'odbc';
-import { queryOdbc, getvalues, getrows } from './odbc.mjs';
-import { testUser } from './testObjects.mjs';
-import { createUserInterface } from './types.mjs';
-import { convertUserInterface } from './util.mjs';
+import { type NodeOdbcError } from 'odbc';
+import type odbc from 'odbc';
+import { queryOdbc, getvalues, getrows } from './odbc.js';
+import { testUser } from './testObjects.js';
+import { type createUserInterface } from './types.js';
+import { convertUserInterface } from './util.js';
 
 // testOdbc shows the results of the query to the user, by basic getrows() query.
 

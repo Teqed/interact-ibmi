@@ -3,13 +3,18 @@ It welcomes the user, asks for their username and password, then shows them the 
 Then, they can run the start command to see the main menu. */
 import Vorpal from 'vorpal';
 import repl from 'vorpal-repl';
-import { login } from './login.mjs';
-import { welcome, mainmenu } from './menus.mjs';
+import { login } from './login.js';
+import { welcome, mainmenu } from './menus.js';
+
 const vorpal = new Vorpal();
 vorpal.command('start', 'Runs mainmenu().').action(async () => {
-    await mainmenu();
+	await mainmenu();
 });
+
 await welcome();
+
 await login();
+
 await mainmenu();
+
 vorpal.delimiter('driver~$').use(repl).show();

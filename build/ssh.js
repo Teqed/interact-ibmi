@@ -1,7 +1,7 @@
 /* This is the module for connecting to the IBMi AS400.
 It uses SSH and allowing the user to send custom commands. */
 import { NodeSSH } from 'node-ssh';
-import loginUser from './loginUser.mjs';
+import loginUser from './loginUser.js';
 const ssh = new NodeSSH();
 export const sshconnect = async () => {
     await ssh.connect({

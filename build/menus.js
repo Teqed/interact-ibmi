@@ -6,10 +6,10 @@ import chalkAnimation from 'chalk-animation';
 import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 // Remove: import { sshcmd, sshconnect, sshinteractive } from './ssh.mjs';
-import loginUser from './loginUser.mjs';
-import { testOdbc, findUser, copyUser } from './testOdbc.mjs';
-import { sshcmd, sshconnect, sshinteractive } from './ssh.mjs';
-import { sleep } from './util.mjs';
+import loginUser from './loginUser.js';
+import { testOdbc, findUser, copyUser } from './testOdbc.js';
+import { sshcmd, sshconnect, sshinteractive } from './ssh.js';
+import { sleep } from './util.js';
 /* Create an array of strings containing menu choices. */
 const menuChoices = [
     '1. Send System Command',

@@ -2,7 +2,7 @@
 It asks for the user's name and password, which is used for logging in to the IBMi AS400. */
 import inquirer from 'inquirer';
 import odbc from 'odbc';
-import loginUser from './loginUser.mjs';
+import loginUser from './loginUser.js';
 // eslint-disable-next-line import/no-mutable-exports
 export let connection;
 export const login = async () => {

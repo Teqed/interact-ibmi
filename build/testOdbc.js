@@ -1,6 +1,6 @@
-import { queryOdbc, getvalues, getrows } from './odbc.mjs';
-import { testUser } from './testObjects.mjs';
-import { convertUserInterface } from './util.mjs';
+import { queryOdbc, getvalues, getrows } from './odbc.js';
+import { testUser } from './testObjects.js';
+import { convertUserInterface } from './util.js';
 // testOdbc shows the results of the query to the user, by basic getrows() query.
 export const testOdbc = async (command) => {
     try {

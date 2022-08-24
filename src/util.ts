@@ -1,6 +1,6 @@
 /* This contains utility functions for the application. */
 
-import { createUserInterface, ibmiUserInterface } from './types.mjs';
+import { type createUserInterface, type ibmiUserInterface } from './types.js';
 
 // Sleep for X milliseconds, or a default of a half second.
 export async function sleep(milliseconds = 500) {
@@ -26,6 +26,7 @@ export function qualifier(qualifierLibrary: string | null, qualifierObject: stri
 	if (qualifierLibrary === null) {
 		return qualifierObject;
 	}
+
 	return `${qualifierLibrary}/${qualifierObject}`;
 }
 
@@ -35,13 +36,16 @@ export function notNull(possiblyNullValue: string | null | undefined): string {
 	if (possiblyNullValue === null) {
 		return '';
 	}
+
 	if (typeof possiblyNullValue === 'undefined') {
 		return '';
 	}
+
 	if (typeof possiblyNullValue === 'string') {
 		return possiblyNullValue; // Now definitely not null.
 	}
-	throw new Error(`Type unexpected`);
+
+	throw new Error('Type unexpected');
 }
 
 export function convertUserInterface(

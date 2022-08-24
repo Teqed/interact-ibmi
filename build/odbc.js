@@ -1,4 +1,4 @@
-import { connection } from './login.mjs';
+import { connection } from './login.js';
 export const getrows = (query) => {
     // Get the number of rows in the result set.
     const numberRows = query.length;

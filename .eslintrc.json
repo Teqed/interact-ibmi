@@ -27,7 +27,7 @@
 	],
 	"overrides": [
 		{
-		  "files": ["*.ts", "*.tsx", ".mts", ".mtx"], // Your TypeScript files extension
+		  "files": ["*.ts", "*.tsx", "*.mts", "*.mtx"], // Your TypeScript files extension
 	
 		  // As mentioned in the comments, you should extend TypeScript plugins here,
 		  // instead of extending them outside the `overrides`.
@@ -41,9 +41,8 @@
 			"plugin:import/recommended",
 			"plugin:import/typescript",
 			"plugin:unicorn/recommended"
-		  ]
-		}
-	],
+		  ],
+		  
 	  "rules": {
 		"import/extensions": [
 		   "error",
@@ -58,7 +57,7 @@
 		   }
 		],
 		"no-console": "off",
-		"@typescript-eslint/indent" : "off",
+		"@typescript-eslint/indent" : ["warn", "tab"],
 		"@typescript-eslint/no-explicit-any" : "warn",
 		"@typescript-eslint/return-await" : "off",
 		"no-tabs" : [ "warn", {"allowIndentationTabs" : true}],
@@ -88,7 +87,7 @@
 			"arrowParens": "avoid",
 			"overrides": [
 				{
-					"files": ["*.ts", "*.tsx", ".mts", ".mtx"], // Your TypeScript files extension
+					"files": ["*.ts", "*.tsx", "*.mts", "*.mtx"], // Your TypeScript files extension
 					"options": {
 						"parser": "typescript"
 					}
@@ -103,7 +102,9 @@
 		"node/no-missing-import": 0,
 		"unicorn/no-array-for-each": "off",
 		"prefer-const": "warn",
-		"unicorn/no-unused-properties": "warn"
+		"unicorn/no-unused-properties": "warn",
+		"@typescript-eslint/naming-convention": "warn",
+		"typescript-sort-keys/interface": "warn"
 	  },
 	  "settings": {
 		"import/resolver":{
@@ -113,4 +114,6 @@
 			"@typescript-eslint/parser": [".ts", ".tsx", ".mts", ".mtx"]
 		}
 	}
+		}
+	]
 }
