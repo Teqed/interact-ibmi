@@ -11,12 +11,12 @@ name: ESLint
 
 on:
   push:
-    branches: [ $default-branch, $protected-branches ]
+    branches: [ "main" ]
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ $default-branch ]
+    branches: [ "main" ]
   schedule:
-    - cron: '0 12 * * sun'
+    - cron: '21 23 * * 4'
   workflow_dispatch:
 
 jobs:
