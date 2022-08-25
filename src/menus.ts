@@ -20,6 +20,11 @@ const menuChoices = [
 	'5. Find User',
 ];
 
+export const returnZero = async () => {
+	console.log('Returning Zero');
+	return 0;
+};
+
 export const welcome = async () => {
 	const rainbowTitle = chalkAnimation.rainbow('Hello universe! \n');
 	await sleep();
