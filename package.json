@@ -12,11 +12,9 @@
     "odbc": "^2.4.4",
     "ow": "^1.0.0",
     "ts-extras": "^0.11.0",
-    "type-fest": "^2.19.0",
-    "vorpal": "^1.12.0",
-    "vorpal-repl": "^1.1.8"
+    "type-fest": "^2.19.0"
   },
-  "description": "Menus for interacting with IBMi AS400 using NodeJS and vorpal.",
+  "description": "Menus for interacting with IBMi AS400 using node-odbc.",
   "devDependencies": {
     "@types/chai": "^4.3.3",
     "@types/chalk-animation": "^1.6.1",
@@ -25,7 +23,6 @@
     "@types/inquirer": "^9.0.1",
     "@types/mocha": "^9.1.1",
     "@types/node": "^18.7.7",
-    "@types/vorpal": "^1.12.2",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
     "airbnb": "^0.0.2",
