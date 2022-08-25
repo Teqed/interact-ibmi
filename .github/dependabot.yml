@@ -10,6 +10,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    workflow_dispatch:
     commit-message:
       # Prefix all commit messages with "npm"
       prefix: "⬆️ npm"
