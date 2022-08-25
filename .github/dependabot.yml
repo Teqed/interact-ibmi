@@ -14,5 +14,4 @@ updates:
       # Prefix all commit messages with "npm"
       prefix: "⬆️ npm"
     labels:
-      - "npm"
       - "dependencies"
