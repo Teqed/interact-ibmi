@@ -28,17 +28,6 @@ This project and everyone participating in it is governed by the
 By participating, you are expected to uphold this code. Please report unacceptable behavior
 to admin@shatteredsky.net.
 
-
-## I Have a Question
-
-> We assume that you have read the available [Documentation](https://github.com/Teqed/interact-ibmi/wiki).
-
-It is best to search for existing [Issues](https://github.com/Teqed/interact-ibmi//issues) that might help you.
-
-
-
-We will then take care of the issue as soon as possible.
-
 <!--
 You might want to create a separate issue tag for questions and include it in this description. People should then tag their issues accordingly.
 
@@ -61,10 +50,12 @@ Depending on how large the project is, you may want to outsource the questioning
 
 ### Reporting Bugs
 
+> We assume that you have read the available [Documentation](https://github.com/Teqed/interact-ibmi/wiki).
+
+It is best to search for existing [Issues](https://github.com/Teqed/interact-ibmi//issues) that might help you.
+
 <!-- omit in toc -->
 #### Before Submitting a Bug Report
-
-To submit a good bug report you should investigate carefully, collect information and describe the issue in detail in your report.
 
 - Make sure that you are using the latest version.
 - Determine that your bug is not an error on your side e.g. using incompatible environment components/versions.
@@ -76,12 +67,11 @@ To submit a good bug report you should investigate carefully, collect informatio
 - Version of the interpreter, compiler, SDK, runtime environment, package manager, depending on what seems relevant.
 - Possibly your input and the output
 - Can you reliably reproduce the issue? And can you also reproduce it with older versions?
+> You should never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs should be sent by email to admin@shatteredsky.net.
+<!-- You may add a PGP key to allow the messages to be sent encrypted as well. -->
 
 <!-- omit in toc -->
 #### How Do I Submit a Good Bug Report?
-
-> You must never report security related issues, vulnerabilities or bugs including sensitive information to the issue tracker, or elsewhere in public. Instead sensitive bugs must be sent by email to .
-<!-- You may add a PGP key to allow the messages to be sent encrypted as well. -->
 
 We use GitHub issues to track bugs and errors. If you run into an issue with the project:
 
@@ -99,7 +89,6 @@ Once it's filed:
 - If the team is able to reproduce the issue, it will be marked `needs-fix`, as well as possibly other tags (such as `critical`), and the issue will be left to be [implemented by someone](#your-first-code-contribution).
 
 <!-- You might want to create an issue template for bugs and errors that can be used as a guide and that defines the structure of the information to be included. If you do so, reference it here in the description. -->
-
 
 ### Suggesting Enhancements
 
@@ -147,13 +136,20 @@ Updating, improving and correcting the documentation
 Documentation will be taking place on the Wiki.
 
 ## Styleguides
-### Commit Messages
-<!-- TODO
-
--->
 
 Read `.eslintrc.json` for style guide information.
 
+### Commit Messages
+Commit messages are made in the format of:
+
+```
+<intention> [scope?][:?] <message>
+```
+
+- `intention`: An emoji from the list.
+- `scope`: An optional string that adds contextual information for the scope of the change.
+- `message:` A brief, imperative explanation of the change.
+  
 <!-- omit in toc -->
 ## Attribution
 This guide is based on the **contributing-gen**. [Make your own here](https://github.com/bttger/contributing-gen).
