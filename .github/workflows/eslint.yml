@@ -17,6 +17,7 @@ on:
     branches: [ $default-branch ]
   schedule:
     - cron: '0 12 * * sun'
+  workflow_dispatch:
 
 jobs:
   eslint:
