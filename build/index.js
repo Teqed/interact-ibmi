@@ -5,10 +5,10 @@ import Vorpal from 'vorpal';
 import { login } from './login.js';
 import { welcome, mainmenu } from './menus.js';
 const vorpal = new Vorpal();
-vorpal.command('start', 'Runs mainmenu().').action(async () => {
+vorpal.command(`start`, `Runs mainmenu().`).action(async () => {
     await mainmenu();
 });
 await welcome();
 await login();
 await mainmenu();
-vorpal.delimiter('driver~$').show();
+vorpal.delimiter(`driver~$`).show();

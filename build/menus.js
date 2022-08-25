@@ -6,35 +6,37 @@ import chalkAnimation from 'chalk-animation';
 import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 // Remove: import { sshcmd, sshconnect, sshinteractive } from './ssh.mjs';
-import loginUser from './loginUser.js';
-import { testOdbc, findUser, copyUser } from './testOdbc.js';
+import loginUser from './login-user.js';
+import { testOdbc, findUser, copyUser } from './test-odbc.js';
 import { sshcmd, sshconnect, sshinteractive } from './ssh.js';
 import { sleep } from './util.js';
 /* Create an array of strings containing menu choices. */
 const menuChoices = [
-    '1. Send System Command',
-    '2. Test ODBC',
-    '3. Test CopyUser',
-    '4. SSH',
-    '5. Find User',
+    `1. Send System Command`,
+    `2. Test ODBC`,
+    `3. Test CopyUser`,
+    `4. SSH`,
+    `5. Find User`,
 ];
 export const returnZero = async () => {
-    console.log('Returning Zero');
+    console.log(`Returning Zero`);
     return 0;
 };
 export const welcome = async () => {
-    const rainbowTitle = chalkAnimation.rainbow('Hello universe! \n');
+    const rainbowTitle = chalkAnimation.rainbow(`Hello universe! \n`);
     await sleep();
     rainbowTitle.stop();
     return 0;
 };
 const getCommand = async () => {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     const command = (await inquirer.prompt({
-        message: 'Enter inputCommand to send:',
-        name: 'cmdinput',
-        type: 'input',
+        message: `Enter inputCommand to send:`,
+        name: `cmdinput`,
+        type: `input`,
     }));
-    const inputCommand = command['cmdinput'].toString();
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string
+    const inputCommand = command[`cmdinput`].toString();
     return inputCommand;
 };
 const handleAnswer = async (answer) => {
@@ -44,7 +46,7 @@ const handleAnswer = async (answer) => {
             const inputCommand = await getCommand();
             const rtnCommand = await sshcmd({
                 cmd: inputCommand,
-                stdin: '',
+                stdin: ``,
             });
             /* Find the output from rtnCommand */
             console.log(rtnCommand.stdout);
@@ -64,31 +66,31 @@ const handleAnswer = async (answer) => {
             break;
         }
         case menuChoices[3]: {
-            const spinner = createSpinner('Connecting to SSH...').start();
+            const spinner = createSpinner(`Connecting to SSH...`).start();
             await sshconnect();
             spinner.success({
-                mark: '✅',
-                text: 'Connected!',
+                mark: `✅`,
+                text: `Connected!`,
             });
             await sshinteractive();
             break;
         }
         case menuChoices[4]: {
-            const spinner = createSpinner('Checking...').start();
-            await findUser('TEQ');
+            const spinner = createSpinner(`Checking...`).start();
+            await findUser(`TEQ`);
             spinner.success({
-                text: 'User found!',
+                text: `User found!`,
             });
             break;
         }
         default: {
-            const spinner = createSpinner('Exiting...').start();
+            const spinner = createSpinner(`Exiting...`).start();
             await sleep();
             spinner.error({
                 text: `Exited cleanly. Goodbye, ${loginUser.loginId}!`,
             });
             /* Throw an error to exit the program */
-            throw new Error('Exited cleanly.');
+            throw new Error(`Exited cleanly.`);
         }
     }
     return handleAnswer;
@@ -97,11 +99,12 @@ export const mainmenu = async () => {
     const menu = (await inquirer.prompt({
         choices: menuChoices,
         message: `
-    ${chalk.bgBlue('MAIN MENU')}
+    ${chalk.bgBlue(`MAIN MENU`)}
     Select options below.
     `,
-        name: 'main',
-        type: 'list',
+        name: `main`,
+        type: `list`,
     }));
-    await handleAnswer(menu['main'].toString());
+    // eslint-disable-next-line @typescript-eslint/no-base-to-string
+    await handleAnswer(menu[`main`].toString());
 };

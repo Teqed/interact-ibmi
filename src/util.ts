@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* This contains utility functions for the application. */
 
-import { type createUserInterface, type ibmiUserInterface } from './types.js';
+import { type CreateUserInterface, type IbmiUserInterface } from './types.js';
 
 // Sleep for X milliseconds, or a default of a half second.
 export async function sleep(milliseconds = 500) {
@@ -17,7 +18,7 @@ export const handleError = (error: Error) => {
 };
 
 export const clearScreen = () => {
-	process.stdout.write('\u001Bc');
+	process.stdout.write(`\u001Bc`);
 };
 
 /* If qualifierLibrary is null, return qualifierObject. 
@@ -34,29 +35,29 @@ export function qualifier(qualifierLibrary: string | null, qualifierObject: stri
 Otherwise, return possiblyNullValue. */
 export function notNull(possiblyNullValue: string | null | undefined): string {
 	if (possiblyNullValue === null) {
-		return '';
+		return ``;
 	}
 
-	if (typeof possiblyNullValue === 'undefined') {
-		return '';
+	if (typeof possiblyNullValue === `undefined`) {
+		return ``;
 	}
 
-	if (typeof possiblyNullValue === 'string') {
+	if (typeof possiblyNullValue === `string`) {
 		return possiblyNullValue; // Now definitely not null.
 	}
 
-	throw new Error('Type unexpected');
+	throw new Error(`Type unexpected`);
 }
 
 export function convertUserInterface(
-	copyUser: ibmiUserInterface,
+	copyUser: IbmiUserInterface,
 	newUser: string,
 	newDescription: string,
-): createUserInterface {
+): CreateUserInterface {
 	/* Setup user values for CRTUSRPRF. */
 	const userId = newUser;
 	const userText = newDescription;
-	const userPassword = '*NONE';
+	const userPassword = `*NONE`;
 	const userClass = copyUser.USER_CLASS_NAME;
 	const userInitialProgram = qualifier(
 		copyUser.INITIAL_PROGRAM_LIBRARY_NAME,

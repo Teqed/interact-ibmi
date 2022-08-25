@@ -1,30 +1,29 @@
-import { type NodeOdbcError } from 'odbc';
 import type odbc from 'odbc';
 import { queryOdbc, getvalues, getrows } from './odbc.js';
-import { testUser } from './testObjects.js';
-import { type createUserInterface } from './types.js';
+import { testUser } from './test-objects.js';
+import { type CreateUserInterface } from './types.js';
 import { convertUserInterface } from './util.js';
 
 // testOdbc shows the results of the query to the user, by basic getrows() query.
 
 export const testOdbc = async (command: string) => {
 	try {
-		const query: odbc.Result<(string | number)[]> = await queryOdbc(command);
+		const query: odbc.Result<Array<number | string>> = await queryOdbc(command);
 		getrows(query);
 		return query;
-	} catch (error) {
+	} catch (error: unknown) {
 		console.log(error);
-		const narrowError = error as NodeOdbcError;
-		console.log(narrowError.odbcErrors.forEach);
+		// const narrowError = error as NodeOdbcError;
+		// console.log(narrowError.odbcErrors.forEach);
 		return error;
 	}
 };
 
 export const updateOdbc = async () => {
 	const query: odbc.Result<Array<number | string>> = await queryOdbc(
-		'SELECT * FROM TEQ1.TQ002AP',
+		`SELECT * FROM TEQ1.TQ002AP`,
 	);
-	const v1 = 'Carol';
+	const v1 = `Carol`;
 	const v2 = query[0][query.columns[1].name as keyof typeof query as number] as string;
 	const v3 = query[0][query.columns[2].name as keyof typeof query as number] as string;
 	const update: odbc.Result<Array<number | string>> = await queryOdbc(
@@ -32,11 +31,12 @@ export const updateOdbc = async () => {
 	);
 	console.log(update);
 };
+
 export const updateOdbc2 = async () => {
 	const query: odbc.Result<Array<number | string>> = await queryOdbc(
-		'SELECT * FROM TEQ1.TQ002AP',
+		`SELECT * FROM TEQ1.TQ002AP`,
 	);
-	const v1 = 'Carol';
+	const v1 = `Carol`;
 	const v2 = query[0][query.columns[1].name as keyof typeof query as number] as string;
 	const v3 = query[0][query.columns[2].name as keyof typeof query as number] as string;
 	const update: odbc.Result<Array<number | string>> = await queryOdbc(
@@ -60,27 +60,29 @@ export const copyUser = async (copyFromUser: string, newUser: string, userDescri
 	);
 	// ! fromUser will be assigned here.
 	const fromUser = testUser;
-	const toUser: createUserInterface = convertUserInterface(fromUser, newUser, userDescription);
+	const toUser: CreateUserInterface = convertUserInterface(fromUser, newUser, userDescription);
 
 	/* If the result of query is empty, then the user does not exist. */
 	if (fromUserRaw.length === 0) {
 		console.log(`User ${copyFromUser} does not exist.`);
 		return;
 	}
+
 	const query2 = await queryOdbc(
 		`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser}'`,
 	);
 	/* If the result of query2 is not empty, then the new user already exists. */
-	if (query2.length !== 0) {
+	if (query2.length > 0) {
 		console.log(`User ${newUser} already exists.`);
 		return;
 	}
 
 	/* If their accounting code is NOCOPY, don't copy this user. */
-	if (fromUser.ACCOUNTING_CODE === 'NOCOPY') {
+	if (fromUser.ACCOUNTING_CODE === `NOCOPY`) {
 		console.log(`User ${copyFromUser} is not copyable.`);
 		return;
 	}
+
 	/* Check if the library object already exists. */
 	const query3 = await queryOdbc(
 		`SELECT * FROM TABLE (QSYS2.OBJECT_STATISTICS('TEQ1', '*LIB')) AS X `,
@@ -134,27 +136,29 @@ SUPGRPPRF(${toUser.userSupplementalGroups})`;
 
 	switch (fromUser.PASSWORD_EXPIRATION_INTERVAL) {
 		case 0:
-			userPasswordExpirationInterval = '*SYSVAL';
+			userPasswordExpirationInterval = `*SYSVAL`;
 			break;
 		case -1:
-			userPasswordExpirationInterval = '*NOMAX';
+			userPasswordExpirationInterval = `*NOMAX`;
 			break;
 		default:
 			userPasswordExpirationInterval = fromUser.PASSWORD_EXPIRATION_INTERVAL;
 			break;
 	}
+
 	switch (fromUser.MAXIMUM_ALLOWED_STORAGE) {
 		// TODO These values need to be confirmed.
 		case BigInt(-1):
-			userMaximumAllowedStorage = '*NOMAX';
+			userMaximumAllowedStorage = `*NOMAX`;
 			break;
 		default:
 			userMaximumAllowedStorage = fromUser.MAXIMUM_ALLOWED_STORAGE;
 	}
+
 	switch (fromUser.CHARACTER_CODE_SET_ID) {
 		// TODO These values need to be confirmed.
-		case '-2':
-			userCharacterCodeSetId = '*SYSVAL';
+		case `-2`:
+			userCharacterCodeSetId = `*SYSVAL`;
 			break;
 		default:
 			userCharacterCodeSetId = fromUser.CHARACTER_CODE_SET_ID;

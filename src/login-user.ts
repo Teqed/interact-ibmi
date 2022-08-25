@@ -3,23 +3,23 @@ class Person {
 
 	#loginPw!: string;
 
-	what() {
+	public what() {
 		console.log(`Your login ID is ${this.#loginId}`);
 	}
 
-	get loginId() {
+	public get loginId() {
 		return this.#loginId.toUpperCase();
 	}
 
-	set loginId(newloginID) {
+	public set loginId(newloginID) {
 		this.#loginId = newloginID.toUpperCase();
 	}
 
-	get loginPw() {
+	public get loginPw() {
 		return this.#loginPw;
 	}
 
-	set loginPw(newloginPW) {
+	public set loginPw(newloginPW) {
 		this.#loginPw = newloginPW;
 	}
 }

@@ -104,7 +104,9 @@
 		"prefer-const": "warn",
 		"unicorn/no-unused-properties": "warn",
 		"@typescript-eslint/naming-convention": "warn",
-		"typescript-sort-keys/interface": "warn"
+		"typescript-sort-keys/interface": "warn",
+		"@typescript-eslint/quotes": ["warn", "backtick"],
+		"@typescript-eslint/no-unnecessary-type-assertion": "warn"
 	  },
 	  "settings": {
 		"import/resolver":{

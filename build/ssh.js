@@ -1,22 +1,26 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable unicorn/consistent-destructuring */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* This is the module for connecting to the IBMi AS400.
 It uses SSH and allowing the user to send custom commands. */
 import { NodeSSH } from 'node-ssh';
-import loginUser from './loginUser.js';
+import loginUser from './login-user.js';
 const ssh = new NodeSSH();
 export const sshconnect = async () => {
     await ssh.connect({
         agent: process.env.SSH_AUTH_SOCK,
         compress: true,
-        host: 'PUB400.COM',
+        host: `PUB400.COM`,
         port: 2_222,
-        privateKeyPath: 'C:/Users/Teq/.ssh/id_rsa',
+        privateKeyPath: `C:/Users/Teq/.ssh/id_rsa`,
         username: loginUser.loginId,
     });
 };
 export const sshcmd = async (input) => {
-    const { cmd } = input;
+    const { cmd, stdin } = input;
     const comm = await ssh.execCommand(cmd, {
-        stdin: input.stdin,
+        stdin,
     });
     ssh.dispose();
     return comm;
@@ -24,21 +28,21 @@ export const sshcmd = async (input) => {
 export const sshinteractive = async () => {
     const pipeStream = (stream) => {
         const { stdin, stdout, stderr } = process;
-        const { isTTY } = stdout;
+        const { isTTY, columns, rows } = stdout;
         if (isTTY && stdin.setRawMode) {
             stdin.setRawMode(true);
         }
         stream.pipe(stdout);
         stream.stderr.pipe(stderr);
         stdin.pipe(stream);
-        const onResize = isTTY && (() => stream.setWindow(stdout.rows, stdout.columns, null, null));
+        const onResize = isTTY && (() => stream.setWindow(rows, columns));
         if (isTTY) {
-            stream.once('data', onResize);
-            process.stdout.on('resize', onResize);
+            stream.once(`data`, onResize);
+            process.stdout.on(`resize`, onResize);
         }
-        stream.on('close', () => {
+        stream.on(`close`, () => {
             if (isTTY) {
-                process.stdout.removeListener('resize', onResize);
+                process.stdout.removeListener(`resize`, onResize);
             }
             stream.unpipe();
             stream.stderr.unpipe();
@@ -51,14 +55,14 @@ export const sshinteractive = async () => {
     };
     await new Promise((resolve, reject) => {
         ssh.connection.shell({
-            term: process.env.TERM ?? 'vt100',
+            term: process.env.TERM ?? `vt100`,
         }, (error, stream) => {
             if (error) {
                 reject(error);
                 return;
             }
             pipeStream(stream);
-            stream.on('close', () => {
+            stream.on(`close`, () => {
                 resolve(true);
             });
         });

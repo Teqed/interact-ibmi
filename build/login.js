@@ -2,23 +2,23 @@
 It asks for the user's name and password, which is used for logging in to the IBMi AS400. */
 import inquirer from 'inquirer';
 import odbc from 'odbc';
-import loginUser from './loginUser.js';
+import loginUser from './login-user.js';
 // eslint-disable-next-line import/no-mutable-exports
 export let connection;
 export const login = async () => {
     const loginid = await inquirer.prompt({
         default() {
-            return 'Anon';
+            return `Anon`;
         },
-        message: 'What is your User ID?',
-        name: 'login_name',
-        type: 'input',
+        message: `What is your User ID?`,
+        name: `login_name`,
+        type: `input`,
     });
     const loginpw = await inquirer.prompt({
-        mask: '*',
-        message: 'What is your password?',
-        name: 'login_pw',
-        type: 'password',
+        mask: `*`,
+        message: `What is your password?`,
+        name: `login_pw`,
+        type: `password`,
     });
     loginUser.loginId = loginid.login_name;
     loginUser.loginPw = loginpw.login_pw;
