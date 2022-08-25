@@ -1,6 +1,6 @@
 # interact-ibmi
 
-![Depfu](https://img.shields.io/depfu/dependencies/github/Teqed/interact-ibmi?style=plastic) ![GitHub pull requests](https://img.shields.io/github/issues-pr/Teqed/interact-ibmi?style=plastic) ![GitHub](https://img.shields.io/github/license/Teqed/interact-ibmi?style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/Teqed/interact-ibmi?style=plastic) ![GitHub repo size](https://img.shields.io/github/repo-size/Teqed/interact-ibmi?style=plastic) ![Lines of code](https://img.shields.io/tokei/lines/github/Teqed/interact-ibmi)
+![Depfu](https://img.shields.io/depfu/dependencies/github/Teqed/interact-ibmi?style=plastic) ![GitHub pull requests](https://img.shields.io/github/issues-pr/Teqed/interact-ibmi?style=plastic) ![GitHub](https://img.shields.io/github/license/Teqed/interact-ibmi?style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/Teqed/interact-ibmi?style=plastic) ![GitHub repo size](https://img.shields.io/github/repo-size/Teqed/interact-ibmi?style=plastic) ![Lines of code](https://img.shields.io/tokei/lines/github/Teqed/interact-ibmi?style=plastic)
 
  Menus for interacting with IBMi AS400 using NodeJS, Typescript, `vorpal`, and `node-odbc` packages.
 
