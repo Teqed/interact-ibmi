@@ -63,7 +63,7 @@
   "type": "module",
   "version": "1.0.0",
   "engines": {
-    "node": ">=10.4.0"
+    "node": ">=16.0.0"
   },
   "bin": {
     "interact-ibmi": "./bin/interact-ibmi"
