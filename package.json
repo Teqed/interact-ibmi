@@ -52,7 +52,7 @@
     "vite-plugin-node": "^1.0.0",
     "vite-plugin-progress": "^0.0.3",
     "vitest": "^0.22.1",
-    "xo": "^0.52.0"
+    "xo": "^0.52.2"
   },
   "keywords": [],
   "license": "MIT",

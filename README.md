@@ -1,5 +1,7 @@
 # interact-ibmi
 
+![Node JS CI](https://github.com/Teqed/interact-ibmi/actions/workflows/node.js.yml/badge.svg?event=push&style=plastic) 
+
 ![stability-wip](https://img.shields.io/badge/stability-wip-lightgrey.svg?style=plastic) ![Depfu](https://img.shields.io/depfu/dependencies/github/Teqed/interact-ibmi?style=plastic) ![GitHub pull requests](https://img.shields.io/github/issues-pr/Teqed/interact-ibmi?style=plastic) ![GitHub](https://img.shields.io/github/license/Teqed/interact-ibmi?style=plastic) ![GitHub last commit](https://img.shields.io/github/last-commit/Teqed/interact-ibmi?style=plastic) ![GitHub repo size](https://img.shields.io/github/repo-size/Teqed/interact-ibmi?style=plastic) ![Lines of code](https://img.shields.io/tokei/lines/github/Teqed/interact-ibmi?style=plastic)
 
  Menus for interacting with IBMi AS400 using the `node-odbc` package.
