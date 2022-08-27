@@ -3,7 +3,7 @@ It welcomes the user, asks for their username and password, then shows them the 
 Then, they can run the start command to see the main menu. */
 import { login } from './login.js';
 import { welcome, mainmenu } from './menus.js';
-export default async () => {
+const start = async () => {
     try {
         await welcome();
         await login();
@@ -13,3 +13,4 @@ export default async () => {
         console.log(error);
     }
 };
+await start();
