@@ -20,7 +20,6 @@ const menuChoices = [
 ];
 
 export const returnZero = async () => {
-	console.log(`Returning Zero`);
 	return 0;
 };
 
