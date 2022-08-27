@@ -63,10 +63,10 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint --format=pretty . --ext .ts,.mts,.tsx",
-    "test": "mocha test/*.test.js",
-    "badge": "MOCHA_BADGE_SUBJECT=build MOCHA_BADGE_STYLE=flat ./node_modules/.bin/mocha --reporter mocha-reporter-badge > .github/assets/build.svg",
-    "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "test:mocha": "mocha test/mocha/*.test.js",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:mocha:badge": "MOCHA_BADGE_SUBJECT=build MOCHA_BADGE_STYLE=plastic ./node_modules/.bin/mocha test/mocha/*.test.js --reporter mocha-reporter-badge > .github/assets/build.svg"
   },
   "type": "module",
   "version": "1.0.0",

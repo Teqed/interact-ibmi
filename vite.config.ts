@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig } from 'vite';
 import { visualizer } from "rollup-plugin-visualizer";
 import progress from 'vite-plugin-progress'
@@ -16,10 +17,10 @@ export default defineConfig({
       // Nodejs native Request adapter
       // currently this plugin support 'express', 'nest', 'koa' and 'fastify' out of box,
       // you can also pass a function if you are using other frameworks, see Custom Adapter section
-      adapter: 'nest',
+      adapter: 'express',
 
       // tell the plugin where is your project entry
-      appPath: './src/index.ts',
+      appPath: './src/vite-node-app.ts',
 
       // Optional, default: 'viteNodeApp'
       // the name of named export of you app from the appPath file
@@ -74,4 +75,8 @@ export default defineConfig({
     target: 'es2022',
     polyfillModulePreload: true,
   },
+  test: {
+    include: ['test/**/*.test.ts'],
+    exclude: ['test/mocha/*'],
+  }
 });

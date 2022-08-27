@@ -4,11 +4,12 @@ Then, they can run the start command to see the main menu. */
 import { login } from './login.js';
 import { welcome, mainmenu } from './menus.js';
 
-// eslint-disable-next-line import/prefer-default-export
-export const viteNodeApp = async () => {
-	await welcome();
-
-	await login();
-
-	await mainmenu();
+export default async () => {
+	try {
+		await welcome();
+		await login();
+		await mainmenu();
+	} catch (error: unknown) {
+		console.log(error);
+	}
 };
