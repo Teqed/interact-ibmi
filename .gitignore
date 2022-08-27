@@ -156,3 +156,6 @@ dist-ssr
 
 # Stats file
 stats.html
+
+# transpile folder
+build
