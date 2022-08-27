@@ -20,6 +20,7 @@
     "@types/node": "^18.7.13",
     "@typescript-eslint/eslint-plugin": "^5.33.0",
     "@typescript-eslint/parser": "^5.33.0",
+    "@vitest/coverage-c8": "^0.22.1",
     "@vitest/ui": "^0.22.1",
     "airbnb": "^0.0.2",
     "aws-sdk": "^2.1204.0",
