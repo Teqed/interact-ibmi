@@ -66,7 +66,7 @@
     "test:mocha": "mocha test/mocha/*.test.js",
     "test:ui": "vitest --ui",
     "test": "vitest run",
-    "test:mocha:badge": "MOCHA_BADGE_SUBJECT=build MOCHA_BADGE_STYLE=plastic ./node_modules/.bin/mocha test/mocha/*.test.js --reporter mocha-reporter-badge > .github/assets/build.svg"
+    "test:mocha:badge": "cross-env MOCHA_BADGE_SUBJECT=build MOCHA_BADGE_STYLE=plastic ./node_modules/.bin/mocha test/mocha/*.test.js --reporter mocha-reporter-badge > .github/assets/build.svg"
   },
   "type": "module",
   "version": "1.0.0",
