@@ -8,11 +8,13 @@ class Person {
 	}
 
 	public get loginId() {
-		return this.#loginId.toUpperCase();
+		return this.#loginId;
+		// return this.#loginId.toUpperCase();
 	}
 
 	public set loginId(newloginID) {
-		this.#loginId = newloginID.toUpperCase();
+		this.#loginId = newloginID;
+		// this.#loginId = newloginID.toUpperCase();
 	}
 
 	public get loginPw() {

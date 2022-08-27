@@ -4,29 +4,29 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* This is the module for connecting to the IBMi AS400.
 It uses SSH and allowing the user to send custom commands. */
-import { NodeSSH } from 'node-ssh';
+// import { NodeSSH } from 'node-ssh';
 import loginUser from './login-user.js';
 
-const ssh = new NodeSSH();
+// const ssh = new NodeSSH();
 
 export const sshconnect = async () => {
-	await ssh.connect({
-		agent: process.env.SSH_AUTH_SOCK,
-		compress: true,
-		host: `PUB400.COM`,
-		port: 2_222,
-		privateKeyPath: `C:/Users/Teq/.ssh/id_rsa`,
-		username: loginUser.loginId,
-	});
+	// await ssh.connect({
+	// 	agent: process.env.SSH_AUTH_SOCK,
+	// 	compress: true,
+	// 	host: `PUB400.COM`,
+	// 	port: 2_222,
+	// 	privateKeyPath: `C:/Users/Teq/.ssh/id_rsa`,
+	// 	username: loginUser.loginId,
+	// });
 };
 
 export const sshcmd = async (input: { cmd: string; stdin: string }) => {
 	const { cmd, stdin } = input;
-	const comm = await ssh.execCommand(cmd, {
-		stdin,
-	});
-	ssh.dispose();
-	return comm;
+	// const comm = await ssh.execCommand(cmd, {
+	// 	stdin,
+	// });
+	// ssh.dispose();
+	// return comm;
 };
 
 export const sshinteractive = async () => {
@@ -78,26 +78,26 @@ export const sshinteractive = async () => {
 	};
 
 	await new Promise((resolve, reject) => {
-		ssh.connection.shell(
-			{
-				term: process.env.TERM ?? `vt100`,
-			},
-			(
-				error: unknown,
-				stream: { on: (argument0: string, argument1: () => void) => void },
-			) => {
-				if (error) {
-					reject(error);
-					return;
-				}
+		// ssh.connection.shell(
+		// 	{
+		// 		term: process.env.TERM ?? `vt100`,
+		// 	},
+		// 	(
+		// 		error: unknown,
+		// 		stream: { on: (argument0: string, argument1: () => void) => void },
+		// 	) => {
+		// 		if (error) {
+		// 			reject(error);
+		// 			return;
+		// 		}
 
-				pipeStream(stream);
-				stream.on(`close`, () => {
-					resolve(true);
-				});
-			},
-		);
+		// 		pipeStream(stream);
+		// 		stream.on(`close`, () => {
+		// 			resolve(true);
+		// 		});
+		// 	},
+		// );
 	});
 
-	ssh.dispose();
+	// ssh.dispose();
 };
