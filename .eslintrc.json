@@ -27,6 +27,19 @@
 	],
 	"overrides": [
 		{
+			"files": ["*.js", "*.jsx", "*.mjs", "*.cjs", "*.mjx", "*.cjx"],
+
+			"extends": [
+				"plugin:node/recommended"
+			],
+
+			"rules": {
+			},
+
+			"parser": "@javascript-eslint/parser"
+		},
+
+		{
 		  "files": ["*.ts", "*.tsx", "*.mts", "*.mtx"], // Your TypeScript files extension
 	
 		  // As mentioned in the comments, you should extend TypeScript plugins here,
@@ -113,7 +126,8 @@
 		  "typescript": ["true", {"alwaysTryTypes": "true", "project": "./tsconfig.json"}],
 		  "node": "true"},
 		"import/parsers": {
-			"@typescript-eslint/parser": [".ts", ".tsx", ".mts", ".mtx"]
+			"@typescript-eslint/parser": [".ts", ".tsx", ".mts", ".mtx"],
+			"@javascript-eslint/parser": [".js", ".jsx", ".mjs", ".mjx"]
 		}
 	}
 		}
