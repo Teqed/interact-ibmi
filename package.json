@@ -61,6 +61,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:local": "tsc && vite build && npm run test:mocha:badge && npm run test",
+    "rebuild": "tsc && vite build && npm run test:mocha:badge && npm run test && node .",
     "preview": "vite preview",
     "lint": "eslint --format=pretty . --ext .ts,.mts,.tsx",
     "test:mocha": "mocha test/mocha/*.test.js",
