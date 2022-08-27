@@ -5,10 +5,12 @@ class Person {
         console.log(`Your login ID is ${this.#loginId}`);
     }
     get loginId() {
-        return this.#loginId.toUpperCase();
+        return this.#loginId;
+        // return this.#loginId.toUpperCase();
     }
     set loginId(newloginID) {
-        this.#loginId = newloginID.toUpperCase();
+        this.#loginId = newloginID;
+        // this.#loginId = newloginID.toUpperCase();
     }
     get loginPw() {
         return this.#loginPw;
