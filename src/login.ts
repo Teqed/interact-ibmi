@@ -7,11 +7,10 @@ import loginUser from './login-user.js';
 // eslint-disable-next-line import/no-mutable-exports
 export let connection: odbc.Connection;
 export const odbcLogin = async (loginId: string, loginPw: string) => {
-	loginUser.loginId = loginId;
-	loginUser.loginPw = loginPw;
 	const connectionString = `
-DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginUser.loginId};PWD=${loginUser.loginPw};`;
-	return odbc.connect(connectionString);
+DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginId};PWD=${loginPw};`;
+	connection = await odbc.connect(connectionString);
+	return connection;
 };
 
 export const interactiveLogin = async () => {
