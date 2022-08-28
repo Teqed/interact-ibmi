@@ -1,5 +1,5 @@
 import { assert, expect, test } from 'vitest'
-import { returnZero } from '../build/menus'
+import { returnZero } from '../src/menus'
 
 // Edit an assertion and save to see HMR in action
 
