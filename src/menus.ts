@@ -159,7 +159,7 @@ export const mainmenu = async () => {
 			path: `4. Exit`,
 			value: `4. Exit`,
 		},
-	];
+	] as unknown as enquirer.Prompt;
 	const menuName = `main`;
 	await enquirer.prompt({
 		choices: menuChoices,
@@ -167,6 +167,8 @@ export const mainmenu = async () => {
 		name: menuName,
 		type: `select`,
 	});
-
+	let newMenuChoice: enquirer.Prompt = menuChoices as unknown as enquirer.Prompt;
+	newMenuChoice[0].enabled = true;
+	menuChoices[0].enabled = true;
 	await handleAnswer(menuChoices.findIndex(item => item.enabled));
 };
