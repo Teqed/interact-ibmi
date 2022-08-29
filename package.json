@@ -50,7 +50,7 @@
     "rollup-plugin-visualizer": "^5.8.0",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.0",
-    "tsx": "^3.8.2",
+    "tsx": "^3.9.0",
     "typescript": "^4.9.0-dev.20220829",
     "vite": "^3.0.9",
     "vite-plugin-node": "^1.0.0",
