@@ -2,7 +2,7 @@
  It shows the user options and lets them choose what they want to do.
  They can send commands to the IBMi or run SQL inputCommands over ODBC connections. */
 import ansicolors from 'ansi-colors';
-import enquirer from 'enquirer';
+import inquirer from 'inquirer';
 import { createSpinner } from 'nanospinner';
 import loginUser from './login-user.js';
 import { cmdOdbc } from './odbc.js';

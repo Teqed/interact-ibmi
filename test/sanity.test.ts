@@ -1,8 +1,9 @@
-import { assert, expect, test } from 'vitest'
-import { returnZero } from '../src/menus'
+// eslint-disable-next-line node/no-unpublished-import
+import { assert, expect, test } from 'vitest';
+import { returnZero } from '../src/menus';
 
 // Edit an assertion and save to see HMR in action
 
-test('returnZero()', async () => {
-  expect(await returnZero()).toBe(0)
-})
+test(`returnZero`, async () => {
+	expect(await returnZero()).toBe(0);
+});

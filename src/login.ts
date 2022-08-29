@@ -1,6 +1,6 @@
 /* This is the login module.
 It asks for the user's name and password, which is used for logging in to the IBMi AS400. */
-import enquirer from 'enquirer';
+import inquirer from 'inquirer';
 import odbc from 'odbc';
 import loginUser from './login-user.js';
 
@@ -14,7 +14,7 @@ DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginId};PWD=${loginPw
 };
 
 export const interactiveLogin = async () => {
-	const loginid = await enquirer.prompt([
+	const loginid = await inquirer.prompt([
 		{
 			initial() {
 				return ``;
