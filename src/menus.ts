@@ -1,39 +1,53 @@
 /* This is the menu system for the application.
  It shows the user options and lets them choose what they want to do.
  They can send commands to the IBMi or run SQL inputCommands over ODBC connections. */
-import ansicolors from 'ansi-colors';
-import inquirer from 'inquirer';
-import { createSpinner } from 'nanospinner';
+import { assert } from '@sindresorhus/is';
+import chalk from 'chalk';
+import chalkAnimation from 'chalk-animation';
+import inquirer, { type PromptModule } from 'inquirer';
+import ora from 'ora';
 import loginUser from './login-user.js';
 import { cmdOdbc } from './odbc.js';
 import { testOdbc, findUser, copyUser } from './test-odbc.js';
 import { sleep } from './util.js';
+
+/* Create an array of strings containing menu choices. */
+const mainMenuChoices = [
+	`1. Send System Command`,
+	`2. Test ODBC`,
+	`3. Test CopyUser`,
+	`4. SSH`,
+	`5. Find User`,
+];
 
 export const returnZero = async () => {
 	return 0;
 };
 
 export const welcome = async () => {
-	console.log(`Hello universe! \n`);
+	const rainbowTitle = chalkAnimation.rainbow(`Hello universe! \n`);
+	await sleep();
+	rainbowTitle.stop();
+	return 0;
 };
 
 const getCommand = async () => {
 	// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-	const command = (await enquirer.prompt({
+	const command = (await inquirer.prompt({
 		message: `Enter inputCommand to send:`,
 		name: `cmdinput`,
 		type: `input`,
-	})) as enquirer;
+	})) as PromptModule;
 
-	const inputCommand: string = command[`cmdinput` as keyof enquirer].toString();
+	// eslint-disable-next-line @typescript-eslint/no-base-to-string
+	const inputCommand: string = command[`cmdinput` as keyof PromptModule].toString();
 	return inputCommand;
 };
 
-const handleAnswer = async (answer: number) => {
+const handleAnswer = async (answer: string) => {
 	/* A case inputCommand for answer */
 	switch (answer) {
-		case 0: {
-			// Send System Command
+		case mainMenuChoices[0]: {
 			const inputCommand: string = await getCommand();
 			console.log(inputCommand);
 			const rtnCommand = await cmdOdbc(inputCommand);
@@ -42,13 +56,13 @@ const handleAnswer = async (answer: number) => {
 			break;
 		}
 
-		case 1: {
+		case mainMenuChoices[1]: {
 			const inputCommand: string = await getCommand();
 			await testOdbc(inputCommand);
 			break;
 		}
 
-		case 2: {
+		case mainMenuChoices[2]: {
 			const fromUser: string = await getCommand();
 			const toUser: string = await getCommand();
 			const toUserText: string = await getCommand();
@@ -56,35 +70,27 @@ const handleAnswer = async (answer: number) => {
 			break;
 		}
 
-		case 3: {
-			const spinner = createSpinner(`Connecting to SSH...`).start();
+		case mainMenuChoices[3]: {
+			const spinner = ora(`Connecting to SSH...`).start();
 			// await sshconnect();
-			spinner.success({
-				mark: `✅`,
-				text: `Connected!`,
-			});
+			spinner.succeed(`Connected!`);
 			// await sshinteractive();
 			break;
 		}
 
-		case 4: {
-			const spinner = createSpinner(`Checking...`).start();
+		case mainMenuChoices[4]: {
+			const spinner = ora(`Checking...`).start();
 			await findUser(`TEQ`);
-			spinner.success({
-				text: `User found!`,
-			});
+			spinner.succeed(`User found!`);
 			break;
 		}
 
 		default: {
-			const spinner = createSpinner(`Exiting...`).start();
+			const spinner = ora(`Exiting...`).start();
 			await sleep();
-			spinner.error({
-				text: `Exited cleanly. Goodbye, ${loginUser.loginId}!`,
-			});
+			spinner.fail(`Exited cleanly. Goodbye, ${loginUser.loginId}!`);
 			/* Throw an error to exit the program */
-			// throw new Error(`Exited cleanly.`);
-			break;
+			throw new Error(`Exited cleanly.`);
 		}
 	}
 
@@ -92,83 +98,17 @@ const handleAnswer = async (answer: number) => {
 };
 
 export const mainmenu = async () => {
-	/* Create an array of strings containing menu choices. */
-	const menuChoices = [
-		{
-			cursor: 0,
-			enabled: false,
-			indent: ``,
-			index: 0,
-			input: ``,
-			level: 1,
-			message: `0. Send System Command`,
-			name: `0. Send System Command`,
-			normalized: true,
-			path: `0. Send System Command`,
-			value: `0. Send System Command`,
-		},
-		{
-			cursor: 0,
-			enabled: false,
-			indent: ``,
-			index: 1,
-			input: ``,
-			level: 1,
-			message: `1. Test ODBC`,
-			name: `1. Test ODBC`,
-			normalized: true,
-			path: `1. Test ODBC`,
-			value: `1. Test ODBC`,
-		},
-		{
-			cursor: 0,
-			enabled: false,
-			indent: ``,
-			index: 2,
-			input: ``,
-			level: 1,
-			message: `2. Test CopyUser`,
-			name: `2. Test CopyUser`,
-			normalized: true,
-			path: `2. Test CopyUser`,
-			value: `2. Test CopyUser`,
-		},
-		{
-			cursor: 0,
-			enabled: false,
-			indent: ``,
-			index: 3,
-			input: ``,
-			level: 1,
-			message: `3. Find User`,
-			name: `3. Find User`,
-			normalized: true,
-			path: `3. Find User`,
-			value: `3. Find User`,
-		},
-		{
-			cursor: 0,
-			enabled: false,
-			indent: ``,
-			index: 4,
-			input: ``,
-			level: 1,
-			message: `4. Exit`,
-			name: `4. Exit`,
-			normalized: true,
-			path: `4. Exit`,
-			value: `4. Exit`,
-		},
-	] as unknown as enquirer.Prompt;
 	const menuName = `main`;
-	await enquirer.prompt({
-		choices: menuChoices,
-		message: ansicolors.bgBlue(`  MAIN MENU  `),
+	const menu = (await inquirer.prompt({
+		choices: mainMenuChoices,
+		message: `
+    ${chalk.bgBlue(`MAIN MENU`)}
+    Select options below.
+    `,
 		name: menuName,
-		type: `select`,
-	});
-	let newMenuChoice: enquirer.Prompt = menuChoices as unknown as enquirer.Prompt;
-	newMenuChoice[0].enabled = true;
-	menuChoices[0].enabled = true;
-	await handleAnswer(menuChoices.findIndex(item => item.enabled));
+		type: `list`,
+	})) as PromptModule;
+	const mainAnswer = menu[menuName as keyof PromptModule];
+	assert.string(mainAnswer);
+	await handleAnswer(mainAnswer as string);
 };
