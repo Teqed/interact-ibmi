@@ -17,7 +17,7 @@ export const interactiveLogin = async () => {
 	const loginid = await enquirer.prompt([
 		{
 			initial() {
-				return `Anon`;
+				return ``;
 			},
 			message: `What is your User ID?`,
 			name: `login_name`,

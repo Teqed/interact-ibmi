@@ -32,3 +32,6 @@ export const getvalues = (query: odbc.Result<Array<number | string>>) => {
 // It does not show the result of the query to the user.
 export const queryOdbc = async (statement: string): Promise<odbc.Result<Array<number | string>>> =>
 	connection.query(statement);
+
+export const cmdOdbc = async (qcmdexc: string): Promise<odbc.Result<Array<number | string>>> =>
+	queryOdbc(`CALL QSYS2.QCMDEXC('${qcmdexc}')`);
