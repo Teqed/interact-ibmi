@@ -71,7 +71,7 @@ export default defineConfig({
 		polyfillModulePreload: true,
 	},
 	test: {
-		exclude: [...`test/mocha/*.test.ts`, `**/test/mocha/**`],
+		exclude: [...`test/mocha/*.test.ts`, `**/test/mocha/**`, `**/node_modules/**`],
 		// coverage: {
 		//   reporter: ['text', 'json', 'html']
 		// }
