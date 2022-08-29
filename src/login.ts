@@ -7,6 +7,7 @@ import loginUser from './login-user.js';
 
 // eslint-disable-next-line import/no-mutable-exports
 export let connection: odbc.Connection;
+// This accepts a username and password and logs into an IBM i system using ODBC.
 export const odbcLogin = async (loginId: string, loginPw: string) => {
 	const connectionString = `
 DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginId};PWD=${loginPw};`;
@@ -15,6 +16,8 @@ DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginId};PWD=${loginPw
 };
 
 export const interactiveLogin = async () => {
+	// Ask for the user's name and password.
+	// Attempt to log in to the system.
 	const loginid = (await inquirer.prompt([
 		{
 			default() {

@@ -11,15 +11,6 @@ import { cmdOdbc } from './odbc.js';
 import { testOdbc, findUser, copyUser } from './test-odbc.js';
 import { sleep } from './util.js';
 
-/* Create an array of strings containing menu choices. */
-const mainMenuChoices = [
-	`1. Send System Command`,
-	`2. Test ODBC`,
-	`3. Test CopyUser`,
-	`4. SSH`,
-	`5. Find User`,
-];
-
 export const returnZero = async () => {
 	return 0;
 };
@@ -31,84 +22,122 @@ export const welcome = async () => {
 	return 0;
 };
 
+interface GenericCommandPrompt {
+	message: string;
+	name: string;
+	type: string;
+}
+
 const getCommand = async () => {
 	// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
 	const command = (await inquirer.prompt({
-		message: `Enter inputCommand to send:`,
-		name: `cmdinput`,
+		message: `Enter command to send:`,
+		name: `Command Input`,
 		type: `input`,
 	})) as PromptModule;
 
-	// eslint-disable-next-line @typescript-eslint/no-base-to-string
-	const inputCommand: string = command[`cmdinput` as keyof PromptModule].toString();
-	return inputCommand;
+	const commandString = command[`Command Input` as keyof PromptModule];
+	assert.string(commandString);
+	const returnCommandString = commandString as string;
+	return returnCommandString;
 };
 
-const handleAnswer = async (answer: string) => {
-	/* A case inputCommand for answer */
-	switch (answer) {
-		case mainMenuChoices[0]: {
-			const inputCommand: string = await getCommand();
-			console.log(inputCommand);
-			const rtnCommand = await cmdOdbc(inputCommand);
-			/* Find the output from rtnCommand */
-			console.log(rtnCommand.return);
-			break;
-		}
+const genericGetCommand = async (menuName: string, menuMessage: string) => {
+	// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+	const command = (await inquirer.prompt({
+		message: menuMessage,
+		name: menuName,
+		type: `input`,
+	})) as PromptModule;
 
-		case mainMenuChoices[1]: {
-			const inputCommand: string = await getCommand();
-			await testOdbc(inputCommand);
-			break;
-		}
+	const commandString = command[`Command Input` as keyof PromptModule];
+	assert.string(commandString);
+	const returnCommandString = commandString as string;
+	return returnCommandString;
+};
 
-		case mainMenuChoices[2]: {
-			const fromUser: string = await getCommand();
-			const toUser: string = await getCommand();
-			const toUserText: string = await getCommand();
-			await copyUser(fromUser, toUser, toUserText);
-			break;
-		}
-
-		case mainMenuChoices[3]: {
-			const spinner = ora(`Connecting to SSH...`).start();
-			// await sshconnect();
-			spinner.succeed(`Connected!`);
-			// await sshinteractive();
-			break;
-		}
-
-		case mainMenuChoices[4]: {
-			const spinner = ora(`Checking...`).start();
-			await findUser(`TEQ`);
-			spinner.succeed(`User found!`);
-			break;
-		}
-
-		default: {
-			const spinner = ora(`Exiting...`).start();
-			await sleep();
-			spinner.fail(`Exited cleanly. Goodbye, ${loginUser.loginId}!`);
-			/* Throw an error to exit the program */
-			throw new Error(`Exited cleanly.`);
-		}
-	}
-
-	return handleAnswer;
+const genericListMenu = async (menuName: string, menuMessage: string, menuChoices: string[]) => {
+	// Accepts a menu name, message, and array of choices.
+	// Returns the choice the user made as a number index of the array (1-indexed).
+	const menu = (await inquirer.prompt([
+		{
+			choices: menuChoices,
+			message: menuMessage,
+			name: menuName,
+			type: `list`,
+		},
+	])) as PromptModule;
+	const menuChoice = menu[menuName as keyof PromptModule];
+	assert.string(menuChoice);
+	const menuChoiceString: string = menuChoice as string;
+	// Compare 'handled' to the array of strings in mainMenuChoices and return the index of the match (1-indexed).
+	const menuChoiceIndex = menuChoices.indexOf(menuChoiceString) + 1;
+	return menuChoiceIndex;
 };
 
 export const mainmenu = async () => {
-	const menuName = `main`;
-	const menu = (await inquirer.prompt({
-		choices: mainMenuChoices,
-		message: `
+	/* Create an array of strings containing menu choices. */
+	const mainMenuChoices = [
+		`1. Send System Command`,
+		`2. Test ODBC`,
+		`3. Test CopyUser`,
+		`4. SSH`,
+		`5. Find User`,
+	];
+	const MainMenuMessage = `
     ${chalk.bgBlue(`MAIN MENU`)}
     Select options below.
-    `,
-		name: menuName,
-		type: `list`,
-	})) as PromptModule;
-	const mainAnswer = menu[menuName as keyof PromptModule];
-	assert.string(mainAnswer);
-	await handleAnswer(mainAnswer as string);
+    `;
+	const mainMenuChoice = await genericListMenu(`main`, MainMenuMessage, mainMenuChoices);
+	// eslint-disable-next-line unicorn/consistent-function-scoping
+	const handleAnswer = async (answer: number) => {
+		/* A case inputCommand for answer */
+		switch (answer) {
+			case 1: {
+				const inputCommand: string = await getCommand();
+				console.log(inputCommand);
+				const rtnCommand = await cmdOdbc(inputCommand);
+				/* Find the output from rtnCommand */
+				console.log(rtnCommand.return);
+				return rtnCommand.return;
+			}
+
+			case 2: {
+				const inputCommand: string = await getCommand();
+				return testOdbc(inputCommand);
+			}
+
+			case 3: {
+				const fromUser: string = await genericGetCommand();
+				const toUser: string = await genericGetCommand();
+				const toUserText: string = await genericGetCommand();
+				return copyUser(fromUser, toUser, toUserText);
+			}
+
+			case 4: {
+				const spinner = ora(`Connecting to SSH...`).start();
+				// await sshconnect();
+				const success = spinner.succeed(`Connected!`);
+				// await sshinteractive();
+				return success;
+			}
+
+			case 5: {
+				const spinner = ora(`Checking...`).start();
+				await findUser(`TEQ`);
+				const success = spinner.succeed(`User found!`);
+				return success;
+			}
+
+			default: {
+				const spinner = ora(`Exiting...`).start();
+				await sleep();
+				spinner.fail(`Exited cleanly. Goodbye, ${loginUser.loginId}!`);
+				/* Throw an error to exit the program */
+				throw new Error(`Exited cleanly.`);
+			}
+		}
+	};
+
+	return handleAnswer(mainMenuChoice);
 };
