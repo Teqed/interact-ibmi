@@ -2,13 +2,14 @@
 It welcomes the user, asks for their username and password, then shows them the command line.
 Then, they can run the start command to see the main menu. */
 import { interactiveLogin } from './login.js';
-import { welcome, mainmenu } from './menus.js';
+import mainMenu from './menu-main.js';
+import { welcome } from './util.js';
 
 const start = async () => {
 	try {
 		await welcome();
 		await interactiveLogin();
-		await mainmenu();
+		await mainMenu();
 	} catch (error: unknown) {
 		console.log(error);
 	}

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* This contains utility functions for the application. */
 
+import chalkAnimation from 'chalk-animation';
 import { type CreateUserInterface, type IbmiUserInterface } from './types.js';
 
 // Sleep for X milliseconds, or a default of a half second.
@@ -102,3 +103,14 @@ export function convertUserInterface(
 		userText,
 	};
 }
+
+export const welcome = async () => {
+	const rainbowTitle = chalkAnimation.rainbow(`Hello universe! \n`);
+	await sleep();
+	rainbowTitle.stop();
+	return 0;
+};
+
+export const returnZero = async () => {
+	return 0;
+};
