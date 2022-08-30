@@ -1,7 +1,6 @@
 import type odbc from 'odbc';
 import { queryOdbc, getvalues, getrows } from './odbc.js';
-import { testUser } from './test-objects.js';
-import { type CreateUserInterface } from './types.js';
+import { type IbmiUserInterface, type CreateUserInterface } from './types.js';
 import { convertUserInterface } from './util.js';
 
 // testOdbc shows the results of the query to the user, by basic getrows() query.
@@ -58,8 +57,8 @@ export const copyUser = async (copyFromUser: string, newUser: string, userDescri
 	const fromUserRaw = await queryOdbc(
 		`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser}'`,
 	);
-	// ! fromUser will be assigned here.
-	const fromUser = testUser;
+	// Deconstruct the object
+	const fromUser: IbmiUserInterface = fromUserRaw[0] as unknown as IbmiUserInterface;
 	const toUser: CreateUserInterface = convertUserInterface(fromUser, newUser, userDescription);
 
 	/* If the result of query is empty, then the user does not exist. */
@@ -114,20 +113,27 @@ OUTQ(${toUser.userOutqueue}) \
 ATNPGM(${toUser.userAttentionProgram}) \
 SUPGRPPRF(${toUser.userSupplementalGroups})`;
 	console.log(qcmdexc);
-	// TODO Send a system command to create user. Monitor for failure.
-	const query4 = await queryOdbc(`CALL QSYS2.QCMDEXC('${qcmdexc}')`);
-	/* If query4 returns an error executing the sql statement, do something. */
-	console.log(query4);
-	// sshcmd({
-	// cmd: `system -i "CALL PGM(QCMDEXC) PARM(${qcmdexc} 2000)"`,
-	// stdin: ``,
-	// });
-	const query5 = await queryOdbc(
-		`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser}'`,
-	);
-	/* If the result of query4 is empty, then the user does not exist. */
-	if (query5.length === 0) {
-		console.log(`User ${newUser} failed to create.`);
+	// ! TEXT param needs to cancel apostrophes.
+	// TODO Remove undefined values.
+	try {
+		await queryOdbc(`CALL QSYS2.QCMDEXC('${qcmdexc}')`);
+	} catch (error: unknown) {
+		if (error instanceof Error) {
+			console.log(error.message);
+		} else {
+			console.log(error);
+		}
+	} finally {
+		const query5 = await queryOdbc(
+			`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser}'`,
+		);
+		/* If the result of query4 is empty, then the user does not exist. */
+		if (query5.length === 0) {
+			console.log(`User ${newUser} failed to create.`);
+			// TODO Leave this function and do something else.
+		} else {
+			console.log(`User ${newUser} created.`);
+		}
 	}
 
 	let userPasswordExpirationInterval;
@@ -173,6 +179,16 @@ MAXSTG(${userMaximumAllowedStorage}) \
 CCSID(${userCharacterCodeSetId})`;
 	console.log(qcmdexc);
 	// TODO Send a system command to change user. Monitor for failure.
+	try {
+		await queryOdbc(`CALL QSYS2.QCMDEXC('${qcmdexc}')`);
+	} catch (error: unknown) {
+		if (error instanceof Error) {
+			console.log(error.message);
+		} else {
+			console.log(error);
+		}
+		// TODO Leave this function and do something else.
+	}
 
 	/* Change object owner to QSECOFR. */
 	qcmdexc = `CHGOBJOWN \
