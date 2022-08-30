@@ -1,7 +1,7 @@
 // eslint-disable-next-line node/no-unpublished-import
 import { expect } from 'chai';
 // eslint-disable-next-line import/extensions
-import { returnZero } from '../../build/menus.js';
+import { returnZero } from '../../src/util.js';
 
 // eslint-disable-next-line no-undef
 describe('#returnZero()', () => {
