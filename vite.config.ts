@@ -99,7 +99,7 @@ export default defineConfig({
 		port: 3_000,
 	},
 	test: {
-		exclude: [...`test/mocha/*.test.ts`, `**/test/mocha/**`, `**/node_modules/**`],
+		exclude: [`test/mocha/*.test.ts`, `**/test/mocha/**`, `**/node_modules/**`],
 		// coverage: {
 		//   reporter: ['text', 'json', 'html']
 		// }
