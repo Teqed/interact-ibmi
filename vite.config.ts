@@ -3,12 +3,6 @@ import { defineConfig } from 'vite';
 import { visualizer } from 'rollup-plugin-visualizer';
 import progress from 'vite-plugin-progress';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
-import dynamicImport from 'vite-plugin-dynamic-import';
-import dts from 'vite-plugin-dts';
-import builtins from 'rollup-plugin-node-builtins';
-import globals from 'rollup-plugin-node-globals';
 // import { VitePluginNode } from 'vite-plugin-node';
 
 export default defineConfig({
@@ -31,7 +25,6 @@ export default defineConfig({
 				// 	}
 				// },
 				// name: `app`,
-				plugins: [builtins, globals],
 
 				sourcemap: true,
 			},
@@ -62,10 +55,6 @@ export default defineConfig({
 			// browser: false,
 			exportConditions: [`node`],
 		}),
-		commonjs(),
-		dynamicImportVars,
-		dynamicImport,
-		dts(),
 		// ...VitePluginNode({
 		// Nodejs native Request adapter
 		// currently this plugin support 'express', 'nest', 'koa' and 'fastify' out of box,
