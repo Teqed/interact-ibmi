@@ -103,3 +103,15 @@ export type CreateUserInterface = {
 	userSupplementalGroups: string;
 	userText: string;
 };
+
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export interface GenericInputPrompt {
+	message: string;
+	name: string;
+}
+// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
+export interface GenericListPrompt {
+	choices: string[];
+	message: string;
+	name: string;
+}

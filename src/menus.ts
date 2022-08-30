@@ -6,22 +6,11 @@ import chalk from 'chalk';
 import chalkAnimation from 'chalk-animation';
 import inquirer, { type PromptModule } from 'inquirer';
 import ora from 'ora';
+import { type GenericInputPrompt, type GenericListPrompt } from './types';
 import loginUser from './login-user.js';
 import { cmdOdbc } from './odbc.js';
 import { testOdbc, findUser, copyUser } from './test-odbc.js';
 import { sleep } from './util.js';
-
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-interface GenericInputPrompt {
-	message: string;
-	name: string;
-}
-// eslint-disable-next-line @typescript-eslint/consistent-type-definitions
-interface GenericListPrompt {
-	choices: string[];
-	message: string;
-	name: string;
-}
 
 const genericGetCommand = async (prompt: GenericInputPrompt) => {
 	// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
