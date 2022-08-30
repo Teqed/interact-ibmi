@@ -27,7 +27,7 @@
     "@vitest/coverage-c8": "^0.22.1",
     "@vitest/ui": "^0.22.1",
     "airbnb": "^0.0.2",
-    "aws-sdk": "^2.1204.0",
+    "aws-sdk": "^2.1205.0",
     "chai": "^4.3.6",
     "eslint": "^8.22.0",
     "eslint-config-airbnb-base": "^15.0.0",
