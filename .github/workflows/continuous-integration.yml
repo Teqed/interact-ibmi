@@ -31,8 +31,8 @@ jobs:
           cache: 'yarn'
       - run: yarn install
         name: Install dependencies
-      - run: yarn lint
-        name: Run lint
+#      - run: yarn lint
+#        name: Run lint
       - run: yarn build
         name: Build output
       - run: yarn test:mocha
