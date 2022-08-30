@@ -1,4 +1,4 @@
-import { copyUser } from './test-odbc.js';
+import copyUser from './menu-main-copyuser-util.js';
 import { genericGetCommand } from './menu-util.js';
 
 export default async function () {
