@@ -1,5 +1,5 @@
 import ora from 'ora';
-import { queryOdbc, getvalues } from './odbc-util';
+import { queryOdbc, getvalues } from './odbc-util.js';
 
 const findUser = async (user: string) => {
 	const query = await queryOdbc(

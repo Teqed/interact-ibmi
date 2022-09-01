@@ -30,9 +30,7 @@ export const getvalues = (query: odbc.Result<Array<number | string>>) => {
 // eslint-disable-next-line import/no-mutable-exports
 export let connection: odbc.Connection;
 // This accepts a username and password and logs into an IBM i system using ODBC.
-export const odbcLogin = async (loginId: string, loginPw: string, system = `PUB.400`) => {
-	// If the system is not specified, use the default system.
-
+export const odbcLogin = async (loginId: string, loginPw: string, system = `PUB400.COM`) => {
 	const connectionString = `
 DRIVER=IBM i Access ODBC Driver;SYSTEM='${system}';UID=${loginId};PWD=${loginPw};`;
 	connection = await odbc.connect(connectionString);

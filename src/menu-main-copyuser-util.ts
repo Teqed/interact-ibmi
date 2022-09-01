@@ -67,7 +67,7 @@ SUPGRPPRF(${toUser.userSupplementalGroups})`;
 	// TODO Remove undefined values.
 	try {
 		console.log(qcmdexc);
-		await cmdOdbc(qcmdexc);
+		// TODO await cmdOdbc(qcmdexc);
 	} catch (error: unknown) {
 		if (error instanceof Error) {
 			console.log(error.message);
@@ -130,7 +130,7 @@ MAXSTG(${userMaximumAllowedStorage}) \
 CCSID(${userCharacterCodeSetId})`;
 	try {
 		console.log(qcmdexc);
-		await cmdOdbc(qcmdexc);
+		// TODO await cmdOdbc(qcmdexc);
 	} catch (error: unknown) {
 		if (error instanceof Error) {
 			console.log(error.message);
