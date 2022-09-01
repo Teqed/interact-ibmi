@@ -1,21 +1,11 @@
 /* This is the login module.
 It asks for the user's name and password, which is used for logging in to the IBMi AS400. */
 import inquirer, { type Answers } from 'inquirer';
-import odbc from 'odbc';
 import { assert } from '@sindresorhus/is';
+import { odbcLogin } from './odbc-util';
 import loginUser from './login-user.js';
 
-// eslint-disable-next-line import/no-mutable-exports
-export let connection: odbc.Connection;
-// This accepts a username and password and logs into an IBM i system using ODBC.
-export const odbcLogin = async (loginId: string, loginPw: string) => {
-	const connectionString = `
-DRIVER=IBM i Access ODBC Driver;SYSTEM='PUB400.COM';UID=${loginId};PWD=${loginPw};`;
-	connection = await odbc.connect(connectionString);
-	return connection;
-};
-
-export const interactiveLogin = async () => {
+export default async () => {
 	// Ask for the user's name and password.
 	// Attempt to log in to the system.
 	const loginid = (await inquirer.prompt([
