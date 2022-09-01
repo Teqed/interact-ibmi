@@ -1,5 +1,5 @@
 import type odbc from 'odbc';
-import { queryOdbc, getvalues, getrows } from './odbc.js';
+import { queryOdbc, getrows } from './odbc-util.js';
 
 // testOdbc shows the results of the query to the user, by basic getrows() query.
 
@@ -40,12 +40,4 @@ export const updateOdbc2 = async () => {
 		`INSERT INTO TEQ1.TQ002AP VALUES('${v1}', '${v2}', '${v3}')`,
 	);
 	console.log(update);
-};
-
-export const findUser = async (user: string) => {
-	const query = await queryOdbc(
-		`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${user}'`,
-	);
-	getvalues(query);
-	return query;
 };

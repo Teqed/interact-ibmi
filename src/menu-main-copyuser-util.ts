@@ -1,4 +1,4 @@
-import { queryOdbc } from './odbc.js';
+import { cmdOdbc, queryOdbc } from './odbc-util.js';
 import { type IbmiUserInterface, type CreateUserInterface } from './types.js';
 import { convertUserInterface } from './util.js';
 
@@ -63,28 +63,28 @@ DLVRY(${toUser.userDelivery}) \
 OUTQ(${toUser.userOutqueue}) \
 ATNPGM(${toUser.userAttentionProgram}) \
 SUPGRPPRF(${toUser.userSupplementalGroups})`;
-	console.log(qcmdexc);
 	// ! TEXT param needs to cancel apostrophes.
 	// TODO Remove undefined values.
 	try {
-		await queryOdbc(`CALL QSYS2.QCMDEXC('${qcmdexc}')`);
+		console.log(qcmdexc);
+		await cmdOdbc(qcmdexc);
 	} catch (error: unknown) {
 		if (error instanceof Error) {
 			console.log(error.message);
 		} else {
 			console.log(error);
 		}
-	} finally {
-		const query5 = await queryOdbc(
-			`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser}'`,
-		);
-		/* If the result of query4 is empty, then the user does not exist. */
-		if (query5.length === 0) {
-			console.log(`User ${newUser} failed to create.`);
-			// TODO Leave this function and do something else.
-		} else {
-			console.log(`User ${newUser} created.`);
-		}
+	}
+
+	const query5 = await queryOdbc(
+		`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser}'`,
+	);
+	/* If the result of query4 is empty, then the user does not exist. */
+	if (query5.length === 0) {
+		console.log(`User ${newUser} failed to create.`);
+		// TODO Leave this function and do something else.
+	} else {
+		console.log(`User ${newUser} created.`);
 	}
 
 	let userPasswordExpirationInterval;
@@ -128,10 +128,9 @@ PWDEXP(*YES) \
 PWDEXPITV(${userPasswordExpirationInterval}) \
 MAXSTG(${userMaximumAllowedStorage}) \
 CCSID(${userCharacterCodeSetId})`;
-	console.log(qcmdexc);
-	// TODO Send a system command to change user. Monitor for failure.
 	try {
-		await queryOdbc(`CALL QSYS2.QCMDEXC('${qcmdexc}')`);
+		console.log(qcmdexc);
+		await cmdOdbc(qcmdexc);
 	} catch (error: unknown) {
 		if (error instanceof Error) {
 			console.log(error.message);
@@ -147,6 +146,7 @@ OBJ(QSYS/${newUser}) \
 OBJTYPE(*USRPRF) \
 NEWOWN(QSECOFR)`;
 	console.log(qcmdexc);
+	// TODO await cmdOdbc(qcmdexc);
 	/* Check if fromUser exists on any authorization lists, then copy newUser to them. */
 	/* This information is on the view AUTHORIZATION_LIST_USER_INFO. */
 	const query6 = await queryOdbc(

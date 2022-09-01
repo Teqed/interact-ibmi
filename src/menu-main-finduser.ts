@@ -1,5 +1,13 @@
 import ora from 'ora';
-import { findUser } from './test-odbc.js';
+import { queryOdbc, getvalues } from './odbc-util';
+
+const findUser = async (user: string) => {
+	const query = await queryOdbc(
+		`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${user}'`,
+	);
+	getvalues(query);
+	return query;
+};
 
 export default async function () {
 	const spinner = ora(`Checking...`).start();

@@ -1,7 +1,6 @@
 /* This is the module for making ODBC database connections to the IBMi AS400.
 It has prepared statements as well as allowing custom statements from user input. */
-import type odbc from 'odbc';
-import { connection } from './login.js';
+import odbc from 'odbc';
 
 export const getrows = (query: odbc.Result<Array<number | string>>) => {
 	// Get the number of rows in the result set.
@@ -28,10 +27,23 @@ export const getvalues = (query: odbc.Result<Array<number | string>>) => {
 	});
 };
 
+// eslint-disable-next-line import/no-mutable-exports
+export let connection: odbc.Connection;
+// This accepts a username and password and logs into an IBM i system using ODBC.
+export const odbcLogin = async (loginId: string, loginPw: string, system = `PUB.400`) => {
+	// If the system is not specified, use the default system.
+
+	const connectionString = `
+DRIVER=IBM i Access ODBC Driver;SYSTEM='${system}';UID=${loginId};PWD=${loginPw};`;
+	connection = await odbc.connect(connectionString);
+	return connection;
+};
+
 // queryOdbc is a function that takes a query and returns a promise that resolves to the result of the query.
 // It does not show the result of the query to the user.
 export const queryOdbc = async (statement: string): Promise<odbc.Result<Array<number | string>>> =>
 	connection.query(statement);
 
+// cmdOdbc takes a command, runs it on the AS400 systemw ith QCMDEXC, then returns the result of the command.
 export const cmdOdbc = async (qcmdexc: string): Promise<odbc.Result<Array<number | string>>> =>
 	queryOdbc(`CALL QSYS2.QCMDEXC('${qcmdexc}')`);

@@ -1,4 +1,4 @@
-import { cmdOdbc } from './odbc.js';
+import { cmdOdbc } from './odbc-util.js';
 import { genericGetCommand } from './menu-util.js';
 
 export default async function () {
