@@ -23,10 +23,15 @@
 * [:heavy_check_mark:] Create a new system user by copying another user's profile
 * [❌] Place new system user on authorization lists and create directory entry
 * [❌] Show system / user diagnostics upon login
-* [❌] Help make decisions
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/5181964/188281738-bfe1880c-8d2b-490f-aca4-cb7c1f543614.png" alt="prototype image of interact-ibmi showing some user diagnostics">
+<br>
+<sup><small><i>Some basic user diagnostics already done!</i></small></sup>
+</p>
 
 ## Who is this for?
 
 This is mostly a personal pet project to learn some new technologies, and may involve a lot of refactoring or swapping of dependencies as I experiment. When finished, I hope this tool could be useful for quickly performing routine diagnostics, simple query tasks, and perhaps aid in troubleshooting. 
 
-However, there's a lot of other tools available from IBM, the open source community, and third-party vendors that can already accomplish each of those tasks. Two tools I would recommend for general purposes are IBM's own Access Client Solutions (ACS) which can be run on OpenJava on most platforms, and Liam Barry's [Code for IBM i](https://github.com/halcyon-tech/vscode-ibmi) which is an incredibly excellent VSCode extension for working with IBMi that includes an API for creating your own extensions.
+However, there's a lot of other tools available from IBM, the open source community, and third-party vendors that can already accomplish each of those tasks. Two tools I would recommend for general purposes are IBM's own Access Client Solutions (ACS) which can be run on OpenJava on most platforms, and Liam Barry's [Code for IBM i](https://github.com/halcyon-tech/vscode-ibmi) which is an excellent VSCode extension for working with IBMi that includes an API for creating your own extensions.
