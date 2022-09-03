@@ -119,7 +119,6 @@ export interface GenericListPrompt {
 export type BriefIbmiUserInterface = {
 	ACCOUNTING_CODE: string | null;
 	AUTHORIZATION_NAME: string;
-	DATE_PASSWORD_EXPIRES: string;
 	DAYS_UNTIL_PASSWORD_EXPIRES: number | null;
 	INITIAL_MENU_LIBRARY_NAME: string;
 	INITIAL_MENU_NAME: string;

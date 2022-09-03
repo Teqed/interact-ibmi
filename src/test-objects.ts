@@ -91,7 +91,6 @@ export const testUser: IbmiUserInterface = {
 export const testUser2: BriefIbmiUserInterface = {
 	ACCOUNTING_CODE: null,
 	AUTHORIZATION_NAME: `TEQ`,
-	DATE_PASSWORD_EXPIRES: `2022-10-27 00:00:00.000000`,
 	DAYS_UNTIL_PASSWORD_EXPIRES: null,
 	INITIAL_MENU_LIBRARY_NAME: `*LIBL`,
 	INITIAL_MENU_NAME: `MAIN`,
