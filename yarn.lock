@@ -1234,10 +1234,9 @@
   "resolved" "https://registry.npmjs.org/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz"
   "version" "1.0.5"
 
-"aws-sdk@^2.1207.0":
-  "integrity" "sha512-UDNYNeWw9ATbz+pH4lI3AUQgnmK3RwowCrXmW+lVV0bZYo+efiB/LEWQKe0nZK9K2h1LxZYihIih9dOvaGme/w=="
-  "resolved" "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.1207.0.tgz"
-  "version" "2.1207.0"
+aws-sdk@^2.1208.0:
+  version "2.1208.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1208.0.tgz#7dc8c877652d2b1ea126a3c256157c1cbd2e20e2"
   dependencies:
     "buffer" "4.9.2"
     "events" "1.1.1"
@@ -5088,21 +5087,13 @@
   "resolved" "https://registry.npmjs.org/supports-color/-/supports-color-7.2.0.tgz"
   "version" "7.2.0"
   dependencies:
-    "has-flag" "^4.0.0"
+    has-flag "^3.0.0"
 
-"supports-color@^7.1.0":
-  "integrity" "sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw=="
-  "resolved" "https://registry.npmjs.org/supports-color/-/supports-color-7.2.0.tgz"
-  "version" "7.2.0"
+supports-color@^7.0.0, supports-color@^7.1.0:
+  version "7.2.0"
+  resolved "https://registry.npmjs.org/supports-color/-/supports-color-7.2.0.tgz"
   dependencies:
-    "has-flag" "^4.0.0"
-
-"supports-color@8.1.1":
-  "integrity" "sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q=="
-  "resolved" "https://registry.npmjs.org/supports-color/-/supports-color-8.1.1.tgz"
-  "version" "8.1.1"
-  dependencies:
-    "has-flag" "^4.0.0"
+    has-flag "^4.0.0"
 
 "supports-hyperlinks@^2.0.0":
   "integrity" "sha512-6sXEzV5+I5j8Bmq9/vUphGRM/RJNT9SCURJLjwfOg51heRtguGWDzcaBlgAzKhQa0EVNpPEKzQuBwZ8S8WaCeQ=="
@@ -5355,20 +5346,18 @@
   "resolved" "https://registry.npmjs.org/type-fest/-/type-fest-1.4.0.tgz"
   "version" "1.4.0"
 
-"type-fest@^2.0.0", "type-fest@^2.11.2", "type-fest@^2.13.0", "type-fest@^2.18.0", "type-fest@^2.19.0":
-  "integrity" "sha512-RAH822pAdBgcNMAfWnCBU3CFZcfZ/i1eZjwFU/dsLKumyuuP3niueg2UAukXYF0E2AAoc82ZSSf9J0WQBinzHA=="
-  "resolved" "https://registry.npmjs.org/type-fest/-/type-fest-2.19.0.tgz"
-  "version" "2.19.0"
+type-fest@^2.0.0, type-fest@^2.11.2, type-fest@^2.13.0, type-fest@^2.18.0, type-fest@^2.19.0:
+  version "2.19.0"
+  resolved "https://registry.npmjs.org/type-fest/-/type-fest-2.19.0.tgz"
 
 "typescript@^4.7.3":
   "integrity" "sha512-C0I1UsrrDHo2fYI5oaCGbSejwX4ch+9Y5jTQELvovfmFkK3HHSZJB8MSJcWLmCUBzQBchCrZ9rMRV6GuNrvGtw=="
   "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.8.2.tgz"
   "version" "4.8.2"
 
-"typescript@^4.9.0-dev.20220901":
-  "integrity" "sha512-6nVAA+LnuU09b62zRKm0XRiLUv6h62UDfgVulk9kmBjZmc35qlh3p3bA4LulqJ/euCG3bzCksyhL0ZeOw/bO/A=="
-  "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.9.0-dev.20220901.tgz"
-  "version" "4.9.0-dev.20220901"
+typescript@^4.9.0-dev.20220902:
+  version "4.9.0-dev.20220902"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.0-dev.20220902.tgz#523a1287a71753ea80b04f5a51dc98c852850af5"
 
 "unbox-primitive@^1.0.2":
   "integrity" "sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw=="
