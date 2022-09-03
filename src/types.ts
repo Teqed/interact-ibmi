@@ -115,3 +115,35 @@ export interface GenericListPrompt {
 	message: string;
 	name: string;
 }
+
+export type BriefIbmiUserInterface = {
+	ACCOUNTING_CODE: string | null;
+	AUTHORIZATION_NAME: string;
+	DATE_PASSWORD_EXPIRES: string;
+	DAYS_UNTIL_PASSWORD_EXPIRES: number | null;
+	INITIAL_MENU_LIBRARY_NAME: string;
+	INITIAL_MENU_NAME: string;
+	INITIAL_PROGRAM_LIBRARY_NAME: string;
+	INITIAL_PROGRAM_NAME: string;
+	LIMIT_CAPABILITIES: string;
+	MESSAGE_QUEUE_DELIVERY_METHOD: string;
+	MESSAGE_QUEUE_LIBRARY_NAME: string;
+	MESSAGE_QUEUE_NAME: string;
+	MESSAGE_QUEUE_SEVERITY: number;
+	NETSERVER_DISABLED: string;
+	NO_PASSWORD_INDICATOR: string;
+	OBJECT_AUDITING_VALUE: string;
+	OUTPUT_QUEUE_LIBRARY_NAME: string;
+	OUTPUT_QUEUE_NAME: string;
+	PASSWORD_CHANGE_DATE: string;
+	PASSWORD_EXPIRATION_INTERVAL: number;
+	PREVIOUS_SIGNON: string;
+	SET_PASSWORD_TO_EXPIRE: string;
+	SIGN_ON_ATTEMPTS_NOT_VALID: number;
+	SPECIAL_AUTHORITIES: string | null;
+	STATUS: string;
+	TEXT_DESCRIPTION: string;
+	USER_DEFAULT_PASSWORD: string | null;
+	USER_EXPIRATION_INTERVAL: number;
+	USER_ID_NUMBER: bigint;
+};

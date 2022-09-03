@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/no-null */
-import { type IbmiUserInterface } from './types.js';
+import { type IbmiUserInterface, type BriefIbmiUserInterface } from './types.js';
 /* Create an object named fromUser that has the same properties as fromUserRaw[0]. */
-// eslint-disable-next-line import/prefer-default-export
+
 export const testUser: IbmiUserInterface = {
 	ACCOUNTING_CODE: null,
 	ASSISTANCE_LEVEL: `*INTERMED`,
@@ -86,4 +86,36 @@ export const testUser: IbmiUserInterface = {
 	USER_ID_NUMBER: 24_694n,
 	USER_OPTIONS: `*CLKW      *HLPFULL   `,
 	USER_OWNER: `JOBMANAGER`,
+};
+
+export const testUser2: BriefIbmiUserInterface = {
+	ACCOUNTING_CODE: null,
+	AUTHORIZATION_NAME: `TEQ`,
+	DATE_PASSWORD_EXPIRES: `2022-10-27 00:00:00.000000`,
+	DAYS_UNTIL_PASSWORD_EXPIRES: null,
+	INITIAL_MENU_LIBRARY_NAME: `*LIBL`,
+	INITIAL_MENU_NAME: `MAIN`,
+	INITIAL_PROGRAM_LIBRARY_NAME: `PUB400SYS`,
+	INITIAL_PROGRAM_NAME: `SETLANG`,
+	LIMIT_CAPABILITIES: `*NO`,
+	MESSAGE_QUEUE_DELIVERY_METHOD: `*BREAK`,
+	MESSAGE_QUEUE_LIBRARY_NAME: `QUSRSYS`,
+	MESSAGE_QUEUE_NAME: `TEQ`,
+	MESSAGE_QUEUE_SEVERITY: 0,
+	NETSERVER_DISABLED: `NO`,
+	NO_PASSWORD_INDICATOR: `NO`,
+	OBJECT_AUDITING_VALUE: `*NOTAVL`,
+	OUTPUT_QUEUE_LIBRARY_NAME: `QGPL`,
+	OUTPUT_QUEUE_NAME: `TEQ`,
+	PASSWORD_CHANGE_DATE: `2022-04-30 00:18:47.000000`,
+	PASSWORD_EXPIRATION_INTERVAL: 0,
+	PREVIOUS_SIGNON: `2022-08-23 16:32:06.000000`,
+	SET_PASSWORD_TO_EXPIRE: `NO`,
+	SIGN_ON_ATTEMPTS_NOT_VALID: 0,
+	SPECIAL_AUTHORITIES: null,
+	STATUS: `*ENABLED`,
+	TEXT_DESCRIPTION: `Quilling,Timothy`,
+	USER_DEFAULT_PASSWORD: null,
+	USER_EXPIRATION_INTERVAL: 0,
+	USER_ID_NUMBER: 24_694n,
 };
