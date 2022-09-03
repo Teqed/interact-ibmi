@@ -1,5 +1,4 @@
 import chalk from 'chalk';
-import ora from 'ora';
 import { genericListMenu } from './menu-util.js';
 import findUserMenu from './menu-main-finduser.js';
 
@@ -57,6 +56,8 @@ export async function helpUsersMenu() {
 			}
 
 			default: {
+				// ! Currently 'Previous Menu' just exits the program.
+				// ? It should return to the previous menu.
 				break;
 			}
 		}

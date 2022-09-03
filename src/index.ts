@@ -28,7 +28,9 @@ const start = async () => {
 
 await start();
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const restart = async () => {
+	// ? This function is not used yet. It will be used to restart the application and keep the user logged in.
 	try {
 		await welcome();
 		await login();
