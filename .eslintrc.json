@@ -111,7 +111,7 @@
 		}],
 		"canonical/import-specifier-newline": ["off"],
 		"import/no-cycle": "warn",
-		"no-unused-vars": "warn",
+		"no-unused-vars": "off",
 		"node/no-missing-import": 0,
 		"unicorn/no-array-for-each": "off",
 		"prefer-const": "warn",
