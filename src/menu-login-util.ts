@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { queryOdbc } from './odbc-util.js';
 import { type BriefIbmiUserInterface } from './types.js';
 
@@ -24,7 +25,7 @@ USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
 
 	// If there are any users disabled, log a message listing their names.
 	if (usersDiabled.length > 0) {
-		console.log(`The following users are disabled: ${usersDiabled.join(`, `)}`);
+		console.log(chalk.blue(`The following users are disabled: ${usersDiabled.join(`, `)}`));
 	}
 
 	// Create an array of user ids that are expired.
@@ -39,7 +40,7 @@ USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
 
 	// If there are any users expired, log a message listing their names.
 	if (usersExpired.length > 0) {
-		console.log(`The following users are expired: ${usersExpired.join(`, `)}`);
+		console.log(chalk.blue(`The following users are expired: ${usersExpired.join(`, `)}`));
 	}
 
 	// Create an array of user ids that are NETSERVER_DISABLED.
@@ -50,7 +51,9 @@ USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
 	// If there are any users NETSERVER_DISABLED, log a message listing their names.
 	if (usersNetServerDisabled.length > 0) {
 		console.log(
-			`The following users are NETSERVER_DISABLED: ${usersNetServerDisabled.join(`, `)}`,
+			chalk.blue(
+				`The following users are NETSERVER_DISABLED: ${usersNetServerDisabled.join(`, `)}`,
+			),
 		);
 	}
 
@@ -72,10 +75,12 @@ USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
 
 			return accumulator;
 		}, new Map());
-	console.log(`The most popular initial programs are: `);
+	console.log(chalk.yellow(`The most popular initial programs are: `));
 	initialProgramNamePopularAndLibrary.forEach((count, initialProgramName) => {
-		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-		console.log(`${initialProgramName[1]}/${initialProgramName[0]} used by ${count}`);
+		console.log(
+			// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+			chalk.blue(`${initialProgramName[1]}/${initialProgramName[0]} used by ${count}`),
+		);
 	});
 	// Find the 3 most popular combination of values for users.OUTPUT_QUEUE_NAME
 	// and users.OUTPUT_QUEUE_LIBRARY_NAME on foundUserDiagnostics.
@@ -93,10 +98,10 @@ USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
 
 			return accumulator;
 		}, new Map());
-	console.log(`The most popular output queues are: `);
+	console.log(chalk.yellow(`The most popular output queues are: `));
 	outputQueueNamePopularAndLibrary.forEach((count, outputQueueName) => {
 		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-		console.log(`${outputQueueName[1]}/${outputQueueName[0]} used by ${count}`);
+		console.log(chalk.blue(`${outputQueueName[1]}/${outputQueueName[0]} used by ${count}`));
 	});
 
 	// Find the last 5 users to sign on. Treat PREVIOUS_SIGNON as a Date.
@@ -105,6 +110,8 @@ USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
 		.sort((a, b) => b.PREVIOUS_SIGNON.localeCompare(a.PREVIOUS_SIGNON))
 		.slice(0, 5)
 		.map(user => user.AUTHORIZATION_NAME);
-	console.log(`The last users to sign on are: 
-${lastFiveUsersToSignOn.join(`, `)}`);
+	console.log(
+		chalk.yellow(`The last users to sign on are:
+${chalk.blue(lastFiveUsersToSignOn.join(`, `))}`),
+	);
 }

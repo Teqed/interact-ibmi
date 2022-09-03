@@ -1,4 +1,4 @@
-import { cmdOdbc, queryOdbc } from './odbc-util.js';
+import { queryOdbc } from './odbc-util.js';
 import { type IbmiUserInterface, type CreateUserInterface } from './types.js';
 import { convertUserInterface } from './util.js';
 
