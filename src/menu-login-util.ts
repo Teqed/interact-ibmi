@@ -77,4 +77,34 @@ USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
 		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 		console.log(`${initialProgramName[1]}/${initialProgramName[0]} used by ${count}`);
 	});
+	// Find the 3 most popular combination of values for users.OUTPUT_QUEUE_NAME
+	// and users.OUTPUT_QUEUE_LIBRARY_NAME on foundUserDiagnostics.
+	const outputQueueNamePopularAndLibrary = foundUserDiagnostics
+		.map(user => [user.OUTPUT_QUEUE_NAME, user.OUTPUT_QUEUE_LIBRARY_NAME])
+		.filter(outputQueueName => outputQueueName[0] !== null && outputQueueName[1] !== null)
+		// eslint-disable-next-line unicorn/no-array-reduce
+		.reduce((accumulator, outputQueueName) => {
+			if (accumulator.has(outputQueueName)) {
+				// eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+				accumulator.set(outputQueueName, accumulator.get(outputQueueName) + 1);
+			} else {
+				accumulator.set(outputQueueName, 1);
+			}
+
+			return accumulator;
+		}, new Map());
+	console.log(`The most popular output queues are: `);
+	outputQueueNamePopularAndLibrary.forEach((count, outputQueueName) => {
+		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+		console.log(`${outputQueueName[1]}/${outputQueueName[0]} used by ${count}`);
+	});
+
+	// Find the last 5 users to sign on. Treat PREVIOUS_SIGNON as a Date.
+	// TODO: Make sure this actually works.
+	const lastFiveUsersToSignOn = foundUserDiagnostics
+		.sort((a, b) => b.PREVIOUS_SIGNON.localeCompare(a.PREVIOUS_SIGNON))
+		.slice(0, 5)
+		.map(user => user.AUTHORIZATION_NAME);
+	console.log(`The last users to sign on are: 
+${lastFiveUsersToSignOn.join(`, `)}`);
 }
