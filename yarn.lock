@@ -1457,13 +1457,13 @@ chai@^4.3.6:
     pathval "^1.1.1"
     type-detect "^4.0.5"
 
-chalk-animation@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/chalk-animation/-/chalk-animation-2.0.2.tgz"
-  integrity sha512-PWyOuRaxAOv3gxKcXss/8iVrt/FwKRxnKZ8VTLPECV6Fayiwqak1M6S5gdOcxDjswMRgfoeUxoDwYJnsfXxN4g==
+chalk-animation@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/chalk-animation/-/chalk-animation-2.0.3.tgz#8293d9cc2b06cd93df1d1f32f738709c75356a96"
+  integrity sha512-Q/GJj6eqcI3HUSz72hUIZtjTlzIHXet8GOteO79Fzx8FMlSywCNP8tpX8uiOOdeMSXFXTXCajZ/Y2FvcU3MOLA==
   dependencies:
     chalk "^4.1.2"
-    gradient-string "^2.0.1"
+    gradient-string "^2.0.2"
     meow "^10.1.2"
 
 chalk@^2.0.0, chalk@^2.4.2:
@@ -3071,10 +3071,10 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.4:
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.10.tgz"
   integrity sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==
 
-gradient-string@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/gradient-string/-/gradient-string-2.0.1.tgz"
-  integrity sha512-+xDOYR2fMa4QHGysTgyQsl8g16mcAKqvvsKI014qYP2XVf1SWUPlD8KhdBJPUM8AVwDUB+ls0NFkqRzAB5URkA==
+gradient-string@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/gradient-string/-/gradient-string-2.0.2.tgz#a90402618990ec993ecbb72a56bd7e6598f45c0e"
+  integrity sha512-rEDCuqUQ4tbD78TpzsMtt5OIf0cBCSDWSJtUDaF6JsAh+k0v9r++NzxNEG87oDZx9ZwGhD8DaezR2L/yrw0Jdw==
   dependencies:
     chalk "^4.1.2"
     tinygradient "^1.1.5"
