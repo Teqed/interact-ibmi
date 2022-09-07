@@ -1,6 +1,9 @@
 import inquirer from 'inquirer';
-import { queryOdbc } from './odbc-util.js';
-import { type IbmiUserInterface, type CreateUserInterface } from './types.js';
+import { queryOdbc, cmdOdbc } from './odbc-util.js';
+import {
+	type IbmiUserInterface,
+	type CreateUserInterface,
+	type IbmiAuthorizationListInterface} from './types.js';
 import { convertUserInterface } from './util.js';
 
 /* Assemble the user variables into a string using template literals. */
@@ -154,7 +157,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	/* If the result of query4 is empty, then the user does not exist. */
 	if (query5.length === 0) {
 		console.log(`User ${newUser} failed to create.`);
-		return `User ${newUser} failed to create.`;
+		// return `User ${newUser} failed to create.`;
 		// TODO Leave this function and do something else.
 	}
 
@@ -194,6 +197,21 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		`SELECT * FROM QSYS2.AUTHORIZATION_LIST_USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser}'`,
 	);
 	console.log(query6[0]);
+	/* If the result of query6 is empty, then the user does not exist on any authorization lists. */
+	if (query6.length === 0) {
+		console.log(`User ${copyFromUser} does not exist on any authorization lists.`);
+	} else {
+		/* Copy newUser to all authorization lists that fromUser is on. */
+		query6.forEach(async element => {
+			const thing = element as unknown as IbmiAuthorizationListInterface;
+			console.log(
+				`ADDAUTLE AUTL(${thing.AUTHORIZATION_LIST}) USER(${newUser}) AUT(${thing.OBJECT_AUTHORITY})`,
+			);
+			/* await cmdOdbc(
+				`ADDAUTLE AUTL(${thing.AUTHORIZATION_LIST}) USER(${newUser}) AUT(${thing.OBJECT_AUTHORITY})`,
+			); */
+		});
+	}
 
 	return `Success`;
 };

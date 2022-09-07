@@ -149,3 +149,22 @@ export type BriefIbmiUserInterface = {
 	USER_EXPIRATION_INTERVAL: number;
 	USER_ID_NUMBER: bigint;
 };
+
+export type IbmiAuthorizationListInterface = {
+	AUTHORIZATION_LIST: string;
+	AUTHORIZATION_LIST_MANAGEMENT: string;
+	AUTHORIZATION_NAME: string;
+	DATA_ADD: string;
+	DATA_DELETE: string;
+	DATA_EXECUTE: string;
+	DATA_READ: string;
+	DATA_UPDATE: string;
+	OBJECT_ALTER: string;
+	OBJECT_AUTHORITY: string;
+	OBJECT_EXISTENCE: string;
+	OBJECT_MANAGEMENT: string;
+	OBJECT_OPERATIONAL: string;
+	OBJECT_REFERENCE: string;
+	OWNER: string;
+	TEXT_DESCRIPTION: string | null;
+};
