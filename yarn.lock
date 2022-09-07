@@ -5316,10 +5316,10 @@ typescript@^4.7.3:
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.8.2.tgz"
   integrity sha512-C0I1UsrrDHo2fYI5oaCGbSejwX4ch+9Y5jTQELvovfmFkK3HHSZJB8MSJcWLmCUBzQBchCrZ9rMRV6GuNrvGtw==
 
-typescript@^4.9.0-dev.20220905:
-  version "4.9.0-dev.20220905"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.0-dev.20220905.tgz#95cc02d6f19260592eff0492051c319abe4c7baf"
-  integrity sha512-Y3m8ommI+wTpwdh1vNdp5a2AvvD7UYkUfuUJkB+DrM/7z4XMTCEVcZXjiH5OwICNHy9k9N6ZeaTTokpcNj4kVg==
+typescript@^4.9.0-dev.20220907:
+  version "4.9.0-dev.20220907"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.0-dev.20220907.tgz#bf59fe29dd9803b045cdaa941730c4ce36d6fdea"
+  integrity sha512-wRH/8rol9ktq6cQ6NxT7fsaa7bcVBSl7KcE27AGfzlbvq6c1/KlOOXywzhtsCHFtNLPBucsirHBZxFx3gdfpBg==
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
