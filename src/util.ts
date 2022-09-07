@@ -84,9 +84,45 @@ export function convertUserInterface(
 		copyUser.ATTENTION_KEY_HANDLING_PROGRAM_NAME,
 	);
 	const userSupplementalGroups = notNull(copyUser.SUPPLEMENTAL_GROUP_LIST);
+	let userPasswordExpirationInterval;
+	let userMaximumAllowedStorage;
+	let userCharacterCodeSetId;
+
+	switch (copyUser.PASSWORD_EXPIRATION_INTERVAL) {
+		case 0:
+			userPasswordExpirationInterval = `*SYSVAL`;
+			break;
+		case -1:
+			userPasswordExpirationInterval = `*NOMAX`;
+			break;
+		default:
+			userPasswordExpirationInterval = copyUser.PASSWORD_EXPIRATION_INTERVAL.toString();
+			break;
+	}
+
+	switch (copyUser.MAXIMUM_ALLOWED_STORAGE) {
+		// TODO These values need to be confirmed.
+		case BigInt(-1):
+			userMaximumAllowedStorage = `*NOMAX`;
+			break;
+		default:
+			// TODO This value needs to be confirmed.
+			userMaximumAllowedStorage = copyUser.MAXIMUM_ALLOWED_STORAGE.toString();
+	}
+
+	switch (copyUser.CHARACTER_CODE_SET_ID) {
+		// TODO These values need to be confirmed.
+		case `-2`:
+			userCharacterCodeSetId = `*SYSVAL`;
+			break;
+		default:
+			userCharacterCodeSetId = copyUser.CHARACTER_CODE_SET_ID;
+	}
+
 	return {
 		userAccountingCode,
 		userAttentionProgram,
+		userCharacterCodeSetId,
 		userClass,
 		userDelivery,
 		userGroupAuthority,
@@ -96,8 +132,10 @@ export function convertUserInterface(
 		userInitialProgram,
 		userJobDescription,
 		userLimitCapabilities,
+		userMaximumAllowedStorage,
 		userOutqueue,
 		userPassword,
+		userPasswordExpirationInterval,
 		userSpecialAuthority,
 		userSupplementalGroups,
 		userText,

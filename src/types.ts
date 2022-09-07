@@ -88,6 +88,7 @@ export type IbmiUserInterface = {
 export type CreateUserInterface = {
 	userAccountingCode: string;
 	userAttentionProgram: string;
+	userCharacterCodeSetId: string;
 	userClass: string;
 	userDelivery: string;
 	userGroupAuthority: string;
@@ -97,8 +98,10 @@ export type CreateUserInterface = {
 	userInitialProgram: string;
 	userJobDescription: string;
 	userLimitCapabilities: string;
+	userMaximumAllowedStorage: string;
 	userOutqueue: string;
 	userPassword: string;
+	userPasswordExpirationInterval: string;
 	userSpecialAuthority: string;
 	userSupplementalGroups: string;
 	userText: string;
