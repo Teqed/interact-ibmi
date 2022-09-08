@@ -63,7 +63,7 @@
   },
   "keywords": [],
   "license": "MIT",
-  "main": "build/index.js",
+  "main": "build/main.js",
   "name": "interact-ibmi",
   "scripts": {
     "vite:dev": "vite",
