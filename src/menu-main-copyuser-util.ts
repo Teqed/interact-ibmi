@@ -180,12 +180,9 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		});
 	}
 
-	// Get the name of the system using SELECT RDB_NAME FROM QSYS2/ASP_INFO.
+	// Get the name of the system using SELECT RDB_NAME FROM QSYS2.ASP_INFO.
 	const querySystemName = await queryOdbc(`SELECT RDB_NAME FROM QSYS2.ASP_INFO`);
-	console.log(querySystemName);
 	const RDB_NAME = Object.values(querySystemName[0])[0];
-	console.log(RDB_NAME);
-
 	/* Create a directory entry for the new user. */
 	console.log(
 		`ADDDIRE USRID(${newUser.slice(0, 7)} ${RDB_NAME}) USRD(${
