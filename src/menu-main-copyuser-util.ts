@@ -1,58 +1,14 @@
 import inquirer from 'inquirer';
-import { queryOdbc, cmdOdbc } from './odbc-util.js';
+import type odbc from 'odbc';
+import chalk from 'chalk';
+import { CRTUSRPRF, CHGUSRPRF, CHGOBJOWN, parseErrorMessage } from './qcmdexc-util.js';
+import { cmdOdbc, queryOdbc } from './odbc-util.js';
 import {
 	type IbmiUserInterface,
 	type CreateUserInterface,
-	type IbmiAuthorizationListInterface} from './types.js';
+	type IbmiAuthorizationListInterface,
+} from './types.js';
 import { convertUserInterface } from './util.js';
-
-/* Assemble the user variables into a string using template literals. */
-function CHGUSRPRF(
-	userIdCHGUSRPRF: string,
-	userPasswordExpirationIntervalCHGUSRPRF: string,
-	userMaximumAllowedStorageCHGUSRPRF: string,
-	userCharacterCodeSetIdCHGUSRPRF: string,
-) {
-	const qcmdexc = `CHGUSRPRF \
-USRPRF(${userIdCHGUSRPRF}) \
-PWDEXP(*YES) \
-PWDINT(${userPasswordExpirationIntervalCHGUSRPRF}) \
-MAXSTG(${userMaximumAllowedStorageCHGUSRPRF}) \
-CCSID(${userCharacterCodeSetIdCHGUSRPRF})`;
-	return qcmdexc;
-}
-
-function CHGOBJOWN(newUser: string) {
-	const qcmdexc = `CHGOBJOWN \
-OBJ(QSYS/${newUser}) \
-OBJTYPE(*USRPRF) \
-NEWOWN(QSECOFR)`;
-	return qcmdexc;
-}
-
-function CRTUSRPRF(toUser: CreateUserInterface) {
-	return `CRTUSRPRF \
-USRPRF(${toUser.userId}) \
-STATUS(*ENABLED) \
-PASSWORD(${toUser.userPassword}) \
-PWDEXP(*YES) \
-USRCLS(${toUser.userClass}) \
-INLPGM(${toUser.userInitialProgram}) \
-INLMNU(${toUser.userInitialMenu}) \
-LMTCPB(${toUser.userLimitCapabilities}) \
-TEXT(${toUser.userText}) \
-SPCAUT(${toUser.userSpecialAuthority}) \
-JOBD(${toUser.userJobDescription}) \
-GRPPRF(${toUser.userGroupProfile}) \
-GRPAUT(${toUser.userGroupAuthority}) \
-ACGCDE(${toUser.userAccountingCode}) \
-DLVRY(${toUser.userDelivery}) \
-OUTQ(${toUser.userOutqueue}) \
-ATNPGM(${toUser.userAttentionProgram}) \
-SUPGRPPRF(${toUser.userSupplementalGroups})`;
-	// ! TEXT param needs to cancel apostrophes.
-	// TODO Remove undefined values.
-}
 
 /* Copies an existing user and creates a new user with the same privileges. */
 
@@ -139,16 +95,18 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	/* Assemble the user variables into a string using template literals. */
 	try {
 		console.log(CRTUSRPRF(toUser));
-		// TODO await cmdOdbc(CRTUSRPRF(toUser));
+		await cmdOdbc(CRTUSRPRF(toUser));
 	} catch (error: unknown) {
-		if (error instanceof Error) {
-			console.log(`User ${newUser} could not be created.`);
-			console.log(error.message);
-			return `User ${newUser} could not be created.`;
+		// Figure out what type of error this is.
+		const errorMessage = await parseErrorMessage(error as odbc.NodeOdbcError);
+		if (errorMessage.errorNumber === `CPF2292`) {
+			console.log(
+				chalk.bgBlack.red(`${errorMessage.errorNumber}: ${errorMessage.errorMessage}`),
+			);
+			return 1;
 		}
 
-		console.log(error);
-		return error;
+		return errorMessage;
 	}
 
 	const query5 = await queryOdbc(

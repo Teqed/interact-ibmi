@@ -14,6 +14,6 @@ export default async function () {
 		message: `Enter user description:`,
 		name: `Description`,
 	});
-	await copyUser(fromUser, toUser, toUserText);
+	console.log(await copyUser(fromUser, toUser, toUserText));
 	return 0;
 }
