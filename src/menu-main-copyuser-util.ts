@@ -108,6 +108,125 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		.then(async answers => {
 			toUser.userPassword = answers.newPassword as string;
 		});
+	let changeAttributesBoo = true;
+	while (changeAttributesBoo)
+		/* Create an inquirer prompt that has options for initial program, limit capabilities, 
+	text description, special authorities, and outqueue. */
+		// eslint-disable-next-line no-await-in-loop
+		await inquirer
+			.prompt([
+				{
+					choices: [
+						`Continue`,
+						`Initial Program ${toUser.userInitialProgram}`,
+						`Limit Capabilities ${toUser.userLimitCapabilities}`,
+						`Text Description ${toUser.userText}`,
+						`Special Authorities ${toUser.userSpecialAuthority}`,
+						`Outqueue ${toUser.userOutqueue}`,
+					],
+					message: `Change any user profile attributes?`,
+					name: `changeAttributes`,
+					type: `list`,
+				},
+			])
+			// eslint-disable-next-line @typescript-eslint/no-loop-func
+			.then(async answers => {
+				const changeAttributes = answers.changeAttributes as string;
+				switch (changeAttributes) {
+					case `Initial Program ${toUser.userInitialProgram}`: {
+						await inquirer
+							.prompt([
+								{
+									default: toUser.userInitialProgram,
+									message: `Enter new initial program for ${newUser}:`,
+									name: `newInitialProgram`,
+									type: `input`,
+								},
+							])
+							// eslint-disable-next-line @typescript-eslint/no-shadow
+							.then(async answers => {
+								toUser.userInitialProgram = answers.newInitialProgram as string;
+							});
+						break;
+					}
+
+					case `Limit Capabilities ${toUser.userLimitCapabilities}`: {
+						await inquirer
+							.prompt([
+								{
+									default: toUser.userLimitCapabilities,
+									message: `Enter new limit capabilities for ${newUser}:`,
+									name: `newLimitCapabilities`,
+									type: `input`,
+								},
+							])
+							// eslint-disable-next-line @typescript-eslint/no-shadow
+							.then(async answers => {
+								toUser.userLimitCapabilities =
+									answers.newLimitCapabilities as string;
+							});
+
+						break;
+					}
+
+					case `Text Description ${toUser.userText}`: {
+						await inquirer
+							.prompt([
+								{
+									default: toUser.userText,
+									message: `Enter new text description for ${newUser}:`,
+									name: `newTextDescription`,
+									type: `input`,
+								},
+							])
+							// eslint-disable-next-line @typescript-eslint/no-shadow
+							.then(async answers => {
+								toUser.userText = answers.newTextDescription as string;
+							});
+						break;
+					}
+
+					case `Special Authorities ${toUser.userSpecialAuthority}`: {
+						await inquirer
+							.prompt([
+								{
+									default: toUser.userSpecialAuthority,
+									message: `Enter new special authorities for ${newUser}:`,
+									name: `newSpecialAuthorities`,
+									type: `input`,
+								},
+							])
+							// eslint-disable-next-line @typescript-eslint/no-shadow
+							.then(async answers => {
+								toUser.userSpecialAuthority =
+									answers.newSpecialAuthorities as string;
+							});
+
+						break;
+					}
+
+					case `Outqueue ${toUser.userOutqueue}`: {
+						await inquirer
+							.prompt([
+								{
+									default: toUser.userOutqueue,
+									message: `Enter new outqueue for ${newUser}:`,
+									name: `newOutqueue`,
+									type: `input`,
+								},
+							])
+							// eslint-disable-next-line @typescript-eslint/no-shadow
+							.then(async answers => {
+								toUser.userOutqueue = answers.newOutqueue as string;
+							});
+						break;
+					}
+
+					default: {
+						changeAttributesBoo = false;
+					}
+				}
+			});
 
 	/* Assemble the user variables into a string using template literals. */
 	await cmdOdbc(CRTUSRPRF(toUser)).catch(async (error: odbc.NodeOdbcError) => {
