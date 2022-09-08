@@ -33,7 +33,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 			// TODO Create user with default user profile.
 		}
 
-		console.log(`User ${copyFromUser} does not exist.`);
+		console.error(`User ${copyFromUser} does not exist.`);
 		return `User ${copyFromUser} does not exist.`;
 	}
 
@@ -44,7 +44,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	);
 	/* If the result of query2 is not empty, then the new user already exists. */
 	if (query2.length > 0) {
-		console.log(`User ${newUser} already exists.`);
+		console.error(`User ${newUser} already exists.`);
 		/*
 		void inquirer
 			.prompt([
@@ -78,7 +78,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 
 	/* If their accounting code is NOCOPY, don't copy this user. */
 	if (fromUser.ACCOUNTING_CODE === `NOCOPY`) {
-		console.log(`User ${copyFromUser} is not copyable.`);
+		console.error(`User ${copyFromUser} is not copyable.`);
 		return `User ${copyFromUser} is not copyable.`;
 	}
 
@@ -88,7 +88,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	);
 	/* If the result of query3 is empty, then the library does not exist. */
 	if (query3.length === 0) {
-		console.log(`Library TEQ1 does not exist.`);
+		console.error(`Library TEQ1 does not exist.`);
 		return `Library TEQ1 does not exist.`;
 	}
 
@@ -96,12 +96,24 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	// TODO text description, special authorities, and outqueue.
 	// TODO Prompt to provide Email.
 
+	/* Prompt for new password. */
+	await inquirer
+		.prompt([
+			{
+				message: `Enter new password for ${newUser}:`,
+				name: `newPassword`,
+				type: `password`,
+			},
+		])
+		.then(async answers => {
+			toUser.userPassword = answers.newPassword as string;
+		});
+
 	/* Assemble the user variables into a string using template literals. */
 	await cmdOdbc(CRTUSRPRF(toUser)).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseErrorMessage(error);
-		console.log(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
-		// throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
-		// TODO Leave this function and do something else.
+		console.error(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
+		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 	});
 
 	const query5 = await queryOdbc(
@@ -109,21 +121,12 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	);
 	/* If the result of query4 is empty, then the user failed to create. */
 	if (query5.length === 0) {
-		console.log(`User ${newUser} failed to create.`);
-		// return `User ${newUser} failed to create.`;
-		// TODO Leave this function and do something else.
+		console.error(`User ${newUser} failed to create.`);
+		return `User ${newUser} failed to create.`;
 	}
 
 	console.log(`User ${newUser} created.`);
 
-	console.log(
-		CHGUSRPRF(
-			toUser.userId,
-			toUser.userPasswordExpirationInterval,
-			toUser.userMaximumAllowedStorage,
-			toUser.userCharacterCodeSetId,
-		),
-	);
 	await cmdOdbc(
 		CHGUSRPRF(
 			toUser.userId,
@@ -133,20 +136,18 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		),
 	).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseErrorMessage(error);
-		console.log(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
+		console.error(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
 		// throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 		// TODO Leave this function and do something else.
 	});
 
 	/* Change object owner to QSECOFR. */
-	console.log(CHGOBJOWN(newUser));
-	// TODO await cmdOdbc(CHGOBJOWN(newUser));
+	await cmdOdbc(CHGOBJOWN(newUser));
 	/* Check if fromUser exists on any authorization lists, then copy newUser to them. */
 	/* This information is on the view AUTHORIZATION_LIST_USER_INFO. */
 	const query6 = await queryOdbc(
 		`SELECT * FROM QSYS2.AUTHORIZATION_LIST_USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser}'`,
 	);
-	console.log(query6[0]);
 	/* If the result of query6 is empty, then the user does not exist on any authorization lists. */
 	if (query6.length === 0) {
 		console.log(`User ${copyFromUser} does not exist on any authorization lists.`);
@@ -154,16 +155,13 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		/* Copy newUser to all authorization lists that fromUser is on. */
 		query6.forEach(async element => {
 			const thing = element as unknown as IbmiAuthorizationListInterface;
-			console.log(
-				`ADDAUTLE AUTL(${thing.AUTHORIZATION_LIST}) USER(${newUser}) AUT(${thing.OBJECT_AUTHORITY})`,
-			);
 			await cmdOdbc(
 				`ADDAUTLE AUTL(${thing.AUTHORIZATION_LIST}) USER(${newUser}) AUT(${thing.OBJECT_AUTHORITY})`,
 			).catch(async (error: odbc.NodeOdbcError) => {
 				const parseError = await parseErrorMessage(error);
 				if (parseError.errorNumber === `CPF2282`) {
 					// If the user already exists on the authorization list, do nothing.
-					console.log(
+					console.error(
 						chalk.yellow.bgBlack(
 							`${parseError.errorNumber}: ${parseError.errorMessage} ${thing.AUTHORIZATION_LIST}`,
 						),
@@ -172,7 +170,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 				}
 				// Otherwise, throw an error.
 
-				console.log(
+				console.error(
 					chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`),
 				);
 				throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
@@ -184,11 +182,6 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	const querySystemName = await queryOdbc(`SELECT RDB_NAME FROM QSYS2.ASP_INFO`);
 	const RDB_NAME = Object.values(querySystemName[0])[0];
 	/* Create a directory entry for the new user. */
-	console.log(
-		`ADDDIRE USRID(${newUser.slice(0, 7)} ${RDB_NAME}) USRD(${
-			toUser.userText
-		}) USER(${newUser})`,
-	);
 	await cmdOdbc(
 		`ADDDIRE USRID(${newUser.slice(0, 7)} ${RDB_NAME}) USRD(${
 			toUser.userText
@@ -197,14 +190,14 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		const parseError = await parseErrorMessage(error);
 		if (parseError.errorNumber === `CPF9082`) {
 			// If the user already exists on the directory list, do nothing.
-			console.log(
+			console.error(
 				chalk.yellow.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`),
 			);
 			return 0;
 		}
 		// Otherwise, throw an error.
 
-		console.log(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
+		console.error(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
 		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 	});
 
