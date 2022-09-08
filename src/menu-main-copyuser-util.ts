@@ -92,6 +92,10 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		return `Library TEQ1 does not exist.`;
 	}
 
+	// TODO Prompt for new password, initial program, limit capabilties,
+	// TODO text description, special authorities, and outqueue.
+	// TODO Prompt to provide Email.
+
 	/* Assemble the user variables into a string using template literals. */
 	await cmdOdbc(CRTUSRPRF(toUser)).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseErrorMessage(error);
@@ -112,37 +116,27 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 
 	console.log(`User ${newUser} created.`);
 
-	try {
-		console.log(
-			CHGUSRPRF(
-				toUser.userId,
-				toUser.userPasswordExpirationInterval,
-				toUser.userMaximumAllowedStorage,
-				toUser.userCharacterCodeSetId,
-			),
-		);
-		await cmdOdbc(
-			CHGUSRPRF(
-				toUser.userId,
-				toUser.userPasswordExpirationInterval,
-				toUser.userMaximumAllowedStorage,
-				toUser.userCharacterCodeSetId,
-			),
-		).catch(async (error: odbc.NodeOdbcError) => {
-			const parseError = await parseErrorMessage(error);
-			console.log(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
-			throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
-			// TODO Leave this function and do something else.
-		});
-	} catch (error: unknown) {
-		if (error instanceof Error) {
-			console.log(error.message);
-			return error.message;
-		}
-
-		console.log(error);
-		return error;
-	}
+	console.log(
+		CHGUSRPRF(
+			toUser.userId,
+			toUser.userPasswordExpirationInterval,
+			toUser.userMaximumAllowedStorage,
+			toUser.userCharacterCodeSetId,
+		),
+	);
+	await cmdOdbc(
+		CHGUSRPRF(
+			toUser.userId,
+			toUser.userPasswordExpirationInterval,
+			toUser.userMaximumAllowedStorage,
+			toUser.userCharacterCodeSetId,
+		),
+	).catch(async (error: odbc.NodeOdbcError) => {
+		const parseError = await parseErrorMessage(error);
+		console.log(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
+		// throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
+		// TODO Leave this function and do something else.
+	});
 
 	/* Change object owner to QSECOFR. */
 	console.log(CHGOBJOWN(newUser));
@@ -179,10 +173,35 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 				console.log(
 					chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`),
 				);
-				throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
+				return 1;
+				// throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
+				// TODO Leave this function and do something else.
 			});
 		});
 	}
+
+	// Get the name of the system using SELECT RDB_NAME FROM QSYS2/ASP_INFO.
+	const querySystemName = await queryOdbc(`SELECT RDB_NAME FROM QSYS2.ASP_INFO`);
+	console.log(querySystemName);
+	const RDB_NAME = Object.values(querySystemName[0])[0];
+	console.log(RDB_NAME);
+
+	/* Create a directory entry for the new user. */
+	console.log(
+		`ADDDIRE USRID(${newUser.slice(0, 7)} ${RDB_NAME}) USRD(${
+			toUser.userText
+		}) USER(${newUser})`,
+	);
+	await cmdOdbc(
+		`ADDDIRE USRID(${newUser.slice(0, 7)} ${RDB_NAME}) USRD(${
+			toUser.userText
+		}) USER(${newUser})`,
+	).catch(async (error: odbc.NodeOdbcError) => {
+		const parseError = await parseErrorMessage(error);
+		console.log(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
+		// throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
+		// TODO Leave this function and do something else.
+	});
 
 	return `Success`;
 };
