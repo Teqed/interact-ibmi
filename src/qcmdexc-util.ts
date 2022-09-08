@@ -11,7 +11,7 @@ export function CHGUSRPRF(
 	const qcmdexc = `CHGUSRPRF \
 USRPRF(${userIdCHGUSRPRF}) \
 PWDEXP(*YES) \
-PWDINT(${userPasswordExpirationIntervalCHGUSRPRF}) \
+PWDEXPITV(${userPasswordExpirationIntervalCHGUSRPRF}) \
 MAXSTG(${userMaximumAllowedStorageCHGUSRPRF}) \
 CCSID(${userCharacterCodeSetIdCHGUSRPRF})`;
 	return qcmdexc;
