@@ -162,6 +162,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 			).catch(async (error: odbc.NodeOdbcError) => {
 				const parseError = await parseErrorMessage(error);
 				if (parseError.errorNumber === `CPF2282`) {
+					// If the user already exists on the authorization list, do nothing.
 					console.log(
 						chalk.yellow.bgBlack(
 							`${parseError.errorNumber}: ${parseError.errorMessage} ${thing.AUTHORIZATION_LIST}`,
@@ -169,13 +170,12 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 					);
 					return 0;
 				}
+				// Otherwise, throw an error.
 
 				console.log(
 					chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`),
 				);
-				return 1;
-				// throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
-				// TODO Leave this function and do something else.
+				throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 			});
 		});
 	}
@@ -195,9 +195,17 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		}) USER(${newUser})`,
 	).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseErrorMessage(error);
+		if (parseError.errorNumber === `CPF9082`) {
+			// If the user already exists on the directory list, do nothing.
+			console.log(
+				chalk.yellow.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`),
+			);
+			return 0;
+		}
+		// Otherwise, throw an error.
+
 		console.log(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
-		// throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
-		// TODO Leave this function and do something else.
+		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 	});
 
 	return `Success`;
