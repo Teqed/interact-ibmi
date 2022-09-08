@@ -56,8 +56,6 @@ export async function helpUsersMenu() {
 			}
 
 			default: {
-				// ! Currently 'Previous Menu' just exits the program.
-				// ? It should return to the previous menu.
 				break;
 			}
 		}
