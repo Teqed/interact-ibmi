@@ -17,12 +17,12 @@
 * [:heavy_check_mark:] Send SQL queries to fetch data from tables and store it in objects
 * [:heavy_check_mark:] Find QSYS2 tables for retrieving system information
 * [:heavy_check_mark:] Send QCMDEXC commands to system using SQL queries
-* [❌] Handle errors on QCMDEXC commands
+* [:heavy_check_mark:] Handle errors on QCMDEXC commands
 * [❌] Handle errors on regular SQL queries
 * [❌] Copy records based on script
 * [:heavy_check_mark:] Create a new system user by copying another user's profile
-* [❌] Place new system user on authorization lists and create directory entry
-* [❌] Show system / user diagnostics upon login
+* [:heavy_check_mark:] Place new system user on authorization lists and create directory entry
+* [:heavy_check_mark:] Show system / user diagnostics upon login
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/5181964/188281738-bfe1880c-8d2b-490f-aca4-cb7c1f543614.png" alt="prototype image of interact-ibmi showing some user diagnostics">
