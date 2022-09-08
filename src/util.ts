@@ -115,6 +115,9 @@ export function convertUserInterface(
 		case `-2`:
 			userCharacterCodeSetId = `*SYSVAL`;
 			break;
+		case `QCCSID`:
+			userCharacterCodeSetId = `*SYSVAL`;
+			break;
 		default:
 			userCharacterCodeSetId = copyUser.CHARACTER_CODE_SET_ID;
 	}

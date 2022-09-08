@@ -93,26 +93,17 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	}
 
 	/* Assemble the user variables into a string using template literals. */
-	try {
-		console.log(CRTUSRPRF(toUser));
-		await cmdOdbc(CRTUSRPRF(toUser));
-	} catch (error: unknown) {
-		// Figure out what type of error this is.
-		const errorMessage = await parseErrorMessage(error as odbc.NodeOdbcError);
-		if (errorMessage.errorNumber === `CPF2292`) {
-			console.log(
-				chalk.bgBlack.red(`${errorMessage.errorNumber}: ${errorMessage.errorMessage}`),
-			);
-			return 1;
-		}
-
-		return errorMessage;
-	}
+	await cmdOdbc(CRTUSRPRF(toUser)).catch(async (error: odbc.NodeOdbcError) => {
+		const parseError = await parseErrorMessage(error);
+		console.log(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
+		// throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
+		// TODO Leave this function and do something else.
+	});
 
 	const query5 = await queryOdbc(
 		`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser}'`,
 	);
-	/* If the result of query4 is empty, then the user does not exist. */
+	/* If the result of query4 is empty, then the user failed to create. */
 	if (query5.length === 0) {
 		console.log(`User ${newUser} failed to create.`);
 		// return `User ${newUser} failed to create.`;
@@ -130,12 +121,19 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 				toUser.userCharacterCodeSetId,
 			),
 		);
-		/* TODO await cmdOdbc(CHGUSRPRF(
-		toUser.userId,
-		toUser.userPasswordExpirationInterval,
-		toUser.userMaximumAllowedStorage,
-		toUser.userCharacterCodeSetId,
-	)); */
+		await cmdOdbc(
+			CHGUSRPRF(
+				toUser.userId,
+				toUser.userPasswordExpirationInterval,
+				toUser.userMaximumAllowedStorage,
+				toUser.userCharacterCodeSetId,
+			),
+		).catch(async (error: odbc.NodeOdbcError) => {
+			const parseError = await parseErrorMessage(error);
+			console.log(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
+			throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
+			// TODO Leave this function and do something else.
+		});
 	} catch (error: unknown) {
 		if (error instanceof Error) {
 			console.log(error.message);
@@ -165,9 +163,24 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 			console.log(
 				`ADDAUTLE AUTL(${thing.AUTHORIZATION_LIST}) USER(${newUser}) AUT(${thing.OBJECT_AUTHORITY})`,
 			);
-			/* await cmdOdbc(
+			await cmdOdbc(
 				`ADDAUTLE AUTL(${thing.AUTHORIZATION_LIST}) USER(${newUser}) AUT(${thing.OBJECT_AUTHORITY})`,
-			); */
+			).catch(async (error: odbc.NodeOdbcError) => {
+				const parseError = await parseErrorMessage(error);
+				if (parseError.errorNumber === `CPF2282`) {
+					console.log(
+						chalk.yellow.bgBlack(
+							`${parseError.errorNumber}: ${parseError.errorMessage} ${thing.AUTHORIZATION_LIST}`,
+						),
+					);
+					return 0;
+				}
+
+				console.log(
+					chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`),
+				);
+				throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
+			});
 		});
 	}
 
