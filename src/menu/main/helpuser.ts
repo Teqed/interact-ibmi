@@ -1,6 +1,6 @@
 import chalk from 'chalk';
-import { genericListMenu } from './menu-util.js';
-import findUserMenu from './menu-main-finduser.js';
+import { genericListMenu } from '../util.js';
+import findUserMenu from './finduser.js';
 
 // Create an array of strings containing menu choices.
 // eslint-disable-next-line import/prefer-default-export

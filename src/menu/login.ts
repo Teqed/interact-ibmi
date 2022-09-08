@@ -2,8 +2,8 @@
 It asks for the user's name and password, which is used for logging in to the IBMi AS400. */
 import inquirer, { type Answers } from 'inquirer';
 import { assert } from '@sindresorhus/is';
-import { odbcLogin } from './odbc-util.js';
-import loginUser from './login-user.js';
+import { odbcLogin } from '../odbc-util.js';
+import loginUser from '../login-user.js';
 
 export default async () => {
 	// Ask for the user's name and password.

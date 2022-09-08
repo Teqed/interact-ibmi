@@ -1,5 +1,5 @@
-import { cmdOdbc } from './odbc-util.js';
-import { genericGetCommand } from './menu-util.js';
+import { cmdOdbc } from '../../odbc-util.js';
+import { genericGetCommand } from '../util.js';
 
 export default async function () {
 	const inputCommand: string = await genericGetCommand({

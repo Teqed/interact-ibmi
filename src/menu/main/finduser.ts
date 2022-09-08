@@ -1,6 +1,5 @@
-import ora from 'ora';
-import { queryOdbc, getvalues } from './odbc-util.js';
-import { generatedListMenu } from './menu-util.js';
+import { queryOdbc, getvalues } from '../../odbc-util.js';
+import { generatedListMenu } from '../util.js';
 
 const findUser = async (user: string) => {
 	const query = await queryOdbc(
@@ -13,6 +12,7 @@ const findUser = async (user: string) => {
 const findUser0 = async () => {
 	const query = await queryOdbc(`SELECT AUTHORIZATION_NAME, TEXT, STATUS FROM QSYS2.USER_INFO`);
 	// Create an array of strings containing menu choices made of the query results.
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const choices = query.map((row: any) => {
 		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 		return `${row.AUTHORIZATION_NAME}`;
@@ -34,7 +34,6 @@ export default async function () {
 		// spinner.succeed(`User found!`);
 		return find;
 	} catch (error: unknown) {
-		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 		// spinner.fail(`Error: ${error}`);
 		return error;
 	}

@@ -2,8 +2,8 @@
  It shows the user options and lets them choose what they want to do.
  They can send commands to the IBMi or run SQL inputCommands over ODBC connections. */
 import ora from 'ora';
-import loginUser from './login-user.js';
-import { sleep } from './util.js';
+import loginUser from '../login-user.js';
+import { sleep } from '../util.js';
 
 // eslint-disable-next-line import/no-mutable-exports
 export let exitMenuMain = false;

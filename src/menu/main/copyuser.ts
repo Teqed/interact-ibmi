@@ -1,5 +1,5 @@
-import copyUser from './menu-main-copyuser-util.js';
-import { genericGetCommand } from './menu-util.js';
+import copyUser from './copyuser-util.js';
+import { genericGetCommand } from '../util.js';
 
 export default async function () {
 	const fromUser: string = await genericGetCommand({

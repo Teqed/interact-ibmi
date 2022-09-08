@@ -1,6 +1,6 @@
 import chalk from 'chalk';
-import { queryOdbc } from './odbc-util.js';
-import { type BriefIbmiUserInterface } from './types.js';
+import { queryOdbc } from '../odbc-util.js';
+import { type BriefIbmiUserInterface } from '../types.js';
 
 // eslint-disable-next-line import/prefer-default-export
 export async function diagnoseUsers() {

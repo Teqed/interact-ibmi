@@ -1,12 +1,12 @@
 import chalk from 'chalk';
-import { genericListMenu } from './menu-util.js';
-import exitMenu, { exitMenuMain } from './menu-exit.js';
-import findUserMenu from './menu-main-finduser.js';
-import sshMenu from './menu-main-ssh.js';
-import copyUserMenu from './menu-main-copyuser.js';
-import odbcMenu from './menu-main-odbc.js';
-import cmdMenu from './menu-main-cmd.js';
-import { helpUsersMenu } from './menu-main-helpuser.js';
+import { genericListMenu } from '../util.js';
+import exitMenu, { exitMenuMain } from '../exit.js';
+import findUserMenu from './finduser.js';
+import sshMenu from './ssh.js';
+import copyUserMenu from './copyuser.js';
+import odbcMenu from './odbc.js';
+import cmdMenu from './cmd.js';
+import { helpUsersMenu } from './helpuser.js';
 
 export default async () => {
 	while (!exitMenuMain)
@@ -34,7 +34,8 @@ export default async () => {
 				}
 
 				case 2: {
-					return await odbcMenu();
+					await odbcMenu();
+					return 0;
 				}
 
 				case 3: {

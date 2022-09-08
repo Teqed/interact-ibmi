@@ -1,14 +1,14 @@
 import inquirer from 'inquirer';
 import type odbc from 'odbc';
 import chalk from 'chalk';
-import { CRTUSRPRF, CHGUSRPRF, CHGOBJOWN, parseErrorMessage } from './qcmdexc-util.js';
-import { cmdOdbc, queryOdbc } from './odbc-util.js';
+import { CRTUSRPRF, CHGUSRPRF, CHGOBJOWN, parseErrorMessage } from '../../qcmdexc-util.js';
+import { cmdOdbc, queryOdbc } from '../../odbc-util.js';
 import {
 	type IbmiUserInterface,
 	type CreateUserInterface,
 	type IbmiAuthorizationListInterface,
-} from './types.js';
-import { convertUserInterface } from './util.js';
+} from '../../types.js';
+import { convertUserInterface } from '../../util.js';
 
 /* Copies an existing user and creates a new user with the same privileges. */
 

@@ -2,7 +2,7 @@ import { assert } from '@sindresorhus/is';
 import inquirer, { type PromptModule } from 'inquirer';
 // @ts-expect-error InterruptedPrompt has no declaration file, might write one later.
 import InterruptedPrompt from 'inquirer-interrupted-prompt';
-import { type GenericInputPrompt, type GenericListPrompt } from './types.js';
+import { type GenericInputPrompt, type GenericListPrompt } from '../types.js';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-call
 // InterruptedPrompt.fromAll(inquirer);

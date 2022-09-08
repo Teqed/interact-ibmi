@@ -1,5 +1,5 @@
 import ora from 'ora';
-import { sleep } from './util.js';
+import { sleep } from '../../util.js';
 
 export default async function () {
 	const spinner = ora(`Connecting to SSH...`).start();
