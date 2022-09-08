@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import { genericListMenu } from './menu-util.js';
-import exitMenu from './menu-exit.js';
+import exitMenu, { exitMenuMain } from './menu-exit.js';
 import findUserMenu from './menu-main-finduser.js';
 import sshMenu from './menu-main-ssh.js';
 import copyUserMenu from './menu-main-copyuser.js';
@@ -9,9 +9,10 @@ import cmdMenu from './menu-main-cmd.js';
 import { helpUsersMenu } from './menu-main-helpuser.js';
 
 export default async () => {
-	try {
+	while (!exitMenuMain)
 		/* Create an array of strings containing menu choices. */
-		const mainMenuChoice = await genericListMenu({
+		// eslint-disable-next-line no-await-in-loop
+		await genericListMenu({
 			choices: [
 				`1. Send System Command`,
 				`2. Test ODBC`,
@@ -26,10 +27,7 @@ export default async () => {
 		Select options below.
 		`,
 			name: `main`,
-		});
-
-		const handleAnswer = async (answer: number) => {
-			/* A case inputCommand for answer */
+		}).then(async answer => {
 			switch (answer) {
 				case 1: {
 					return await cmdMenu();
@@ -63,10 +61,5 @@ export default async () => {
 					return await exitMenu();
 				}
 			}
-		};
-
-		return handleAnswer(mainMenuChoice);
-	} catch (error: unknown) {
-		return error;
-	}
+		});
 };

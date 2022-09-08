@@ -5,10 +5,14 @@ import ora from 'ora';
 import loginUser from './login-user.js';
 import { sleep } from './util.js';
 
+// eslint-disable-next-line import/no-mutable-exports
+export let exitMenuMain = false;
+
 export default async function () {
 	const spinner = ora(`Exiting...`).start();
 	await sleep();
 	spinner.fail(`Exited cleanly. Goodbye, ${loginUser.loginId}!`);
+	exitMenuMain = true;
 	/* Throw an error to exit the program */
 	return new Error(`Exited cleanly.`);
 }
