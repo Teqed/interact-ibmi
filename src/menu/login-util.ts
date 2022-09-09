@@ -59,59 +59,89 @@ USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
 
 	// Find the 3 most popular combination of values for users.INITIAL_PROGRAM_NAME
 	// and users.INITIAL_PROGRAM_LIBRARY_NAME on foundUserDiagnostics.
-	const initialProgramNamePopularAndLibrary = foundUserDiagnostics
-		.map(user => [user.INITIAL_PROGRAM_NAME, user.INITIAL_PROGRAM_LIBRARY_NAME])
-		.filter(
-			initialProgramName => initialProgramName[0] !== null && initialProgramName[1] !== null,
-		)
-		// eslint-disable-next-line unicorn/no-array-reduce
-		.reduce((accumulator, initialProgramName) => {
-			if (accumulator.has(initialProgramName)) {
-				// eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-				accumulator.set(initialProgramName, accumulator.get(initialProgramName) + 1);
-			} else {
-				accumulator.set(initialProgramName, 1);
-			}
+	// Use a for each loop.
+	// Create an object with the keys being the combination of INITIAL_PROGRAM_NAME and INITIAL_PROGRAM_LIBRARY_NAME
+	// and the values being the number of times that combination appears.
+	// Use the object to find the 3 most popular INITIAL_PROGRAM_NAME and INITIAL_PROGRAM_LIBRARY_NAME combinations.
+	// Log a message listing the 3 most popular INITIAL_PROGRAM_NAME and INITIAL_PROGRAM_LIBRARY_NAME combinations,
+	// and how many times they appear.
 
-			return accumulator;
-		}, new Map());
-	console.log(chalk.yellow(`The most popular initial programs are: `));
-	initialProgramNamePopularAndLibrary.forEach((count, initialProgramName) => {
-		console.log(
-			// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-			chalk.blue(`${initialProgramName[1]}/${initialProgramName[0]} used by ${count}`),
-		);
+	// Create an object with the keys being the combination of INITIAL_PROGRAM_NAME and INITIAL_PROGRAM_LIBRARY_NAME
+	// and the values being the number of times that combination appears.
+	const initialProgramAndLibrary: Record<string, number> = {};
+	foundUserDiagnostics.forEach(user => {
+		const key = `${user.INITIAL_PROGRAM_NAME} ${user.INITIAL_PROGRAM_LIBRARY_NAME}`;
+		if (initialProgramAndLibrary[key]) {
+			initialProgramAndLibrary[key] += 1;
+		} else {
+			initialProgramAndLibrary[key] = 1;
+		}
 	});
-	// Find the 3 most popular combination of values for users.OUTPUT_QUEUE_NAME
-	// and users.OUTPUT_QUEUE_LIBRARY_NAME on foundUserDiagnostics.
-	const outputQueueNamePopularAndLibrary = foundUserDiagnostics
-		.map(user => [user.OUTPUT_QUEUE_NAME, user.OUTPUT_QUEUE_LIBRARY_NAME])
-		.filter(outputQueueName => outputQueueName[0] !== null && outputQueueName[1] !== null)
-		// eslint-disable-next-line unicorn/no-array-reduce
-		.reduce((accumulator, outputQueueName) => {
-			if (accumulator.has(outputQueueName)) {
-				// eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-				accumulator.set(outputQueueName, accumulator.get(outputQueueName) + 1);
-			} else {
-				accumulator.set(outputQueueName, 1);
-			}
 
-			return accumulator;
-		}, new Map());
-	console.log(chalk.yellow(`The most popular output queues are: `));
-	outputQueueNamePopularAndLibrary.forEach((count, outputQueueName) => {
-		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-		console.log(chalk.blue(`${outputQueueName[1]}/${outputQueueName[0]} used by ${count}`));
+	// Use the object to find the 3 most popular INITIAL_PROGRAM_NAME and INITIAL_PROGRAM_LIBRARY_NAME combinations.
+	// Sort them by the number of times they appear.
+	const initialProgramArray = Object.entries(initialProgramAndLibrary).sort(
+		(a, b) => b[1] - a[1],
+	);
+
+	// Log a message listing the 3 most popular INITIAL_PROGRAM_NAME and INITIAL_PROGRAM_LIBRARY_NAME combinations,
+	// and how many times they appear.
+	console.log(chalk.yellow(`The most popular initial programs are:`));
+	for (let index = 0; index < 3; index += 1) {
+		if (initialProgramArray[index]) {
+			console.log(
+				chalk.blue(
+					`${initialProgramArray[index][0]} used by ${initialProgramArray[index][1]}`,
+				),
+			);
+		}
+	}
+
+	// Find the 3 most popular combination of values for users.OUTOUT_QUEUE_NAME and users.OUTPUT_QUEUE_LIBRARY_NAME
+	// Use a for each loop.
+	// Create an object with the keys being the combination of OUTOUT_QUEUE_NAME and OUTPUT_QUEUE_LIBRARY_NAME
+	// and the values being the number of times that combination appears.
+	const outputQueueNameAndLibrary: Record<string, number> = {};
+	foundUserDiagnostics.forEach(user => {
+		const key = `${user.OUTPUT_QUEUE_NAME}/${user.OUTPUT_QUEUE_LIBRARY_NAME}`;
+		if (outputQueueNameAndLibrary[key]) {
+			outputQueueNameAndLibrary[key] += 1;
+		} else {
+			outputQueueNameAndLibrary[key] = 1;
+		}
 	});
+
+	// Use the object to find the 3 most popular OUTOUT_QUEUE_NAME and OUTPUT_QUEUE_LIBRARY_NAME combinations.
+	// Sort them by the number of times they appear.
+	const outputQueueNameArray = Object.entries(outputQueueNameAndLibrary).sort(
+		(a, b) => b[1] - a[1],
+	);
+
+	// Log a message listing the 3 most popular OUTOUT_QUEUE_NAME and OUTPUT_QUEUE_LIBRARY_NAME combinations,
+	// and how many times they appear.
+	console.log(chalk.yellow(`The most popular output queues are:`));
+	for (let index = 0; index < 3; index += 1) {
+		if (outputQueueNameArray[index]) {
+			console.log(
+				chalk.blue(
+					`${outputQueueNameArray[index][0]} used by ${outputQueueNameArray[index][1]}`,
+				),
+			);
+		}
+	}
 
 	// Find the last 5 users to sign on. Treat PREVIOUS_SIGNON as a Date.
+	// If PREVIOUS_SIGNON is null, ignore them.
 	// TODO: Make sure this actually works.
 	const lastFiveUsersToSignOn = foundUserDiagnostics
-		.sort((a, b) => b.PREVIOUS_SIGNON.localeCompare(a.PREVIOUS_SIGNON))
+		.filter(user => user.PREVIOUS_SIGNON !== null)
+		.sort((a, b) => {
+			const aDate = new Date(a.PREVIOUS_SIGNON);
+			const bDate = new Date(b.PREVIOUS_SIGNON);
+			return aDate.getTime() - bDate.getTime();
+		})
 		.slice(0, 5)
 		.map(user => user.AUTHORIZATION_NAME);
-	console.log(
-		chalk.yellow(`The last users to sign on are:
-${chalk.blue(lastFiveUsersToSignOn.join(`, `))}`),
-	);
+	console.log(chalk.yellow(`The last 5 users to sign on are: `));
+	console.log(chalk.blue(lastFiveUsersToSignOn.join(`, `)));
 }
