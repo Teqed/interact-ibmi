@@ -17,7 +17,7 @@ export function CHGUSRPRF(
 USRPRF(${userIdCHGUSRPRF}) \
 PWDEXP(*YES) \
 PWDEXPITV(${userPasswordExpirationIntervalCHGUSRPRF}) \
-MAXSTG(${userMaximumAllowedStorageCHGUSRPRF}) \
+MAXSTG(${actualMaxStorage}) \
 CCSID(${userCharacterCodeSetIdCHGUSRPRF})`;
 	return qcmdexc;
 }
