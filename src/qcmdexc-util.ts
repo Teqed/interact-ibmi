@@ -45,7 +45,6 @@ DLVRY(${toUser.userDelivery}) \
 OUTQ(${toUser.userOutqueue}) \
 ATNPGM(${toUser.userAttentionProgram}) \
 SUPGRPPRF(${toUser.userSupplementalGroups})`;
-	// ! TEXT param needs to cancel apostrophes.
 	// TODO Remove undefined values.
 }
 
