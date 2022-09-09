@@ -8,11 +8,11 @@ import InterruptedPrompt from 'inquirer-interrupted-prompt';
 import { diagnoseUsers } from './menu/login-util.js';
 import login from './menu/login.js';
 import mainMenu from './menu/main/menu-main.js';
-import { welcome } from './util.js';
+// import { welcome } from './util.js';
 
 const start = async () => {
 	try {
-		await welcome();
+		// await welcome();
 		await login();
 		await diagnoseUsers();
 		await mainMenu();
