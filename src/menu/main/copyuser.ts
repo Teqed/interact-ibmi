@@ -17,9 +17,9 @@ export default async function () {
 	});
 	console.log(
 		await copyUser(fromUser, toUser, toUserText).catch(async (error: Error) => {
-			// eslint-disable-next-line @typescript-eslint/no-base-to-string, @typescript-eslint/restrict-template-expressions
-			console.error(chalk.red.bgBlack(`${error}`));
-			return `Failure`;
+			const errorString = error.message;
+			console.error(chalk.red.bgBlack(`${errorString}`));
+			return `Failure to create user.`;
 		}),
 	);
 	return 0;
