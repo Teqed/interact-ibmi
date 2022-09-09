@@ -35,7 +35,7 @@ USRCLS(${toUser.userClass}) \
 INLPGM(${toUser.userInitialProgram}) \
 INLMNU(${toUser.userInitialMenu}) \
 LMTCPB(${toUser.userLimitCapabilities}) \
-TEXT(${toUser.userText}) \
+TEXT('${toUser.userText}') \
 SPCAUT(${toUser.userSpecialAuthority}) \
 JOBD(${toUser.userJobDescription}) \
 GRPPRF(${toUser.userGroupProfile}) \
