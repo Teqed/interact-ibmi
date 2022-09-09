@@ -245,6 +245,15 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 
 	console.log(`User ${newUser} created.`);
 
+	console.log(
+		CHGUSRPRF(
+			toUser.userId,
+			toUser.userPasswordExpirationInterval,
+			toUser.userMaximumAllowedStorage,
+			toUser.userCharacterCodeSetId,
+		),
+	);
+
 	await cmdOdbc(
 		CHGUSRPRF(
 			toUser.userId,
@@ -257,6 +266,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 	});
 
+	console.log(CHGOBJOWN(newUser));
 	/* Change object owner to QSECOFR. */
 	await cmdOdbc(CHGOBJOWN(newUser));
 	/* Check if fromUser exists on any authorization lists, then copy newUser to them. */
