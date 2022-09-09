@@ -1,11 +1,6 @@
 import { assert } from '@sindresorhus/is';
 import inquirer, { type PromptModule } from 'inquirer';
-// @ts-expect-error InterruptedPrompt has no declaration file, might write one later.
-import InterruptedPrompt from 'inquirer-interrupted-prompt';
 import { type GenericInputPrompt, type GenericListPrompt } from '../types.js';
-
-// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-// InterruptedPrompt.fromAll(inquirer);
 
 // The genericGetCommand function is used to get a command from the user.
 // It can be used to run queries or system commands, or to get input from the user.
