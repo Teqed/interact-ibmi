@@ -4,7 +4,7 @@
 import { assert, expect, test, vi, describe, it } from 'vitest';
 import inquirer from 'inquirer';
 import { returnZero } from '../src/util.js';
-import { genericListMenu } from '../src/menu-util.js';
+import { genericListMenu } from '../src/menu/util.js';
 import { type GenericListPrompt } from '../src/types.js';
 
 // Edit an assertion and save to see HMR in action
