@@ -1,11 +1,11 @@
-import { queryOdbc, getvalues } from '../../odbc-util.js';
+import { queryOdbc, getrows } from '../../odbc-util.js';
 import { generatedListMenu } from '../util.js';
 
 const findUser = async (user: string) => {
 	const query = await queryOdbc(
 		`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${user}'`,
 	);
-	getvalues(query);
+	getrows(query);
 	return query;
 };
 
