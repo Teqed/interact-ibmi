@@ -11,6 +11,14 @@ export default async () => {
 	const loginid = (await inquirer.prompt([
 		{
 			default() {
+				return `PUB400.COM`;
+			},
+			message: `System hostname:`,
+			name: `hostname`,
+			type: `input`,
+		},
+		{
+			default() {
 				return ``;
 			},
 			message: `What is your User ID?`,
@@ -26,9 +34,12 @@ export default async () => {
 	])) as Promise<Answers>;
 	const deconLoginId = loginid[`login_name` as keyof typeof loginid];
 	const deconLoginPw = loginid[`login_pw` as keyof typeof loginid];
+	const deconLoginSys = loginid[`hostname` as keyof typeof loginid];
 	assert.string(deconLoginId);
 	assert.string(deconLoginPw);
+	assert.string(deconLoginSys);
 	loginUser.loginId = deconLoginId;
 	loginUser.loginPw = deconLoginPw;
-	return odbcLogin(loginUser.loginId, loginUser.loginPw);
+	loginUser.loginSys = deconLoginSys;
+	return odbcLogin(loginUser.loginId, loginUser.loginPw, loginUser.loginSys);
 };

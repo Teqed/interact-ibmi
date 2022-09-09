@@ -3,6 +3,8 @@ class Person {
 
 	#loginPw!: string;
 
+	#loginSys!: string;
+
 	public what() {
 		console.log(`Your login ID is ${this.#loginId}`);
 	}
@@ -23,6 +25,14 @@ class Person {
 
 	public set loginPw(newloginPW) {
 		this.#loginPw = newloginPW;
+	}
+
+	public get loginSys() {
+		return this.#loginSys;
+	}
+
+	public set loginSys(newloginSys) {
+		this.#loginSys = newloginSys;
 	}
 }
 export default new Person();
