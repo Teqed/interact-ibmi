@@ -8,9 +8,9 @@ export function CHGUSRPRF(
 	userMaximumAllowedStorageCHGUSRPRF: string,
 	userCharacterCodeSetIdCHGUSRPRF: string,
 ) {
-	let actualMaxStorage = userMaximumAllowedStorageCHGUSRPRF;
-	if (actualMaxStorage >= `2147483647`) {
-		actualMaxStorage = `2147483647`;
+	let actualMaxStorage: number = userMaximumAllowedStorageCHGUSRPRF as unknown as number;
+	if (actualMaxStorage >= 2_147_483_647) {
+		actualMaxStorage = 2_147_483_647;
 	}
 
 	const qcmdexc = `CHGUSRPRF \
