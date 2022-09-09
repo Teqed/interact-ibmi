@@ -245,6 +245,15 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 
 	console.log(`User ${newUser} created.`);
 
+	console.log(
+		CHGUSRPRF(
+			toUser.userId,
+			toUser.userPasswordExpirationInterval,
+			toUser.userMaximumAllowedStorage,
+			toUser.userCharacterCodeSetId,
+		),
+	);
+
 	await cmdOdbc(
 		CHGUSRPRF(
 			toUser.userId,
