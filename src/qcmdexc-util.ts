@@ -8,6 +8,11 @@ export function CHGUSRPRF(
 	userMaximumAllowedStorageCHGUSRPRF: string,
 	userCharacterCodeSetIdCHGUSRPRF: string,
 ) {
+	let actualMaxStorage = userMaximumAllowedStorageCHGUSRPRF;
+	if (actualMaxStorage >= `2147483647`) {
+		actualMaxStorage = `2147483647`;
+	}
+
 	const qcmdexc = `CHGUSRPRF \
 USRPRF(${userIdCHGUSRPRF}) \
 PWDEXP(*YES) \
