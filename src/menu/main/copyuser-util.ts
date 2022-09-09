@@ -231,7 +231,6 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	/* Assemble the user variables into a string using template literals. */
 	await cmdOdbc(CRTUSRPRF(toUser)).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseErrorMessage(error);
-		console.error(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
 		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 	});
 
@@ -255,9 +254,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		),
 	).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseErrorMessage(error);
-		console.error(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
-		// throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
-		// TODO Leave this function and do something else.
+		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 	});
 
 	/* Change object owner to QSECOFR. */
@@ -287,11 +284,8 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 					);
 					return 0;
 				}
-				// Otherwise, throw an error.
 
-				console.error(
-					chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`),
-				);
+				// Otherwise, throw an error.
 				throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 			});
 		});
@@ -314,9 +308,8 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 			);
 			return 0;
 		}
-		// Otherwise, throw an error.
 
-		console.error(chalk.red.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`));
+		// Otherwise, throw an error.
 		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 	});
 

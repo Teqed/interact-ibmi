@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import copyUser from './copyuser-util.js';
 import { genericGetCommand } from '../util.js';
 
@@ -14,6 +15,12 @@ export default async function () {
 		message: `Enter user description:`,
 		name: `Description`,
 	});
-	console.log(await copyUser(fromUser, toUser, toUserText));
+	console.log(
+		await copyUser(fromUser, toUser, toUserText).catch(async (error: Error) => {
+			// eslint-disable-next-line @typescript-eslint/no-base-to-string, @typescript-eslint/restrict-template-expressions
+			console.error(chalk.red.bgBlack(`${error}`));
+			return `Failure`;
+		}),
+	);
 	return 0;
 }
