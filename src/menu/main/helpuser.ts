@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 import { genericListMenu } from '../util.js';
+import copyuser from './copyuser.js';
 import findUserMenu from './finduser.js';
 
 // Create an array of strings containing menu choices.
@@ -9,12 +10,13 @@ export async function helpUsersMenu() {
 	const helpUsersMenuChoice = await genericListMenu({
 		choices: [
 			`1. Find User`,
-			`2. Create User`,
-			`3. Delete User`,
-			`4. Change Password`,
-			`5. Reenable User`,
-			`6. Unlock User`,
-			`7. Previous Menu`,
+			`2. Copy User`,
+			`3. (WIP) Create User`,
+			`4. (WIP) Delete User`,
+			`5. (WIP) Change User Password`,
+			`6. (WIP) Reenable User`,
+			`7. (WIP) Unlock NetDrive User`,
+			`8. Previous Menu`,
 		],
 		message: `
 		${chalk.bgBlue(`Help Users Menu`)}
@@ -31,26 +33,30 @@ export async function helpUsersMenu() {
 			}
 
 			case 2: {
+				return await copyuser();
+			}
+
+			case 3: {
 				// return await createUserMenu();
 				break;
 			}
 
-			case 3: {
+			case 4: {
 				// return await deleteUserMenu();
 				break;
 			}
 
-			case 4: {
+			case 5: {
 				// return await changePasswordMenu();
 				break;
 			}
 
-			case 5: {
+			case 6: {
 				// return await reenableUserMenu();
 				break;
 			}
 
-			case 6: {
+			case 7: {
 				// return await unlockUserMenu();
 				break;
 			}
