@@ -7,7 +7,7 @@
 
 <p align="center">Menus for interacting with IBMi AS400 using the <a href="https://github.com/markdirish/node-odbc/">node-odbc</a> package.</p>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/5181964/189445402-07ffb4cf-445c-45a6-8800-c31d6c997c4b.png" alt="prototype image of interact-ibmi showing some test output">
+<img src="https://user-images.githubusercontent.com/5181964/189458380-25f7f4fc-30e0-47ee-9abb-90dae5ecc957.png" alt="prototype image of interact-ibmi showing some test output">
 </p><br><br>
  This is a work-in-progress with the goals of being able to view file records using ODBC, insert new records, and delete selected records, as well as perform some system commands.
  
@@ -51,7 +51,7 @@ You must have IBM ODBC drivers installed for your platform. These are provided b
 Open your commandline and use:
 
 ```bash
-npx @teqed/interact-ibmi
+npx @teqed/interact-ibmi@latest
 ```
 
 That's it, npx will take care of everything from there. You should be greeted by the login screen after it finishes downloading. Run the same command again as needed.
