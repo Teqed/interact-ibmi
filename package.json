@@ -1,5 +1,5 @@
 {
-  "author": "",
+  "author": "Timothy Quilling <teqed@shatteredsky.net>",
   "dependencies": {
     "@rollup/plugin-node-resolve": "^14.0.1",
     "@sindresorhus/is": "^5.3.0",
@@ -61,10 +61,15 @@
     "vitest": "^0.23.1",
     "xo": "^0.52.3"
   },
-  "keywords": [],
+  "keywords": [
+    "ibmi",
+    "as400",
+    "iseries",
+    "odbc"
+  ],
   "license": "MIT",
   "main": "build/main.js",
-  "name": "interact-ibmi",
+  "name": "@teqed/interact-ibmi",
   "scripts": {
     "vite:dev": "vite",
     "vite:preview": "vite preview",
@@ -79,16 +84,17 @@
     "test:mocha:badge": "cross-env MOCHA_BADGE_SUBJECT=tests MOCHA_BADGE_STYLE=plastic ./node_modules/.bin/mocha test/mocha/*.test.js --reporter mocha-reporter-badge > .github/assets/build.svg"
   },
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "engines": {
     "node": ">=16.0.0"
   },
-  "bin": {
-    "interact-ibmi": "./bin/interact-ibmi"
-  },
+  "bin": "./build/main.js",
   "jest": {
     "moduleNameMapper": {
       "#(.*)": "<rootDir>/node_modules/$1"
     }
-  }
+  },
+  "files": [
+    "/build"
+  ]
 }

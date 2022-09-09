@@ -159,3 +159,6 @@ stats.html
 
 # transpile folder
 build
+
+# sandbox folder
+sandbox
