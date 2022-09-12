@@ -838,8 +838,8 @@
     vitest "0.23.2"
 
 "@vitest/ui@^0.23.1":
-  version "0.23.1"
-  resolved "https://registry.npmjs.org/@vitest/ui/-/ui-0.23.1.tgz"
+  version "0.23.2"
+  resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-0.23.2.tgz#0d4a3918edaca6d38f20c49467a03a51d4b26eff"
   dependencies:
     sirv "^2.0.2"
 
