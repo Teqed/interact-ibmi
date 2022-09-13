@@ -4691,9 +4691,9 @@ vite-plugin-node@^1.0.0:
     chalk "^4.1.2"
     debug "^4.3.2"
 
-vite-plugin-progress@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.npmjs.org/vite-plugin-progress/-/vite-plugin-progress-0.0.3.tgz"
+vite-plugin-progress@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/vite-plugin-progress/-/vite-plugin-progress-0.0.4.tgz#aae132d4975c023a929b6959d8231f7bbe7b519f"
   dependencies:
     picocolors "^1.0.0"
     progress "^2.0.3"
