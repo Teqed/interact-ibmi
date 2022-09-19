@@ -875,7 +875,7 @@ acorn-walk@^8.1.1:
   version "8.2.0"
   resolved "https://registry.npmjs.org/acorn-walk/-/acorn-walk-8.2.0.tgz"
 
-acorn@^8.4.1, acorn@^8.5.0, acorn@^8.7.1, acorn@^8.8.0:
+acorn@^8.4.1, acorn@^8.5.0, acorn@^8.8.0:
   version "8.8.0"
   resolved "https://registry.npmjs.org/acorn/-/acorn-8.8.0.tgz"
 
@@ -4337,11 +4337,11 @@ strip-json-comments@3.1.1, strip-json-comments@^3.1.0, strip-json-comments@^3.1.
   version "3.1.1"
   resolved "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz"
 
-strip-literal@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.npmjs.org/strip-literal/-/strip-literal-0.4.0.tgz"
+strip-literal@^0.4.0, strip-literal@^0.4.1:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/strip-literal/-/strip-literal-0.4.2.tgz#4f9fa6c38bb157b924e9ace7155ebf8a2342cbcf"
   dependencies:
-    acorn "^8.7.1"
+    acorn "^8.8.0"
 
 supports-color@8.1.1:
   version "8.1.1"
@@ -4710,7 +4710,7 @@ vite-plugin-progress@^0.0.4:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vitest@0.23.2, vitest@^0.23.1:
+vitest@0.23.2:
   version "0.23.2"
   resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.23.2.tgz#f978de0f2ada1b7c5ff8dc479ce75b976957ff19"
   dependencies:
@@ -4721,6 +4721,22 @@ vitest@0.23.2, vitest@^0.23.1:
     debug "^4.3.4"
     local-pkg "^0.4.2"
     strip-literal "^0.4.0"
+    tinybench "^2.1.5"
+    tinypool "^0.3.0"
+    tinyspy "^1.0.2"
+    vite "^2.9.12 || ^3.0.0-0"
+
+vitest@^0.23.1:
+  version "0.23.4"
+  resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.23.4.tgz#7ebea620f203f4df09a27ca17819dc9da61f88ef"
+  dependencies:
+    "@types/chai" "^4.3.3"
+    "@types/chai-subset" "^1.3.3"
+    "@types/node" "*"
+    chai "^4.3.6"
+    debug "^4.3.4"
+    local-pkg "^0.4.2"
+    strip-literal "^0.4.1"
     tinybench "^2.1.5"
     tinypool "^0.3.0"
     tinyspy "^1.0.2"
