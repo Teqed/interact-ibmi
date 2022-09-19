@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* This is the login module.
 It asks for the user's name and password, which is used for logging in to the IBMi AS400. */
 import inquirer, { type Answers } from 'inquirer';
-import { assert } from '@sindresorhus/is';
 import { odbcLogin } from '../odbc-util.js';
 import loginUser from '../login-user.js';
 
@@ -35,11 +35,8 @@ export default async () => {
 	const deconLoginId = loginid[`login_name` as keyof typeof loginid];
 	const deconLoginPw = loginid[`login_pw` as keyof typeof loginid];
 	const deconLoginSys = loginid[`hostname` as keyof typeof loginid];
-	assert.string(deconLoginId);
-	assert.string(deconLoginPw);
-	assert.string(deconLoginSys);
-	loginUser.loginId = deconLoginId;
-	loginUser.loginPw = deconLoginPw;
-	loginUser.loginSys = deconLoginSys;
+	loginUser.loginId = deconLoginId as string;
+	loginUser.loginPw = deconLoginPw as string;
+	loginUser.loginSys = deconLoginSys as string;
 	return odbcLogin(loginUser.loginId, loginUser.loginPw, loginUser.loginSys);
 };

@@ -1,4 +1,3 @@
-import { assert } from '@sindresorhus/is';
 import inquirer, { type PromptModule } from 'inquirer';
 import { type GenericInputPrompt, type GenericListPrompt } from '../types.js';
 
@@ -15,8 +14,7 @@ export const genericGetCommand = async (prompt: GenericInputPrompt) => {
 	})) as PromptModule;
 
 	const commandString = command[prompt.name as keyof PromptModule];
-	assert.string(commandString);
-	const returnCommandString = commandString as string;
+	const returnCommandString = commandString as unknown as string;
 	return returnCommandString;
 };
 
@@ -39,8 +37,7 @@ export const genericListMenu = async (prompt: GenericListPrompt) => {
 		},
 	])) as PromptModule;
 	const menuChoice = menu[prompt.name as keyof PromptModule];
-	assert.string(menuChoice);
-	const menuChoiceString: string = menuChoice as string;
+	const menuChoiceString: string = menuChoice as unknown as string;
 	// Compare 'handled' to the array of strings in mainMenuChoices and return the index of the match (1-indexed).
 	const menuChoiceIndex = prompt.choices.indexOf(menuChoiceString) + 1;
 	return menuChoiceIndex;
@@ -65,7 +62,6 @@ export const generatedListMenu = async (prompt: GenericListPrompt) => {
 		},
 	])) as PromptModule;
 	const menuChoice = menu[prompt.name as keyof PromptModule];
-	assert.string(menuChoice);
-	const menuChoiceString: string = menuChoice as string;
+	const menuChoiceString: string = menuChoice as unknown as string;
 	return menuChoiceString;
 };
