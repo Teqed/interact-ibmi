@@ -116,6 +116,29 @@ type QualifiedObject = {
 	library: string | undefined; // *LIBL, *CURLIB
 	object: string;
 };
+function qualifyObject(QualifiedObject: QualifiedObject): string {
+	// If the object name is *SAME, *NONE, *SIGNOFF, *USRPRF, *WRKSTN, *DEV, *SYSVAL, *ASSIST, *HEX, *LANGIDSHR, *LANGIDUNQ, ignore the library name and return just the object name as a string.
+	// Otherwise, return a string in the format 'library/object'.
+	// If the library name is omitted, use *LIBL.\
+	// TODO: Test the special object parameters.
+	if (
+		QualifiedObject.object === `*SAME` ||
+		QualifiedObject.object === `*NONE` ||
+		QualifiedObject.object === `*SIGNOFF` ||
+		QualifiedObject.object === `*USRPRF` ||
+		QualifiedObject.object === `*WRKSTN` ||
+		QualifiedObject.object === `*DEV` ||
+		QualifiedObject.object === `*SYSVAL` ||
+		QualifiedObject.object === `*ASSIST` ||
+		QualifiedObject.object === `*HEX` ||
+		QualifiedObject.object === `*LANGIDSHR` ||
+		QualifiedObject.object === `*LANGIDUNQ`
+	)
+		return QualifiedObject.object;
+	const innerLibrary = QualifiedObject.library ?? `*LIBL`;
+	// return a string in the format 'library/object'.
+	return `${innerLibrary}/${QualifiedObject.object}`;
+}
 
 export function CHGUSRPRFFULL(
 	USRPRF: string,
@@ -186,9 +209,9 @@ export function CHGUSRPRFFULL(
 	if (STATUS !== undefined) command += ` STATUS(${STATUS})`;
 	if (USRCLS !== undefined) command += ` USRCLS(${USRCLS})`;
 	if (ASTLVL !== undefined) command += ` ASTLVL(${ASTLVL})`;
-	if (CURLIB !== undefined) command += ` CURLIB(${CURLIB})`;
-	if (INLPGM !== undefined) command += ` INLPGM(${INLPGM})`;
-	if (INLMNU !== undefined) command += ` INLMNU(${INLMNU})`;
+	if (CURLIB !== undefined) command += ` CURLIB(${qualifyObject(CURLIB)})`;
+	if (INLPGM !== undefined) command += ` INLPGM(${qualifyObject(INLPGM)})`;
+	if (INLMNU !== undefined) command += ` INLMNU(${qualifyObject(INLMNU)})`;
 	if (LMTCPB !== undefined) command += ` LMTCPB(${LMTCPB})`;
 	if (TEXT !== undefined) command += ` TEXT(${TEXT})`;
 	if (SPCAUT !== undefined) command += ` SPCAUT(${SPCAUT})`;
@@ -202,7 +225,7 @@ export function CHGUSRPRFFULL(
 	if (MAXSTGLRG !== undefined) command += ` MAXSTGLRG(${MAXSTGLRG})`;
 	if (MAXSTG !== undefined) command += ` MAXSTG(${MAXSTG})`;
 	if (PTYLMT !== undefined) command += ` PTYLMT(${PTYLMT})`;
-	if (JOBD !== undefined) command += ` JOBD(${JOBD})`;
+	if (JOBD !== undefined) command += ` JOBD(${qualifyObject(JOBD)})`;
 	if (GRPPRF !== undefined) command += ` GRPPRF(${GRPPRF})`;
 	if (OWNER !== undefined) command += ` OWNER(${OWNER})`;
 	if (GRPAUT !== undefined) command += ` GRPAUT(${GRPAUT})`;
@@ -210,13 +233,13 @@ export function CHGUSRPRFFULL(
 	if (SUPGRPPRF !== undefined) command += ` SUPGRPPRF(${SUPGRPPRF})`;
 	if (ACGCDE !== undefined) command += ` ACGCDE(${ACGCDE})`;
 	if (DOCPWD !== undefined) command += ` DOCPWD(${DOCPWD})`;
-	if (MSGQ !== undefined) command += ` MSGQ(${MSGQ})`;
+	if (MSGQ !== undefined) command += ` MSGQ(${qualifyObject(MSGQ)})`;
 	if (DLVRY !== undefined) command += ` DLVRY(${DLVRY})`;
 	if (SEV !== undefined) command += ` SEV(${SEV})`;
 	if (PRTDEV !== undefined) command += ` PRTDEV(${PRTDEV})`;
-	if (OUTQ !== undefined) command += ` OUTQ(${OUTQ})`;
-	if (ATNPGM !== undefined) command += ` ATNPGM(${ATNPGM})`;
-	if (SRTSEQ !== undefined) command += ` SRTSEQ(${SRTSEQ})`;
+	if (OUTQ !== undefined) command += ` OUTQ(${qualifyObject(OUTQ)})`;
+	if (ATNPGM !== undefined) command += ` ATNPGM(${qualifyObject(ATNPGM)})`;
+	if (SRTSEQ !== undefined) command += ` SRTSEQ(${qualifyObject(SRTSEQ)})`;
 	if (LANGID !== undefined) command += ` LANGID(${LANGID})`;
 	if (CNTRYID !== undefined) command += ` CNTRYID(${CNTRYID})`;
 	if (CCSID !== undefined) command += ` CCSID(${CCSID})`;
@@ -237,7 +260,7 @@ export function CHGUSRPRFFULL(
 	if (USREXPDATE !== undefined) command += ` USREXPDATE(${USREXPDATE})`;
 	if (USREXPITV !== undefined) command += ` USREXPITV(${USREXPITV})`;
 
-	return await this;
+	return command;
 }
 
 export function CHGOBJOWN(newUser: string) {
