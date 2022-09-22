@@ -178,7 +178,67 @@ export function CHGUSRPRFFULL(
 		  },
 	USREXPDATE?: Date | '*NONE' | '*SAME' | '*USREXPITV',
 	USREXPITV?: number, // 1-366
-);
+) {
+	// Create a string that says 'CHGUSRPRF ..." and then add the parameters. Skip any that are undefined.
+	let command = `CHGUSRPRF USRPRF(${USRPRF})`;
+	if (PASSWORD !== undefined) command += ` PASSWORD(${PASSWORD})`;
+	if (PWDEXP !== undefined) command += ` PWDEXP(${PWDEXP})`;
+	if (STATUS !== undefined) command += ` STATUS(${STATUS})`;
+	if (USRCLS !== undefined) command += ` USRCLS(${USRCLS})`;
+	if (ASTLVL !== undefined) command += ` ASTLVL(${ASTLVL})`;
+	if (CURLIB !== undefined) command += ` CURLIB(${CURLIB})`;
+	if (INLPGM !== undefined) command += ` INLPGM(${INLPGM})`;
+	if (INLMNU !== undefined) command += ` INLMNU(${INLMNU})`;
+	if (LMTCPB !== undefined) command += ` LMTCPB(${LMTCPB})`;
+	if (TEXT !== undefined) command += ` TEXT(${TEXT})`;
+	if (SPCAUT !== undefined) command += ` SPCAUT(${SPCAUT})`;
+	if (SPCENV !== undefined) command += ` SPCENV(${SPCENV})`;
+	if (DSPSGNINF !== undefined) command += ` DSPSGNINF(${DSPSGNINF})`;
+	if (PWDEXPITV !== undefined) command += ` PWDEXPITV(${PWDEXPITV})`;
+	if (PWDCHGBLK !== undefined) command += ` PWDCHGBLK(${PWDCHGBLK})`;
+	if (LCLPWDMGT !== undefined) command += ` LCLPWDMGT(${LCLPWDMGT})`;
+	if (LMTDEVSSN !== undefined) command += ` LMTDEVSSN(${LMTDEVSSN})`;
+	if (KBDBUF !== undefined) command += ` KBDBUF(${KBDBUF})`;
+	if (MAXSTGLRG !== undefined) command += ` MAXSTGLRG(${MAXSTGLRG})`;
+	if (MAXSTG !== undefined) command += ` MAXSTG(${MAXSTG})`;
+	if (PTYLMT !== undefined) command += ` PTYLMT(${PTYLMT})`;
+	if (JOBD !== undefined) command += ` JOBD(${JOBD})`;
+	if (GRPPRF !== undefined) command += ` GRPPRF(${GRPPRF})`;
+	if (OWNER !== undefined) command += ` OWNER(${OWNER})`;
+	if (GRPAUT !== undefined) command += ` GRPAUT(${GRPAUT})`;
+	if (GRPAUTTYP !== undefined) command += ` GRPAUTTYP(${GRPAUTTYP})`;
+	if (SUPGRPPRF !== undefined) command += ` SUPGRPPRF(${SUPGRPPRF})`;
+	if (ACGCDE !== undefined) command += ` ACGCDE(${ACGCDE})`;
+	if (DOCPWD !== undefined) command += ` DOCPWD(${DOCPWD})`;
+	if (MSGQ !== undefined) command += ` MSGQ(${MSGQ})`;
+	if (DLVRY !== undefined) command += ` DLVRY(${DLVRY})`;
+	if (SEV !== undefined) command += ` SEV(${SEV})`;
+	if (PRTDEV !== undefined) command += ` PRTDEV(${PRTDEV})`;
+	if (OUTQ !== undefined) command += ` OUTQ(${OUTQ})`;
+	if (ATNPGM !== undefined) command += ` ATNPGM(${ATNPGM})`;
+	if (SRTSEQ !== undefined) command += ` SRTSEQ(${SRTSEQ})`;
+	if (LANGID !== undefined) command += ` LANGID(${LANGID})`;
+	if (CNTRYID !== undefined) command += ` CNTRYID(${CNTRYID})`;
+	if (CCSID !== undefined) command += ` CCSID(${CCSID})`;
+	if (CHRIDCTL !== undefined) command += ` CHRIDCTL(${CHRIDCTL})`;
+	if (SETJOBATR !== undefined) command += ` SETJOBATR(${SETJOBATR})`;
+	if (LOCALE !== undefined) command += ` LOCALE(${LOCALE})`;
+	if (USROPT !== undefined) command += ` USROPT(${USROPT})`;
+	if (UID !== undefined) command += ` UID(${UID})`;
+	if (GID !== undefined) command += ` GID(${GID})`;
+	if (HOMEDIR !== undefined) command += ` HOMEDIR(${HOMEDIR})`;
+	if (EIMASSOC !== undefined) {
+		command +=
+			EIMASSOC === `*NOCHG`
+				? ` EIMASSOC(*NOCHG)`
+				: ` EIMASSOC(${EIMASSOC.ACTION} ${EIMASSOC.ASSOC} ${EIMASSOC.CREATE} ${EIMASSOC.EIMID})`;
+	}
+
+	if (USREXPDATE !== undefined) command += ` USREXPDATE(${USREXPDATE})`;
+	if (USREXPITV !== undefined) command += ` USREXPITV(${USREXPITV})`;
+
+	return await this;
+}
 
 export function CHGOBJOWN(newUser: string) {
 	const qcmdexc = `CHGOBJOWN \
