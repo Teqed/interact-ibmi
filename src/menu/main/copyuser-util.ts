@@ -323,5 +323,5 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 	});
 
-	return `Success`;
+	return `Successfully completed user creation, added to authorization lists, and added to directory.`;
 };
