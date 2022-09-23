@@ -305,6 +305,11 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	const querySystemName = await queryOdbc(`SELECT RDB_NAME FROM QSYS2.ASP_INFO`);
 	const RDB_NAME = Object.values(querySystemName[0])[0];
 	/* Create a directory entry for the new user. */
+	console.log(
+		`ADDDIRE USRID(${newUser.slice(0, 7)} ${RDB_NAME}) USRD(''${
+			toUser.userText
+		}'') USER(${newUser})`,
+	);
 	await cmdOdbc(
 		`ADDDIRE USRID(${newUser.slice(0, 7)} ${RDB_NAME}) USRD(''${
 			toUser.userText
@@ -320,11 +325,6 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		}
 
 		// Otherwise, throw an error.
-		console.log(
-			`ADDDIRE USRID(${newUser.slice(0, 7)} ${RDB_NAME}) USRD(''${
-				toUser.userText
-			}'') USER(${newUser})`,
-		);
 		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 	});
 
