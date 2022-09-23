@@ -249,10 +249,20 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		CHGUSRPRF({
 			CCSID: toUser.userCharacterCodeSetId,
 			MAXSTG: toUser.userMaximumAllowedStorage,
+			PWDEXP: `*YES`,
 			PWDEXPITV: toUser.userPasswordExpirationInterval,
 			USRPRF: toUser.userId,
 		}),
 	).catch(async (error: odbc.NodeOdbcError) => {
+		console.log(
+			CHGUSRPRF({
+				CCSID: toUser.userCharacterCodeSetId,
+				MAXSTG: toUser.userMaximumAllowedStorage,
+				PWDEXP: `*YES`,
+				PWDEXPITV: toUser.userPasswordExpirationInterval,
+				USRPRF: toUser.userId,
+			}),
+		);
 		const parseError = await parseErrorMessage(error);
 		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 	});
