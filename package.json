@@ -72,7 +72,7 @@
     "build:vite": "tsc && vite build",
     "build:run": "tsc && node .",
     "rebuild": "tsc && vite build && npm run test:mocha:badge && npm run test && node .",
-    "publish": "npm build && npm version patch && npm publish --publish=public",
+    "publish": "npm run build && npm version patch && npm publish --publish=public",
     "lint": "eslint --format=pretty . --ext .ts,.mts,.tsx",
     "test": "vitest run",
     "test:ui": "vitest --ui",
