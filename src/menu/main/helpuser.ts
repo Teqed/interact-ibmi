@@ -2,6 +2,7 @@ import chalk from 'chalk';
 import { genericListMenu } from '../util.js';
 import copyuser from './copyuser.js';
 import findUserMenu from './finduser.js';
+import reenableUserMenu from './reenableuser.js';
 
 // Create an array of strings containing menu choices.
 // eslint-disable-next-line import/prefer-default-export
@@ -14,7 +15,7 @@ export async function helpUsersMenu() {
 			`3. (WIP) Create User`,
 			`4. (WIP) Delete User`,
 			`5. (WIP) Change User Password`,
-			`6. (WIP) Reenable User`,
+			`6. Reenable User`,
 			`7. (WIP) Unlock NetDrive User`,
 			`8. Previous Menu`,
 		],
@@ -52,8 +53,7 @@ export async function helpUsersMenu() {
 			}
 
 			case 6: {
-				// return await reenableUserMenu();
-				break;
+				return await reenableUserMenu();
 			}
 
 			case 7: {
