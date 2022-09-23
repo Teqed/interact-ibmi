@@ -92,13 +92,17 @@ export function CHGUSRPRF(parameters: ParametersCHGUSRPRF) {
 		command +=
 			parameters.EIMASSOC === `*NOCHG`
 				? ` EIMASSOC(*NOCHG)`
-				: // eslint-disable-next-line max-len
-				  ` EIMASSOC(${parameters.EIMASSOC.ACTION} ${parameters.EIMASSOC.ASSOC} ${parameters.EIMASSOC.CREATE} ${parameters.EIMASSOC.EIMID})`;
+				: ` EIMASSOC(\
+${parameters.EIMASSOC.ACTION} \
+${parameters.EIMASSOC.ASSOC} \
+${parameters.EIMASSOC.CREATE}\
+${parameters.EIMASSOC.EIMID})`;
+		// TODO: Does EIMASSOC work correctly?
 	}
 
 	if (parameters.USREXPDATE !== undefined)
 		command += ` USREXPDATE(${parameters.USREXPDATE.toString()})`;
-	// TODO Does Date toString() return the correct format?
+	// TODO: Does Date toString() return the correct format?
 	if (parameters.USREXPITV !== undefined) command += ` USREXPITV(${parameters.USREXPITV})`;
 
 	return command;
