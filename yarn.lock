@@ -3528,8 +3528,8 @@ object.values@^1.1.5:
     es-abstract "^1.19.1"
 
 odbc@^2.4.4:
-  version "2.4.5"
-  resolved "https://registry.npmjs.org/odbc/-/odbc-2.4.5.tgz"
+  version "2.4.6"
+  resolved "https://registry.yarnpkg.com/odbc/-/odbc-2.4.6.tgz#0f13c20175fa871cebbf8ebc1ee1f4715183314b"
   dependencies:
     "@mapbox/node-pre-gyp" "^1.0.5"
     async "^3.0.1"
