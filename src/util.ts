@@ -86,7 +86,7 @@ export function convertUserInterface(
 	const userSupplementalGroups = notNull(copyUser.SUPPLEMENTAL_GROUP_LIST);
 	let userPasswordExpirationInterval;
 	let userMaximumAllowedStorage;
-	let userCharacterCodeSetId;
+	let userCharacterCodeSetId: number | '*HEX' | '*SAME' | '*SYSVAL';
 
 	switch (copyUser.PASSWORD_EXPIRATION_INTERVAL) {
 		case 0:

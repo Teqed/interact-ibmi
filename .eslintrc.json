@@ -70,7 +70,8 @@
 		   }
 		],
 		"no-console": "off",
-		"@typescript-eslint/indent" : ["warn", "tab"],
+		// "@typescript-eslint/indent" : ["warn", "tab"],
+		"@typescript-eslint/indent" : ["off"],
 		"@typescript-eslint/no-explicit-any" : "warn",
 		"@typescript-eslint/return-await" : "off",
 		"no-tabs" : [ "warn", {"allowIndentationTabs" : true}],
@@ -119,7 +120,8 @@
 		"@typescript-eslint/naming-convention": "warn",
 		"typescript-sort-keys/interface": "warn",
 		"@typescript-eslint/quotes": ["warn", "backtick"],
-		"@typescript-eslint/no-unnecessary-type-assertion": "warn"
+		"@typescript-eslint/no-unnecessary-type-assertion": "warn",
+		"@typescript-eslint/sort-type-union-intersection-members": "warn"
 	  },
 	  "settings": {
 		"import/resolver":{

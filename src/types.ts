@@ -9,7 +9,7 @@ export type IbmiUserInterface = {
 	AUTHORITY_COLLECTION_REPOSITORY_EXISTS: string;
 	AUTHORIZATION_NAME: string;
 	BLOCK_PASSWORD_CHANGE: string;
-	CHARACTER_CODE_SET_ID: string;
+	CHARACTER_CODE_SET_ID: number | '*HEX' | '*SAME' | '*SYSVAL' | 'QCCSID';
 	CHARACTER_IDENTIFIER_CONTROL: string;
 	COUNTRY_OR_REGION_ID: string;
 	CREATION_TIMESTAMP: string;
@@ -88,7 +88,7 @@ export type IbmiUserInterface = {
 export type CreateUserInterface = {
 	userAccountingCode: string;
 	userAttentionProgram: string;
-	userCharacterCodeSetId: string;
+	userCharacterCodeSetId: number | '*HEX' | '*SAME' | '*SYSVAL';
 	userClass: string;
 	userDelivery: string;
 	userGroupAuthority: string;
@@ -167,4 +167,106 @@ export type IbmiAuthorizationListInterface = {
 	OBJECT_REFERENCE: string;
 	OWNER: string;
 	TEXT_DESCRIPTION: string | null;
+};
+
+export type ClBooSame = '*NO' | '*SAME' | '*YES';
+export type ClBooSameSysval = '*NO' | '*SAME' | '*SYSVAL' | '*YES';
+export type UnQualifiedObject = {
+	library: string | undefined; // *LIBL, *CURLIB
+	object: string;
+};
+export type ParametersCHGUSRPRF = {
+	// TODO: These comments are out of order. They need to be aligned using this URL:
+	// ? https://www.ibm.com/docs/en/i/7.3?topic=ssw_ibm_i_73/cl/chgusrprf.htm
+	// *SAME, *NONE
+	ACGCDE?: string;
+	ASTLVL?: '*ADVANCED' | '*BASIC' | '*INTERMED' | '*SAME' | '*SYSVAL';
+	// *SAME, *WRKSTN, *DEV
+	ATNPGM?: UnQualifiedObject;
+	// *SAME, *SYSVAL
+	CCSID?: number | '*HEX' | '*SAME' | '*SYSVAL';
+	CHRIDCTL?: '*DEVD' | '*JOBCCSID' | '*SAME' | '*SYSVAL';
+	// *SAME, *SYSVAL
+	CNTRYID?: string;
+	CURLIB?: UnQualifiedObject;
+	// *SAME, *USRPRF
+	DLVRY?: '*BREAK' | '*DFT' | '*HOLD' | '*NOTIFY' | '*SAME';
+	// *SAME, *BLANK
+	DOCPWD?: string;
+	DSPSGNINF?: ClBooSameSysval;
+	// *SAME, *USRPRF, Path name
+	EIMASSOC?:
+		| '*NOCHG'
+		| {
+				ACTION: '*ADD' | '*REMOVE' | '*REPLACE'; // *USRPRF
+				ASSOC: '*ADMIN' | '*ALL' | '*SOURCE' | '*TARGET' | '*TGTSRC';
+				CREATE: '*CRTEIMID' | '*NOCRTEIMID';
+				EIMID: string;
+		  };
+	// 1-4294967294
+	GID?: number | '*GEN' | '*NONE' | '*SAME';
+	GRPAUT?: '*ALL' | '*CHANGE' | '*EXCLUDE' | '*NONE' | '*SAME' | '*USE';
+	GRPAUTTYP?: '*PGP' | '*PRIVATE' | '*SAME';
+	// *SAME
+	GRPPRF?: string;
+	// 1-4294967294
+	HOMEDIR?: string;
+	// *SAME, *NONE
+	INLMNU?: UnQualifiedObject;
+	// *SAME, *CRTDFT
+	INLPGM?: UnQualifiedObject;
+	// 0-9
+	JOBD?: UnQualifiedObject;
+	// *SAME, *SYSVAL, *YES, *NO, 0-9
+	KBDBUF?: string;
+	// *SAME, *SYSVAL, *HEX, *LANGIDSHR, *LANGIDUNQ
+	LANGID?: string;
+	// *SAME, *SYSVAL, *NONE, 1-99
+	LCLPWDMGT?: ClBooSame;
+	// *SAME, *SIGNOFF
+	LMTCPB?: '*NO' | '*PARTIAL' | '*SAME' | '*YES';
+	LMTDEVSSN?: number | string;
+	// *SAME, *SYSVAL, *NONE
+	// *CCSID, *DATFMT, *DATSEP, *DECFMT, *SRTSEQ, *TIMSEP
+	LOCALE?: string;
+	// *SAME, *NOMAX
+	MAXSTG?: number | string;
+	// *SAME, *SYSVAL, *NO, *TYPEAHEAD, *YES
+	MAXSTGLRG?: string;
+	// *SAME, *NONE
+	MSGQ?: UnQualifiedObject;
+	// *SAME, *WRKSTN, *SYSVAL
+	OUTQ?: UnQualifiedObject;
+	// *SAME, *NONE
+	OWNER?: '*SAME' | '*SYSVAL' | '*USRPRF';
+	PASSWORD?: string;
+	// 0-99
+	PRTDEV?: string;
+	// *SAME, *NOMAX, Integer
+	PTYLMT?: number | '*SAME';
+	// *SAME, *SYSVAL, *NOMAX, 1-366
+	PWDCHGBLK?: number | string;
+	// *SAME, *NONE
+	PWDEXP?: ClBooSame;
+	PWDEXPITV?: number | string;
+	SETJOBATR?: string[];
+	SEV?: number | '*SAME';
+	// *SAME, *BLANK
+	SPCAUT?: string[];
+	// *SAME, *USRCLS, *NONE
+	// *ALLOBJ, *AUDIT, *IOSYSCFG, *JOBCTL, *SAVSYS, *SECADM, *SERVICE, *SPLCTL
+	SPCENV?: '*NONE' | '*S36' | '*SAME' | '*SYSVAL';
+	// *SAME, *SYSVAL, *NONE, *ASSIST
+	SRTSEQ?: UnQualifiedObject;
+	STATUS?: '*DISABLED' | '*ENABLED' | '*SAME';
+	SUPGRPPRF?: string[];
+	TEXT?: string; // *SAME, *NONE
+	// *CLKWD, *EXPERT, *ROLLKEY, *NOSTSMSG, *STSMSG, *HLPFULL, *PRTMSG
+	UID?: number | '*SAME';
+	USRCLS?: '*PGMR' | '*SAME' | '*SECADM' | '*SECOFR' | '*SYSOPR' | '*USER';
+	USREXPDATE?: Date | '*NONE' | '*SAME' | '*USREXPITV';
+	USREXPITV?: number;
+	// *SAME, *SYSVAL, *NONE, *C, *POSIX, Path name
+	USROPT?: string[];
+	USRPRF: string; // 1-366
 };
