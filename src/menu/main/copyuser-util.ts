@@ -246,12 +246,12 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	console.log(`User ${newUser} created.`);
 
 	await cmdOdbc(
-		CHGUSRPRF(
-			toUser.userId,
-			toUser.userPasswordExpirationInterval,
-			toUser.userMaximumAllowedStorage,
-			toUser.userCharacterCodeSetId,
-		),
+		CHGUSRPRF({
+			CCSID: toUser.userCharacterCodeSetId,
+			MAXSTG: toUser.userMaximumAllowedStorage,
+			PWDEXPITV: toUser.userPasswordExpirationInterval,
+			USRPRF: toUser.userId,
+		}),
 	).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseErrorMessage(error);
 		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
