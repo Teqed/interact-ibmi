@@ -53,7 +53,8 @@ export async function helpUsersMenu() {
 			}
 
 			case 6: {
-				return await reenableUserMenu();
+				await reenableUserMenu();
+				break;
 			}
 
 			case 7: {
