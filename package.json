@@ -7,7 +7,7 @@
     "inquirer-interrupted-prompt": "^2.0.1",
     "odbc": "^2.4.4",
     "ora": "^6.1.2",
-    "type-fest": "^2.19.0"
+    "type-fest": "^3.0.0"
   },
   "description": "Menus for interacting with IBMi AS400 using node-odbc.",
   "devDependencies": {
