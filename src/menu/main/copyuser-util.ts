@@ -306,9 +306,9 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	const RDB_NAME = Object.values(querySystemName[0])[0];
 	/* Create a directory entry for the new user. */
 	await cmdOdbc(
-		`ADDDIRE USRID(${newUser.slice(0, 7)} ${RDB_NAME}) USRD('${
+		`ADDDIRE USRID(${newUser.slice(0, 7)} ${RDB_NAME}) USRD(''${
 			toUser.userText
-		}') USER(${newUser})`,
+		}'') USER(${newUser})`,
 	).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseErrorMessage(error);
 		if (parseError.errorNumber === `CPF9082`) {
