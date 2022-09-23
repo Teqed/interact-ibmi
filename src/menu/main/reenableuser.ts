@@ -1,6 +1,6 @@
-import { cmdOdbc } from '../../odbc-util';
-import { CHGUSRPRF } from '../../qcmdexc-util';
-import pickUser from './pickuser';
+import { cmdOdbc } from '../../odbc-util.js';
+import { CHGUSRPRF } from '../../qcmdexc-util.js';
+import pickUser from './pickuser.js';
 
 export default async function () {
 	const enableThisUser = await pickUser();
