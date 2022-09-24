@@ -1,5 +1,5 @@
 /* eslint-disable unicorn/no-null */
-import { type IbmiUserInterface, type BriefIbmiUserInterface } from './types.js';
+import { type IbmiUserInterface, type BriefIbmiUserInterface } from './util/types.js';
 /* Create an object named fromUser that has the same properties as fromUserRaw[0]. */
 
 export const testUser: IbmiUserInterface = {

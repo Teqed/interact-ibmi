@@ -1,7 +1,7 @@
 import chalk from 'chalk';
-import { cmdOdbc } from '../../odbc-util.js';
-import { CHGUSRPRF } from '../../qcmdexc-util.js';
-import findUsers from '../find-users.js';
+import { cmdOdbc } from '../../../util/odbc/odbc-util.js';
+import { CHGUSRPRF } from '../../../util/qcmdexc/qcmdexc-util.js';
+import findUsers from '../../../util/find-users.js';
 import pickDisabledUser from './pickdisableduser.js';
 
 export default async function () {

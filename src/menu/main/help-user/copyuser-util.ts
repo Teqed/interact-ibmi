@@ -1,14 +1,136 @@
 import inquirer from 'inquirer';
 import type odbc from 'odbc';
 import chalk from 'chalk';
-import { CRTUSRPRF, CHGUSRPRF, CHGOBJOWN, parseErrorMessage } from '../../qcmdexc-util.js';
-import { cmdOdbc, queryOdbc } from '../../odbc-util.js';
+import {
+	CRTUSRPRF,
+	CHGUSRPRF,
+	CHGOBJOWN,
+	parseErrorMessage,
+} from '../../../util/qcmdexc/qcmdexc-util.js';
+import { cmdOdbc, queryOdbc } from '../../../util/odbc/odbc-util.js';
 import {
 	type IbmiUserInterface,
 	type CreateUserInterface,
 	type IbmiAuthorizationListInterface,
-} from '../../types.js';
-import { convertUserInterface } from '../../util.js';
+} from '../../../util/types.js';
+import { qualifyObject } from '../../../util.js';
+
+/* If possiblyNullValue is null or undefined, return an empty string.
+Otherwise, return possiblyNullValue. */
+// eslint-disable-next-line @typescript-eslint/ban-types
+function notNull(possiblyNullValue: string | null | undefined): string {
+	if (possiblyNullValue === null) {
+		return ``;
+	}
+
+	if (typeof possiblyNullValue === `undefined`) {
+		return ``;
+	}
+
+	if (typeof possiblyNullValue === `string`) {
+		return possiblyNullValue; // Now definitely not null.
+	}
+
+	throw new Error(`Type unexpected`);
+}
+
+function convertUserInterface(
+	copyUser: IbmiUserInterface,
+	newUser: string,
+	newDescription: string,
+): CreateUserInterface {
+	/* Setup user values for CRTUSRPRF. */
+	const userId = newUser;
+	const userText = newDescription;
+	const userPassword = `*NONE`;
+	const userClass = copyUser.USER_CLASS_NAME;
+	const userInitialProgram = qualifyObject({
+		library: copyUser.INITIAL_PROGRAM_LIBRARY_NAME,
+		object: copyUser.INITIAL_PROGRAM_NAME,
+	});
+	const userInitialMenu = qualifyObject({
+		library: copyUser.INITIAL_MENU_LIBRARY_NAME,
+		object: copyUser.INITIAL_MENU_NAME,
+	});
+	const userLimitCapabilities = copyUser.LIMIT_CAPABILITIES;
+	const userSpecialAuthority = notNull(copyUser.SPECIAL_AUTHORITIES);
+	const userJobDescription = qualifyObject({
+		library: copyUser.JOB_DESCRIPTION_LIBRARY_NAME,
+		object: copyUser.JOB_DESCRIPTION_NAME,
+	});
+	const userGroupProfile = copyUser.GROUP_PROFILE_NAME;
+	const userGroupAuthority = copyUser.GROUP_AUTHORITY;
+	const userAccountingCode = notNull(copyUser.ACCOUNTING_CODE);
+	const userDelivery = copyUser.MESSAGE_QUEUE_DELIVERY_METHOD;
+	const userOutqueue = qualifyObject({
+		library: copyUser.OUTPUT_QUEUE_LIBRARY_NAME,
+		object: copyUser.OUTPUT_QUEUE_NAME,
+	});
+	const userAttentionProgram = qualifyObject({
+		library: copyUser.ATTENTION_KEY_HANDLING_PROGRAM_LIBRARY_NAME,
+		object: copyUser.ATTENTION_KEY_HANDLING_PROGRAM_NAME,
+	});
+	const userSupplementalGroups = notNull(copyUser.SUPPLEMENTAL_GROUP_LIST);
+	let userPasswordExpirationInterval;
+	let userMaximumAllowedStorage;
+	let userCharacterCodeSetId: number | '*HEX' | '*SAME' | '*SYSVAL';
+
+	switch (copyUser.PASSWORD_EXPIRATION_INTERVAL) {
+		case 0:
+			userPasswordExpirationInterval = `*SYSVAL`;
+			break;
+		case -1:
+			userPasswordExpirationInterval = `*NOMAX`;
+			break;
+		default:
+			userPasswordExpirationInterval = copyUser.PASSWORD_EXPIRATION_INTERVAL.toString();
+			break;
+	}
+
+	switch (copyUser.MAXIMUM_ALLOWED_STORAGE) {
+		// TODO These values need to be confirmed.
+		case BigInt(-1):
+			userMaximumAllowedStorage = `*NOMAX`;
+			break;
+		default:
+			// TODO This value needs to be confirmed.
+			userMaximumAllowedStorage = copyUser.MAXIMUM_ALLOWED_STORAGE.toString();
+	}
+
+	switch (copyUser.CHARACTER_CODE_SET_ID) {
+		// TODO These values need to be confirmed.
+		case `-2`:
+			userCharacterCodeSetId = `*SYSVAL`;
+			break;
+		case `QCCSID`:
+			userCharacterCodeSetId = `*SYSVAL`;
+			break;
+		default:
+			userCharacterCodeSetId = copyUser.CHARACTER_CODE_SET_ID;
+	}
+
+	return {
+		userAccountingCode,
+		userAttentionProgram,
+		userCharacterCodeSetId,
+		userClass,
+		userDelivery,
+		userGroupAuthority,
+		userGroupProfile,
+		userId,
+		userInitialMenu,
+		userInitialProgram,
+		userJobDescription,
+		userLimitCapabilities,
+		userMaximumAllowedStorage,
+		userOutqueue,
+		userPassword,
+		userPasswordExpirationInterval,
+		userSpecialAuthority,
+		userSupplementalGroups,
+		userText,
+	};
+}
 
 /* Copies an existing user and creates a new user with the same privileges. */
 

@@ -1,9 +1,9 @@
 import chalk from 'chalk';
-import { genericListMenu } from '../util.js';
+import { genericListMenu } from '../generic.js';
 import exitMenu, { exitMenuMain } from '../exit.js';
 import odbcMenu from './odbc.js';
 import cmdMenu from './cmd.js';
-import { helpUsersMenu } from './helpuser.js';
+import helpUsersMenu from './help-user/help-user.js';
 
 export default async () => {
 	while (!exitMenuMain)

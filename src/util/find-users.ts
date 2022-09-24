@@ -1,5 +1,5 @@
-import { queryOdbc } from '../odbc-util.js';
-import { type BriefIbmiUserInterface } from '../types.js';
+import { queryOdbc } from './odbc/odbc-util.js';
+import { type BriefIbmiUserInterface } from './types.js';
 
 // eslint-disable-next-line import/no-mutable-exports
 export let foundUsers: BriefIbmiUserInterface[];

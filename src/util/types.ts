@@ -171,7 +171,7 @@ export type IbmiAuthorizationListInterface = {
 
 export type ClBooSame = '*NO' | '*SAME' | '*YES';
 export type ClBooSameSysval = '*NO' | '*SAME' | '*SYSVAL' | '*YES';
-export type UnQualifiedObject = {
+export type QualifiedObject = {
 	library: string | undefined; // *LIBL, *CURLIB
 	object: string;
 };
@@ -182,13 +182,13 @@ export type ParametersCHGUSRPRF = {
 	ACGCDE?: string;
 	ASTLVL?: '*ADVANCED' | '*BASIC' | '*INTERMED' | '*SAME' | '*SYSVAL';
 	// *SAME, *WRKSTN, *DEV
-	ATNPGM?: UnQualifiedObject;
+	ATNPGM?: QualifiedObject;
 	// *SAME, *SYSVAL
 	CCSID?: number | '*HEX' | '*SAME' | '*SYSVAL';
 	CHRIDCTL?: '*DEVD' | '*JOBCCSID' | '*SAME' | '*SYSVAL';
 	// *SAME, *SYSVAL
 	CNTRYID?: string;
-	CURLIB?: UnQualifiedObject;
+	CURLIB?: QualifiedObject;
 	// *SAME, *USRPRF
 	DLVRY?: '*BREAK' | '*DFT' | '*HOLD' | '*NOTIFY' | '*SAME';
 	// *SAME, *BLANK
@@ -212,11 +212,11 @@ export type ParametersCHGUSRPRF = {
 	// 1-4294967294
 	HOMEDIR?: string;
 	// *SAME, *NONE
-	INLMNU?: UnQualifiedObject;
+	INLMNU?: QualifiedObject;
 	// *SAME, *CRTDFT
-	INLPGM?: UnQualifiedObject;
+	INLPGM?: QualifiedObject;
 	// 0-9
-	JOBD?: UnQualifiedObject;
+	JOBD?: QualifiedObject;
 	// *SAME, *SYSVAL, *YES, *NO, 0-9
 	KBDBUF?: string;
 	// *SAME, *SYSVAL, *HEX, *LANGIDSHR, *LANGIDUNQ
@@ -234,9 +234,9 @@ export type ParametersCHGUSRPRF = {
 	// *SAME, *SYSVAL, *NO, *TYPEAHEAD, *YES
 	MAXSTGLRG?: string;
 	// *SAME, *NONE
-	MSGQ?: UnQualifiedObject;
+	MSGQ?: QualifiedObject;
 	// *SAME, *WRKSTN, *SYSVAL
-	OUTQ?: UnQualifiedObject;
+	OUTQ?: QualifiedObject;
 	// *SAME, *NONE
 	OWNER?: '*SAME' | '*SYSVAL' | '*USRPRF';
 	PASSWORD?: string;
@@ -257,7 +257,7 @@ export type ParametersCHGUSRPRF = {
 	// *ALLOBJ, *AUDIT, *IOSYSCFG, *JOBCTL, *SAVSYS, *SECADM, *SERVICE, *SPLCTL
 	SPCENV?: '*NONE' | '*S36' | '*SAME' | '*SYSVAL';
 	// *SAME, *SYSVAL, *NONE, *ASSIST
-	SRTSEQ?: UnQualifiedObject;
+	SRTSEQ?: QualifiedObject;
 	STATUS?: '*DISABLED' | '*ENABLED' | '*SAME';
 	SUPGRPPRF?: string[];
 	TEXT?: string; // *SAME, *NONE

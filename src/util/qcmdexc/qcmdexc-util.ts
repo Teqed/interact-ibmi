@@ -1,11 +1,11 @@
 import type odbc from 'odbc';
 import {
 	type ParametersCHGUSRPRF,
-	type UnQualifiedObject,
+	type QualifiedObject,
 	type CreateUserInterface,
-} from './types.js';
+} from '../types.js';
 
-function qualifyObject(QualifiedObject: UnQualifiedObject): string {
+function qualifyObject(QualifiedObject: QualifiedObject): string {
 	// TODO: Test the special object parameters.
 	if (
 		QualifiedObject.object === `*SAME` ||

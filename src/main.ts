@@ -2,8 +2,8 @@
 /* eslint-disable node/shebang */
 // @ts-expect-error There is no declaration file for the package.
 import InterruptedPrompt from 'inquirer-interrupted-prompt';
-import findUsers from './menu/find-users.js';
-import login from './menu/login.js';
+import findUsers from './util/find-users.js';
+import login from './menu/login/login.js';
 import mainMenu from './menu/main/menu-main.js';
 // import { welcome } from './util.js';
 

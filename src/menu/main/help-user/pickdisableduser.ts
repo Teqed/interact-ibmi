@@ -1,6 +1,6 @@
 import ora from 'ora';
-import { generatedListMenu } from '../util.js';
-import { foundUsers } from '../find-users.js';
+import { generatedListMenu } from '../../generic.js';
+import { foundUsers } from '../../../util/find-users.js';
 
 export default async function () {
 	const spinner = ora(`Checking...`).start();

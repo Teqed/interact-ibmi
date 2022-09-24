@@ -1,5 +1,5 @@
 import inquirer, { type PromptModule } from 'inquirer';
-import { type GenericInputPrompt, type GenericListPrompt } from '../types.js';
+import { type GenericInputPrompt, type GenericListPrompt } from '../util/types.js';
 
 // The genericGetCommand function is used to get a command from the user.
 // It can be used to run queries or system commands, or to get input from the user.

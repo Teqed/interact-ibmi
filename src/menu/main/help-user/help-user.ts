@@ -1,23 +1,21 @@
 import chalk from 'chalk';
-import { genericListMenu } from '../util.js';
+import { genericListMenu } from '../../generic.js';
 import copyuser from './copyuser.js';
 import displayUserMenu from './display-user.js';
 import reenableUserMenu from './reenableuser.js';
 
 // Create an array of strings containing menu choices.
-// eslint-disable-next-line import/prefer-default-export
-export async function helpUsersMenu() {
+export default async function () {
 	/* Create an array of strings containing menu choices. */
 	const helpUsersMenuChoice = await genericListMenu({
 		choices: [
 			`1. Display User`,
 			`2. Copy User`,
-			`3. (WIP) Create User`,
-			`4. (WIP) Delete User`,
-			`5. (WIP) Change User Password`,
-			`6. Reenable User`,
-			`7. (WIP) Unlock NetDrive User`,
-			`8. Previous Menu`,
+			`3. (WIP) Delete User`,
+			`4. (WIP) Change User Password`,
+			`5. Reenable User`,
+			`6. (WIP) Unlock NetDrive User`,
+			`7. Previous Menu`,
 		],
 		message: `
 		${chalk.bgBlue(`Help Users Menu`)}
@@ -38,26 +36,21 @@ export async function helpUsersMenu() {
 			}
 
 			case 3: {
-				// return await createUserMenu();
-				break;
-			}
-
-			case 4: {
 				// return await deleteUserMenu();
 				break;
 			}
 
-			case 5: {
+			case 4: {
 				// return await changePasswordMenu();
 				break;
 			}
 
-			case 6: {
+			case 5: {
 				await reenableUserMenu();
 				break;
 			}
 
-			case 7: {
+			case 6: {
 				// return await unlockUserMenu();
 				break;
 			}

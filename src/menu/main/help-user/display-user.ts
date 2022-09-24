@@ -1,7 +1,7 @@
 import ora from 'ora';
-import { queryOdbc, getrows } from '../../odbc-util.js';
-import { foundUsers } from '../find-users.js';
-import { generatedListMenu } from '../util.js';
+import { queryOdbc, getrows } from '../../../util/odbc/odbc-util.js';
+import { foundUsers } from '../../../util/find-users.js';
+import { generatedListMenu } from '../../generic.js';
 
 const fullUserInfo = async (user: string) => {
 	const spinner = ora(`Checking...`).start();
