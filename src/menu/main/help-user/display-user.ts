@@ -18,8 +18,13 @@ const findUserPrompt = async () => {
 	// Create an array of strings containing menu choices made of the query results.
 	// Make sure that foundUsers is not undefined. If it is, sleep for 100 ms and try again.
 	while (foundUsers === undefined) {
+		const spinner = ora(`Finding users...`).start();
 		// eslint-disable-next-line no-await-in-loop
 		await sleep(100);
+		if (foundUsers !== undefined) {
+			spinner.succeed(`Users found!`);
+			break;
+		}
 	}
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
