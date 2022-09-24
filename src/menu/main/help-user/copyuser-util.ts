@@ -159,10 +159,14 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		return `User ${copyFromUser} does not exist.`;
 	}
 
-	const toUser: CreateUserInterface = convertUserInterface(fromUser, newUser, userDescription);
+	const toUser: CreateUserInterface = convertUserInterface(
+		fromUser,
+		newUser.toUpperCase(),
+		userDescription,
+	);
 
 	const query2 = await queryOdbc(
-		`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser}'`,
+		`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser.toUpperCase()}'`,
 	);
 	/* If the result of query2 is not empty, then the new user already exists. */
 	if (query2.length > 0) {
@@ -357,7 +361,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	});
 
 	const query5 = await queryOdbc(
-		`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser}'`,
+		`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser.toUpperCase()}'`,
 	);
 	/* If the result of query4 is empty, then the user failed to create. */
 	if (query5.length === 0) {
@@ -390,7 +394,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	});
 
 	/* Change object owner to QSECOFR. */
-	await cmdOdbc(CHGOBJOWN(newUser));
+	await cmdOdbc(CHGOBJOWN(newUser.toUpperCase()));
 	/* Check if fromUser exists on any authorization lists, then copy newUser to them. */
 	/* This information is on the view AUTHORIZATION_LIST_USER_INFO. */
 	const query6 = await queryOdbc(
@@ -404,7 +408,9 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		query6.forEach(async element => {
 			const thing = element as unknown as IbmiAuthorizationListInterface;
 			await cmdOdbc(
-				`ADDAUTLE AUTL(${thing.AUTHORIZATION_LIST}) USER(${newUser}) AUT(${thing.OBJECT_AUTHORITY})`,
+				`ADDAUTLE AUTL(${thing.AUTHORIZATION_LIST}) USER(${newUser.toUpperCase()}) AUT(${
+					thing.OBJECT_AUTHORITY
+				})`,
 			).catch(async (error: odbc.NodeOdbcError) => {
 				const parseError = await parseErrorMessage(error);
 				if (parseError.errorNumber === `CPF2282`) {
@@ -428,9 +434,9 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	const RDB_NAME = Object.values(querySystemName[0])[0];
 	/* Create a directory entry for the new user. */
 	await cmdOdbc(
-		`ADDDIRE USRID(${newUser.slice(0, 7)} ${RDB_NAME}) USRD(''${
+		`ADDDIRE USRID(${newUser.toUpperCase().slice(0, 7)} ${RDB_NAME}) USRD(''${
 			toUser.userText
-		}'') USER(${newUser})`,
+		}'') USER(${newUser.toUpperCase()})`,
 	).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseErrorMessage(error);
 		if (parseError.errorNumber === `CPF9082`) {
