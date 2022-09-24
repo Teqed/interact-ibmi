@@ -2,18 +2,6 @@
 It has prepared statements as well as allowing custom statements from user input. */
 import odbc from 'odbc';
 
-export const getrows = (query: odbc.Result<Array<number | string>>) => {
-	// Get the number of rows in the result set.
-	const numberRows = query.length;
-	// Iterate over the result set.
-	for (let index = 0; index < numberRows; index++) {
-		// Get the current row.
-		const row = query[index] as unknown as number;
-		// Print the row.
-		console.log(row);
-	}
-};
-
 export const getvalues = (query: odbc.Result<Array<number | string>>) => {
 	// Iterate over the results.
 	query.forEach(row => {

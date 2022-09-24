@@ -6,5 +6,7 @@ export default async function () {
 		message: `Enter SQL query:`,
 		name: `ODBC DB Query`,
 	});
-	return getRows(inputCommand);
+	const result = await getRows(inputCommand);
+	console.log(result);
+	return result;
 }

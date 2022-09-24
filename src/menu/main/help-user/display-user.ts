@@ -1,17 +1,14 @@
 import ora from 'ora';
-import { queryOdbc, getrows } from '../../../util/odbc/odbc-util.js';
 import { foundUsers } from '../../../util/find-users.js';
 import { generatedListMenu } from '../../generic.js';
 import { sleep } from '../../../util.js';
+import getRows from '../../../util/odbc/get-rows-odbc.js';
 
 const fullUserInfo = async (user: string) => {
-	const spinner = ora(`Checking...`).start();
-	const query = await queryOdbc(
-		`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${user}'`,
-	);
-	spinner.succeed(`User found!`);
-	getrows(query);
-	return query;
+	const query = `SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${user}'`;
+	const result = await getRows(query);
+	console.log(result);
+	return result;
 };
 
 const findUserPrompt = async () => {

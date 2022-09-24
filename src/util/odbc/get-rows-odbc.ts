@@ -1,17 +1,29 @@
 import type odbc from 'odbc';
-import { queryOdbc, getrows } from './odbc-util.js';
+import ora from 'ora';
+import { queryOdbc } from './odbc-util.js';
 
-// testOdbc shows the results of the query to the user, by basic getrows() query.
-
-export default async (command: string) => {
+export default async (statement: string) => {
+	const spinner = ora(`Executing SQL statement...`).start();
 	try {
-		const query: odbc.Result<Array<number | string>> = await queryOdbc(command);
-		getrows(query);
-		return query;
+		const query: odbc.Result<Array<number | string>> = await queryOdbc(statement);
+		// Destructure query into an array of objects
+		const rows = query.map(row => {
+			const object: Record<string, string> = {};
+			// eslint-disable-next-line no-restricted-syntax
+			for (const column of query.columns) {
+				object[column.name] = row[column.name as keyof typeof row as number] as string;
+			}
+
+			return object;
+		});
+		spinner.succeed(`SQL statement executed!`);
+
+		return rows;
 	} catch (error: unknown) {
 		console.log(error);
 		// const narrowError = error as NodeOdbcError;
 		// console.log(narrowError.odbcErrors.forEach);
-		return error;
+		spinner.fail(`SQL statement failed!`);
+		return `SQL statement failed!`;
 	}
 };
