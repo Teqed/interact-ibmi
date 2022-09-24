@@ -109,14 +109,15 @@ export type CreateUserInterface = {
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface GenericInputPrompt {
+	clearPromptOnDone?: boolean;
+	default?: string;
 	message: string;
-	name: string;
 }
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface GenericListPrompt {
 	choices: string[];
+	clearPromptOnDone?: boolean;
 	message: string;
-	name: string;
 }
 
 export type BriefIbmiUserInterface = {

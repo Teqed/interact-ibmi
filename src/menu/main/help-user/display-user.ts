@@ -1,6 +1,6 @@
 import ora from 'ora';
 import { foundUsers } from '../../../util/find-users.js';
-import { generatedListMenu } from '../../generic.js';
+import { generatedSelectMenu } from '../../generic.js';
 import { sleep } from '../../../util.js';
 import getRows from '../../../util/odbc/get-rows-odbc.js';
 
@@ -27,12 +27,11 @@ const findUserPrompt = async () => {
 		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 		return `${row.AUTHORIZATION_NAME}`;
 	});
-	const findUserMenuChoice = await generatedListMenu({
+	const findUserMenuChoice = await generatedSelectMenu({
 		choices,
 		message: `
 		Select a user.
 		`,
-		name: `findUser`,
 	});
 	return fullUserInfo(findUserMenuChoice);
 };

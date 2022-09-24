@@ -1,5 +1,5 @@
 import ora from 'ora';
-import { generatedListMenu } from '../../generic.js';
+import { generatedSelectMenu } from '../../generic.js';
 import diagnoseUsers from '../../../util/diagnose-users.js';
 import { foundUsers } from '../../../util/find-users.js';
 
@@ -12,12 +12,11 @@ export default async function () {
 		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 		return `${row.AUTHORIZATION_NAME}`;
 	});
-	const pickUserMenuChoice = await generatedListMenu({
+	const pickUserMenuChoice = await generatedSelectMenu({
 		choices,
 		message: `
 		Select a user below.
 		`,
-		name: `pickUser`,
 	});
 	void diagnoseUsers();
 	return pickUserMenuChoice;

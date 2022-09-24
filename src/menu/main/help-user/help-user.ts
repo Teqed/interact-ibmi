@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { genericListMenu } from '../../generic.js';
+import { genericSelectMenu } from '../../generic.js';
 import copyuser from './copyuser.js';
 import displayUserMenu from './display-user.js';
 import reenableUserMenu from './reenableuser.js';
@@ -7,50 +7,50 @@ import reenableUserMenu from './reenableuser.js';
 // Create an array of strings containing menu choices.
 export default async function () {
 	/* Create an array of strings containing menu choices. */
-	const helpUsersMenuChoice = await genericListMenu({
-		choices: [
-			`1. Display User`,
-			`2. Copy User`,
-			`3. (WIP) Delete User`,
-			`4. (WIP) Change User Password`,
-			`5. Reenable User`,
-			`6. (WIP) Unlock NetDrive User`,
-			`7. Previous Menu`,
-		],
+	const menuChoice = [
+		`1. Display User`, // 0 - displayUserMenu
+		`2. Copy User`, // 1 - copyuser
+		`3. (WIP) Delete User`, // 2 - deleteuser
+		`4. (WIP) Change User Password`, // 3 - changeuserpassword
+		`5. Reenable User`, // 4 - reenableUserMenu
+		`6. (WIP) Unlock NetDrive User`, // 5 - unlocknetdriveuser
+		`7. Previous Menu`, // 6 - exitMenu
+	];
+
+	const helpUsersMenuChoice = await genericSelectMenu({
+		choices: menuChoice,
 		message: `
 		${chalk.bgBlue(`Help Users Menu`)}
 		Choose a utility below.
 		`,
-		name: `main`,
 	});
-	// eslint-disable-next-line unicorn/consistent-function-scoping
-	const handleAnswer = async (answer: number) => {
+	const handleAnswer = async (answer: string) => {
 		/* A case inputCommand for answer */
 		switch (answer) {
-			case 1: {
+			case menuChoice[0]: {
 				return await displayUserMenu();
 			}
 
-			case 2: {
+			case menuChoice[1]: {
 				return await copyuser();
 			}
 
-			case 3: {
+			case menuChoice[2]: {
 				// return await deleteUserMenu();
 				break;
 			}
 
-			case 4: {
+			case menuChoice[3]: {
 				// return await changePasswordMenu();
 				break;
 			}
 
-			case 5: {
+			case menuChoice[4]: {
 				await reenableUserMenu();
 				break;
 			}
 
-			case 6: {
+			case menuChoice[5]: {
 				// return await unlockUserMenu();
 				break;
 			}
