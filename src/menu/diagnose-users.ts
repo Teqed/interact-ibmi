@@ -1,37 +1,22 @@
 import chalk from 'chalk';
-import { queryOdbc } from '../odbc-util.js';
-import { type BriefIbmiUserInterface } from '../types.js';
+import findUsers, { foundUsers } from './find-users.js';
 
-// eslint-disable-next-line import/prefer-default-export
-export async function diagnoseUsers() {
-	const sqlqry = `
-SELECT ACCOUNTING_CODE, AUTHORIZATION_NAME, DAYS_UNTIL_PASSWORD_EXPIRES, 
-INITIAL_MENU_LIBRARY_NAME, INITIAL_MENU_NAME, INITIAL_PROGRAM_LIBRARY_NAME, INITIAL_PROGRAM_NAME,
-LIMIT_CAPABILITIES, MESSAGE_QUEUE_DELIVERY_METHOD, 
-MESSAGE_QUEUE_LIBRARY_NAME, MESSAGE_QUEUE_NAME, MESSAGE_QUEUE_SEVERITY, NETSERVER_DISABLED, NO_PASSWORD_INDICATOR, 
-OBJECT_AUDITING_VALUE, OUTPUT_QUEUE_LIBRARY_NAME, OUTPUT_QUEUE_NAME, PASSWORD_CHANGE_DATE, 
-PASSWORD_EXPIRATION_INTERVAL, PREVIOUS_SIGNON, SET_PASSWORD_TO_EXPIRE, SIGN_ON_ATTEMPTS_NOT_VALID, 
-SPECIAL_AUTHORITIES, STATUS, TEXT_DESCRIPTION, USER_DEFAULT_PASSWORD, USER_EXPIRATION_INTERVAL, 
-USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
-
-	const findUserDianostics = await queryOdbc(sqlqry);
-	const foundUserDiagnostics: BriefIbmiUserInterface[] =
-		findUserDianostics as unknown as BriefIbmiUserInterface[];
-
+export default async function () {
 	// Create an array of user ids that are disabled.
-	const usersDiabled = foundUserDiagnostics
+	const usersDisabled = (await findUsers())
+		// eslint-disable-next-line unicorn/no-await-expression-member
 		.filter(user => user.STATUS === `*DISABLED`)
 		.map(user => user.AUTHORIZATION_NAME);
 
 	// If there are any users disabled, log a message listing their names.
-	if (usersDiabled.length > 0) {
-		console.log(chalk.blue(`The following users are disabled: ${usersDiabled.join(`, `)}`));
+	if (usersDisabled.length > 0) {
+		console.log(chalk.blue(`The following users are disabled: ${usersDisabled.join(`, `)}`));
 	}
 
 	// Create an array of user ids that are expired.
 	// We'll know because the days until password expires is less than 0.
 	// If user.DAYS_UNTIL_PASSWORD_EXPIRES is null, it's not expired.
-	const usersExpired = foundUserDiagnostics
+	const usersExpired = foundUsers
 		.filter(
 			user =>
 				user.DAYS_UNTIL_PASSWORD_EXPIRES !== null && user.DAYS_UNTIL_PASSWORD_EXPIRES < 0,
@@ -44,7 +29,7 @@ USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
 	}
 
 	// Create an array of user ids that are NETSERVER_DISABLED.
-	const usersNetServerDisabled = foundUserDiagnostics
+	const usersNetServerDisabled = foundUsers
 		.filter(user => user.NETSERVER_DISABLED === `YES`)
 		.map(user => user.AUTHORIZATION_NAME);
 
@@ -69,7 +54,7 @@ USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
 	// Create an object with the keys being the combination of INITIAL_PROGRAM_NAME and INITIAL_PROGRAM_LIBRARY_NAME
 	// and the values being the number of times that combination appears.
 	const initialProgramAndLibrary: Record<string, number> = {};
-	foundUserDiagnostics.forEach(user => {
+	foundUsers.forEach(user => {
 		const key = `${user.INITIAL_PROGRAM_NAME} ${user.INITIAL_PROGRAM_LIBRARY_NAME}`;
 		if (initialProgramAndLibrary[key]) {
 			initialProgramAndLibrary[key] += 1;
@@ -102,7 +87,7 @@ USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
 	// Create an object with the keys being the combination of OUTOUT_QUEUE_NAME and OUTPUT_QUEUE_LIBRARY_NAME
 	// and the values being the number of times that combination appears.
 	const outputQueueNameAndLibrary: Record<string, number> = {};
-	foundUserDiagnostics.forEach(user => {
+	foundUsers.forEach(user => {
 		const key = `${user.OUTPUT_QUEUE_NAME}/${user.OUTPUT_QUEUE_LIBRARY_NAME}`;
 		if (outputQueueNameAndLibrary[key]) {
 			outputQueueNameAndLibrary[key] += 1;
@@ -133,7 +118,7 @@ USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
 	// Find the last 5 users to sign on. Treat PREVIOUS_SIGNON as a Date.
 	// If PREVIOUS_SIGNON is null, ignore them.
 	// TODO: Make sure this actually works.
-	const lastFiveUsersToSignOn = foundUserDiagnostics
+	const lastFiveUsersToSignOn = foundUsers
 		.filter(user => user.PREVIOUS_SIGNON !== null)
 		.sort((a, b) => {
 			const aDate = new Date(a.PREVIOUS_SIGNON);
@@ -144,4 +129,5 @@ USER_ID_NUMBER FROM QSYS2.USER_INFO_BASIC`;
 		.map(user => user.AUTHORIZATION_NAME);
 	console.log(chalk.yellow(`The last 5 users to sign on are: `));
 	console.log(chalk.blue(lastFiveUsersToSignOn.join(`, `)));
+	return foundUsers;
 }

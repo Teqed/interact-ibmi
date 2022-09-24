@@ -1,19 +1,22 @@
+import ora from 'ora';
 import { queryOdbc, getrows } from '../../odbc-util.js';
+import { foundUsers } from '../find-users.js';
 import { generatedListMenu } from '../util.js';
 
-const findUser = async (user: string) => {
+const fullUserInfo = async (user: string) => {
+	const spinner = ora(`Checking...`).start();
 	const query = await queryOdbc(
 		`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${user}'`,
 	);
+	spinner.succeed(`User found!`);
 	getrows(query);
 	return query;
 };
 
-const findUser0 = async () => {
-	const query = await queryOdbc(`SELECT AUTHORIZATION_NAME, TEXT, STATUS FROM QSYS2.USER_INFO`);
+const findUserPrompt = async () => {
 	// Create an array of strings containing menu choices made of the query results.
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const choices = query.map((row: any) => {
+	const choices = foundUsers.map((row: any) => {
 		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 		return `${row.AUTHORIZATION_NAME}`;
 	});
@@ -24,17 +27,14 @@ const findUser0 = async () => {
 		`,
 		name: `findUser`,
 	});
-	return findUser(findUserMenuChoice);
+	return fullUserInfo(findUserMenuChoice);
 };
 
 export default async function () {
-	// const spinner = ora(`Checking...`).start();
 	try {
-		const find = await findUser0();
-		// spinner.succeed(`User found!`);
+		const find = await findUserPrompt();
 		return find;
 	} catch (error: unknown) {
-		// spinner.fail(`Error: ${error}`);
 		return error;
 	}
 }
