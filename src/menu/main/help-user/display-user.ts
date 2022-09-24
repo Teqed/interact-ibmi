@@ -33,7 +33,7 @@ const findUserPrompt = async () => {
 	const findUserMenuChoice = await generatedListMenu({
 		choices,
 		message: `
-		Select options below.
+		Select a user.
 		`,
 		name: `findUser`,
 	});
@@ -42,8 +42,7 @@ const findUserPrompt = async () => {
 
 export default async function () {
 	try {
-		const find = await findUserPrompt();
-		return find;
+		return await findUserPrompt();
 	} catch (error: unknown) {
 		return error;
 	}
