@@ -12,7 +12,7 @@ export default async () => {
 		await genericListMenu({
 			choices: [`1. Send System Command`, `2. Send SQL query`, `3. Help Users`, `4. Exit`],
 			message: `
-		${chalk.bgBlue(`MAIN MENU`)}
+		${chalk.bgBlue(`Main Menu`)}
 		Select options below.
 		`,
 			name: `main`,
