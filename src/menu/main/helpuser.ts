@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import { genericListMenu } from '../util.js';
 import copyuser from './copyuser.js';
-import findUserMenu from './finduser.js';
+import displayUserMenu from './display-user.js';
 import reenableUserMenu from './reenableuser.js';
 
 // Create an array of strings containing menu choices.
@@ -10,7 +10,7 @@ export async function helpUsersMenu() {
 	/* Create an array of strings containing menu choices. */
 	const helpUsersMenuChoice = await genericListMenu({
 		choices: [
-			`1. Find User`,
+			`1. Display User`,
 			`2. Copy User`,
 			`3. (WIP) Create User`,
 			`4. (WIP) Delete User`,
@@ -30,7 +30,7 @@ export async function helpUsersMenu() {
 		/* A case inputCommand for answer */
 		switch (answer) {
 			case 1: {
-				return await findUserMenu();
+				return await displayUserMenu();
 			}
 
 			case 2: {

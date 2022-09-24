@@ -53,6 +53,7 @@ export const generatedListMenu = async (prompt: GenericListPrompt) => {
 	// Returns the choice the user made as a string.
 	// 1-index is used to match the keybindings of inquirer on the command line.
 	// The user can press 1 to select the first option, 2 for the second, etc.
+	console.clear();
 	const menu = (await inquirer.prompt([
 		{
 			choices: prompt.choices,

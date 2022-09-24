@@ -1,10 +1,11 @@
 import ora from 'ora';
-import { queryOdbc } from '../../odbc-util.js';
 import { generatedListMenu } from '../util.js';
+import diagnoseUsers from '../diagnose-users.js';
+import { foundUsers } from '../find-users.js';
 
 export default async function () {
 	const spinner = ora(`Checking...`).start();
-	const query = await queryOdbc(`SELECT AUTHORIZATION_NAME, TEXT, STATUS FROM QSYS2.USER_INFO`);
+	const query = foundUsers;
 	spinner.succeed(`Users found!`);
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const choices = query.map((row: any) => {
@@ -18,5 +19,6 @@ export default async function () {
 		`,
 		name: `pickUser`,
 	});
+	void diagnoseUsers();
 	return pickUserMenuChoice;
 }
