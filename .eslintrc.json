@@ -125,7 +125,8 @@
 		"unicorn/no-await-expression-member": "warn",
 		"canonical/sort-keys": "warn",
 		"no-await-in-loop": "warn",
-		"promise/prefer-await-to-then": "warn"
+		"promise/prefer-await-to-then": "warn",
+		"import/prefer-default-export": "warn"
 	  },
 	  "settings": {
 		"import/resolver":{
