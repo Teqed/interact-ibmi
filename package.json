@@ -80,7 +80,7 @@
     "test:mocha:badge": "cross-env MOCHA_BADGE_SUBJECT=tests MOCHA_BADGE_STYLE=plastic ./node_modules/.bin/mocha test/mocha/*.test.js --reporter mocha-reporter-badge > .github/assets/build.svg"
   },
   "type": "module",
-  "version": "1.0.33",
+  "version": "1.0.34",
   "engines": {
     "node": ">=16.0.0"
   },
