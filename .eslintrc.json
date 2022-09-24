@@ -121,7 +121,11 @@
 		"typescript-sort-keys/interface": "warn",
 		"@typescript-eslint/quotes": ["warn", "backtick"],
 		"@typescript-eslint/no-unnecessary-type-assertion": "warn",
-		"@typescript-eslint/sort-type-union-intersection-members": "warn"
+		"@typescript-eslint/sort-type-union-intersection-members": "warn",
+		"unicorn/no-await-expression-member": "warn",
+		"canonical/sort-keys": "warn",
+		"no-await-in-loop": "warn",
+		"promise/prefer-await-to-then": "warn"
 	  },
 	  "settings": {
 		"import/resolver":{
