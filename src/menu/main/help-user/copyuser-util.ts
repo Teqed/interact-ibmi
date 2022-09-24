@@ -136,7 +136,7 @@ function convertUserInterface(
 
 export default async (copyFromUser: string, newUser: string, userDescription: string) => {
 	const fromUserRaw = await queryOdbc(
-		`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser}'`,
+		`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser.toUpperCase()}'`,
 	);
 	// Deconstruct the object
 	const fromUser: IbmiUserInterface = fromUserRaw[0] as unknown as IbmiUserInterface;
@@ -394,7 +394,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	/* Check if fromUser exists on any authorization lists, then copy newUser to them. */
 	/* This information is on the view AUTHORIZATION_LIST_USER_INFO. */
 	const query6 = await queryOdbc(
-		`SELECT * FROM QSYS2.AUTHORIZATION_LIST_USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser}'`,
+		`SELECT * FROM QSYS2.AUTHORIZATION_LIST_USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser.toUpperCase()}'`,
 	);
 	/* If the result of query6 is empty, then the user does not exist on any authorization lists. */
 	if (query6.length === 0) {
