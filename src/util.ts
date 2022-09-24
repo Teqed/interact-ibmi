@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 /* This contains utility functions for the application. */
 
 import chalkAnimation from 'chalk-animation';

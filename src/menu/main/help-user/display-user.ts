@@ -2,6 +2,7 @@ import ora from 'ora';
 import { queryOdbc, getrows } from '../../../util/odbc/odbc-util.js';
 import { foundUsers } from '../../../util/find-users.js';
 import { generatedListMenu } from '../../generic.js';
+import { sleep } from '../../../util.js';
 
 const fullUserInfo = async (user: string) => {
 	const spinner = ora(`Checking...`).start();
@@ -15,6 +16,12 @@ const fullUserInfo = async (user: string) => {
 
 const findUserPrompt = async () => {
 	// Create an array of strings containing menu choices made of the query results.
+	// Make sure that foundUsers is not empty. If it is, sleep for 100 ms and try again.
+	while (foundUsers.length === 0) {
+		// eslint-disable-next-line no-await-in-loop
+		await sleep(100);
+	}
+
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const choices = foundUsers.map((row: any) => {
 		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
