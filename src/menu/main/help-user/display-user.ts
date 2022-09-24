@@ -16,8 +16,8 @@ const fullUserInfo = async (user: string) => {
 
 const findUserPrompt = async () => {
 	// Create an array of strings containing menu choices made of the query results.
-	// Make sure that foundUsers is not empty. If it is, sleep for 100 ms and try again.
-	while (foundUsers.length === 0) {
+	// Make sure that foundUsers is not undefined. If it is, sleep for 100 ms and try again.
+	while (foundUsers === undefined) {
 		// eslint-disable-next-line no-await-in-loop
 		await sleep(100);
 	}
