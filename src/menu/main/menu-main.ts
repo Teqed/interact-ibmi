@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { genericSelectMenu } from '../generic.js';
+import { genericPressSpacePrompt, genericSelectMenu } from '../generic.js';
 import exitMenu, { exitMenuMain } from '../exit.js';
 import odbcMenu from './odbc.js';
 import cmdMenu from './cmd.js';
@@ -10,7 +10,8 @@ export default async () => {
 		`1. Send System Command`, // 0 - cmdMenu
 		`2. Send SQL query`, // 1 - odbcMenu
 		`3. Help Users`, // 2 - helpUsersMenu
-		`4. Exit`, // 3 - exitMenu
+		`4. Test prompt`, // 3 - testPrompt
+		`5. Exit`, // default - exitMenu
 	];
 	while (!exitMenuMain)
 		/* Create an array of strings containing menu choices. */
@@ -37,7 +38,7 @@ export default async () => {
 				}
 
 				case menuChoice[3]: {
-					return await exitMenu();
+					return await genericPressSpacePrompt();
 				}
 
 				default: {

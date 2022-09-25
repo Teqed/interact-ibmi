@@ -1,4 +1,5 @@
-import inquirer from 'inquirer';
+import select from '@inquirer/select';
+import confirm from '@inquirer/confirm';
 import type odbc from 'odbc';
 import chalk from 'chalk';
 import {
@@ -14,6 +15,7 @@ import {
 	type IbmiAuthorizationListInterface,
 } from '../../../util/types.js';
 import { qualifyObject } from '../../../util.js';
+import { genericPasswordMenu, genericGetCommand } from '../../generic.js';
 
 /* If possiblyNullValue is null or undefined, return an empty string.
 Otherwise, return possiblyNullValue. */
@@ -142,15 +144,11 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	const fromUser: IbmiUserInterface = fromUserRaw[0] as unknown as IbmiUserInterface;
 	/* If the result of query is empty, then the user does not exist. */
 	if (fromUserRaw.length === 0) {
-		const confirmPrompt = inquirer.prompt([
-			{
-				message: `User ${copyFromUser} does not exist. Would you like to use the default user profile?`,
-				name: `confirm`,
-				type: `confirm`,
-			},
-		]);
-		const confirmAnswer = (await confirmPrompt) as { confirm: boolean };
-		if (confirmAnswer.confirm) {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
+		const confirmPrompt = (await confirm({
+			message: `User ${copyFromUser} does not exist. Would you like to use the default user profile?`,
+		})) as boolean;
+		if (confirmPrompt) {
 			// TODO Search for default user profile.
 			// TODO Create user with default user profile.
 		}
@@ -223,127 +221,92 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	// TODO Prompt to provide Email.
 
 	/* Prompt for new password. */
-	await inquirer
-		.prompt([
-			{
-				message: `Enter new password for ${newUser}:`,
-				name: `newPassword`,
-				type: `password`,
-			},
-		])
-		.then(async answers => {
-			toUser.userPassword = answers.newPassword as string;
-		});
+	await genericPasswordMenu({
+		clearPromptOnDone: false,
+		mask: `*`,
+		message: `Enter new password for ${newUser}:`,
+	}).then(async answers => {
+		toUser.userPassword = answers as string;
+	});
 	let changeAttributesBoo = true;
+	let choicesObject: Array<{ value: string }> = [
+		{ value: `Continue` },
+		{ value: `Initial Program ${toUser.userInitialProgram}` },
+		{ value: `Limit Capabilities ${toUser.userLimitCapabilities}` },
+		{ value: `Text Description ${toUser.userText}` },
+		{ value: `Special Authorities ${toUser.userSpecialAuthority}` },
+		{ value: `Outqueue ${toUser.userOutqueue}` },
+	];
+
 	while (changeAttributesBoo)
 		/* Create an inquirer prompt that has options for initial program, limit capabilities, 
 	text description, special authorities, and outqueue. */
 		// eslint-disable-next-line no-await-in-loop
-		await inquirer
-			.prompt([
-				{
-					choices: [
-						`Continue`,
-						`Initial Program ${toUser.userInitialProgram}`,
-						`Limit Capabilities ${toUser.userLimitCapabilities}`,
-						`Text Description ${toUser.userText}`,
-						`Special Authorities ${toUser.userSpecialAuthority}`,
-						`Outqueue ${toUser.userOutqueue}`,
-					],
-					message: `Change any user profile attributes?`,
-					name: `changeAttributes`,
-					type: `list`,
-				},
-			])
+		await select({
+			choices: choicesObject,
+			message: `Change any user profile attributes?`,
+		})
 			// eslint-disable-next-line @typescript-eslint/no-loop-func
 			.then(async answers => {
-				const changeAttributes = answers.changeAttributes as string;
-				switch (changeAttributes) {
+				switch (answers) {
 					case `Initial Program ${toUser.userInitialProgram}`: {
-						await inquirer
-							.prompt([
-								{
-									default: toUser.userInitialProgram,
-									message: `Enter new initial program for ${newUser}:`,
-									name: `newInitialProgram`,
-									type: `input`,
-								},
-							])
+						await genericGetCommand({
+							default: toUser.userInitialProgram,
+							message: `Enter new initial program for ${newUser}:`,
+						})
 							// eslint-disable-next-line @typescript-eslint/no-shadow
 							.then(async answers => {
-								toUser.userInitialProgram = answers.newInitialProgram as string;
+								toUser.userInitialProgram = answers;
 							});
 						break;
 					}
 
 					case `Limit Capabilities ${toUser.userLimitCapabilities}`: {
-						await inquirer
-							.prompt([
-								{
-									default: toUser.userLimitCapabilities,
-									message: `Enter new limit capabilities for ${newUser}:`,
-									name: `newLimitCapabilities`,
-									type: `input`,
-								},
-							])
+						await genericGetCommand({
+							default: toUser.userLimitCapabilities,
+							message: `Enter new limit capabilities for ${newUser}:`,
+						})
 							// eslint-disable-next-line @typescript-eslint/no-shadow
 							.then(async answers => {
-								toUser.userLimitCapabilities =
-									answers.newLimitCapabilities as string;
+								toUser.userLimitCapabilities = answers;
 							});
 
 						break;
 					}
 
 					case `Text Description ${toUser.userText}`: {
-						await inquirer
-							.prompt([
-								{
-									default: toUser.userText,
-									message: `Enter new text description for ${newUser}:`,
-									name: `newTextDescription`,
-									type: `input`,
-								},
-							])
+						await genericGetCommand({
+							default: toUser.userText,
+							message: `Enter new text description for ${newUser}:`,
+						})
 							// eslint-disable-next-line @typescript-eslint/no-shadow
 							.then(async answers => {
-								toUser.userText = answers.newTextDescription as string;
+								toUser.userText = answers;
 							});
 						break;
 					}
 
 					case `Special Authorities ${toUser.userSpecialAuthority}`: {
-						await inquirer
-							.prompt([
-								{
-									default: toUser.userSpecialAuthority,
-									message: `Enter new special authorities for ${newUser}:`,
-									name: `newSpecialAuthorities`,
-									type: `input`,
-								},
-							])
+						await genericGetCommand({
+							default: toUser.userSpecialAuthority,
+							message: `Enter new special authorities for ${newUser}:`,
+						})
 							// eslint-disable-next-line @typescript-eslint/no-shadow
 							.then(async answers => {
-								toUser.userSpecialAuthority =
-									answers.newSpecialAuthorities as string;
+								toUser.userSpecialAuthority = answers;
 							});
 
 						break;
 					}
 
 					case `Outqueue ${toUser.userOutqueue}`: {
-						await inquirer
-							.prompt([
-								{
-									default: toUser.userOutqueue,
-									message: `Enter new outqueue for ${newUser}:`,
-									name: `newOutqueue`,
-									type: `input`,
-								},
-							])
+						await genericGetCommand({
+							default: toUser.userOutqueue,
+							message: `Enter new outqueue for ${newUser}:`,
+						})
 							// eslint-disable-next-line @typescript-eslint/no-shadow
 							.then(async answers => {
-								toUser.userOutqueue = answers.newOutqueue as string;
+								toUser.userOutqueue = answers;
 							});
 						break;
 					}
@@ -352,6 +315,15 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 						changeAttributesBoo = false;
 					}
 				}
+
+				choicesObject = [
+					{ value: `Continue` },
+					{ value: `Initial Program ${toUser.userInitialProgram}` },
+					{ value: `Limit Capabilities ${toUser.userLimitCapabilities}` },
+					{ value: `Text Description ${toUser.userText}` },
+					{ value: `Special Authorities ${toUser.userSpecialAuthority}` },
+					{ value: `Outqueue ${toUser.userOutqueue}` },
+				];
 			});
 
 	/* Assemble the user variables into a string using template literals. */

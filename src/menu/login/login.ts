@@ -4,6 +4,7 @@ import { odbcLogin } from '../../util/odbc/odbc-util.js';
 import { genericGetCommand, genericPasswordMenu } from '../generic.js';
 
 export default async () => {
+	console.clear();
 	const loginSys = await genericGetCommand({
 		clearPromptOnDone: false,
 		default: `PUB400.COM`,

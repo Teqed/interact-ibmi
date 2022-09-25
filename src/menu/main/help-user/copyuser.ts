@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import copyUser from './copyuser-util.js';
-import { genericGetCommand } from '../../generic.js';
+import { genericGetCommand, genericPressEnterPrompt } from '../../generic.js';
 
 export default async function () {
 	const fromUser: string = await genericGetCommand({
@@ -22,5 +22,5 @@ export default async function () {
 			return `Failure to create user.`;
 		}),
 	);
-	return 0;
+	return genericPressEnterPrompt();
 }

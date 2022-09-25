@@ -1,7 +1,5 @@
 #! /usr/bin/env node
 /* eslint-disable node/shebang */
-// @ts-expect-error There is no declaration file for the package.
-import InterruptedPrompt from 'inquirer-interrupted-prompt';
 import findUsers from './util/find-users.js';
 import login from './menu/login/login.js';
 import mainMenu from './menu/main/menu-main.js';
@@ -17,14 +15,7 @@ const start = async () => {
 		foundUserDiagnostics = findUsers();
 		await mainMenu();
 	} catch (error: unknown) {
-		if (error === InterruptedPrompt.EVENT_INTERRUPTED) {
-			console.log(``);
-			console.log(`You have interrupted the prompt. Please try again.`);
-			console.log(``);
-			await mainMenu();
-		} else {
-			console.log(error);
-		}
+		console.log(error);
 	}
 };
 

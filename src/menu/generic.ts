@@ -2,6 +2,14 @@ import chalk from 'chalk';
 import input from '@inquirer/input';
 import rawlist from '@inquirer/rawlist';
 import select from '@inquirer/select';
+import {
+	createPrompt,
+	useState,
+	useKeypress,
+	isEnterKey,
+	usePrefix,
+	isSpaceKey,
+} from '@inquirer/core';
 import { type GenericInputPrompt, type GenericListPrompt } from '../util/types.js';
 
 // The genericGetCommand function is used to get a command from the user.
@@ -100,13 +108,16 @@ export const generatedSelectMenu = async (prompt: GenericListPrompt) => {
 	return menu;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const genericPasswordMenu = async (config: any, clearPromptOnDone?: boolean) => {
+export const genericPasswordMenu = async (config: {
+	clearPromptOnDone?: boolean;
+	mask?: string;
+	message: string;
+}) => {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
 	return input(
 		{
-			...config,
 			default: undefined,
+			message: config.message,
 			// eslint-disable-next-line @typescript-eslint/no-shadow
 			transformer(input, { isFinal }) {
 				if (config.mask) {
@@ -120,6 +131,97 @@ export const genericPasswordMenu = async (config: any, clearPromptOnDone?: boole
 				return ``;
 			},
 		},
-		{ clearPromptOnDone: clearPromptOnDone ?? true },
+		{ clearPromptOnDone: config.clearPromptOnDone ?? true },
+	);
+};
+
+const customConfirm = createPrompt<
+	boolean,
+	{ continueKey?: `enter` | `space`; default?: boolean; message: string }
+>((config, done) => {
+	const [status, setStatus] = useState(`pending`);
+	const [value, setValue] = useState(``);
+	const prefix = usePrefix();
+
+	switch (config.continueKey) {
+		case `enter`: {
+			useKeypress((key, rl) => {
+				if (isEnterKey(key)) {
+					const answer = value ? /^y(es)?/i.test(value) : config.default !== false;
+					setValue(answer ? `yes` : `no`);
+					setStatus(`done`);
+					rl.close();
+					done(answer);
+				} else {
+					// Ignore other keys.
+				}
+			});
+			break;
+		}
+
+		case `space`: {
+			useKeypress((key, rl) => {
+				if (isSpaceKey(key)) {
+					const answer = value ? /^y(es)?/i.test(value) : config.default !== false;
+					setValue(answer ? `yes` : `no`);
+					setStatus(`done`);
+					rl.close();
+					done(answer);
+				} else {
+					// Ignore other keys.
+				}
+			});
+			break;
+		}
+
+		default: {
+			useKeypress((key, rl) => {
+				rl.close();
+				setValue(key.name);
+				setStatus(`done`);
+				done(true);
+			});
+			break;
+		}
+	}
+
+	let formattedValue = value;
+	let defaultValue = ``;
+	if (status === `done`) {
+		formattedValue = chalk.cyan(value);
+	} else {
+		defaultValue = chalk.dim(``);
+	}
+
+	const message = chalk.bold(config.message);
+	return `${prefix} ${message}${defaultValue} ${formattedValue}`;
+});
+
+export const genericPressKeyPrompt = async () => {
+	return await customConfirm(
+		{
+			message: `Press any key to continue...`,
+		},
+		{ clearPromptOnDone: true },
+	);
+};
+
+export const genericPressEnterPrompt = async () => {
+	return await customConfirm(
+		{
+			continueKey: `enter`,
+			message: `Press the Enter key to continue...`,
+		},
+		{ clearPromptOnDone: true },
+	);
+};
+
+export const genericPressSpacePrompt = async () => {
+	return await customConfirm(
+		{
+			continueKey: `space`,
+			message: `Press the Space key to continue...`,
+		},
+		{ clearPromptOnDone: true },
 	);
 };
