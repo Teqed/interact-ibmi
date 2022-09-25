@@ -126,7 +126,8 @@
 		"canonical/sort-keys": "warn",
 		"no-await-in-loop": "warn",
 		"promise/prefer-await-to-then": "warn",
-		"import/prefer-default-export": "warn"
+		"import/prefer-default-export": "warn",
+		"unicorn/prevent-abbreviations": "warn"
 	  },
 	  "settings": {
 		"import/resolver":{
