@@ -2,13 +2,12 @@ import select from '@inquirer/select';
 import confirm from '@inquirer/confirm';
 import type odbc from 'odbc';
 import chalk from 'chalk';
-import {
-	CRTUSRPRF,
-	CHGUSRPRF,
-	CHGOBJOWN,
-	parseErrorMessage,
-} from '../../../util/qcmdexc/qcmdexc-util.js';
-import { cmdOdbc, queryOdbc } from '../../../util/odbc/odbc-util.js';
+import { parseErrorMessage } from '../../../util/qcmdexc/qcmdexc-util.js';
+import CHGOBJOWN from '../../../util/qcmdexc/chgobjown.js';
+import CRTUSRPRF from '../../../util/qcmdexc/crtusrprf.js';
+import CHGUSRPRF from '../../../util/qcmdexc/chgusrprf.js';
+import { queryOdbc } from '../../../util/odbc/odbc-util.js';
+import QCMDEXC from '../../../util/qcmdexc/qcmdexc.js';
 import {
 	type IbmiUserInterface,
 	type CreateUserInterface,
@@ -327,7 +326,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 			});
 
 	/* Assemble the user variables into a string using template literals. */
-	await cmdOdbc(CRTUSRPRF(toUser)).catch(async (error: odbc.NodeOdbcError) => {
+	await QCMDEXC(CRTUSRPRF(toUser)).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseErrorMessage(error);
 		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
 	});
@@ -343,7 +342,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 
 	console.log(`User ${newUser} created.`);
 
-	await cmdOdbc(
+	await QCMDEXC(
 		CHGUSRPRF({
 			CCSID: toUser.userCharacterCodeSetId,
 			MAXSTG: toUser.userMaximumAllowedStorage,
@@ -366,7 +365,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	});
 
 	/* Change object owner to QSECOFR. */
-	await cmdOdbc(CHGOBJOWN(newUser.toUpperCase()));
+	await QCMDEXC(CHGOBJOWN(newUser.toUpperCase()));
 	/* Check if fromUser exists on any authorization lists, then copy newUser to them. */
 	/* This information is on the view AUTHORIZATION_LIST_USER_INFO. */
 	const query6 = await queryOdbc(
@@ -379,7 +378,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		/* Copy newUser to all authorization lists that fromUser is on. */
 		query6.forEach(async element => {
 			const thing = element as unknown as IbmiAuthorizationListInterface;
-			await cmdOdbc(
+			await QCMDEXC(
 				`ADDAUTLE AUTL(${thing.AUTHORIZATION_LIST}) USER(${newUser.toUpperCase()}) AUT(${
 					thing.OBJECT_AUTHORITY
 				})`,
@@ -405,7 +404,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	const querySystemName = await queryOdbc(`SELECT RDB_NAME FROM QSYS2.ASP_INFO`);
 	const RDB_NAME = Object.values(querySystemName[0])[0];
 	/* Create a directory entry for the new user. */
-	await cmdOdbc(
+	await QCMDEXC(
 		`ADDDIRE USRID(${newUser.toUpperCase().slice(0, 7)} ${RDB_NAME}) USRD(''${
 			toUser.userText
 		}'') USER(${newUser.toUpperCase()})`,

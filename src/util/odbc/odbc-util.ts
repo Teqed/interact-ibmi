@@ -29,7 +29,3 @@ DRIVER=IBM i Access ODBC Driver;SYSTEM='${system}';UID=${loginId};PWD=${loginPw}
 // It does not show the result of the query to the user.
 export const queryOdbc = async (statement: string): Promise<odbc.Result<Array<number | string>>> =>
 	connection.query(statement);
-
-// cmdOdbc takes a command, runs it on the AS400 systemw ith QCMDEXC, then returns the result of the command.
-export const cmdOdbc = async (qcmdexc: string): Promise<odbc.Result<Array<number | string>>> =>
-	queryOdbc(`CALL QSYS2.QCMDEXC('${qcmdexc}')`);

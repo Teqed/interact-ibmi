@@ -1,13 +1,13 @@
 import chalk from 'chalk';
-import { cmdOdbc } from '../../../util/odbc/odbc-util.js';
-import { CHGUSRPRF } from '../../../util/qcmdexc/qcmdexc-util.js';
+import QCMDEXC from '../../../util/qcmdexc/qcmdexc.js';
+import CHGUSRPRF from '../../../util/qcmdexc/chgusrprf.js';
 import findUsers from '../../../util/find-users.js';
 import pickDisabledUser from './pickdisableduser.js';
 
 export default async function () {
 	const enableThisUser = await pickDisabledUser();
 	if (enableThisUser.length > 0) {
-		await cmdOdbc(CHGUSRPRF({ STATUS: `*ENABLED`, USRPRF: enableThisUser }))
+		await QCMDEXC(CHGUSRPRF({ STATUS: `*ENABLED`, USRPRF: enableThisUser }))
 			.then(() => {
 				console.log(chalk.green(`User ${enableThisUser} has been re-enabled.`));
 			})
