@@ -1,9 +1,11 @@
 import chalk from 'chalk';
-import { genericPressSpacePrompt, genericSelectMenu } from '../generic.js';
+import { genericSelectMenu, genericPressEnterPrompt } from '../generic.js';
 import exitMenu, { exitMenuMain } from '../exit.js';
 import odbcMenu from './odbc.js';
 import cmdMenu from './cmd.js';
 import helpUsersMenu from './help-user/help-user.js';
+import { parseODBCErrorMessage } from '../../util/qcmdexc/qcmdexc-util.js';
+import { exampleError2 } from '../../example-objects.js';
 
 export default async () => {
 	const menuChoice = [
@@ -38,7 +40,8 @@ export default async () => {
 				}
 
 				case menuChoice[3]: {
-					return await genericPressSpacePrompt();
+					console.log(await parseODBCErrorMessage(exampleError2));
+					return genericPressEnterPrompt();
 				}
 
 				default: {

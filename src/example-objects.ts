@@ -1,4 +1,6 @@
 /* eslint-disable unicorn/no-null */
+import { type NodeOdbcError } from 'odbc';
+import { type OdbcError } from 'odbc';
 import { type IbmiUserInterface, type BriefIbmiUserInterface } from './util/types.js';
 /* Create an object named fromUser that has the same properties as fromUserRaw[0]. */
 
@@ -117,4 +119,30 @@ export const testUser2: BriefIbmiUserInterface = {
 	USER_DEFAULT_PASSWORD: null,
 	USER_EXPIRATION_INTERVAL: 0,
 	USER_ID_NUMBER: 24_694n,
+};
+
+export const exampleError: NodeOdbcError = {
+	message: `[odbc] Error executing the sql statement`,
+	name: `Error: [odbc] Error executing the sql statement`,
+	odbcErrors: [
+		{
+			code: 30_038,
+			message: `[IBM][System i Access ODBC Driver]Invalid string or buffer length.`,
+			state: `HY090`,
+		},
+	] as OdbcError[],
+	stack: `Error: [odbc] Error executing the sql statement`,
+};
+export const exampleError2: NodeOdbcError = {
+	message: `[odbc] Error executing the sql statement`,
+	name: `Error: [odbc] Error executing the sql statement`,
+	odbcErrors: [
+		{
+			code: -199,
+			// eslint-disable-next-line max-len
+			message: `[IBM][System i Access ODBC Driver][DB2 for i5/OS]SQL0199 - Keyword QUERY not expected. Valid tokens: FOR USE SKIP WAIT WITH FETCH LIMIT ORDER UNION EXCEPT OFFSET.`,
+			state: `42000`,
+		},
+	] as OdbcError[],
+	stack: `Error: [odbc] Error executing the sql statement`,
 };
