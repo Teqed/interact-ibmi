@@ -1,6 +1,5 @@
 /* eslint-disable unicorn/no-null */
-import { type NodeOdbcError } from 'odbc';
-import { type OdbcError } from 'odbc';
+import { type NodeOdbcError, type OdbcError } from 'odbc';
 import { type IbmiUserInterface, type BriefIbmiUserInterface } from './util/types.js';
 /* Create an object named fromUser that has the same properties as fromUserRaw[0]. */
 
