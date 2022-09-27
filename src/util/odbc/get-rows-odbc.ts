@@ -1,5 +1,7 @@
+import chalk from 'chalk';
 import type odbc from 'odbc';
 import ora from 'ora';
+import { parseODBCErrorMessage } from '../qcmdexc/qcmdexc-util.js';
 import { queryOdbc } from './odbc-util.js';
 
 export default async (statement: string) => {
@@ -20,10 +22,14 @@ export default async (statement: string) => {
 
 		return rows;
 	} catch (error: unknown) {
-		console.log(error);
-		// const narrowError = error as NodeOdbcError;
-		// console.log(narrowError.odbcErrors.forEach);
-		spinner.fail(`SQL statement failed!`);
-		return `SQL statement failed!`;
+		const parsedError = await parseODBCErrorMessage(error as odbc.NodeOdbcError);
+		spinner.fail(
+			`${chalk.red(parsedError.messageIdentifier)} - ${chalk.yellow(
+				parsedError.messageText,
+			)}`,
+		);
+		// Return a promise of an empty string.
+		// eslint-disable-next-line unicorn/no-useless-promise-resolve-reject
+		return Promise.resolve(``);
 	}
 };

@@ -1,6 +1,11 @@
-import { parseODBCErrorMessage } from '../../util/qcmdexc/qcmdexc-util.js';
-import { exampleError2 } from '../../example-objects.js';
+import getRows from '../../util/odbc/get-rows-odbc.js';
+import { genericGetCommand } from '../generic.js';
 
 export default async () => {
-	return parseODBCErrorMessage(exampleError2);
+	const inputCommand: string = await genericGetCommand({
+		message: `Enter SQL query:`,
+	});
+	const result = await getRows(inputCommand);
+
+	return result;
 };

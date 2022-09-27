@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import type odbc from 'odbc';
 import { type QualifiedObject } from '../types.js';
 
@@ -22,7 +23,7 @@ export function qualifyObject(QualifiedObject: QualifiedObject): string {
 	return `${innerLibrary}/${QualifiedObject.object}`;
 }
 
-/* Parse the input into an object with two properties: 'errorIdentifier' and 'errorMessage'. */
+/* Parse the input into an object with two properties: 'errorIdentifier' and 'messageText'. */
 /* Remove the prefix '[IBM][System i Access ODBC Driver][DB2 for i5/OS]' from the error message. */
 /* Separate the error number from the error message where the first space hyphen space is. */
 export async function parseErrorMessage(error: odbc.NodeOdbcError) {
@@ -32,8 +33,8 @@ export async function parseErrorMessage(error: odbc.NodeOdbcError) {
 	/* Remove the prefix '[IBM][System i Access ODBC Driver][DB2 for i5/OS]' from the error message. */
 	message = message.replace(/\[IBM]\[System i Access ODBC Driver]\[DB2 for i5\/OS]/, ``);
 	const errorIdentifier = message.split(` - `)[0];
-	const errorMessage = message.split(` - `)[1];
-	return { errorIdentifier, errorMessage };
+	const messageText = message.split(` - `)[1];
+	return { errorIdentifier, messageText };
 }
 
 export async function parseODBCErrorMessage(error: odbc.NodeOdbcError) {
@@ -110,35 +111,51 @@ export async function parseODBCErrorMessage(error: odbc.NodeOdbcError) {
 	message = message.replace(dataSource, ``);
 	// Remove any leading or trailing whitespace.
 	message = message.trim();
+	// Remove any brackets from vendor, ODBCComponent, and dataSource.
+	vendor.replace(`[`, ``).replace(`]`, ``);
+	ODBCComponent.replace(`[`, ``).replace(`]`, ``);
+	dataSource.replace(`[`, ``).replace(`]`, ``);
 	// Find the error identifier and the message.
 	// The error identifier is usually the first 7 characters. It doesn't always exist.
 	// If it does, the delimiter between it and the message is ` - `.
-	// We'll call the error identifier the `errorIdentifier` and the message the `errorMessage`.
-	let errorIdentifier = ``;
-	let errorMessage = ``;
+	// We'll call the error identifier the `errorIdentifier` and the message the `messageText`.
+	let messageIdentifier = ``;
+	let messageText = ``;
 	const dashIndex = message.indexOf(` - `);
 	if (dashIndex !== -1) {
-		errorIdentifier = message.slice(0, dashIndex);
-		errorMessage = message.slice(dashIndex + 3);
+		messageIdentifier = message.slice(0, dashIndex);
+		messageText = message.slice(dashIndex + 3);
 	} else {
-		errorMessage = message;
+		messageText = message;
 	}
 
 	// Remove any leading or trailing whitespace.
-	errorIdentifier = errorIdentifier.trim();
-	errorMessage = errorMessage.trim();
+	messageIdentifier = messageIdentifier.trim();
+	messageText = messageText.trim();
 
-	// ! DEBUG
-	console.log(`DEBUG`);
-	console.table(error);
-	console.debug(vendor);
-	console.debug(ODBCComponent);
-	console.debug(dataSource);
-	console.debug(errorIdentifier);
-	console.debug(errorMessage);
-	console.log(`END DEBUG`);
-	// ! DEBUG END
+	// ODBC top level error information
+	const errorName = error.name;
+	const errorMessage = error.message;
 
 	// Return the error number and the error message.
-	return { dataSource, errorIdentifier, errorMessage, ODBCComponent, vendor };
+	return {
+		dataSource,
+		errorMessage,
+		errorName,
+		messageIdentifier,
+		messageText,
+		ODBCComponent,
+		vendor,
+	};
+}
+
+export async function printODBCError(error: odbc.NodeOdbcError) {
+	const { errorMessage, messageIdentifier, messageText } = await parseODBCErrorMessage(error);
+	// Log the message identifier and the message text.
+	// Use chalk to color the message identifier red.
+	// Use chalk to color the message text yellow.
+	// Use console.table to display the error information.
+	console.log(chalk.red(`Error . . . . . :   ${errorMessage}`));
+	console.log(chalk.red(`Message ID  . . :   ${messageIdentifier}`));
+	console.log(chalk.yellow(`Message . . . . :   ${messageText}`));
 }
