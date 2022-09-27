@@ -4,8 +4,7 @@ import exitMenu, { exitMenuMain } from '../exit.js';
 import odbcMenu from './odbc.js';
 import cmdMenu from './cmd.js';
 import helpUsersMenu from './help-user/help-user.js';
-import { parseODBCErrorMessage } from '../../util/qcmdexc/qcmdexc-util.js';
-import { exampleError2 } from '../../example-objects.js';
+import testFunction from './test-function.js';
 
 export default async () => {
 	const menuChoice = [
@@ -40,7 +39,7 @@ export default async () => {
 				}
 
 				case menuChoice[3]: {
-					console.log(await parseODBCErrorMessage(exampleError2));
+					console.table(await testFunction());
 					return genericPressEnterPrompt();
 				}
 
