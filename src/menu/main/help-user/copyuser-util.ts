@@ -328,7 +328,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	/* Assemble the user variables into a string using template literals. */
 	await QCMDEXC(CRTUSRPRF(toUser)).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseErrorMessage(error);
-		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
+		throw new Error(`${parseError.errorIdentifier}: ${parseError.errorMessage}`);
 	});
 
 	const query5 = await queryOdbc(
@@ -361,7 +361,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 			}),
 		);
 		const parseError = await parseErrorMessage(error);
-		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
+		throw new Error(`${parseError.errorIdentifier}: ${parseError.errorMessage}`);
 	});
 
 	/* Change object owner to QSECOFR. */
@@ -384,18 +384,18 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 				})`,
 			).catch(async (error: odbc.NodeOdbcError) => {
 				const parseError = await parseErrorMessage(error);
-				if (parseError.errorNumber === `CPF2282`) {
+				if (parseError.errorIdentifier === `CPF2282`) {
 					// If the user already exists on the authorization list, do nothing.
 					console.error(
 						chalk.yellow.bgBlack(
-							`${parseError.errorNumber}: ${parseError.errorMessage} ${thing.AUTHORIZATION_LIST}`,
+							`${parseError.errorIdentifier}: ${parseError.errorMessage} ${thing.AUTHORIZATION_LIST}`,
 						),
 					);
 					return 0;
 				}
 
 				// Otherwise, throw an error.
-				throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
+				throw new Error(`${parseError.errorIdentifier}: ${parseError.errorMessage}`);
 			});
 		});
 	}
@@ -410,16 +410,16 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		}'') USER(${newUser.toUpperCase()})`,
 	).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseErrorMessage(error);
-		if (parseError.errorNumber === `CPF9082`) {
+		if (parseError.errorIdentifier === `CPF9082`) {
 			// If the user already exists on the directory list, do nothing.
 			console.error(
-				chalk.yellow.bgBlack(`${parseError.errorNumber}: ${parseError.errorMessage}`),
+				chalk.yellow.bgBlack(`${parseError.errorIdentifier}: ${parseError.errorMessage}`),
 			);
 			return 0;
 		}
 
 		// Otherwise, throw an error.
-		throw new Error(`${parseError.errorNumber}: ${parseError.errorMessage}`);
+		throw new Error(`${parseError.errorIdentifier}: ${parseError.errorMessage}`);
 	});
 
 	return `Successfully completed user creation, added to authorization lists, and added to directory.`;

@@ -22,7 +22,7 @@ export function qualifyObject(QualifiedObject: QualifiedObject): string {
 	return `${innerLibrary}/${QualifiedObject.object}`;
 }
 
-/* Parse the input into an object with two properties: 'errorNumber' and 'errorMessage'. */
+/* Parse the input into an object with two properties: 'errorIdentifier' and 'errorMessage'. */
 /* Remove the prefix '[IBM][System i Access ODBC Driver][DB2 for i5/OS]' from the error message. */
 /* Separate the error number from the error message where the first space hyphen space is. */
 export async function parseErrorMessage(error: odbc.NodeOdbcError) {
@@ -31,9 +31,9 @@ export async function parseErrorMessage(error: odbc.NodeOdbcError) {
 	let { message } = error.odbcErrors[0];
 	/* Remove the prefix '[IBM][System i Access ODBC Driver][DB2 for i5/OS]' from the error message. */
 	message = message.replace(/\[IBM]\[System i Access ODBC Driver]\[DB2 for i5\/OS]/, ``);
-	const errorNumber = message.split(` - `)[0];
+	const errorIdentifier = message.split(` - `)[0];
 	const errorMessage = message.split(` - `)[1];
-	return { errorMessage, errorNumber };
+	return { errorIdentifier, errorMessage };
 }
 
 export async function parseODBCErrorMessage(error: odbc.NodeOdbcError) {
@@ -99,53 +99,46 @@ export async function parseODBCErrorMessage(error: odbc.NodeOdbcError) {
 	}
 
 	let { message } = error.odbcErrors[0];
-	/* Remove the prefix from the error message. */
-	// Start by finding the first bracket.
-	const firstBracket = message.indexOf(`[`);
-	// Then find the second bracket.
-	const secondBracket = message.indexOf(`]`, firstBracket + 1);
-	// Then find the third bracket.
-	const thirdBracket = message.indexOf(`]`, secondBracket + 1);
-	// Then find the fourth bracket.
-	const fourthBracket = message.indexOf(`]`, thirdBracket + 1);
-	// Then find the fifth bracket, if it exists.
-	const fifthBracket = message.indexOf(`]`, fourthBracket + 1);
-	// Then find the sixth bracket, if it exists.
-	const sixthBracket = message.indexOf(`]`, fifthBracket + 1);
-	// Now, remove all the brackets and their contents.
-	if (sixthBracket !== -1) {
-		message = message.slice(sixthBracket + 1);
-	} else if (fifthBracket !== -1) {
-		message = message.slice(fifthBracket + 1);
-	} else if (fourthBracket !== -1) {
-		message = message.slice(fourthBracket + 1);
-	} else if (thirdBracket !== -1) {
-		message = message.slice(thirdBracket + 1);
-	} else if (secondBracket !== -1) {
-		message = message.slice(secondBracket + 1);
-	} else if (firstBracket !== -1) {
-		message = message.slice(firstBracket + 1);
-	}
-
+	/* Place the [vendor], [ODBC-component], and [data-source] prefixes into their own properties. */
+	/* Remove them from the error message. */
+	/* If null, then set to an empty string. */
+	const vendor = /\[.*?]/.exec(message)?.[0] ?? ``;
+	message = message.replace(vendor, ``);
+	const ODBCComponent = /\[.*?]/.exec(message)?.[0] ?? ``;
+	message = message.replace(ODBCComponent, ``);
+	const dataSource = /\[.*?]/.exec(message)?.[0] ?? ``;
+	message = message.replace(dataSource, ``);
 	// Remove any leading or trailing whitespace.
 	message = message.trim();
 	// Find the error identifier and the message.
 	// The error identifier is usually the first 7 characters. It doesn't always exist.
 	// If it does, the delimiter between it and the message is ` - `.
-	// We'll call the error identifier the `errorNumber` and the message the `errorMessage`.
-	let errorNumber = ``;
+	// We'll call the error identifier the `errorIdentifier` and the message the `errorMessage`.
+	let errorIdentifier = ``;
 	let errorMessage = ``;
 	const dashIndex = message.indexOf(` - `);
 	if (dashIndex !== -1) {
-		errorNumber = message.slice(0, dashIndex);
+		errorIdentifier = message.slice(0, dashIndex);
 		errorMessage = message.slice(dashIndex + 3);
 	} else {
 		errorMessage = message;
 	}
 
 	// Remove any leading or trailing whitespace.
-	errorNumber = errorNumber.trim();
+	errorIdentifier = errorIdentifier.trim();
 	errorMessage = errorMessage.trim();
+
+	// ! DEBUG
+	console.log(`DEBUG`);
+	console.table(error);
+	console.debug(vendor);
+	console.debug(ODBCComponent);
+	console.debug(dataSource);
+	console.debug(errorIdentifier);
+	console.debug(errorMessage);
+	console.log(`END DEBUG`);
+	// ! DEBUG END
+
 	// Return the error number and the error message.
-	return { errorMessage, errorNumber };
+	return { dataSource, errorIdentifier, errorMessage, ODBCComponent, vendor };
 }
