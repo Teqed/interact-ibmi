@@ -143,10 +143,9 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	const fromUser: IbmiUserInterface = fromUserRaw[0] as unknown as IbmiUserInterface;
 	/* If the result of query is empty, then the user does not exist. */
 	if (fromUserRaw.length === 0) {
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-		const confirmPrompt = (await confirm({
+		const confirmPrompt = await confirm({
 			message: `User ${copyFromUser} does not exist. Would you like to use the default user profile?`,
-		})) as boolean;
+		});
 		if (confirmPrompt) {
 			// TODO Search for default user profile.
 			// TODO Create user with default user profile.
@@ -225,7 +224,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		mask: `*`,
 		message: `Enter new password for ${newUser}:`,
 	}).then(async answers => {
-		toUser.userPassword = answers as string;
+		toUser.userPassword = answers;
 	});
 	let changeAttributesBoo = true;
 	let choicesObject: Array<{ value: string }> = [
