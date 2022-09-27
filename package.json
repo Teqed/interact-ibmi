@@ -8,7 +8,6 @@
     "@inquirer/select": "^0.0.27-alpha.0",
     "chalk": "^5.0.1",
     "chalk-animation": "^2.0.3",
-    "inquirer-press-to-continue": "^1.1.4",
     "odbc": "^2.4.4",
     "ora": "^6.1.2",
     "type-fest": "^3.0.0"
