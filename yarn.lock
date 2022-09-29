@@ -682,8 +682,8 @@
   resolved "https://registry.npmjs.org/@types/estree/-/estree-0.0.39.tgz"
 
 "@types/inquirer@^9.0.1":
-  version "9.0.1"
-  resolved "https://registry.npmjs.org/@types/inquirer/-/inquirer-9.0.1.tgz"
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/@types/inquirer/-/inquirer-9.0.2.tgz#846b141c17608aad9fc62572280753bb6ec09184"
   dependencies:
     "@types/through" "*"
     rxjs "^7.2.0"
