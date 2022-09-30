@@ -1,6 +1,7 @@
 import chalk from 'chalk';
 import type odbc from 'odbc';
 import ora from 'ora';
+import printJobLog from '../../util/odbc/print-job-log.js';
 import { parseODBCErrorMessage } from '../../util/qcmdexc/qcmdexc-util.js';
 import QCMDEXC from '../../util/qcmdexc/qcmdexc.js';
 import { genericGetCommand, genericPressEnterPrompt } from '../generic.js';
@@ -22,6 +23,7 @@ export default async function () {
 				parsedError.messageText,
 			)}`,
 		);
+		await printJobLog();
 	}
 
 	return genericPressEnterPrompt();
