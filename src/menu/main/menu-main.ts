@@ -39,7 +39,7 @@ export default async () => {
 				}
 
 				case menuChoice[3]: {
-					console.log(await testFunction());
+					await testFunction();
 					return genericPressEnterPrompt();
 				}
 
