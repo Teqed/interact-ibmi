@@ -162,3 +162,6 @@ build
 
 # sandbox folder
 sandbox
+
+# Models
+models
