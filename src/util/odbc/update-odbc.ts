@@ -116,7 +116,7 @@ export const testUpdateOdbc2 = async (table: string) => {
 	});
 	console.log(query);
 	// Now insert a new record from the results.
-	await sequelize.models.TQ001AP.create({
+	await sequelize.models[table].create({
 		[c1]: v1,
 		[c2]: v2,
 		[c3]: v3,
