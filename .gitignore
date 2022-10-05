@@ -164,4 +164,4 @@ build
 sandbox
 
 # Models
-models
+/models
