@@ -9,11 +9,16 @@ process.title = `interact-ibmi`;
 
 // eslint-disable-next-line import/no-mutable-exports
 let foundUserDiagnostics;
+let loginProvided: {
+	loginId: string;
+	loginPw: string;
+	loginSys: string;
+};
 
 const start = async () => {
 	try {
 		// await welcome();
-		await login();
+		loginProvided = await login();
 		foundUserDiagnostics = findUsers();
 		await mainMenu();
 	} catch (error: unknown) {
@@ -23,5 +28,6 @@ const start = async () => {
 
 // eslint-disable-next-line import/prefer-default-export
 export { foundUserDiagnostics };
+export { loginProvided };
 
 await start();

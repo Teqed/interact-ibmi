@@ -3,6 +3,7 @@ import { queryOdbc } from './odbc-util.js';
 import { TQ001AP } from '../../models/TQ001AP.js';
 import * as Sequelize from '@sequelize/core';
 import { genericGetCommand } from '../../menu/generic.js';
+import { loginProvided } from '../../main.js';
 
 export const updateOdbc = async () => {
 	const query: odbc.Result<Array<number | string>> = await queryOdbc(
@@ -33,7 +34,7 @@ export const updateOdbc2 = async () => {
 export const testUpdateOdbc = async () => {
 	// Use sequelize to insert a record into TQ001AP
 	// Start by initializing the models
-	const sequelize = new Sequelize.Sequelize('IBMiDSN', 'TEQ', 'ExamplePassword', {
+	const sequelize = new Sequelize.Sequelize('IBMiDSN', loginProvided.loginId, loginProvided.loginPw, {
 		host: 'PUB400.COM',
 		dialect: 'ibmi',
 	});
@@ -63,7 +64,7 @@ export const testUpdateOdbc = async () => {
 export const testUpdateOdbc2 = async (table: string) => {
 	// Use sequelize to insert a record into table
 	// Start by initializing the models
-	const sequelize = new Sequelize.Sequelize('IBMiDSN', 'TEQ', 'ExamplePassword', {
+	const sequelize = new Sequelize.Sequelize('IBMiDSN', loginProvided.loginId, loginProvided.loginPw, {
 		host: 'PUB400.COM',
 		dialect: 'ibmi',
 	});
@@ -95,11 +96,25 @@ export const testUpdateOdbc2 = async (table: string) => {
 		// await genericGetCommand(`Enter a value for ${column}`);
 	}
 	const v1 = values[0];
+	console.log(v1);
 	const v2 = values[1];
+	console.log(v2);
 	const v3 = values[2];
+	console.log(v3);
 	const c1 = columnNames[0];
+	console.log(c1);
 	const c2 = columnNames[1];
+	console.log(c2);
 	const c3 = columnNames[2];
+	console.log(c3);
+	// Find the access of 'Bob' for 'Red' and log it.
+	const query = await sequelize.models[table].findAll({
+		where: {
+			[c1]: 'Bob',
+			[c2]: 'Red',
+		},
+	});
+	console.log(query);
 	// Now insert a new record from the results.
 	await sequelize.models.TQ001AP.create({
 		[c1]: v1,

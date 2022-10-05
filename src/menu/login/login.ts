@@ -21,5 +21,7 @@ export default async () => {
 		message: `Password:`,
 	});
 
-	return odbcLogin(loginId, loginPw, loginSys);
+	await odbcLogin(loginId, loginPw, loginSys);
+
+	return {loginId, loginPw, loginSys};
 };
