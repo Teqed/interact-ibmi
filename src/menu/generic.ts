@@ -1,7 +1,3 @@
-import chalk from 'chalk';
-import input from '@inquirer/input';
-import rawlist from '@inquirer/rawlist';
-import select from '@inquirer/select';
 import {
 	createPrompt,
 	useState,
@@ -10,6 +6,10 @@ import {
 	usePrefix,
 	isSpaceKey,
 } from '@inquirer/core';
+import input from '@inquirer/input';
+import rawlist from '@inquirer/rawlist';
+import select from '@inquirer/select';
+import chalk from 'chalk';
 import { type GenericInputPrompt, type GenericListPrompt } from '../util/types.js';
 
 // The genericGetCommand function is used to get a command from the user.
@@ -17,7 +17,6 @@ import { type GenericInputPrompt, type GenericListPrompt } from '../util/types.j
 // The function takes a prompt object as an argument, which asks the user for input.
 // It might say something like "Please enter a command:".
 export const genericGetCommand = async (prompt: GenericInputPrompt) => {
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
 	const command: string = await input(
 		{ default: prompt.default, message: prompt.message },
 		{ clearPromptOnDone: prompt.clearPromptOnDone ?? true },
@@ -29,8 +28,8 @@ export const genericGetCommand = async (prompt: GenericInputPrompt) => {
 export const genericListMenu = async (prompt: GenericListPrompt) => {
 	console.clear();
 	// genericListMenu is used to display a list of options to the user.
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-	const menu: string = (await rawlist(
+
+	const menu: string = await rawlist(
 		{
 			// Add a choice for every option in the array prompt.choices.
 			choices: prompt.choices.map(choice => {
@@ -42,7 +41,7 @@ export const genericListMenu = async (prompt: GenericListPrompt) => {
 			message: prompt.message,
 		},
 		{ clearPromptOnDone: prompt.clearPromptOnDone ?? true },
-	)) as string;
+	);
 	return menu;
 };
 
@@ -75,8 +74,8 @@ export const genericSelectMenu = async (prompt: GenericListPrompt) => {
 
 export const generatedListMenu = async (prompt: GenericListPrompt) => {
 	console.clear();
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-call
-	const menu: string = (await rawlist(
+
+	const menu: string = await rawlist(
 		{
 			choices: prompt.choices.map(choice => {
 				return {
@@ -87,7 +86,7 @@ export const generatedListMenu = async (prompt: GenericListPrompt) => {
 			message: prompt.message,
 		},
 		{ clearPromptOnDone: prompt.clearPromptOnDone ?? true },
-	)) as string;
+	);
 	return menu;
 };
 
@@ -113,7 +112,6 @@ export const genericPasswordMenu = async (config: {
 	mask?: string;
 	message: string;
 }) => {
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call
 	return input(
 		{
 			default: undefined,
@@ -147,7 +145,7 @@ const customConfirm = createPrompt<
 		case `enter`: {
 			useKeypress((key, rl) => {
 				if (isEnterKey(key)) {
-					const answer = value ? /^y(es)?/i.test(value) : config.default !== false;
+					const answer = value ? /^y(es)?/iu.test(value) : config.default !== false;
 					setValue(answer ? `yes` : `no`);
 					setStatus(`done`);
 					rl.close();
@@ -162,7 +160,7 @@ const customConfirm = createPrompt<
 		case `space`: {
 			useKeypress((key, rl) => {
 				if (isSpaceKey(key)) {
-					const answer = value ? /^y(es)?/i.test(value) : config.default !== false;
+					const answer = value ? /^y(es)?/iu.test(value) : config.default !== false;
 					setValue(answer ? `yes` : `no`);
 					setStatus(`done`);
 					rl.close();

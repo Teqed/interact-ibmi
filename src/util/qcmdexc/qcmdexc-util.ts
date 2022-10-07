@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import type odbc from 'odbc';
 import { type QualifiedObject } from '../types.js';
 
-export function qualifyObject(QualifiedObject: QualifiedObject): string {
+export const qualifyObject = (QualifiedObject: QualifiedObject): string => {
 	// TODO: Test the special object parameters.
 	if (
 		QualifiedObject.object === `*SAME` ||
@@ -21,23 +21,23 @@ export function qualifyObject(QualifiedObject: QualifiedObject): string {
 	const innerLibrary = QualifiedObject.library ?? `*LIBL`;
 	// return a string in the format 'library/object'.
 	return `${innerLibrary}/${QualifiedObject.object}`;
-}
+};
 
 /* Parse the input into an object with two properties: 'errorIdentifier' and 'messageText'. */
 /* Remove the prefix '[IBM][System i Access ODBC Driver][DB2 for i5/OS]' from the error message. */
 /* Separate the error number from the error message where the first space hyphen space is. */
-export async function parseErrorMessage(error: odbc.NodeOdbcError) {
+export const parseErrorMessage = async (error: odbc.NodeOdbcError) => {
 	// https://www.ibm.com/docs/en/i/7.2?topic=odbc-i-access-error-messages
 	// [vendor][ODBC-component][data-source] error-message
 	let { message } = error.odbcErrors[0];
 	/* Remove the prefix '[IBM][System i Access ODBC Driver][DB2 for i5/OS]' from the error message. */
-	message = message.replace(/\[IBM]\[System i Access ODBC Driver]\[DB2 for i5\/OS]/, ``);
+	message = message.replace(/\[IBM]\[System i Access ODBC Driver]\[DB2 for i5\/OS]/u, ``);
 	const errorIdentifier = message.split(` - `)[0];
 	const messageText = message.split(` - `)[1];
 	return { errorIdentifier, messageText };
-}
+};
 
-export async function parseODBCErrorMessage(error: odbc.NodeOdbcError) {
+export const parseODBCErrorMessage = async (error: odbc.NodeOdbcError) => {
 	/* https://www.ibm.com/docs/en/i/7.2?topic=odbc-i-access-error-messages
 	Error messages have the following format:
 		[vendor][ODBC-component][data-source] error-message
@@ -103,11 +103,11 @@ export async function parseODBCErrorMessage(error: odbc.NodeOdbcError) {
 	/* Place the [vendor], [ODBC-component], and [data-source] prefixes into their own properties. */
 	/* Remove them from the error message. */
 	/* If null, then set to an empty string. */
-	const vendor = /\[.*?]/.exec(message)?.[0] ?? ``;
+	const vendor = /\[.*?]/u.exec(message)?.[0] ?? ``;
 	message = message.replace(vendor, ``);
-	const ODBCComponent = /\[.*?]/.exec(message)?.[0] ?? ``;
+	const ODBCComponent = /\[.*?]/u.exec(message)?.[0] ?? ``;
 	message = message.replace(ODBCComponent, ``);
-	const dataSource = /\[.*?]/.exec(message)?.[0] ?? ``;
+	const dataSource = /\[.*?]/u.exec(message)?.[0] ?? ``;
 	message = message.replace(dataSource, ``);
 	// Remove any leading or trailing whitespace.
 	message = message.trim();
@@ -120,13 +120,11 @@ export async function parseODBCErrorMessage(error: odbc.NodeOdbcError) {
 	// If it does, the delimiter between it and the message is ` - `.
 	// We'll call the error identifier the `errorIdentifier` and the message the `messageText`.
 	let messageIdentifier = ``;
-	let messageText = ``;
+	let messageText = message;
 	const dashIndex = message.indexOf(` - `);
 	if (dashIndex !== -1) {
 		messageIdentifier = message.slice(0, dashIndex);
 		messageText = message.slice(dashIndex + 3);
-	} else {
-		messageText = message;
 	}
 
 	// Remove any leading or trailing whitespace.
@@ -147,9 +145,9 @@ export async function parseODBCErrorMessage(error: odbc.NodeOdbcError) {
 		ODBCComponent,
 		vendor,
 	};
-}
+};
 
-export async function printODBCError(error: odbc.NodeOdbcError) {
+export const printODBCError = async (error: odbc.NodeOdbcError) => {
 	const { errorMessage, messageIdentifier, messageText } = await parseODBCErrorMessage(error);
 	// Log the message identifier and the message text.
 	// Use chalk to color the message identifier red.
@@ -158,4 +156,4 @@ export async function printODBCError(error: odbc.NodeOdbcError) {
 	console.log(chalk.red(`Error . . . . . :   ${errorMessage}`));
 	console.log(chalk.red(`Message ID  . . :   ${messageIdentifier}`));
 	console.log(chalk.yellow(`Message . . . . :   ${messageText}`));
-}
+};

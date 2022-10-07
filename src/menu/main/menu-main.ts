@@ -1,9 +1,9 @@
 import chalk from 'chalk';
-import { genericSelectMenu, genericPressEnterPrompt } from '../generic.js';
 import exitMenu, { exitMenuMain } from '../exit.js';
-import odbcMenu from './odbc.js';
+import { genericSelectMenu, genericPressEnterPrompt } from '../generic.js';
 import cmdMenu from './cmd.js';
 import helpUsersMenu from './help-user/help-user.js';
+import odbcMenu from './odbc.js';
 import testFunction from './test-function.js';
 
 export default async () => {

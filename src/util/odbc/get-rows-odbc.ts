@@ -11,7 +11,7 @@ export default async (statement: string) => {
 		// Destructure query into an array of objects
 		const rows = query.map(row => {
 			const object: Record<string, string> = {};
-			// eslint-disable-next-line no-restricted-syntax
+
 			for (const column of query.columns) {
 				object[column.name] = row[column.name as keyof typeof row as number] as string;
 			}
