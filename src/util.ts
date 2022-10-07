@@ -58,6 +58,7 @@ export const returnZero = async () => {
 	return 0;
 };
 
+/* eslint-disable unicorn/no-null */
 export const stringToBoolean = (string: string) => {
 	switch (string.toLowerCase().trim()) {
 		case `true`:
@@ -70,8 +71,10 @@ export const stringToBoolean = (string: string) => {
 		case `n`:
 		case `0`:
 		case null:
+		case undefined:
 			return false;
 		default:
 			return Boolean(string);
 	}
-}
+};
+/* eslint-enable unicorn/no-null */
