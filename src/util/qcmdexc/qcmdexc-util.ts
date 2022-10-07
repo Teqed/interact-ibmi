@@ -31,7 +31,7 @@ export const parseErrorMessage = async (error: odbc.NodeOdbcError) => {
 	// [vendor][ODBC-component][data-source] error-message
 	let { message } = error.odbcErrors[0];
 	/* Remove the prefix '[IBM][System i Access ODBC Driver][DB2 for i5/OS]' from the error message. */
-	message = message.replace(/\[IBM]\[System i Access ODBC Driver]\[DB2 for i5\/OS]/u, ``);
+	message = message.replace(/^\[IBM\]\[System i Access ODBC Driver\]\[DB2 for i5\/OS\] /u, ``);
 	const errorIdentifier = message.split(` - `)[0];
 	const messageText = message.split(` - `)[1];
 	return { errorIdentifier, messageText };
@@ -103,11 +103,11 @@ export const parseODBCErrorMessage = async (error: odbc.NodeOdbcError) => {
 	/* Place the [vendor], [ODBC-component], and [data-source] prefixes into their own properties. */
 	/* Remove them from the error message. */
 	/* If null, then set to an empty string. */
-	const vendor = /\[.*?]/u.exec(message)?.[0] ?? ``;
+	const vendor = /\[.*?\]/u.exec(message)?.[0] ?? ``;
 	message = message.replace(vendor, ``);
-	const ODBCComponent = /\[.*?]/u.exec(message)?.[0] ?? ``;
+	const ODBCComponent = /\[.*?\]/u.exec(message)?.[0] ?? ``;
 	message = message.replace(ODBCComponent, ``);
-	const dataSource = /\[.*?]/u.exec(message)?.[0] ?? ``;
+	const dataSource = /\[.*?\]/u.exec(message)?.[0] ?? ``;
 	message = message.replace(dataSource, ``);
 	// Remove any leading or trailing whitespace.
 	message = message.trim();
