@@ -57,3 +57,21 @@ export const welcome = async () => {
 export const returnZero = async () => {
 	return 0;
 };
+
+export const stringToBoolean = (string: string) => {
+	switch (string.toLowerCase().trim()) {
+		case `true`:
+		case `yes`:
+		case `y`:
+		case `1`:
+			return true;
+		case `false`:
+		case `no`:
+		case `n`:
+		case `0`:
+		case null:
+			return false;
+		default:
+			return Boolean(string);
+	}
+}
