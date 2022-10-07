@@ -916,7 +916,7 @@
     "semver" "^7.3.7"
     "tsutils" "^3.21.0"
 
-"@typescript-eslint/eslint-plugin@^5.33.1", "@typescript-eslint/eslint-plugin@^5.36.2":
+"@typescript-eslint/eslint-plugin@^5.33.1", "@typescript-eslint/eslint-plugin@^5.39.0":
   "integrity" "sha512-xVfKOkBm5iWMNGKQ2fwX5GVgBuHmZBO1tCRwXmY5oAIsPscfwm2UADDuNB8ZVYCtpQvJK4xpjrK7jEhcJ0zY9A=="
   "resolved" "https://registry.npmjs.org/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.39.0.tgz"
   "version" "5.39.0"
@@ -945,7 +945,7 @@
     "@typescript-eslint/typescript-estree" "5.39.0"
     "debug" "^4.3.4"
 
-"@typescript-eslint/parser@^5.33.1", "@typescript-eslint/parser@^5.36.2":
+"@typescript-eslint/parser@^5.33.1", "@typescript-eslint/parser@^5.39.0":
   "integrity" "sha512-PhxLjrZnHShe431sBAGHaNe6BDdxAASDySgsBCGxcBecVCi8NQWxQZMcizNA4g0pN51bBAn/FUfkWG3SDVcGlA=="
   "resolved" "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-5.39.0.tgz"
   "version" "5.39.0"
@@ -2535,10 +2535,10 @@
     "semver" "^7.3.7"
     "strip-indent" "^3.0.0"
 
-"eslint-plugin-unicorn@^44.0.0":
-  "integrity" "sha512-ly6Ye9OfgYBCw/FfsdycCzAztcRd+pOA0F6xZwtUsUkgOBjtNR0684xC7u+0RmE3SKr3y7z8MaIWunw36tbZdg=="
-  "resolved" "https://registry.npmjs.org/eslint-plugin-unicorn/-/eslint-plugin-unicorn-44.0.1.tgz"
-  "version" "44.0.1"
+"eslint-plugin-unicorn@^44.0.2":
+  "integrity" "sha512-GLIDX1wmeEqpGaKcnMcqRvMVsoabeF0Ton0EX4Th5u6Kmf7RM9WBl705AXFEsns56ESkEs0uyelLuUTvz9Tr0w=="
+  "resolved" "https://registry.npmjs.org/eslint-plugin-unicorn/-/eslint-plugin-unicorn-44.0.2.tgz"
+  "version" "44.0.2"
   dependencies:
     "@babel/helper-validator-identifier" "^7.19.1"
     "ci-info" "^3.4.0"
