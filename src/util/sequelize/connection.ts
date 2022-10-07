@@ -1,16 +1,16 @@
-import { Sequelize } from '@sequelize/core';
+import * as Sequelize from '@sequelize/core';
 
-
-const sequelize = new Sequelize('database', 'username', 'password', {
-  host: 'localhost',
-  dialect: 'ibmi',
-});
-
-try {
-	await sequelize.authenticate();
-	console.log('Connection has been established successfully.');
-  } catch (error) {
-	console.error('Unable to connect to the database:', error);
-  }
-
-  
+// eslint-disable-next-line import/no-mutable-exports
+export let sequelize: Sequelize.Sequelize;
+export default async function (loginId: string, loginPw: string, system = `PUB400.COM`) {
+	sequelize = new Sequelize.Sequelize(`IBMiDSN`, `'${loginId}'`, `'${loginPw}'`, {
+		dialect: `ibmi`,
+		host: system,
+	});
+	try {
+		await sequelize.authenticate();
+		console.log(`Connection has been established successfully.`);
+	} catch (error: unknown) {
+		console.error(`Unable to connect to the database:`, error);
+	}
+}
