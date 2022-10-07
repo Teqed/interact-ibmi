@@ -218,26 +218,26 @@
     esquery "^1.4.0"
     jsdoc-type-pratt-parser "~3.1.0"
 
-"@esbuild-kit/cjs-loader@^2.3.3":
-  version "2.3.3"
-  resolved "https://registry.npmjs.org/@esbuild-kit/cjs-loader/-/cjs-loader-2.3.3.tgz"
+"@esbuild-kit/cjs-loader@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@esbuild-kit/cjs-loader/-/cjs-loader-2.4.0.tgz#643c4b2855a18f31cd983794536d4ff64d3b410d"
   dependencies:
-    "@esbuild-kit/core-utils" "^2.1.0"
-    get-tsconfig "^4.1.0"
+    "@esbuild-kit/core-utils" "^3.0.0"
+    get-tsconfig "^4.2.0"
 
-"@esbuild-kit/core-utils@^2.1.0":
-  version "2.3.1"
-  resolved "https://registry.npmjs.org/@esbuild-kit/core-utils/-/core-utils-2.3.1.tgz"
+"@esbuild-kit/core-utils@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@esbuild-kit/core-utils/-/core-utils-3.0.0.tgz#e0f8463a32b4a9c9b456a7f9c31a5e038c8d2c19"
   dependencies:
-    esbuild "~0.15.7"
+    esbuild "~0.15.10"
     source-map-support "^0.5.21"
 
-"@esbuild-kit/esm-loader@^2.4.2":
-  version "2.4.2"
-  resolved "https://registry.npmjs.org/@esbuild-kit/esm-loader/-/esm-loader-2.4.2.tgz"
+"@esbuild-kit/esm-loader@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@esbuild-kit/esm-loader/-/esm-loader-2.5.0.tgz#af208eb9e0449038e7f35957ec51b7e70135e116"
   dependencies:
-    "@esbuild-kit/core-utils" "^2.1.0"
-    get-tsconfig "^4.1.0"
+    "@esbuild-kit/core-utils" "^3.0.0"
+    get-tsconfig "^4.2.0"
 
 "@esbuild/android-arm@0.15.10":
   version "0.15.10"
@@ -1722,7 +1722,7 @@ esbuild-windows-arm64@0.15.10:
   version "0.15.10"
   resolved "https://registry.yarnpkg.com/esbuild-windows-arm64/-/esbuild-windows-arm64-0.15.10.tgz#5a6fcf2fa49e895949bf5495cf088ab1b43ae879"
 
-esbuild@^0.15.9, esbuild@~0.15.7:
+esbuild@^0.15.9, esbuild@~0.15.10:
   version "0.15.10"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.15.10.tgz#85c2f8446e9b1fe04fae68daceacba033eedbd42"
   optionalDependencies:
@@ -2562,7 +2562,7 @@ get-symbol-description@^1.0.0:
     call-bind "^1.0.2"
     get-intrinsic "^1.1.1"
 
-get-tsconfig@^4.1.0, get-tsconfig@^4.2.0:
+get-tsconfig@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/get-tsconfig/-/get-tsconfig-4.2.0.tgz"
 
@@ -4423,12 +4423,12 @@ tsutils@^3.21.0:
     tslib "^1.8.1"
 
 tsx@^3.9.0:
-  version "3.9.0"
-  resolved "https://registry.npmjs.org/tsx/-/tsx-3.9.0.tgz"
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/tsx/-/tsx-3.10.1.tgz#4ffb1229077f648bbf46c0ed2b098f4cd8dd6d6d"
   dependencies:
-    "@esbuild-kit/cjs-loader" "^2.3.3"
-    "@esbuild-kit/core-utils" "^2.1.0"
-    "@esbuild-kit/esm-loader" "^2.4.2"
+    "@esbuild-kit/cjs-loader" "^2.4.0"
+    "@esbuild-kit/core-utils" "^3.0.0"
+    "@esbuild-kit/esm-loader" "^2.5.0"
   optionalDependencies:
     fsevents "~2.3.2"
 
