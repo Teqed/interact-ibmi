@@ -14,7 +14,7 @@
   },
   "description": "Menus for interacting with IBMi AS400 using node-odbc.",
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^14.1.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
     "@tsconfig/node16": "^1.0.3",
     "@types/chai": "^4.3.3",
     "@types/chalk-animation": "^1.6.1",
