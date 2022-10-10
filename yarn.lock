@@ -860,11 +860,11 @@
   resolved "https://registry.npmjs.org/@ungap/promise-all-settled/-/promise-all-settled-1.1.2.tgz"
 
 "@vitest/coverage-c8@^0.24.0":
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/@vitest/coverage-c8/-/coverage-c8-0.24.0.tgz#d5d309f616b25b4fce5828d9acf3a672eb618c61"
+  version "0.24.1"
+  resolved "https://registry.yarnpkg.com/@vitest/coverage-c8/-/coverage-c8-0.24.1.tgz#a7b4ed0d41c70c710d8771a559c58d493301d46d"
   dependencies:
     c8 "^7.12.0"
-    vitest "0.24.0"
+    vitest "0.24.1"
 
 "@vitest/ui@^0.24.0":
   version "0.24.1"
@@ -4310,7 +4310,7 @@ tiny-glob@^0.2.9:
     globalyzer "0.1.0"
     globrex "^0.1.2"
 
-tinybench@^2.2.1, tinybench@^2.3.0:
+tinybench@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/tinybench/-/tinybench-2.3.0.tgz#febb2e697c735c0cdb8eb1e43cb1d2fa1821f983"
 
@@ -4583,23 +4583,7 @@ vite@^3.0.0, vite@^3.1.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vitest@0.24.0:
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.24.0.tgz#61555b7b56e07f04a1692352de7d4803de0f5c88"
-  dependencies:
-    "@types/chai" "^4.3.3"
-    "@types/chai-subset" "^1.3.3"
-    "@types/node" "*"
-    chai "^4.3.6"
-    debug "^4.3.4"
-    local-pkg "^0.4.2"
-    strip-literal "^0.4.2"
-    tinybench "^2.2.1"
-    tinypool "^0.3.0"
-    tinyspy "^1.0.2"
-    vite "^3.0.0"
-
-vitest@^0.24.0:
+vitest@0.24.1, vitest@^0.24.0:
   version "0.24.1"
   resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.24.1.tgz#4b4ceb3d9c6710e8fb7a3b936b740f9c9f9cde10"
   dependencies:
