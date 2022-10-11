@@ -5,8 +5,6 @@ import cmdMenu from './cmd.js';
 import helpUsersMenu from './help-user/help-user.js';
 import odbcMenu from './odbc.js';
 import testFunction from './test/test-function.js';
-import testOdbc from './test/test-odbc.js';
-import testSequelize from './test/test-sequelize.js';
 
 export default async () => {
 	const menuChoice = [
@@ -43,9 +41,7 @@ export default async () => {
 				}
 
 				case menuChoice[3]: {
-					console.log(await testSequelize());
-					await genericPressEnterPrompt();
-					await testOdbc();
+					await testFunction();
 					await genericPressEnterPrompt();
 					return 0;
 				}

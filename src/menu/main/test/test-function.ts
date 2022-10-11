@@ -1,9 +1,9 @@
 import updateOdbc from '../../../util/odbc/update-odbc.js';
 import { genericGetCommand } from '../../generic.js';
+import sequelizeFreeform from '../sequelize-freeform.js';
+import testOdbc from './test-odbc.js';
+import testSequelize from './test-sequelize.js';
 
 export default async () => {
-	console.time();
-	const table = await genericGetCommand({ message: `What table would you like to edit?` });
-	await updateOdbc(table);
-	console.timeEnd();
+	return sequelizeFreeform();
 };

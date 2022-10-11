@@ -5,11 +5,10 @@ export default async function () {
 	const inputCommand: string = await genericGetCommand({
 		message: `Enter SQL query:`,
 	});
-	const result = await genericSequelize(inputCommand).catch(async (error: Error) => {
-		// TODO: Finish error handling.
-		// See parseErrorMessage() in src\util\qcmdexc\qcmdexc-util.ts
-		void error;
-	});
-	console.log(result);
+	const result = await genericSequelize(inputCommand);
+	console.log(`Result 0:`);
+	console.log(result[0]);
+	console.log(`Metadata 1:`);
+	console.log(result[1]);
 	return genericPressEnterPrompt();
 }
