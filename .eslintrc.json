@@ -132,6 +132,8 @@
 		"unicorn/no-useless-undefined": "warn",
 		"unicorn/prefer-query-selector": "warn",
 		"canonical/id-match": "warn",
+		"import/order": "warn",
+		"func-style": ["warn"],
 		"@typescript-eslint/brace-style": ["off", "allman", { "allowSingleLine": true }]
 	  },
 	  "settings": {

@@ -1,7 +1,7 @@
 import ora from 'ora';
-import { generatedSelectMenu } from '../../generic.js';
 import diagnoseUsers from '../../../util/diagnose-users.js';
 import { foundUsers } from '../../../util/find-users.js';
+import { generatedSelectMenu } from '../../generic.js';
 
 export default async function () {
 	const spinner = ora(`Checking...`).start();

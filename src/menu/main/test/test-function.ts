@@ -1,5 +1,5 @@
-import updateOdbc from '../../util/odbc/update-odbc.js';
-import { genericGetCommand } from '../generic.js';
+import updateOdbc from '../../../util/odbc/update-odbc.js';
+import { genericGetCommand } from '../../generic.js';
 
 export default async () => {
 	console.time();

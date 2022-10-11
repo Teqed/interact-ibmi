@@ -1,6 +1,6 @@
 import chalk from 'chalk';
-import copyUser from './copyuser-util.js';
 import { genericGetCommand, genericPressEnterPrompt } from '../../generic.js';
+import copyUser from './copyuser-util.js';
 
 export default async function () {
 	const fromUser: string = await genericGetCommand({

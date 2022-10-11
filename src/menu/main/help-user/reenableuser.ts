@@ -1,7 +1,7 @@
 import chalk from 'chalk';
-import QCMDEXC from '../../../util/qcmdexc/qcmdexc.js';
-import CHGUSRPRF from '../../../util/qcmdexc/chgusrprf.js';
 import findUsers from '../../../util/find-users.js';
+import CHGUSRPRF from '../../../util/qcmdexc/chgusrprf.js';
+import QCMDEXC from '../../../util/qcmdexc/qcmdexc.js';
 import pickDisabledUser from './pickdisableduser.js';
 
 export default async function () {

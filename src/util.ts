@@ -4,6 +4,7 @@ import chalkAnimation from 'chalk-animation';
 import { type QualifiedObject } from './util/types';
 
 // Sleep for X milliseconds, or a default of a half second.
+// eslint-disable-next-line func-style
 export async function sleep(milliseconds = 500) {
 	return new Promise(resolve =>
 		// eslint-disable-next-line no-promise-executor-return
@@ -21,6 +22,7 @@ export const clearScreen = () => {
 	process.stdout.write(`\u001Bc`);
 };
 
+// eslint-disable-next-line func-style
 export function qualifyObject(LibraryAndObject: QualifiedObject): string {
 	// TODO: Test the special object parameters.
 	if (

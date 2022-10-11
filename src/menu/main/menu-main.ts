@@ -4,7 +4,9 @@ import { genericSelectMenu, genericPressEnterPrompt } from '../generic.js';
 import cmdMenu from './cmd.js';
 import helpUsersMenu from './help-user/help-user.js';
 import odbcMenu from './odbc.js';
-import testFunction from './test-function.js';
+import testFunction from './test/test-function.js';
+import testOdbc from './test/test-odbc.js';
+import testSequelize from './test/test-sequelize.js';
 
 export default async () => {
 	const menuChoice = [
@@ -14,6 +16,7 @@ export default async () => {
 		`4. Test prompt`, // 3 - testPrompt
 		`5. Exit`, // default - exitMenu
 	];
+	// eslint-disable-next-line no-unmodified-loop-condition
 	while (!exitMenuMain)
 		/* Create an array of strings containing menu choices. */
 		// eslint-disable-next-line no-await-in-loop
@@ -31,6 +34,7 @@ export default async () => {
 
 				case menuChoice[1]: {
 					await odbcMenu();
+					await genericPressEnterPrompt();
 					return 0;
 				}
 
@@ -39,8 +43,11 @@ export default async () => {
 				}
 
 				case menuChoice[3]: {
-					await testFunction();
-					return genericPressEnterPrompt();
+					console.log(await testSequelize());
+					await genericPressEnterPrompt();
+					await testOdbc();
+					await genericPressEnterPrompt();
+					return 0;
 				}
 
 				default: {

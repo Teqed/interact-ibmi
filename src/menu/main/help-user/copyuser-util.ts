@@ -1,19 +1,19 @@
-import select from '@inquirer/select';
 import confirm from '@inquirer/confirm';
-import type odbc from 'odbc';
+import select from '@inquirer/select';
 import chalk from 'chalk';
-import { parseErrorMessage } from '../../../util/qcmdexc/qcmdexc-util.js';
-import CHGOBJOWN from '../../../util/qcmdexc/chgobjown.js';
-import CRTUSRPRF from '../../../util/qcmdexc/crtusrprf.js';
-import CHGUSRPRF from '../../../util/qcmdexc/chgusrprf.js';
+import type odbc from 'odbc';
+import { qualifyObject } from '../../../util.js';
 import { queryOdbc } from '../../../util/odbc/odbc-util.js';
+import CHGOBJOWN from '../../../util/qcmdexc/chgobjown.js';
+import CHGUSRPRF from '../../../util/qcmdexc/chgusrprf.js';
+import CRTUSRPRF from '../../../util/qcmdexc/crtusrprf.js';
+import { parseErrorMessage } from '../../../util/qcmdexc/qcmdexc-util.js';
 import QCMDEXC from '../../../util/qcmdexc/qcmdexc.js';
 import {
 	type IbmiUserInterface,
 	type CreateUserInterface,
 	type IbmiAuthorizationListInterface,
 } from '../../../util/types.js';
-import { qualifyObject } from '../../../util.js';
 import { genericPasswordMenu, genericGetCommand } from '../../generic.js';
 
 /* If possiblyNullValue is null or undefined, return an empty string.
