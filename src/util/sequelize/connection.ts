@@ -1,4 +1,5 @@
 import * as Sequelize from '@sequelize/core';
+import { initModels } from './models/init-models.js';
 
 // eslint-disable-next-line import/no-mutable-exports
 export let sequelize: Sequelize.Sequelize;
@@ -19,6 +20,8 @@ export default async function (loginId: string, loginPw: string, system = `PUB40
 	} catch (error: unknown) {
 		console.error(`Unable to connect to the database:`, error);
 	}
+
+	initModels(sequelize);
 
 	return sequelize;
 }

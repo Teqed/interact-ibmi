@@ -1,5 +1,5 @@
 import { type Sequelize } from '@sequelize/core';
-import { TQ001AP as _TQ001AP } from './TQ001AP';
+import { TQ001AP as _TQ001AP } from './TQ001AP.js';
 
 // eslint-disable-next-line func-style
 export function initModels(sequelize: Sequelize) {
@@ -11,4 +11,4 @@ export function initModels(sequelize: Sequelize) {
 	};
 }
 
-export { type TQ001APCreationAttributes, TQ001AP, type TQ001APAttributes } from './TQ001AP';
+export { type TQ001APCreationAttributes, TQ001AP, type TQ001APAttributes } from './TQ001AP.js';

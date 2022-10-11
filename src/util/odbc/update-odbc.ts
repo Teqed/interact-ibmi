@@ -1,14 +1,9 @@
 import { genericGetCommand } from '../../menu/generic.js';
 import { stringToBoolean } from '../../util.js';
 import { sequelize } from '../sequelize/connection.js';
-import { TQ001AP } from '../sequelize/models/TQ001AP.js';
 
 export default async (table: string) => {
 	// Use sequelize to insert a record into table
-	// Start by initializing the models
-
-	// eslint-disable-next-line canonical/id-match
-	TQ001AP.initModel(sequelize);
 
 	// Now find the name of each column in the table and store it in an array
 	const attributes = sequelize.models[table].getAttributes();

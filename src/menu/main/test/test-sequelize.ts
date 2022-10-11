@@ -1,13 +1,7 @@
 import { sequelize } from '../../../util/sequelize/connection.js';
-import { TQ001AP, type TQ001APAttributes } from '../../../util/sequelize/models/TQ001AP.js';
+import { type TQ001APAttributes } from '../../../util/sequelize/models/TQ001AP.js';
 
 export default async function () {
-	// eslint-disable-next-line canonical/id-match
-	TQ001AP.initModel(sequelize);
-	// Make sure any unaccounted for promises are resolved
-	await new Promise(resolve => {
-		setTimeout(resolve, 1);
-	});
 	// const generateSQL = sequelize.queryInterface.queryGenerator.selectQuery(`TQ001AP`);
 	// console.log(generateSQL);
 	console.time(`test-sequelize`);
