@@ -1,3 +1,4 @@
+/* eslint-disable func-style */
 import confirm from '@inquirer/confirm';
 import select from '@inquirer/select';
 import chalk from 'chalk';
@@ -136,6 +137,18 @@ function convertUserInterface(
 /* Copies an existing user and creates a new user with the same privileges. */
 
 export default async (copyFromUser: string, newUser: string, userDescription: string) => {
+	// Start now and await later.
+	// Get the name of the system using SELECT RDB_NAME FROM QSYS2.ASP_INFO.
+	const querySystemName = queryOdbc(`SELECT RDB_NAME FROM QSYS2.ASP_INFO`);
+	/* Check if the library object already exists. */
+	const query3 = queryOdbc(`SELECT * FROM TABLE (QSYS2.OBJECT_STATISTICS('TEQ1', '*LIB')) AS X `);
+	/* Check if fromUser exists on any authorization lists, then copy newUser to them. */
+	/* This information is on the view AUTHORIZATION_LIST_USER_INFO. */
+	const query6 = queryOdbc(
+		`SELECT * FROM QSYS2.AUTHORIZATION_LIST_USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser.toUpperCase()}'`,
+	);
+
+	// Start of awaits...
 	const fromUserRaw = await queryOdbc(
 		`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser.toUpperCase()}'`,
 	);
@@ -204,12 +217,9 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		return `User ${copyFromUser} is not copyable.`;
 	}
 
-	/* Check if the library object already exists. */
-	const query3 = await queryOdbc(
-		`SELECT * FROM TABLE (QSYS2.OBJECT_STATISTICS('TEQ1', '*LIB')) AS X `,
-	);
 	/* If the result of query3 is empty, then the library does not exist. */
-	if (query3.length === 0) {
+	// eslint-disable-next-line unicorn/no-await-expression-member
+	if ((await query3).length === 0) {
 		console.error(`Library TEQ1 does not exist.`);
 		return `Library TEQ1 does not exist.`;
 	}
@@ -229,11 +239,11 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	let changeAttributesBoo = true;
 	let choicesObject: Array<{ value: string }> = [
 		{ value: `Continue` },
-		{ value: `Initial Program ${toUser.userInitialProgram}` },
-		{ value: `Limit Capabilities ${toUser.userLimitCapabilities}` },
-		{ value: `Text Description ${toUser.userText}` },
+		{ value: `Initial Program     ${toUser.userInitialProgram}` },
+		{ value: `Limit Capabilities  ${toUser.userLimitCapabilities}` },
+		{ value: `Text Description    ${toUser.userText}` },
 		{ value: `Special Authorities ${toUser.userSpecialAuthority}` },
-		{ value: `Outqueue ${toUser.userOutqueue}` },
+		{ value: `Outqueue            ${toUser.userOutqueue}` },
 	];
 
 	while (changeAttributesBoo)
@@ -365,17 +375,14 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 
 	/* Change object owner to QSECOFR. */
 	await QCMDEXC(CHGOBJOWN(newUser.toUpperCase()));
-	/* Check if fromUser exists on any authorization lists, then copy newUser to them. */
-	/* This information is on the view AUTHORIZATION_LIST_USER_INFO. */
-	const query6 = await queryOdbc(
-		`SELECT * FROM QSYS2.AUTHORIZATION_LIST_USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser.toUpperCase()}'`,
-	);
 	/* If the result of query6 is empty, then the user does not exist on any authorization lists. */
-	if (query6.length === 0) {
+	// eslint-disable-next-line unicorn/no-await-expression-member
+	if ((await query6).length === 0) {
 		console.log(`User ${copyFromUser} does not exist on any authorization lists.`);
 	} else {
 		/* Copy newUser to all authorization lists that fromUser is on. */
-		query6.forEach(async element => {
+		// eslint-disable-next-line unicorn/no-await-expression-member
+		(await query6).forEach(async element => {
 			const thing = element as unknown as IbmiAuthorizationListInterface;
 			await QCMDEXC(
 				`ADDAUTLE AUTL(${thing.AUTHORIZATION_LIST}) USER(${newUser.toUpperCase()}) AUT(${
@@ -400,8 +407,8 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	}
 
 	// Get the name of the system using SELECT RDB_NAME FROM QSYS2.ASP_INFO.
-	const querySystemName = await queryOdbc(`SELECT RDB_NAME FROM QSYS2.ASP_INFO`);
-	const RDB_NAME = Object.values(querySystemName[0])[0];
+	// eslint-disable-next-line unicorn/no-await-expression-member
+	const RDB_NAME = Object.values((await querySystemName)[0])[0];
 	/* Create a directory entry for the new user. */
 	await QCMDEXC(
 		`ADDDIRE USRID(${newUser.toUpperCase().slice(0, 7)} ${RDB_NAME}) USRD(''${
