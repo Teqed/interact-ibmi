@@ -1,6 +1,6 @@
 import ora from 'ora';
 import diagnoseUsers from '../../../util/diagnose-users.js';
-import { foundUsers } from '../../../util/find-users.js';
+import { foundUsers } from '../../../util/sequelize/find-users.js';
 import { generatedSelectMenu } from '../../generic.js';
 
 export default async function () {

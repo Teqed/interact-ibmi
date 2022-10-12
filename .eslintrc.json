@@ -134,6 +134,7 @@
 		"canonical/id-match": "warn",
 		"import/order": "warn",
 		"func-style": ["warn"],
+		"@typescript-eslint/consistent-type-assertions": "warn",
 		"@typescript-eslint/brace-style": ["off", "allman", { "allowSingleLine": true }]
 	  },
 	  "settings": {

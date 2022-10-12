@@ -69,6 +69,10 @@ export const stringToBoolean = (string: string) => {
 		case `1`:
 			return true;
 		case `false`:
+		case `fals`:
+		case `fal`:
+		case `fa`:
+		case `f`:
 		case `no`:
 		case `n`:
 		case `0`:

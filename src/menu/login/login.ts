@@ -3,7 +3,7 @@ It asks for the user's name and password, which is used for logging in to the IB
 import ora from 'ora';
 import { odbcLogin } from '../../util/odbc/odbc-util.js';
 import sequelizeLogin from '../../util/sequelize/connection.js';
-import { genericPressEnterPrompt, genericGetCommand, genericPasswordMenu } from '../generic.js';
+import { genericGetCommand, genericPasswordMenu } from '../generic.js';
 
 export default async () => {
 	console.clear();
@@ -23,7 +23,6 @@ export default async () => {
 		message: `Password:`,
 	});
 
-	console.time(`odbc`);
 	const odbcLoginThing = odbcLogin(loginId, loginPw, loginSys);
 
 	const spinner = ora(`Logging in to ODBC...`).start();
@@ -33,9 +32,6 @@ export default async () => {
 		spinner.fail(`Login failed!`);
 	}
 
-	console.timeEnd(`odbc`);
-	console.time(`sequelize`);
-
 	const sequelizeLoginThing = sequelizeLogin(loginId, loginPw, loginSys);
 
 	const spinner2 = ora(`Logging in to Sequelize...`).start();
@@ -44,9 +40,6 @@ export default async () => {
 	} else {
 		spinner2.fail(`Login failed!`);
 	}
-
-	console.timeEnd(`sequelize`);
-	await genericPressEnterPrompt();
 
 	return { loginId, loginPw, loginSys };
 };

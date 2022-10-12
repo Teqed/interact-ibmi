@@ -1,6 +1,6 @@
 import ora from 'ora';
 import { sleep } from '../../../util.js';
-import { foundUsers } from '../../../util/find-users.js';
+import { foundUsers } from '../../../util/sequelize/find-users.js';
 import getRows from '../../../util/odbc/get-rows-odbc.js';
 import { generatedSelectMenu, genericPressEnterPrompt } from '../../generic.js';
 

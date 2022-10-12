@@ -330,384 +330,309 @@ export class USER_INFO_BASIC
 		return USER_INFO_BASIC.init(
 			{
 				AUTHORIZATION_NAME: {
+					primaryKey: true,
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				PREVIOUS_SIGNON: {
 					type: DataTypes.TIME,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				SIGN_ON_ATTEMPTS_NOT_VALID: {
 					type: DataTypes.INTEGER,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				MAXIMUM_SIGN_ON_ATTEMPTS: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				STATUS: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				NETSERVER_DISABLED: {
 					type: DataTypes.STRING,
 					allowNull: false,
-					autoIncrement: true,
 				},
 				PASSWORD_CHANGE_DATE: {
 					type: DataTypes.TIME,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				NO_PASSWORD_INDICATOR: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				PASSWORD_LEVEL_0_1: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				PASSWORD_LEVEL_2_3: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				PASSWORD_LEVEL_4: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				PASSWORD_EXPIRATION_INTERVAL: {
 					type: DataTypes.SMALLINT,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				DATE_PASSWORD_EXPIRES: {
 					type: DataTypes.TIME,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				DAYS_UNTIL_PASSWORD_EXPIRES: {
 					type: DataTypes.INTEGER,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				SET_PASSWORD_TO_EXPIRE: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				USER_CLASS_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				SPECIAL_AUTHORITIES: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				GROUP_PROFILE_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				SUPPLEMENTAL_GROUP_COUNT: {
 					type: DataTypes.SMALLINT,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				SUPPLEMENTAL_GROUP_LIST: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				OWNER: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				GROUP_AUTHORITY: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				ASSISTANCE_LEVEL: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				CURRENT_LIBRARY_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				INITIAL_MENU_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				INITIAL_MENU_LIBRARY_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				INITIAL_PROGRAM_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				INITIAL_PROGRAM_LIBRARY_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				LIMIT_CAPABILITIES: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				TEXT_DESCRIPTION: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				DISPLAY_SIGNON_INFORMATION: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				LIMIT_DEVICE_SESSIONS: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				KEYBOARD_BUFFERING: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				MAXIMUM_ALLOWED_STORAGE: {
 					type: DataTypes.BIGINT,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				STORAGE_USED: {
 					type: DataTypes.BIGINT,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				HIGHEST_SCHEDULING_PRIORITY: {
 					type: DataTypes.CHAR,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				JOB_DESCRIPTION_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				JOB_DESCRIPTION_LIBRARY_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				ACCOUNTING_CODE: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				MESSAGE_QUEUE_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				MESSAGE_QUEUE_LIBRARY_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				MESSAGE_QUEUE_DELIVERY_METHOD: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				MESSAGE_QUEUE_SEVERITY: {
 					type: DataTypes.SMALLINT,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				OUTPUT_QUEUE_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				OUTPUT_QUEUE_LIBRARY_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				PRINT_DEVICE: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				SPECIAL_ENVIRONMENT: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				ATTENTION_KEY_HANDLING_PROGRAM_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				ATTENTION_KEY_HANDLING_PROGRAM_LIBRARY_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				LANGUAGE_ID: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				COUNTRY_OR_REGION_ID: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				CHARACTER_CODE_SET_ID: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				USER_OPTIONS: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				SORT_SEQUENCE_TABLE_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				SORT_SEQUENCE_TABLE_LIBRARY_NAME: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				OBJECT_AUDITING_VALUE: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				USER_ACTION_AUDIT_LEVEL: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				GROUP_AUTHORITY_TYPE: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				USER_ID_NUMBER: {
 					type: DataTypes.BIGINT,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				GROUP_ID_NUMBER: {
 					type: DataTypes.BIGINT,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				LOCALE_JOB_ATTRIBUTES: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				GROUP_MEMBER_INDICATOR: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				DIGITAL_CERTIFICATE_INDICATOR: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				CHARACTER_IDENTIFIER_CONTROL: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				LOCAL_PASSWORD_MANAGEMENT: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				BLOCK_PASSWORD_CHANGE: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				USER_ENTITLEMENT_REQUIRED: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				USER_EXPIRATION_INTERVAL: {
 					type: DataTypes.SMALLINT,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				USER_EXPIRATION_DATE: {
 					type: DataTypes.TIME,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				USER_EXPIRATION_ACTION: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				HOME_DIRECTORY: {
 					type: `VARG`,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				LOCALE_PATH_NAME: {
 					type: `VARG`,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				USER_DEFAULT_PASSWORD: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 				AUTHORITY_COLLECTION_ACTIVE: {
 					type: DataTypes.STRING,
 					allowNull: false,
-					autoIncrement: true,
 				},
 				AUTHORITY_COLLECTION_REPOSITORY_EXISTS: {
 					type: DataTypes.STRING,
 					allowNull: false,
-					autoIncrement: true,
 				},
 				PASE_SHELL_PATH: {
 					type: DataTypes.STRING,
 					allowNull: true,
-					autoIncrement: true,
 				},
 			},
 			{
