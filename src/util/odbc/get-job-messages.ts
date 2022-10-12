@@ -10,7 +10,8 @@ MESSAGE_TYPE, \
 MESSAGE_TIMESTAMP, \
 FROM_PROGRAM, \
 MESSAGE_TEXT, \
-MESSAGE_SECOND_LEVEL_TEXT \
+MESSAGE_SECOND_LEVEL_TEXT, \
+SEVERITY \
 from table(qsys2.joblog_info('${jobName}'))`)) as any;
 
 	// For each element in the array, push it to the jobMessages2 array.
@@ -21,6 +22,7 @@ from table(qsys2.joblog_info('${jobName}'))`)) as any;
 		MESSAGE_TEXT: string;
 		MESSAGE_TIMESTAMP: string;
 		MESSAGE_TYPE: string;
+		SEVERITY: number;
 	}> = [];
 	query.forEach(
 		(element: {
@@ -30,6 +32,7 @@ from table(qsys2.joblog_info('${jobName}'))`)) as any;
 			MESSAGE_TEXT: string;
 			MESSAGE_TIMESTAMP: string;
 			MESSAGE_TYPE: string;
+			SEVERITY: number;
 		}) => {
 			jobMessages.push(element);
 		},

@@ -1,6 +1,8 @@
 import chalk from 'chalk';
 import { genericSelectMenu } from '../../generic.js';
-import copyuser from './copyuser.js';
+import changePasswordMenu from './change/change-password.js';
+import copyuser from './copy/copyuser.js';
+import deleteUserMenu from './delete/delete-user.js';
 import displayUserMenu from './display-user.js';
 import reenableUserMenu from './reenableuser.js';
 
@@ -10,8 +12,8 @@ export default async function () {
 	const menuChoice = [
 		`1. Display User`, // 0 - displayUserMenu
 		`2. Copy User`, // 1 - copyuser
-		`3. (WIP) Delete User`, // 2 - deleteuser
-		`4. (WIP) Change User Password`, // 3 - changeuserpassword
+		`3. Delete User`, // 2 - deleteuser
+		`4. Change User Password`, // 3 - changeuserpassword
 		`5. Reenable User`, // 4 - reenableUserMenu
 		`6. (WIP) Unlock NetDrive User`, // 5 - unlocknetdriveuser
 		`7. Previous Menu`, // 6 - exitMenu
@@ -36,12 +38,12 @@ export default async function () {
 			}
 
 			case menuChoice[2]: {
-				// return await deleteUserMenu();
+				return await deleteUserMenu();
 				break;
 			}
 
 			case menuChoice[3]: {
-				// return await changePasswordMenu();
+				return await changePasswordMenu();
 				break;
 			}
 

@@ -1,3 +1,4 @@
+import confirm from '@inquirer/confirm';
 import {
 	createPrompt,
 	useState,
@@ -221,5 +222,19 @@ export const genericPressSpacePrompt = async () => {
 			message: `Press the Space key to continue...`,
 		},
 		{ clearPromptOnDone: true },
+	);
+};
+
+export const genericConfirmPrompt = async (config: {
+	_default?: boolean;
+	clearPromptOnDone?: boolean;
+	message: string;
+}) => {
+	return await confirm(
+		{
+			default: config._default ?? false,
+			message: config.message,
+		},
+		{ clearPromptOnDone: config.clearPromptOnDone ?? true },
 	);
 };
