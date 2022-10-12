@@ -174,157 +174,157 @@ export class USER_INFO_BASIC
 	extends Model<USER_INFO_BASICAttributes, USER_INFO_BASICCreationAttributes>
 	implements USER_INFO_BASICAttributes
 {
-	AUTHORIZATION_NAME?: string;
+	declare AUTHORIZATION_NAME?: string;
 
-	PREVIOUS_SIGNON?: string;
+	declare PREVIOUS_SIGNON?: string;
 
-	SIGN_ON_ATTEMPTS_NOT_VALID?: number;
+	declare SIGN_ON_ATTEMPTS_NOT_VALID?: number;
 
-	MAXIMUM_SIGN_ON_ATTEMPTS?: string;
+	declare MAXIMUM_SIGN_ON_ATTEMPTS?: string;
 
-	STATUS?: string;
+	declare STATUS?: string;
 
-	NETSERVER_DISABLED!: string;
+	declare NETSERVER_DISABLED: string; // Definitive assignment assertion
 
-	PASSWORD_CHANGE_DATE?: string;
+	declare PASSWORD_CHANGE_DATE?: string;
 
-	NO_PASSWORD_INDICATOR?: string;
+	declare NO_PASSWORD_INDICATOR?: string;
 
-	PASSWORD_LEVEL_0_1?: string;
+	declare PASSWORD_LEVEL_0_1?: string;
 
-	PASSWORD_LEVEL_2_3?: string;
+	declare PASSWORD_LEVEL_2_3?: string;
 
-	PASSWORD_LEVEL_4?: string;
+	declare PASSWORD_LEVEL_4?: string;
 
-	PASSWORD_EXPIRATION_INTERVAL?: number;
+	declare PASSWORD_EXPIRATION_INTERVAL?: number;
 
-	DATE_PASSWORD_EXPIRES?: string;
+	declare DATE_PASSWORD_EXPIRES?: string;
 
-	DAYS_UNTIL_PASSWORD_EXPIRES?: number;
+	declare DAYS_UNTIL_PASSWORD_EXPIRES?: number;
 
-	SET_PASSWORD_TO_EXPIRE?: string;
+	declare SET_PASSWORD_TO_EXPIRE?: string;
 
-	USER_CLASS_NAME?: string;
+	declare USER_CLASS_NAME?: string;
 
-	SPECIAL_AUTHORITIES?: string;
+	declare SPECIAL_AUTHORITIES?: string;
 
-	GROUP_PROFILE_NAME?: string;
+	declare GROUP_PROFILE_NAME?: string;
 
-	SUPPLEMENTAL_GROUP_COUNT?: number;
+	declare SUPPLEMENTAL_GROUP_COUNT?: number;
 
-	SUPPLEMENTAL_GROUP_LIST?: string;
+	declare SUPPLEMENTAL_GROUP_LIST?: string;
 
-	OWNER?: string;
+	declare OWNER?: string;
 
-	GROUP_AUTHORITY?: string;
+	declare GROUP_AUTHORITY?: string;
 
-	ASSISTANCE_LEVEL?: string;
+	declare ASSISTANCE_LEVEL?: string;
 
-	CURRENT_LIBRARY_NAME?: string;
+	declare CURRENT_LIBRARY_NAME?: string;
 
-	INITIAL_MENU_NAME?: string;
+	declare INITIAL_MENU_NAME?: string;
 
-	INITIAL_MENU_LIBRARY_NAME?: string;
+	declare INITIAL_MENU_LIBRARY_NAME?: string;
 
-	INITIAL_PROGRAM_NAME?: string;
+	declare INITIAL_PROGRAM_NAME?: string;
 
-	INITIAL_PROGRAM_LIBRARY_NAME?: string;
+	declare INITIAL_PROGRAM_LIBRARY_NAME?: string;
 
-	LIMIT_CAPABILITIES?: string;
+	declare LIMIT_CAPABILITIES?: string;
 
-	TEXT_DESCRIPTION?: string;
+	declare TEXT_DESCRIPTION?: string;
 
-	DISPLAY_SIGNON_INFORMATION?: string;
+	declare DISPLAY_SIGNON_INFORMATION?: string;
 
-	LIMIT_DEVICE_SESSIONS?: string;
+	declare LIMIT_DEVICE_SESSIONS?: string;
 
-	KEYBOARD_BUFFERING?: string;
+	declare KEYBOARD_BUFFERING?: string;
 
-	MAXIMUM_ALLOWED_STORAGE?: number;
+	declare MAXIMUM_ALLOWED_STORAGE?: number;
 
-	STORAGE_USED?: number;
+	declare STORAGE_USED?: number;
 
-	HIGHEST_SCHEDULING_PRIORITY?: string;
+	declare HIGHEST_SCHEDULING_PRIORITY?: string;
 
-	JOB_DESCRIPTION_NAME?: string;
+	declare JOB_DESCRIPTION_NAME?: string;
 
-	JOB_DESCRIPTION_LIBRARY_NAME?: string;
+	declare JOB_DESCRIPTION_LIBRARY_NAME?: string;
 
-	ACCOUNTING_CODE?: string;
+	declare ACCOUNTING_CODE?: string;
 
-	MESSAGE_QUEUE_NAME?: string;
+	declare MESSAGE_QUEUE_NAME?: string;
 
-	MESSAGE_QUEUE_LIBRARY_NAME?: string;
+	declare MESSAGE_QUEUE_LIBRARY_NAME?: string;
 
-	MESSAGE_QUEUE_DELIVERY_METHOD?: string;
+	declare MESSAGE_QUEUE_DELIVERY_METHOD?: string;
 
-	MESSAGE_QUEUE_SEVERITY?: number;
+	declare MESSAGE_QUEUE_SEVERITY?: number;
 
-	OUTPUT_QUEUE_NAME?: string;
+	declare OUTPUT_QUEUE_NAME?: string;
 
-	OUTPUT_QUEUE_LIBRARY_NAME?: string;
+	declare OUTPUT_QUEUE_LIBRARY_NAME?: string;
 
-	PRINT_DEVICE?: string;
+	declare PRINT_DEVICE?: string;
 
-	SPECIAL_ENVIRONMENT?: string;
+	declare SPECIAL_ENVIRONMENT?: string;
 
-	ATTENTION_KEY_HANDLING_PROGRAM_NAME?: string;
+	declare ATTENTION_KEY_HANDLING_PROGRAM_NAME?: string;
 
-	ATTENTION_KEY_HANDLING_PROGRAM_LIBRARY_NAME?: string;
+	declare ATTENTION_KEY_HANDLING_PROGRAM_LIBRARY_NAME?: string;
 
-	LANGUAGE_ID?: string;
+	declare LANGUAGE_ID?: string;
 
-	COUNTRY_OR_REGION_ID?: string;
+	declare COUNTRY_OR_REGION_ID?: string;
 
-	CHARACTER_CODE_SET_ID?: string;
+	declare CHARACTER_CODE_SET_ID?: string;
 
-	USER_OPTIONS?: string;
+	declare USER_OPTIONS?: string;
 
-	SORT_SEQUENCE_TABLE_NAME?: string;
+	declare SORT_SEQUENCE_TABLE_NAME?: string;
 
-	SORT_SEQUENCE_TABLE_LIBRARY_NAME?: string;
+	declare SORT_SEQUENCE_TABLE_LIBRARY_NAME?: string;
 
-	OBJECT_AUDITING_VALUE?: string;
+	declare OBJECT_AUDITING_VALUE?: string;
 
-	USER_ACTION_AUDIT_LEVEL?: string;
+	declare USER_ACTION_AUDIT_LEVEL?: string;
 
-	GROUP_AUTHORITY_TYPE?: string;
+	declare GROUP_AUTHORITY_TYPE?: string;
 
-	USER_ID_NUMBER?: number;
+	declare USER_ID_NUMBER?: number;
 
-	GROUP_ID_NUMBER?: number;
+	declare GROUP_ID_NUMBER?: number;
 
-	LOCALE_JOB_ATTRIBUTES?: string;
+	declare LOCALE_JOB_ATTRIBUTES?: string;
 
-	GROUP_MEMBER_INDICATOR?: string;
+	declare GROUP_MEMBER_INDICATOR?: string;
 
-	DIGITAL_CERTIFICATE_INDICATOR?: string;
+	declare DIGITAL_CERTIFICATE_INDICATOR?: string;
 
-	CHARACTER_IDENTIFIER_CONTROL?: string;
+	declare CHARACTER_IDENTIFIER_CONTROL?: string;
 
-	LOCAL_PASSWORD_MANAGEMENT?: string;
+	declare LOCAL_PASSWORD_MANAGEMENT?: string;
 
-	BLOCK_PASSWORD_CHANGE?: string;
+	declare BLOCK_PASSWORD_CHANGE?: string;
 
-	USER_ENTITLEMENT_REQUIRED?: string;
+	declare USER_ENTITLEMENT_REQUIRED?: string;
 
-	USER_EXPIRATION_INTERVAL?: number;
+	declare USER_EXPIRATION_INTERVAL?: number;
 
-	USER_EXPIRATION_DATE?: string;
+	declare USER_EXPIRATION_DATE?: string;
 
-	USER_EXPIRATION_ACTION?: string;
+	declare USER_EXPIRATION_ACTION?: string;
 
-	HOME_DIRECTORY?: any;
+	declare HOME_DIRECTORY?: any;
 
-	LOCALE_PATH_NAME?: any;
+	declare LOCALE_PATH_NAME?: any;
 
-	USER_DEFAULT_PASSWORD?: string;
+	declare USER_DEFAULT_PASSWORD?: string;
 
-	AUTHORITY_COLLECTION_ACTIVE!: string;
+	declare AUTHORITY_COLLECTION_ACTIVE: string; // Definitive assignment assertion
 
-	AUTHORITY_COLLECTION_REPOSITORY_EXISTS!: string;
+	declare AUTHORITY_COLLECTION_REPOSITORY_EXISTS: string; // Definitive assignment assertion
 
-	PASE_SHELL_PATH?: string;
+	declare PASE_SHELL_PATH?: string;
 
 	static initModel(sequelize: Sequelize.Sequelize): typeof USER_INFO_BASIC {
 		return USER_INFO_BASIC.init(

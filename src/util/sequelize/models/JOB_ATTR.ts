@@ -103,89 +103,89 @@ export class JOB_ATTR
 	extends Model<JOB_ATTRAttributes, JOB_ATTRCreationAttributes>
 	implements JOB_ATTRAttributes
 {
-	JOB?: string;
+	declare JOB?: string;
 
-	JOB_STATUS?: string;
+	declare JOB_STATUS?: string;
 
-	JOB_TYPE?: string;
+	declare JOB_TYPE?: string;
 
-	JOB_SUBTYPE?: string;
+	declare JOB_SUBTYPE?: string;
 
-	JOB_NAME?: string;
+	declare JOB_NAME?: string;
 
-	JOB_USER_NAME?: string;
+	declare JOB_USER_NAME?: string;
 
-	JOB_NBR?: string;
+	declare JOB_NBR?: string;
 
-	JOB_DATE?: string;
+	declare JOB_DATE?: string;
 
-	DATE_ENTERED_SYSTEM?: string;
+	declare DATE_ENTERED_SYSTEM?: string;
 
-	DATE_JOB_ACTIVE?: string;
+	declare DATE_JOB_ACTIVE?: string;
 
-	JOB_GRPPRF?: string;
+	declare JOB_GRPPRF?: string;
 
-	JOB_CURUSR?: string;
+	declare JOB_CURUSR?: string;
 
-	JOBD_NAME?: string;
+	declare JOBD_NAME?: string;
 
-	JOBD_LIB?: string;
+	declare JOBD_LIB?: string;
 
-	MODE_NAME?: string;
+	declare MODE_NAME?: string;
 
-	LOGCLPGM?: string;
+	declare LOGCLPGM?: string;
 
-	BRKMSGHANDLING?: string;
+	declare BRKMSGHANDLING?: string;
 
-	STSMSGHANDLING?: string;
+	declare STSMSGHANDLING?: string;
 
-	DECFMT?: string;
+	declare DECFMT?: string;
 
-	DATESEP?: string;
+	declare DATESEP?: string;
 
-	DATEFMT?: string;
+	declare DATEFMT?: string;
 
-	TIMESEP?: string;
+	declare TIMESEP?: string;
 
-	TIME_ZONE?: string;
+	declare TIME_ZONE?: string;
 
-	DAYOFWEEK?: string;
+	declare DAYOFWEEK?: string;
 
-	LANGUAGE_ID?: string;
+	declare LANGUAGE_ID?: string;
 
-	COUNTRY_ID?: string;
+	declare COUNTRY_ID?: string;
 
-	CCSID?: number;
+	declare CCSID?: number;
 
-	DFTCCSID?: number;
+	declare DFTCCSID?: number;
 
-	SBMJOB_NAME?: string;
+	declare SBMJOB_NAME?: string;
 
-	SBMJOB_USER?: string;
+	declare SBMJOB_USER?: string;
 
-	SBMJOB_NBR?: string;
+	declare SBMJOB_NBR?: string;
 
-	JOB_SBSNAME?: string;
+	declare JOB_SBSNAME?: string;
 
-	JOB_SBSLIB?: string;
+	declare JOB_SBSLIB?: string;
 
-	DEVNAME?: string;
+	declare DEVNAME?: string;
 
-	CLIENT_IP?: string;
+	declare CLIENT_IP?: string;
 
-	END_SEV?: number;
+	declare END_SEV?: number;
 
-	LOG_LEVEL?: number;
+	declare LOG_LEVEL?: number;
 
-	LOG_SEV?: number;
+	declare LOG_SEV?: number;
 
-	LOG_MSGTEXTLVL?: string;
+	declare LOG_MSGTEXTLVL?: string;
 
-	JOB_SWITCHES?: string;
+	declare JOB_SWITCHES?: string;
 
-	JOBLOG_OUTPUT?: string;
+	declare JOBLOG_OUTPUT?: string;
 
-	ALLOW_MULTIPLE_THREADS?: string;
+	declare ALLOW_MULTIPLE_THREADS?: string;
 
 	static initModel(sequelize: Sequelize.Sequelize): typeof JOB_ATTR {
 		return JOB_ATTR.init(
