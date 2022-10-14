@@ -4457,8 +4457,8 @@ typescript@^4.7.3:
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.8.3.tgz"
 
 typescript@^4.9.0-dev.20220909:
-  version "4.9.0-dev.20221013"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.0-dev.20221013.tgz#033572cb516aade1aea3849d25b394ffd7431d1c"
+  version "4.9.0-dev.20221014"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.0-dev.20221014.tgz#65460a02667bdb4af45c8031e1a2426787eda470"
 
 unbox-primitive@^1.0.2:
   version "1.0.2"
