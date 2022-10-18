@@ -462,7 +462,7 @@
 
 "@inquirer/rawlist@^0.0.10-alpha.0":
   version "0.0.10-alpha.0"
-  resolved "https://registry.npmjs.org/@inquirer/rawlist/-/rawlist-0.0.10-alpha.0.tgz"
+  resolved "https://registry.yarnpkg.com/@inquirer/rawlist/-/rawlist-0.0.10-alpha.0.tgz#fdc368cbda86492d6acd4f6919ac8ec85e80d31d"
   dependencies:
     "@inquirer/core" "^0.0.26-alpha.0"
     chalk "^5.0.1"
