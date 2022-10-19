@@ -7,7 +7,8 @@
 
 <p align="center">Menus for interacting with IBMi AS400 using the <a href="https://github.com/markdirish/node-odbc/">node-odbc</a> package.</p>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/5181964/189458380-25f7f4fc-30e0-47ee-9abb-90dae5ecc957.png" alt="prototype image of interact-ibmi showing some test output">
+<img src="https://user-images.githubusercontent.com/5181964/196768386-1b064261-37e7-48a5-ad75-ed9f34a9fb27.png" alt="prototype image of interact-ibmi showing some the login menu">
+<img src="https://user-images.githubusercontent.com/5181964/196768413-8038b624-92c0-48ba-8ccc-9c727df3f511.png" alt="prototype image of interact-ibmi showing the main menu">
 </p><br><br>
  This is a work-in-progress with the goals of being able to view file records using ODBC, insert new records, and delete selected records, as well as perform some system commands.
  
@@ -27,11 +28,9 @@
 * [:heavy_check_mark:] Handle errors on regular SQL queries
 * [:heavy_check_mark:] Create a new system user by copying another user's profile
 * [:heavy_check_mark:] Place new system user on authorization lists and create directory entry
-* [:heavy_check_mark:] Show system / user diagnostics upon login
-* [❌] Make a new To-do list with the next stretch of goals!
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/5181964/189445594-afe69bba-bcde-4d02-92e9-3fd0aaf70b10.png" alt="prototype image of interact-ibmi showing some user diagnostics">
+<img src="https://user-images.githubusercontent.com/5181964/196768438-acba4a63-b754-4bab-a217-af7649244d6c.png" alt="prototype image of interact-ibmi showing some user diagnostics">
 <br>
 <sup><small><i>Some basic user diagnostics already done!</i></small></sup>
 </p>
