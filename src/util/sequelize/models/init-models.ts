@@ -5,7 +5,7 @@ import { TQ001AP as _TQ001AP } from './TQ001AP.js';
 import { USER_INFO_BASIC as _USER_INFO_BASIC } from './USER_INFO_BASIC.js';
 
 // eslint-disable-next-line func-style
-export function initModels(sequelize: Sequelize) {
+export async function initModels(sequelize: Sequelize) {
 	const TQ001AP = _TQ001AP.initModel(sequelize);
 	const USER_INFO_BASIC = _USER_INFO_BASIC.initModel(sequelize);
 	const JOB_ATTR = _JOB_ATTR.initModel(sequelize);
