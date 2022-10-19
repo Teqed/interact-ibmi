@@ -4,7 +4,8 @@ import changePasswordMenu from './change/change-password.js';
 import copyuser from './copy/copyuser.js';
 import deleteUserMenu from './delete/delete-user.js';
 import displayUserMenu from './display-user.js';
-import reenableUserMenu from './reenableuser.js';
+import reenableNetserverUser from './reenable-netserver-user.js';
+import reenableUserMenu from './reenable-user.js';
 
 // Create an array of strings containing menu choices.
 export default async function () {
@@ -15,7 +16,7 @@ export default async function () {
 		`3. Delete User`, // 2 - deleteuser
 		`4. Change User Password`, // 3 - changeuserpassword
 		`5. Reenable User`, // 4 - reenableUserMenu
-		`6. (WIP) Unlock NetDrive User`, // 5 - unlocknetdriveuser
+		`6. Unlock Netserver User`, // 5 - reenableNetserverUser
 		`7. Previous Menu`, // 6 - exitMenu
 	];
 
@@ -53,7 +54,7 @@ export default async function () {
 			}
 
 			case menuChoice[5]: {
-				// return await unlockUserMenu();
+				await reenableNetserverUser();
 				break;
 			}
 
