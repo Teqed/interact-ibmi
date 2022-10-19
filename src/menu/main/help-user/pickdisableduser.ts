@@ -1,6 +1,6 @@
 import ora from 'ora';
 import { foundUsers } from '../../../util/find-users.js';
-import { generatedSelectMenu } from '../../generic.js';
+import { generatedSelectMenu, genericPressEnterPrompt } from '../../generic.js';
 
 export default async function () {
 	const spinner = ora(`Checking...`).start();
@@ -20,5 +20,6 @@ export default async function () {
 	}
 
 	spinner.succeed(`No disabled users found.`);
+	await genericPressEnterPrompt();
 	return ``;
 }
