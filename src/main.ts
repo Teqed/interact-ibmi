@@ -1,8 +1,9 @@
 #! /usr/bin/env node
 /* eslint-disable node/shebang */
-import findUsers from './util/find-users.js';
 import login from './menu/login/login.js';
 import mainMenu from './menu/main/menu-main.js';
+// import findUsers from './util/find-users.js';
+import findUsers from './util/find-users.js';
 // import { welcome } from './util.js';
 
 process.title = `interact-ibmi`;

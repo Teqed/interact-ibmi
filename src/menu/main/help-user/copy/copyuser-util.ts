@@ -1,20 +1,21 @@
-import select from '@inquirer/select';
+/* eslint-disable func-style */
 import confirm from '@inquirer/confirm';
-import type odbc from 'odbc';
+import select from '@inquirer/select';
 import chalk from 'chalk';
-import { parseErrorMessage } from '../../../util/qcmdexc/qcmdexc-util.js';
-import CHGOBJOWN from '../../../util/qcmdexc/chgobjown.js';
-import CRTUSRPRF from '../../../util/qcmdexc/crtusrprf.js';
-import CHGUSRPRF from '../../../util/qcmdexc/chgusrprf.js';
-import { queryOdbc } from '../../../util/odbc/odbc-util.js';
-import QCMDEXC from '../../../util/qcmdexc/qcmdexc.js';
+import type odbc from 'odbc';
+import { qualifyObject } from '../../../../util.js';
+import { queryOdbc } from '../../../../util/odbc/odbc-util.js';
+import CHGOBJOWN from '../../../../util/qcmdexc/chgobjown.js';
+import CHGUSRPRF from '../../../../util/qcmdexc/chgusrprf.js';
+import CRTUSRPRF from '../../../../util/qcmdexc/crtusrprf.js';
+import { parseErrorMessage } from '../../../../util/qcmdexc/qcmdexc-util.js';
+import QCMDEXC from '../../../../util/qcmdexc/qcmdexc.js';
 import {
 	type IbmiUserInterface,
 	type CreateUserInterface,
 	type IbmiAuthorizationListInterface,
-} from '../../../util/types.js';
-import { qualifyObject } from '../../../util.js';
-import { genericPasswordMenu, genericGetCommand } from '../../generic.js';
+} from '../../../../util/types.js';
+import { genericPasswordMenu, genericGetCommand } from '../../../generic.js';
 
 /* If possiblyNullValue is null or undefined, return an empty string.
 Otherwise, return possiblyNullValue. */
@@ -133,16 +134,41 @@ function convertUserInterface(
 	};
 }
 
+// ! Default export */
 /* Copies an existing user and creates a new user with the same privileges. */
 
 export default async (copyFromUser: string, newUser: string, userDescription: string) => {
-	const fromUserRaw = await queryOdbc(
+	// ! Start now and await later.
+	const fromUserRaw = queryOdbc(
 		`SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser.toUpperCase()}'`,
 	);
+	// Get the name of the system using SELECT RDB_NAME FROM QSYS2.ASP_INFO.
+	const querySystemName = queryOdbc(`SELECT RDB_NAME FROM QSYS2.ASP_INFO`);
+	/* If the result of query2 is not empty, then the new user already exists. */
+	const query2 = queryOdbc(
+		`SELECT AUTHORIZATION_NAME FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser.toUpperCase()}'`,
+	);
+	/* Check if the library object already exists. */
+	const query3 = queryOdbc(`SELECT * FROM TABLE (QSYS2.OBJECT_STATISTICS('TEQ1', '*LIB')) AS X `);
+	/* Check if fromUser exists on any authorization lists, then copy newUser to them. */
+	/* This information is on the view AUTHORIZATION_LIST_USER_INFO. */
+	const query6 = queryOdbc(
+		`SELECT * FROM QSYS2.AUTHORIZATION_LIST_USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser.toUpperCase()}'`,
+	);
+
+	// ! Start of awaits...
+	/* Prompt for new password. */
+	const newPassword = await genericPasswordMenu({
+		clearPromptOnDone: false,
+		mask: `*`,
+		message: `Enter new password for ${newUser}:`,
+	});
 	// Deconstruct the object
-	const fromUser: IbmiUserInterface = fromUserRaw[0] as unknown as IbmiUserInterface;
+	// eslint-disable-next-line unicorn/no-await-expression-member
+	const fromUser: IbmiUserInterface = (await fromUserRaw)[0] as unknown as IbmiUserInterface;
 	/* If the result of query is empty, then the user does not exist. */
-	if (fromUserRaw.length === 0) {
+	// eslint-disable-next-line unicorn/no-await-expression-member
+	if ((await fromUserRaw).length === 0) {
 		const confirmPrompt = await confirm({
 			message: `User ${copyFromUser} does not exist. Would you like to use the default user profile?`,
 		});
@@ -160,12 +186,11 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		newUser.toUpperCase(),
 		userDescription,
 	);
+	toUser.userPassword = newPassword;
 
-	const query2 = await queryOdbc(
-		`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser.toUpperCase()}'`,
-	);
 	/* If the result of query2 is not empty, then the new user already exists. */
-	if (query2.length > 0) {
+	// eslint-disable-next-line unicorn/no-await-expression-member
+	if ((await query2).length > 0) {
 		console.error(`User ${newUser} already exists.`);
 		/*
 		void inquirer
@@ -204,12 +229,9 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		return `User ${copyFromUser} is not copyable.`;
 	}
 
-	/* Check if the library object already exists. */
-	const query3 = await queryOdbc(
-		`SELECT * FROM TABLE (QSYS2.OBJECT_STATISTICS('TEQ1', '*LIB')) AS X `,
-	);
 	/* If the result of query3 is empty, then the library does not exist. */
-	if (query3.length === 0) {
+	// eslint-disable-next-line unicorn/no-await-expression-member
+	if ((await query3).length === 0) {
 		console.error(`Library TEQ1 does not exist.`);
 		return `Library TEQ1 does not exist.`;
 	}
@@ -218,22 +240,15 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	// TODO text description, special authorities, and outqueue.
 	// TODO Prompt to provide Email.
 
-	/* Prompt for new password. */
-	await genericPasswordMenu({
-		clearPromptOnDone: false,
-		mask: `*`,
-		message: `Enter new password for ${newUser}:`,
-	}).then(async answers => {
-		toUser.userPassword = answers;
-	});
 	let changeAttributesBoo = true;
 	let choicesObject: Array<{ value: string }> = [
 		{ value: `Continue` },
-		{ value: `Initial Program ${toUser.userInitialProgram}` },
-		{ value: `Limit Capabilities ${toUser.userLimitCapabilities}` },
-		{ value: `Text Description ${toUser.userText}` },
-		{ value: `Special Authorities ${toUser.userSpecialAuthority}` },
-		{ value: `Outqueue ${toUser.userOutqueue}` },
+		{ value: `Outqueue            : ${chalk.bgBlue.whiteBright(toUser.userOutqueue)}` },
+		{ value: `Initial Program     : ${chalk.bgBlue.whiteBright(toUser.userInitialProgram)}` },
+		{ value: `Text Description    : ${chalk.bgBlue.whiteBright(toUser.userText)}` },
+		// eslint-disable-next-line prettier/prettier
+		{ value: `Limit Capabilities  : ${chalk.bgBlue.whiteBright(toUser.userLimitCapabilities)}` },
+		{ value: `Special Authorities : ${chalk.bgBlue.whiteBright(toUser.userSpecialAuthority)}` },
 	];
 
 	while (changeAttributesBoo)
@@ -247,7 +262,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 			// eslint-disable-next-line @typescript-eslint/no-loop-func
 			.then(async answers => {
 				switch (answers) {
-					case `Initial Program ${toUser.userInitialProgram}`: {
+					case `Initial Program     : ${chalk.bgBlue.whiteBright(toUser.userInitialProgram)}`: {
 						await genericGetCommand({
 							default: toUser.userInitialProgram,
 							message: `Enter new initial program for ${newUser}:`,
@@ -259,7 +274,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 						break;
 					}
 
-					case `Limit Capabilities ${toUser.userLimitCapabilities}`: {
+					case `Limit Capabilities  : ${chalk.bgBlue.whiteBright(toUser.userLimitCapabilities)}`: {
 						await genericGetCommand({
 							default: toUser.userLimitCapabilities,
 							message: `Enter new limit capabilities for ${newUser}:`,
@@ -272,7 +287,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 						break;
 					}
 
-					case `Text Description ${toUser.userText}`: {
+					case `Text Description    : ${chalk.bgBlue.whiteBright(toUser.userText)}`: {
 						await genericGetCommand({
 							default: toUser.userText,
 							message: `Enter new text description for ${newUser}:`,
@@ -284,7 +299,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 						break;
 					}
 
-					case `Special Authorities ${toUser.userSpecialAuthority}`: {
+					case `Special Authorities : ${chalk.bgBlue.whiteBright(toUser.userSpecialAuthority)}`: {
 						await genericGetCommand({
 							default: toUser.userSpecialAuthority,
 							message: `Enter new special authorities for ${newUser}:`,
@@ -297,7 +312,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 						break;
 					}
 
-					case `Outqueue ${toUser.userOutqueue}`: {
+					case `Outqueue            : ${chalk.bgBlue.whiteBright(toUser.userOutqueue)}`: {
 						await genericGetCommand({
 							default: toUser.userOutqueue,
 							message: `Enter new outqueue for ${newUser}:`,
@@ -316,11 +331,15 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 
 				choicesObject = [
 					{ value: `Continue` },
-					{ value: `Initial Program ${toUser.userInitialProgram}` },
-					{ value: `Limit Capabilities ${toUser.userLimitCapabilities}` },
-					{ value: `Text Description ${toUser.userText}` },
-					{ value: `Special Authorities ${toUser.userSpecialAuthority}` },
-					{ value: `Outqueue ${toUser.userOutqueue}` },
+					// eslint-disable-next-line prettier/prettier
+					{ value: `Outqueue            : ${chalk.bgBlue.whiteBright(toUser.userOutqueue)}` },
+					// eslint-disable-next-line prettier/prettier
+					{ value: `Initial Program     : ${chalk.bgBlue.whiteBright(toUser.userInitialProgram)}` },
+					{ value: `Text Description    : ${chalk.bgBlue.whiteBright(toUser.userText)}` },
+					// eslint-disable-next-line prettier/prettier
+					{ value: `Limit Capabilities  : ${chalk.bgBlue.whiteBright(toUser.userLimitCapabilities)}` },
+					// eslint-disable-next-line prettier/prettier
+					{ value: `Special Authorities : ${chalk.bgBlue.whiteBright(toUser.userSpecialAuthority)}` },
 				];
 			});
 
@@ -331,17 +350,17 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	});
 
 	const query5 = await queryOdbc(
-		`SELECT * FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser.toUpperCase()}'`,
+		`SELECT AUTHORIZATION_NAME FROM QSYS2.USER_INFO_BASIC WHERE AUTHORIZATION_NAME = '${newUser.toUpperCase()}'`,
 	);
 	/* If the result of query4 is empty, then the user failed to create. */
 	if (query5.length === 0) {
 		console.error(`User ${newUser} failed to create.`);
 		return `User ${newUser} failed to create.`;
+	} else {
+		console.log(`User ${newUser} created.`);
 	}
 
-	console.log(`User ${newUser} created.`);
-
-	await QCMDEXC(
+	const AdjustUserParameters = QCMDEXC(
 		CHGUSRPRF({
 			CCSID: toUser.userCharacterCodeSetId,
 			MAXSTG: toUser.userMaximumAllowedStorage,
@@ -349,6 +368,7 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 			PWDEXPITV: toUser.userPasswordExpirationInterval,
 			USRPRF: toUser.userId,
 		}),
+		// eslint-disable-next-line promise/prefer-await-to-then
 	).catch(async (error: odbc.NodeOdbcError) => {
 		console.log(
 			CHGUSRPRF({
@@ -364,23 +384,23 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	});
 
 	/* Change object owner to QSECOFR. */
-	await QCMDEXC(CHGOBJOWN(newUser.toUpperCase()));
-	/* Check if fromUser exists on any authorization lists, then copy newUser to them. */
-	/* This information is on the view AUTHORIZATION_LIST_USER_INFO. */
-	const query6 = await queryOdbc(
-		`SELECT * FROM QSYS2.AUTHORIZATION_LIST_USER_INFO WHERE AUTHORIZATION_NAME = '${copyFromUser.toUpperCase()}'`,
-	);
+	const ChangeObjectOwner = QCMDEXC(CHGOBJOWN(newUser.toUpperCase()));
 	/* If the result of query6 is empty, then the user does not exist on any authorization lists. */
-	if (query6.length === 0) {
+	const AuthorizationListPromises: Array<Promise<unknown>> = [];
+	// eslint-disable-next-line unicorn/no-await-expression-member
+	if ((await query6).length === 0) {
 		console.log(`User ${copyFromUser} does not exist on any authorization lists.`);
 	} else {
 		/* Copy newUser to all authorization lists that fromUser is on. */
-		query6.forEach(async element => {
+		// eslint-disable-next-line unicorn/no-await-expression-member
+		(await query6).forEach(async element => {
 			const thing = element as unknown as IbmiAuthorizationListInterface;
-			await QCMDEXC(
+			// Push the promise to the array
+			const AddAuthorizationList = QCMDEXC(
 				`ADDAUTLE AUTL(${thing.AUTHORIZATION_LIST}) USER(${newUser.toUpperCase()}) AUT(${
 					thing.OBJECT_AUTHORITY
 				})`,
+				// eslint-disable-next-line promise/prefer-await-to-then
 			).catch(async (error: odbc.NodeOdbcError) => {
 				const parseError = await parseErrorMessage(error);
 				if (parseError.errorIdentifier === `CPF2282`) {
@@ -396,17 +416,19 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 				// Otherwise, throw an error.
 				throw new Error(`${parseError.errorIdentifier}: ${parseError.messageText}`);
 			});
+			AuthorizationListPromises.push(AddAuthorizationList);
 		});
 	}
 
 	// Get the name of the system using SELECT RDB_NAME FROM QSYS2.ASP_INFO.
-	const querySystemName = await queryOdbc(`SELECT RDB_NAME FROM QSYS2.ASP_INFO`);
-	const RDB_NAME = Object.values(querySystemName[0])[0];
+	// eslint-disable-next-line unicorn/no-await-expression-member
+	const RDB_NAME = Object.values((await querySystemName)[0])[0];
 	/* Create a directory entry for the new user. */
-	await QCMDEXC(
+	const CreateDirectoryEntry = QCMDEXC(
 		`ADDDIRE USRID(${newUser.toUpperCase().slice(0, 7)} ${RDB_NAME}) USRD(''${
 			toUser.userText
 		}'') USER(${newUser.toUpperCase()})`,
+		// eslint-disable-next-line promise/prefer-await-to-then
 	).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseErrorMessage(error);
 		if (parseError.errorIdentifier === `CPF9082`) {
@@ -420,6 +442,10 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		// Otherwise, throw an error.
 		throw new Error(`${parseError.errorIdentifier}: ${parseError.messageText}`);
 	});
+
+	// ! Resolve remaining promises.
+	await Promise.all([AdjustUserParameters, ChangeObjectOwner, CreateDirectoryEntry]);
+	await Promise.all(AuthorizationListPromises);
 
 	return `Successfully completed user creation, added to authorization lists, and added to directory.`;
 };

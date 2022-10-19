@@ -4,6 +4,7 @@ import chalkAnimation from 'chalk-animation';
 import { type QualifiedObject } from './util/types';
 
 // Sleep for X milliseconds, or a default of a half second.
+// eslint-disable-next-line func-style
 export async function sleep(milliseconds = 500) {
 	return new Promise(resolve =>
 		// eslint-disable-next-line no-promise-executor-return
@@ -21,6 +22,7 @@ export const clearScreen = () => {
 	process.stdout.write(`\u001Bc`);
 };
 
+// eslint-disable-next-line func-style
 export function qualifyObject(LibraryAndObject: QualifiedObject): string {
 	// TODO: Test the special object parameters.
 	if (
@@ -57,3 +59,28 @@ export const welcome = async () => {
 export const returnZero = async () => {
 	return 0;
 };
+
+/* eslint-disable unicorn/no-null */
+export const stringToBoolean = (string: string) => {
+	switch (string.toLowerCase().trim()) {
+		case `true`:
+		case `yes`:
+		case `y`:
+		case `1`:
+			return true;
+		case `false`:
+		case `fals`:
+		case `fal`:
+		case `fa`:
+		case `f`:
+		case `no`:
+		case `n`:
+		case `0`:
+		case null:
+		case undefined:
+			return false;
+		default:
+			return Boolean(string);
+	}
+};
+/* eslint-enable unicorn/no-null */

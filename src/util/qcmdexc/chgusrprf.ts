@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import { type ParametersCHGUSRPRF } from '../types.js';
 import { qualifyObject } from './qcmdexc-util.js';
 

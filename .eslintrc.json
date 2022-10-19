@@ -2,7 +2,6 @@
 	"parser": "@typescript-eslint/parser",
 	"plugins": ["@typescript-eslint",
     "prettier",
-	"unicorn",
 	"import"],
 	"globals": {
 		"NodeJS": true
@@ -14,13 +13,11 @@
 		"node": true
 	},
 	"extends": [
-		"canonical",
 		"eslint:recommended",
+		"prettier",
 		"xo",
 		"airbnb-base",
-		"canonical/prettier",
-		"prettier",
-		"plugin:node/recommended"
+		"canonical"
 	],
 	"overrides": [
 		{
@@ -31,9 +28,7 @@
 			],
 
 			"rules": {
-			},
-
-			"parser": "@javascript-eslint/parser"
+			}
 		},
 
 		{
@@ -46,14 +41,17 @@
 		  // instead of extending them outside the `overrides`.
 		  // If you don't want to extend any rules, you don't need an `extends` attribute.
 		  "extends": [
+			"plugin:import/typescript",
+			"plugin:node/recommended",
 			"canonical/typescript",
+			"canonical/module",
+			"canonical/node",
+			"canonical/prettier",
 			"xo-typescript",
 			"airbnb-typescript",
 			"plugin:@typescript-eslint/eslint-recommended",
 			"plugin:@typescript-eslint/recommended",
-			"plugin:import/recommended",
-			"plugin:import/typescript",
-			"plugin:unicorn/recommended"
+			"plugin:import/recommended"
 		  ],
 		  
 	  "rules": {
@@ -127,15 +125,24 @@
 		"no-await-in-loop": "warn",
 		"promise/prefer-await-to-then": "warn",
 		"import/prefer-default-export": "warn",
-		"unicorn/prevent-abbreviations": "warn"
+		"unicorn/prevent-abbreviations": "warn",
+		"unicorn/filename-case": "warn",
+		"unicorn/no-nested-ternary": "warn",
+		"unicorn/no-null": "warn",
+		"unicorn/no-useless-undefined": "warn",
+		"unicorn/prefer-query-selector": "warn",
+		"canonical/id-match": "warn",
+		"import/order": "warn",
+		"func-style": ["warn"],
+		"@typescript-eslint/consistent-type-assertions": "warn",
+		"@typescript-eslint/brace-style": ["off", "allman", { "allowSingleLine": true }]
 	  },
 	  "settings": {
 		"import/resolver":{
 		  "typescript": ["true", {"alwaysTryTypes": "true", "project": "./tsconfig.json"}],
 		  "node": "true"},
 		"import/parsers": {
-			"@typescript-eslint/parser": [".ts", ".tsx", ".mts", ".mtx"],
-			"@javascript-eslint/parser": [".js", ".jsx", ".mjs", ".mjx"]
+			"@typescript-eslint/parser": [".ts", ".tsx", ".mts", ".mtx"]
 		}
 	}
 		}

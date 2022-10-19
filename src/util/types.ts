@@ -148,7 +148,7 @@ export type BriefIbmiUserInterface = {
 	TEXT_DESCRIPTION: string;
 	USER_DEFAULT_PASSWORD: string | null;
 	USER_EXPIRATION_INTERVAL: number;
-	USER_ID_NUMBER: bigint;
+	USER_ID_NUMBER: bigint | number;
 };
 
 export type IbmiAuthorizationListInterface = {
