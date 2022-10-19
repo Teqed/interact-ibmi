@@ -9,6 +9,7 @@
     "@sequelize/core": "^7.0.0-alpha.18",
     "chalk": "^5.0.1",
     "chalk-animation": "^2.0.3",
+    "inquirer-autocomplete-prompt": "^3.0.0",
     "odbc": "^2.4.6",
     "ora": "^6.1.2",
     "reflect-metadata": "^0.1.13",
