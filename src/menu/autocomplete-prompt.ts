@@ -5,7 +5,6 @@ import fuzzy from 'fuzzy';
 import inquirer from 'inquirer';
 import inquirerPrompt from 'inquirer-autocomplete-prompt';
 import { type GenericListPrompt } from '../util/types.js';
-import { genericPressEnterPrompt } from './generic.js';
 
 export default async function (prompt: GenericListPrompt) {
 	console.clear();
@@ -13,7 +12,7 @@ export default async function (prompt: GenericListPrompt) {
 	inquirer.registerPrompt(`autocomplete`, inquirerPrompt);
 
 	// eslint-disable-next-line func-style
-	async function searchFood(answers: any, input = ``) {
+	async function searchChoices(answers: any, input = ``) {
 		return new Promise(resolve => {
 			setTimeout(() => {
 				// eslint-disable-next-line unicorn/no-array-method-this-argument
@@ -30,8 +29,8 @@ export default async function (prompt: GenericListPrompt) {
 				message: prompt.message,
 				searchText: `We are searching the internet for you!`,
 				emptyText: `Nothing found!`,
-				source: searchFood,
-				pageSize: 4,
+				source: searchChoices,
+				pageSize: 10,
 				validate(value) {
 					return value ? true : `Type something!`;
 				},
