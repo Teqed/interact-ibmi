@@ -1,8 +1,6 @@
-import { type FindAttributeOptions } from '@sequelize/core';
 import { type BriefIbmiUserInterface } from '../types.js';
 import { sequelize } from './connection.js';
 import {
-	type USER_INFO_BASICAttributes,
 	type USER_INFO_BASIC,
 	type USER_INFO_BASICOptionalAttributes,
 } from './models/USER_INFO_BASIC.js';
