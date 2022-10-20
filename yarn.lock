@@ -469,7 +469,7 @@
 
 "@inquirer/select@^0.0.27-alpha.0":
   version "0.0.27-alpha.0"
-  resolved "https://registry.npmjs.org/@inquirer/select/-/select-0.0.27-alpha.0.tgz"
+  resolved "https://registry.yarnpkg.com/@inquirer/select/-/select-0.0.27-alpha.0.tgz#ff1016dee2ac7bc474949a2103e826931230be58"
   dependencies:
     "@inquirer/core" "^0.0.26-alpha.0"
     ansi-escapes "^5.0.0"
