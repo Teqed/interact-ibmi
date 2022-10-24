@@ -787,8 +787,8 @@
   resolved "https://registry.npmjs.org/@types/tinycolor2/-/tinycolor2-1.4.3.tgz"
 
 "@types/validator@^13.7.5", "@types/validator@^13.7.7":
-  version "13.7.8"
-  resolved "https://registry.npmjs.org/@types/validator/-/validator-13.7.8.tgz"
+  version "13.7.9"
+  resolved "https://registry.yarnpkg.com/@types/validator/-/validator-13.7.9.tgz#9b1d1c534574c89176f770f1c7b95f808cae2c1e"
 
 "@types/ws@^8.0.0":
   version "8.5.3"
