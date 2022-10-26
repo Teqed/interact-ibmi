@@ -4086,7 +4086,7 @@ pluralize@^8.0.0:
   version "8.0.0"
   resolved "https://registry.npmjs.org/pluralize/-/pluralize-8.0.0.tgz"
 
-postcss@^8.4.16:
+postcss@^8.4.18:
   version "8.4.18"
   resolved "https://registry.npmjs.org/postcss/-/postcss-8.4.18.tgz"
   dependencies:
@@ -4342,9 +4342,9 @@ rollup-plugin-visualizer@^5.8.1:
     source-map "^0.7.4"
     yargs "^17.5.1"
 
-rollup@~2.78.0:
-  version "2.78.1"
-  resolved "https://registry.npmjs.org/rollup/-/rollup-2.78.1.tgz"
+rollup@^2.79.1:
+  version "2.79.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.79.1.tgz#bedee8faef7c9f93a2647ac0108748f497f081c7"
   optionalDependencies:
     fsevents "~2.3.2"
 
@@ -5023,13 +5023,13 @@ vite-plugin-progress@^0.0.5:
     rd "^2.0.1"
 
 vite@^3.0.0, vite@^3.1.0:
-  version "3.1.8"
-  resolved "https://registry.npmjs.org/vite/-/vite-3.1.8.tgz"
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-3.2.0.tgz#a4015914620ff0122ea57fddfecc0e250eb6582c"
   dependencies:
     esbuild "^0.15.9"
-    postcss "^8.4.16"
+    postcss "^8.4.18"
     resolve "^1.22.1"
-    rollup "~2.78.0"
+    rollup "^2.79.1"
   optionalDependencies:
     fsevents "~2.3.2"
 
