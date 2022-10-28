@@ -11,33 +11,12 @@ export default async function (prompt: GenericListPrompt) {
 
 	inquirer.registerPrompt(`autocomplete`, inquirerPrompt);
 
-	const testChoices = [
-		`foo`,
-		`bar`,
-		`baz`,
-		`qux`,
-		`quux`,
-		`corge`,
-		`grault`,
-		`garply`,
-		`waldo`,
-		`fred`,
-		`plugh`,
-		`xyzzy`,
-		`thud`,
-		`a`,
-		`b`,
-		`c`,
-		`d`,
-		`e`,
-	];
-
 	// eslint-disable-next-line func-style
 	async function searchChoices(answers: any, input = ``) {
 		return new Promise(resolve => {
 			setTimeout(() => {
 				// eslint-disable-next-line unicorn/no-array-method-this-argument
-				resolve(fuzzy.filter(input, testChoices).map(element => element.original));
+				resolve(fuzzy.filter(input, prompt.choices).map(element => element.original));
 				// prompt.choices
 			}, 10);
 		});
