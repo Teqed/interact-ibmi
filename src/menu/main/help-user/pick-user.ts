@@ -2,7 +2,6 @@ import ora from 'ora';
 import { sleep } from '../../../util.js';
 import findUsers, { foundUsers } from '../../../util/find-users.js';
 import autocompletePrompt from '../../generic/autocomplete-prompt.js';
-import { genericPressEnterPrompt } from '../../generic/generic.js';
 
 export default async function () {
 	// Create an array of strings containing menu choices made of the query results.
