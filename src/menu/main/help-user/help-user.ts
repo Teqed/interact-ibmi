@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { genericSelectMenu } from '../../generic.js';
+import { genericSelectMenu } from '../../generic/generic.js';
 import changePasswordMenu from './change/change-password.js';
 import copyuser from './copy/copyuser.js';
 import deleteUserMenu from './delete/delete-user.js';

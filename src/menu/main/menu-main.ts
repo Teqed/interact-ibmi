@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import exitMenu, { exitMenuMain } from '../exit.js';
-import { genericSelectMenu, genericPressEnterPrompt } from '../generic.js';
+import { genericSelectMenu, genericPressEnterPrompt } from '../generic/generic.js';
 import cmdMenu from './cmd.js';
 import helpUsersMenu from './help-user/help-user.js';
 import odbcMenu from './odbc.js';

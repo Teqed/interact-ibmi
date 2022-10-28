@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import type odbc from 'odbc';
 import ora, { type Ora } from 'ora';
-import { genericPressEnterPrompt } from '../../menu/generic.js';
+import { genericPressEnterPrompt } from '../../menu/generic/generic.js';
 import printJobLog from '../odbc/print-job-log.js';
 import { parseODBCErrorMessage } from './qcmdexc-util.js';
 import qcmdexc from './qcmdexc.js';

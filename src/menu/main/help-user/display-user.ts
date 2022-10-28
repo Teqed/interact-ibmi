@@ -2,7 +2,7 @@ import ora from 'ora';
 import { sleep } from '../../../util.js';
 import { foundUsers } from '../../../util/find-users.js';
 import getRows from '../../../util/odbc/get-rows-odbc.js';
-import { generatedSelectMenu, genericPressEnterPrompt } from '../../generic.js';
+import { generatedSelectMenu, genericPressEnterPrompt } from '../../generic/generic.js';
 
 const fullUserInfo = async (user: string) => {
 	const query = `SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${user}'`;

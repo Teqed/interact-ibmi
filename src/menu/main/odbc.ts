@@ -1,5 +1,5 @@
 import getRows from '../../util/odbc/get-rows-odbc.js';
-import { genericGetCommand, genericPressEnterPrompt } from '../generic.js';
+import { genericGetCommand, genericPressEnterPrompt } from '../generic/generic.js';
 
 export default async function () {
 	const inputCommand: string = await genericGetCommand({

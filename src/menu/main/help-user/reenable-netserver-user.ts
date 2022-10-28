@@ -3,7 +3,7 @@ import ora from 'ora';
 import findUsers, { foundUsers } from '../../../util/find-users.js';
 import CHGUSRPRF from '../../../util/qcmdexc/chgusrprf.js';
 import QCMDEXC from '../../../util/qcmdexc/qcmdexc.js';
-import { generatedSelectMenu, genericPressEnterPrompt } from '../../generic.js';
+import { generatedSelectMenu, genericPressEnterPrompt } from '../../generic/generic.js';
 
 const pickDisabledUser = async function () {
 	const spinner = ora(`Checking...`).start();

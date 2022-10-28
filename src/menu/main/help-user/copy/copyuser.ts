@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { genericGetCommand, genericPressEnterPrompt } from '../../../generic.js';
+import { genericGetCommand, genericPressEnterPrompt } from '../../../generic/generic.js';
 import copyUser from './copyuser-util.js';
 
 export default async function () {

@@ -1,4 +1,4 @@
-import { genericGetCommand } from '../../menu/generic.js';
+import { genericGetCommand } from '../../menu/generic/generic.js';
 import { stringToBoolean } from '../../util.js';
 import { sequelize } from '../sequelize/connection.js';
 

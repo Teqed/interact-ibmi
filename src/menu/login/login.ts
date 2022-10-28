@@ -3,7 +3,7 @@ It asks for the user's name and password, which is used for logging in to the IB
 import ora from 'ora';
 import { odbcLogin } from '../../util/odbc/odbc-util.js';
 import sequelizeLogin from '../../util/sequelize/connection.js';
-import { genericGetCommand, genericPasswordMenu } from '../generic.js';
+import { genericGetCommand, genericPasswordMenu } from '../generic/generic.js';
 
 export default async () => {
 	console.clear();

@@ -4,7 +4,7 @@
 import fuzzy from 'fuzzy';
 import inquirer from 'inquirer';
 import inquirerPrompt from 'inquirer-autocomplete-prompt';
-import { type GenericListPrompt } from '../util/types.js';
+import { type GenericListPrompt } from '../../util/types.js';
 
 export default async function (prompt: GenericListPrompt) {
 	console.clear();

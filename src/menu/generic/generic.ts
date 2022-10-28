@@ -11,7 +11,7 @@ import input from '@inquirer/input';
 import rawlist from '@inquirer/rawlist';
 import select from '@inquirer/select';
 import chalk from 'chalk';
-import { type GenericInputPrompt, type GenericListPrompt } from '../util/types.js';
+import { type GenericInputPrompt, type GenericListPrompt } from '../../util/types.js';
 
 // The genericGetCommand function is used to get a command from the user.
 // It can be used to run queries or system commands, or to get input from the user.

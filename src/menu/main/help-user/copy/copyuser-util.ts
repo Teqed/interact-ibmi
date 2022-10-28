@@ -15,7 +15,7 @@ import {
 	type CreateUserInterface,
 	type IbmiAuthorizationListInterface,
 } from '../../../../util/types.js';
-import { genericPasswordMenu, genericGetCommand } from '../../../generic.js';
+import { genericPasswordMenu, genericGetCommand } from '../../../generic/generic.js';
 
 /* If possiblyNullValue is null or undefined, return an empty string.
 Otherwise, return possiblyNullValue. */

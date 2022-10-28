@@ -6,7 +6,7 @@ import {
 	genericPressEnterPrompt,
 	generatedSelectMenu,
 	genericGetCommand,
-} from '../../../generic.js';
+} from '../../../generic/generic.js';
 
 export default async function () {
 	const spinner = ora(`Checking...`).start();
