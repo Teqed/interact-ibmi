@@ -1,12 +1,10 @@
 import chalk from 'chalk';
 import { genericGetCommand, genericPressEnterPrompt } from '../../../generic/generic.js';
+import pickUser from '../pick-user.js';
 import copyUser from './copyuser-util.js';
 
 export default async function () {
-	const fromUser: string = await genericGetCommand({
-		clearPromptOnDone: false,
-		message: `Enter user ID to copy from:`,
-	});
+	const fromUser: string = await pickUser();
 	const toUser: string = await genericGetCommand({
 		clearPromptOnDone: false,
 		message: `Enter user ID to copy to:`,

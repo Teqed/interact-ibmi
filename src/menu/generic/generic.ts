@@ -1,17 +1,10 @@
-import confirm from '@inquirer/confirm';
-import {
-	createPrompt,
-	useState,
-	useKeypress,
-	isEnterKey,
-	usePrefix,
-	isSpaceKey,
-} from '@inquirer/core';
-import input from '@inquirer/input';
-import rawlist from '@inquirer/rawlist';
-import select from '@inquirer/select';
+import { createPrompt, useState, useKeypress, isEnterKey, isSpaceKey } from '@inquirer/core';
 import chalk from 'chalk';
 import { type GenericInputPrompt, type GenericListPrompt } from '../../util/types.js';
+import confirm from './inquirer-confirm.js';
+import input from './inquirer-input.js';
+import rawlist from './inquirer-rawlist.js';
+import select from './inquirer-select.js';
 
 // The genericGetCommand function is used to get a command from the user.
 // It can be used to run queries or system commands, or to get input from the user.
@@ -140,7 +133,6 @@ const customConfirm = createPrompt<
 >((config, done) => {
 	const [status, setStatus] = useState(`pending`);
 	const [value, setValue] = useState(``);
-	const prefix = usePrefix();
 
 	switch (config.continueKey) {
 		case `enter`: {
@@ -193,7 +185,7 @@ const customConfirm = createPrompt<
 	}
 
 	const message = chalk.bold(config.message);
-	return `${prefix} ${message}${defaultValue} ${formattedValue}`;
+	return `${message}${defaultValue} ${formattedValue}`;
 });
 
 export const genericPressKeyPrompt = async () => {

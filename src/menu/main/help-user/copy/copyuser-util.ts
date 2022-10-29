@@ -1,6 +1,4 @@
 /* eslint-disable func-style */
-import confirm from '@inquirer/confirm';
-import select from '@inquirer/select';
 import chalk from 'chalk';
 import type odbc from 'odbc';
 import { qualifyObject } from '../../../../util.js';
@@ -16,6 +14,8 @@ import {
 	type IbmiAuthorizationListInterface,
 } from '../../../../util/types.js';
 import { genericPasswordMenu, genericGetCommand } from '../../../generic/generic.js';
+import confirm from '../../../generic/inquirer-confirm.js';
+import select from '../../../generic/inquirer-select.js';
 
 /* If possiblyNullValue is null or undefined, return an empty string.
 Otherwise, return possiblyNullValue. */
@@ -262,7 +262,9 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 			// eslint-disable-next-line @typescript-eslint/no-loop-func
 			.then(async answers => {
 				switch (answers) {
-					case `Initial Program     : ${chalk.bgBlue.whiteBright(toUser.userInitialProgram)}`: {
+					case `Initial Program     : ${chalk.bgBlue.whiteBright(
+						toUser.userInitialProgram,
+					)}`: {
 						await genericGetCommand({
 							default: toUser.userInitialProgram,
 							message: `Enter new initial program for ${newUser}:`,
@@ -274,7 +276,9 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 						break;
 					}
 
-					case `Limit Capabilities  : ${chalk.bgBlue.whiteBright(toUser.userLimitCapabilities)}`: {
+					case `Limit Capabilities  : ${chalk.bgBlue.whiteBright(
+						toUser.userLimitCapabilities,
+					)}`: {
 						await genericGetCommand({
 							default: toUser.userLimitCapabilities,
 							message: `Enter new limit capabilities for ${newUser}:`,
@@ -299,7 +303,9 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 						break;
 					}
 
-					case `Special Authorities : ${chalk.bgBlue.whiteBright(toUser.userSpecialAuthority)}`: {
+					case `Special Authorities : ${chalk.bgBlue.whiteBright(
+						toUser.userSpecialAuthority,
+					)}`: {
 						await genericGetCommand({
 							default: toUser.userSpecialAuthority,
 							message: `Enter new special authorities for ${newUser}:`,

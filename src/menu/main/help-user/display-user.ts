@@ -1,8 +1,6 @@
-import ora from 'ora';
-import { sleep } from '../../../util.js';
-import { foundUsers } from '../../../util/find-users.js';
 import getRows from '../../../util/odbc/get-rows-odbc.js';
-import { generatedSelectMenu, genericPressEnterPrompt } from '../../generic/generic.js';
+import { genericPressEnterPrompt } from '../../generic/generic.js';
+import pickUser from './pick-user.js';
 
 const fullUserInfo = async (user: string) => {
 	const query = `SELECT * FROM QSYS2.USER_INFO WHERE AUTHORIZATION_NAME = '${user}'`;
@@ -13,28 +11,7 @@ const fullUserInfo = async (user: string) => {
 };
 
 const findUserPrompt = async () => {
-	// Create an array of strings containing menu choices made of the query results.
-	// Make sure that foundUsers is not undefined. If it is, sleep for 100 ms and try again.
-	const spinner = ora(`Finding users...`).start();
-	// eslint-disable-next-line no-unmodified-loop-condition
-	while (foundUsers === undefined) {
-		// eslint-disable-next-line no-await-in-loop
-		await sleep(100);
-	}
-
-	spinner.succeed(`Users found!`);
-
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const choices = foundUsers.map((row: any) => {
-		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-		return `${row.AUTHORIZATION_NAME}`;
-	});
-	const findUserMenuChoice = await generatedSelectMenu({
-		choices,
-		message: `
-		Select a user.
-		`,
-	});
+	const findUserMenuChoice = await pickUser();
 	return fullUserInfo(findUserMenuChoice);
 };
 

@@ -18,7 +18,7 @@ export default async function (prompt: GenericListPrompt) {
 				// eslint-disable-next-line unicorn/no-array-method-this-argument
 				resolve(fuzzy.filter(input, prompt.choices).map(element => element.original));
 				// prompt.choices
-			}, 10);
+			}, 0);
 		});
 	}
 
@@ -28,6 +28,7 @@ export default async function (prompt: GenericListPrompt) {
 				type: `autocomplete`,
 				name: `autocomplete_prompt`,
 				message: prompt.message,
+				prefix: ``,
 				// searchText: `We are searching the internet for you!`,
 				// emptyText: `Nothing found!`,
 				source: searchChoices,

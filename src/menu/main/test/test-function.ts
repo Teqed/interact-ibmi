@@ -6,7 +6,7 @@ import getJobLog from '../../../util/sequelize/print-job-log.js';
 import insertTq001ap from '../../../util/sequelize/test/insert-tq001ap.js';
 import viewTq001ap from '../../../util/sequelize/test/view-tq001ap.js';
 import { genericGetCommand } from '../../generic/generic.js';
-import pickuser from '../help-user/pickuser.js';
+import pickuser from '../help-user/pick-user.js';
 import sequelizeFreeform from '../sequelize-freeform.js';
 import testOdbc from './test-odbc.js';
 import testSequelize from './test-sequelize.js';
