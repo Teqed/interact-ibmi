@@ -4,6 +4,11 @@ import pickUser from '../pick-user.js';
 import copyUser from './copyuser-util.js';
 
 export default async function () {
+	console.log(
+		chalk.bgBlue(
+			`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Copy User\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`,
+		),
+	);
 	const fromUser: string = await pickUser();
 	const toUser: string = await genericGetCommand({
 		clearPromptOnDone: false,

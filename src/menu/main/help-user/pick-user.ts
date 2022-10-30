@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import ora from 'ora';
 import { sleep } from '../../../util.js';
 import findUsers, { foundUsers } from '../../../util/find-users.js';
@@ -6,14 +7,14 @@ import autocompletePrompt from '../../generic/autocomplete-prompt.js';
 export default async function () {
 	// Create an array of strings containing menu choices made of the query results.
 	// Make sure that foundUsers is not undefined. If it is, sleep for 100 ms and try again.
-	const spinner = ora(`Finding users...`).start();
+	// const spinner = ora(`Finding users...`).start();
 	// eslint-disable-next-line no-unmodified-loop-condition
 	while (foundUsers === undefined) {
 		// eslint-disable-next-line no-await-in-loop
 		await sleep(100);
 	}
 
-	spinner.succeed(`Users found!`);
+	// spinner.succeed(`Users found!`);
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const choices = foundUsers.map((row: any) => {
@@ -23,9 +24,8 @@ export default async function () {
 
 	const pickUserMenuChoice = await autocompletePrompt({
 		choices,
-		message: `
-		Select a user below.
-		`,
+		clearPromptOnDone: false,
+		message: `Select a user below.`,
 	});
 	void findUsers();
 	return pickUserMenuChoice;

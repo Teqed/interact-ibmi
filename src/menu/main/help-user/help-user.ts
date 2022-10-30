@@ -22,10 +22,10 @@ export default async function () {
 
 	const helpUsersMenuChoice = await genericSelectMenu({
 		choices: menuChoice,
-		message: `
-		${chalk.bgBlue(`Help Users Menu`)}
-		Choose a utility below.
-		`,
+		message:
+			chalk.bgBlue(
+				`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Help Users\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`,
+			) + `\u00A0\u00A0`,
 	});
 	const handleAnswer = async (answer: string) => {
 		/* A case inputCommand for answer */

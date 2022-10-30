@@ -1,5 +1,6 @@
 /* This is the login module.
 It asks for the user's name and password, which is used for logging in to the IBMi AS400. */
+import chalk from 'chalk';
 import ora from 'ora';
 import { odbcLogin } from '../../util/odbc/odbc-util.js';
 import sequelizeLogin from '../../util/sequelize/connection.js';
@@ -7,6 +8,11 @@ import { genericGetCommand, genericPasswordMenu } from '../generic/generic.js';
 
 export default async () => {
 	console.clear();
+	console.log(
+		chalk.bgBlue(
+			`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Login IBMi\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`,
+		),
+	);
 	const loginSys = await genericGetCommand({
 		clearPromptOnDone: false,
 		default: `PUB400.COM`,

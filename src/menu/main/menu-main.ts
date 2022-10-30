@@ -20,10 +20,10 @@ export default async () => {
 		// eslint-disable-next-line no-await-in-loop
 		await genericSelectMenu({
 			choices: menuChoice,
-			message: `
-		${chalk.bgBlue(`Main Menu`)}
-		Select options below.
-		`,
+			message:
+				chalk.bgBlue(
+					`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Main Menu\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`,
+				) + `\u00A0\u00A0`,
 		}).then(async answer => {
 			switch (answer) {
 				case menuChoice[0]: {

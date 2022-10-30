@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import getRows from '../../../util/odbc/get-rows-odbc.js';
 import { genericPressEnterPrompt } from '../../generic/generic.js';
 import pickUser from './pick-user.js';
@@ -16,6 +17,11 @@ const findUserPrompt = async () => {
 };
 
 export default async function () {
+	console.log(
+		chalk.bgBlue(
+			`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Pick User\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`,
+		),
+	);
 	try {
 		return await findUserPrompt();
 	} catch (error: unknown) {
