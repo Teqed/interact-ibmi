@@ -975,8 +975,8 @@
     vitest "0.24.3"
 
 "@vitest/ui@^0.24.0":
-  version "0.24.3"
-  resolved "https://registry.npmjs.org/@vitest/ui/-/ui-0.24.3.tgz"
+  version "0.24.5"
+  resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-0.24.5.tgz#e5604de929841b03fa577118d23a8242463566b1"
   dependencies:
     sirv "^2.0.2"
 
