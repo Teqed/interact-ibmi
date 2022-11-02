@@ -4926,9 +4926,9 @@ typescript@^4.7.3:
   version "4.8.4"
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.8.4.tgz"
 
-typescript@^4.9.0-dev.20220909:
-  version "4.9.0-dev.20221028"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.9.0-dev.20221028.tgz"
+typescript@^5.0.0-dev.20221102:
+  version "5.0.0-dev.20221102"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.0-dev.20221102.tgz#49c95302dede0c854b8706fb2224ab78308cfc8c"
 
 umzug@^2.3.0:
   version "2.3.0"
