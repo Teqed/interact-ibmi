@@ -6,6 +6,8 @@ import mainMenu from './menu/main/menu-main.js';
 import findUsers from './util/find-users.js';
 // import { welcome } from './util.js';
 
+// @ts-expect-error noDeprecation definitely exists on process, but TS doesn't know that
+process.noDeprecation = true;
 process.title = `interact-ibmi`;
 
 // eslint-disable-next-line import/no-mutable-exports
