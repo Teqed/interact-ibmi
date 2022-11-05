@@ -10,6 +10,7 @@ export default async () => {
 	console.clear();
 	console.log(
 		chalk.bgBlue(
+			// eslint-disable-next-line max-len
 			`\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Login IBMi\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0`,
 		),
 	);
