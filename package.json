@@ -68,7 +68,7 @@
     "vite": "^3.1.0",
     "vite-plugin-node": "^1.0.0",
     "vite-plugin-progress": "^0.0.5",
-    "vitest": "^0.24.0",
+    "vitest": "^0.25.0",
     "xo": "^0.52.3"
   },
   "keywords": [
