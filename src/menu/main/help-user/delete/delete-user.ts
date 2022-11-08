@@ -18,7 +18,11 @@ export default async function () {
 	});
 	if (confirm) {
 		// await qcmdexc(deleteUser({ USRPRF: pickUserMenuChoice }));
-		await executeCommand(deleteUser({ USRPRF: pickUserMenuChoice }));
+		try {
+			await executeCommand(deleteUser({ USRPRF: pickUserMenuChoice }));
+		} catch (error: unknown) {
+			void error;
+		}
 	}
 
 	return genericPressEnterPrompt();
