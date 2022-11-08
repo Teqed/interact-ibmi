@@ -24,7 +24,9 @@ export default async function (
 
 	const doCommand = await qcmdexc(command).catch(async (error: odbc.NodeOdbcError) => {
 		const parseError = await parseODBCErrorMessage(error);
-		const errorString = `${chalk.bgBlack.red(parseError.messageIdentifier)} - ${chalk.bgRed.black(parseError.messageText)}`;
+		const errorString = `${chalk.bgBlack.red(
+			parseError.messageIdentifier,
+		)} - ${chalk.bgRed.black(parseError.messageText)}`;
 		if (options?.spinner ?? true) {
 			failure = true;
 			spinner.fail(`Command failed! ${errorString}
