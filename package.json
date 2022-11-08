@@ -34,8 +34,8 @@
     "@types/validator": "^13.7.7",
     "@typescript-eslint/eslint-plugin": "^5.39.0",
     "@typescript-eslint/parser": "^5.39.0",
-    "@vitest/coverage-c8": "^0.24.0",
-    "@vitest/ui": "^0.24.0",
+    "@vitest/coverage-c8": "^0.25.0",
+    "@vitest/ui": "^0.25.0",
     "airbnb": "^0.0.2",
     "aws-sdk": "^2.1212.0",
     "chai": "^4.3.6",
@@ -67,8 +67,8 @@
     "typescript": "^5.0.0-dev.20221102",
     "vite": "^3.1.0",
     "vite-plugin-node": "^1.0.0",
-    "vite-plugin-progress": "^0.0.5",
-    "vitest": "^0.24.0",
+    "vite-plugin-progress": "^0.0.6",
+    "vitest": "^0.25.0",
     "xo": "^0.52.3"
   },
   "keywords": [
