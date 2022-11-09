@@ -1985,6 +1985,10 @@ eslint-config-xo-typescript@^0.53.0:
   version "0.53.0"
   resolved "https://registry.npmjs.org/eslint-config-xo-typescript/-/eslint-config-xo-typescript-0.53.0.tgz"
 
+eslint-config-xo-typescript@^0.54.1:
+  version "0.54.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-xo-typescript/-/eslint-config-xo-typescript-0.54.1.tgz#2af7ee9e3458891cba66eddac3115ab950f4a53b"
+
 eslint-config-xo@^0.42.0:
   version "0.42.0"
   resolved "https://registry.npmjs.org/eslint-config-xo/-/eslint-config-xo-0.42.0.tgz"
