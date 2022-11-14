@@ -97,7 +97,7 @@ export type CreateUserInterface = {
 	userInitialMenu: string;
 	userInitialProgram: string;
 	userJobDescription: string;
-	userLimitCapabilities: string;
+	userLimitCapabilities: `*NO` | `*PARTIAL` | `*SAME` | `*YES`;
 	userMaximumAllowedStorage: string;
 	userOutqueue: string;
 	userPassword: string;

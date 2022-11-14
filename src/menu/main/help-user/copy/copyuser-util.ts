@@ -54,7 +54,20 @@ function convertUserInterface(
 		library: copyUser.INITIAL_MENU_LIBRARY_NAME,
 		object: copyUser.INITIAL_MENU_NAME,
 	});
-	const userLimitCapabilities = copyUser.LIMIT_CAPABILITIES;
+	let userLimitCapabilities: `*NO` | `*PARTIAL` | `*SAME` | `*YES` = `*YES`;
+	switch (copyUser.LIMIT_CAPABILITIES) {
+		case `*NO`:
+			userLimitCapabilities = `*NO`;
+			break;
+		case `*PARTIAL`:
+			userLimitCapabilities = `*PARTIAL`;
+			break;
+		case `*SAME`:
+			userLimitCapabilities = `*SAME`;
+			break;
+		default:
+	}
+
 	const userSpecialAuthority = notNull(copyUser.SPECIAL_AUTHORITIES);
 	const userJobDescription = qualifyObject({
 		library: copyUser.JOB_DESCRIPTION_LIBRARY_NAME,
@@ -285,7 +298,9 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 						})
 							// eslint-disable-next-line @typescript-eslint/no-shadow
 							.then(async answers => {
-								toUser.userLimitCapabilities = answers;
+								// eslint-disable-next-line max-len
+								// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
+								toUser.userLimitCapabilities = answers as any;
 							});
 
 						break;

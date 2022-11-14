@@ -88,6 +88,7 @@
     "build:run": "tsc && node .",
     "rebuild": "tsc && vite build && npm run test:mocha:badge && npm run test && node .",
     "build:publish": "npm run build && npm version patch && npm publish --publish=public",
+    "build:publish:dev": "npm run build && npm publish --publish=public --tag=dev",
     "lint": "eslint --format=pretty . --ext .ts,.mts,.tsx",
     "test": "vitest run",
     "test:ui": "vitest --ui",
@@ -95,7 +96,7 @@
     "test:mocha:badge": "cross-env MOCHA_BADGE_SUBJECT=tests MOCHA_BADGE_STYLE=plastic ./node_modules/.bin/mocha test/mocha/*.test.js --reporter mocha-reporter-badge > .github/assets/build.svg"
   },
   "type": "module",
-  "version": "1.0.47-dev",
+  "version": "1.0.48-dev",
   "engines": {
     "node": ">=16.0.0"
   },

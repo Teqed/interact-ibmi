@@ -38,6 +38,8 @@ function notNull(possiblyNullValue: string | null | undefined): string {
 // Extend CreateUserInterface with a new property.
 type CreateUserInterfaceWithEmail = CreateUserInterface & {
 	userEmail?: string;
+	userInitialProgramQualifiers: { library: string; object: string };
+	userOutqueueQualifiers: { library: string; object: string };
 };
 
 function convertUserInterface(
@@ -54,11 +56,28 @@ function convertUserInterface(
 		library: copyUser.INITIAL_PROGRAM_LIBRARY_NAME,
 		object: copyUser.INITIAL_PROGRAM_NAME,
 	});
+	const userInitialProgramQualifiers = {
+		library: copyUser.INITIAL_PROGRAM_LIBRARY_NAME,
+		object: copyUser.INITIAL_PROGRAM_NAME,
+	};
 	const userInitialMenu = qualifyObject({
 		library: copyUser.INITIAL_MENU_LIBRARY_NAME,
 		object: copyUser.INITIAL_MENU_NAME,
 	});
-	const userLimitCapabilities = copyUser.LIMIT_CAPABILITIES;
+	let userLimitCapabilities: `*NO` | `*PARTIAL` | `*SAME` | `*YES` = `*YES`;
+	switch (copyUser.LIMIT_CAPABILITIES) {
+		case `*NO`:
+			userLimitCapabilities = `*NO`;
+			break;
+		case `*PARTIAL`:
+			userLimitCapabilities = `*PARTIAL`;
+			break;
+		case `*SAME`:
+			userLimitCapabilities = `*SAME`;
+			break;
+		default:
+	}
+
 	const userSpecialAuthority = notNull(copyUser.SPECIAL_AUTHORITIES);
 	const userJobDescription = qualifyObject({
 		library: copyUser.JOB_DESCRIPTION_LIBRARY_NAME,
@@ -72,6 +91,10 @@ function convertUserInterface(
 		library: copyUser.OUTPUT_QUEUE_LIBRARY_NAME,
 		object: copyUser.OUTPUT_QUEUE_NAME,
 	});
+	const userOutqueueQualifiers = {
+		library: copyUser.OUTPUT_QUEUE_LIBRARY_NAME,
+		object: copyUser.OUTPUT_QUEUE_NAME,
+	};
 	const userAttentionProgram = qualifyObject({
 		library: copyUser.ATTENTION_KEY_HANDLING_PROGRAM_LIBRARY_NAME,
 		object: copyUser.ATTENTION_KEY_HANDLING_PROGRAM_NAME,
@@ -126,10 +149,12 @@ function convertUserInterface(
 		userId,
 		userInitialMenu,
 		userInitialProgram,
+		userInitialProgramQualifiers,
 		userJobDescription,
 		userLimitCapabilities,
 		userMaximumAllowedStorage,
 		userOutqueue,
+		userOutqueueQualifiers,
 		userPassword,
 		userPasswordExpirationInterval,
 		userSpecialAuthority,
@@ -235,7 +260,9 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 						})
 							// eslint-disable-next-line @typescript-eslint/no-shadow
 							.then(async answers => {
-								toUser.userLimitCapabilities = answers;
+								// eslint-disable-next-line max-len
+								// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
+								toUser.userLimitCapabilities = answers as any;
 							});
 
 						break;
@@ -334,14 +361,9 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 
 	const AdjustUserParameters = executeCommand(
 		CHGUSRPRF({
-			INLPGM: toUser.userInitialProgram as unknown as QualifiedObject,
-			LMTCPB: toUser.userLimitCapabilities as unknown as
-				| `*NO`
-				| `*PARTIAL`
-				| `*SAME`
-				| `*YES`
-				| undefined,
-			OUTQ: toUser.userOutqueue as unknown as QualifiedObject,
+			INLPGM: toUser.userInitialProgramQualifiers,
+			LMTCPB: toUser.userLimitCapabilities,
+			OUTQ: toUser.userOutqueueQualifiers,
 			// TODO: SPCAUT
 			USRPRF: toUser.userId,
 		}),
