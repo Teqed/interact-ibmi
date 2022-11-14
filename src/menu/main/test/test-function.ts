@@ -1,17 +1,5 @@
-import ora from 'ora';
-import { sleep } from '../../../util.js';
-import { foundUsers } from '../../../util/find-users.js';
-import updateOdbc from '../../../util/odbc/update-odbc.js';
-import getJobLog from '../../../util/sequelize/print-job-log.js';
-import insertTq001ap from '../../../util/sequelize/test/insert-tq001ap.js';
-import viewTq001ap from '../../../util/sequelize/test/view-tq001ap.js';
-import { genericGetCommand } from '../../generic/generic.js';
-import pickuser from '../help-user/pick-user.js';
-import sequelizeFreeform from '../sequelize-freeform.js';
-import testOdbc from './test-odbc.js';
-import testSequelize from './test-sequelize.js';
+import copyUser from '../help-user/copy-nav/copyuser.js';
 
 export default async () => {
-	console.log(await pickuser());
-	return 0;
+	return await copyUser();
 };
