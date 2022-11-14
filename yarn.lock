@@ -936,8 +936,8 @@
     vitest "0.25.1"
 
 "@vitest/ui@^0.25.0":
-  version "0.25.1"
-  resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-0.25.1.tgz#09f55e133b2865d0751d0fd75f1bcbcbb60f7d24"
+  version "0.25.2"
+  resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-0.25.2.tgz#98e1191b791db94271eb6b9a8e843caded0802be"
   dependencies:
     sirv "^2.0.2"
 
