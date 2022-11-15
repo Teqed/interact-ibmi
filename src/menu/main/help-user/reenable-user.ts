@@ -1,5 +1,6 @@
 import chalk from 'chalk';
 import ora from 'ora';
+import { sleep } from '../../../util.js';
 import findUsers, { foundUsers } from '../../../util/find-users.js';
 import CHGUSRPRF from '../../../util/qcmdexc/chgusrprf.js';
 import QCMDEXC from '../../../util/qcmdexc/qcmdexc.js';
@@ -7,6 +8,12 @@ import { generatedSelectMenu, genericPressEnterPrompt } from '../../generic/gene
 
 const pickDisabledUser = async function () {
 	const spinner = ora(`Checking...`).start();
+	// eslint-disable-next-line no-unmodified-loop-condition
+	while (foundUsers === undefined) {
+		// eslint-disable-next-line no-await-in-loop
+		await sleep(100);
+	}
+
 	// Create an array of user ids that are disabled.
 	const usersDisabled = foundUsers
 		.filter(user => user.STATUS === `*DISABLED`)
