@@ -5034,8 +5034,8 @@ vite-plugin-progress@^0.0.6:
     rd "^2.0.1"
 
 vite@^3.0.0, vite@^3.1.0:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-3.2.3.tgz#7a68d9ef73eff7ee6dc0718ad3507adfc86944a7"
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-3.2.4.tgz#d8c7892dd4268064e04fffbe7d866207dd24166e"
   dependencies:
     esbuild "^0.15.9"
     postcss "^8.4.18"
