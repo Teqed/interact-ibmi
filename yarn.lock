@@ -4898,8 +4898,8 @@ typescript@^4.7.3:
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.8.4.tgz"
 
 typescript@^5.0.0-dev.20221102:
-  version "5.0.0-dev.20221116"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.0-dev.20221116.tgz#30827ed04b5601446dd47f6bc60302eeabb7e278"
+  version "5.0.0-dev.20221117"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.0-dev.20221117.tgz#92c94909fd3b9c942f14966a7b209c44095cbe6d"
 
 umzug@^2.3.0:
   version "2.3.0"
