@@ -128,7 +128,7 @@
   version "7.19.4"
   resolved "https://registry.npmjs.org/@babel/helper-string-parser/-/helper-string-parser-7.19.4.tgz"
 
-"@babel/helper-validator-identifier@^7.15.7", "@babel/helper-validator-identifier@^7.18.6", "@babel/helper-validator-identifier@^7.19.1":
+"@babel/helper-validator-identifier@^7.18.6", "@babel/helper-validator-identifier@^7.19.1":
   version "7.19.1"
   resolved "https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identifier-7.19.1.tgz"
 
@@ -247,7 +247,7 @@
   version "0.15.11"
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.15.11.tgz#2f4f9a1083dcb4fc65233b6f59003c406abf32e5"
 
-"@eslint/eslintrc@^1.3.0", "@eslint/eslintrc@^1.3.3":
+"@eslint/eslintrc@^1.3.3":
   version "1.3.3"
   resolved "https://registry.npmjs.org/@eslint/eslintrc/-/eslintrc-1.3.3.tgz"
   dependencies:
@@ -762,7 +762,7 @@
   version "10.17.60"
   resolved "https://registry.npmjs.org/@types/node/-/node-10.17.60.tgz"
 
-"@types/normalize-package-data@^2.4.0":
+"@types/normalize-package-data@^2.4.0", "@types/normalize-package-data@^2.4.1":
   version "2.4.1"
   resolved "https://registry.npmjs.org/@types/normalize-package-data/-/normalize-package-data-2.4.1.tgz"
 
@@ -804,7 +804,7 @@
   dependencies:
     "@types/node" "*"
 
-"@typescript-eslint/eslint-plugin@^5.33.1", "@typescript-eslint/eslint-plugin@^5.35.1", "@typescript-eslint/eslint-plugin@^5.39.0":
+"@typescript-eslint/eslint-plugin@^5.33.1", "@typescript-eslint/eslint-plugin@^5.39.0", "@typescript-eslint/eslint-plugin@^5.43.0":
   version "5.43.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.43.0.tgz#4a5248eb31b454715ddfbf8cfbf497529a0a78bc"
   dependencies:
@@ -824,7 +824,7 @@
   dependencies:
     "@typescript-eslint/utils" "5.40.1"
 
-"@typescript-eslint/parser@^5.33.1", "@typescript-eslint/parser@^5.35.1", "@typescript-eslint/parser@^5.39.0":
+"@typescript-eslint/parser@^5.33.1", "@typescript-eslint/parser@^5.39.0", "@typescript-eslint/parser@^5.43.0":
   version "5.43.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.43.0.tgz#9c86581234b88f2ba406f0b99a274a91c11630fd"
   dependencies:
@@ -1299,9 +1299,22 @@ camelcase-keys@^7.0.0:
     quick-lru "^5.1.1"
     type-fest "^1.2.1"
 
+camelcase-keys@^8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/camelcase-keys/-/camelcase-keys-8.0.2.tgz#a7140ba7c797aea32161d4ce5cdbda11d09eb414"
+  dependencies:
+    camelcase "^7.0.0"
+    map-obj "^4.3.0"
+    quick-lru "^6.1.1"
+    type-fest "^2.13.0"
+
 camelcase@^6.0.0, camelcase@^6.3.0:
   version "6.3.0"
   resolved "https://registry.npmjs.org/camelcase/-/camelcase-6.3.0.tgz"
+
+camelcase@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-7.0.0.tgz#fd112621b212126741f998d614cbc2a8623fd174"
 
 caniuse-lite@^1.0.30001400:
   version "1.0.30001422"
@@ -1372,7 +1385,7 @@ chownr@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/chownr/-/chownr-2.0.0.tgz"
 
-ci-info@^3.3.0, ci-info@^3.3.2, ci-info@^3.4.0:
+ci-info@^3.3.2, ci-info@^3.4.0:
   version "3.5.0"
   resolved "https://registry.npmjs.org/ci-info/-/ci-info-3.5.0.tgz"
 
@@ -1458,9 +1471,9 @@ comment-parser@1.3.1:
   version "1.3.1"
   resolved "https://registry.npmjs.org/comment-parser/-/comment-parser-1.3.1.tgz"
 
-commondir@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.npmjs.org/commondir/-/commondir-1.0.1.tgz"
+common-path-prefix@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/common-path-prefix/-/common-path-prefix-3.0.0.tgz#7d007a7e07c58c4b4d5f433131a19141b29f11e0"
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -1499,9 +1512,19 @@ cosmiconfig-typescript-loader@^4.0.0:
   version "4.1.1"
   resolved "https://registry.npmjs.org/cosmiconfig-typescript-loader/-/cosmiconfig-typescript-loader-4.1.1.tgz"
 
-cosmiconfig@7.0.1, cosmiconfig@^7.0.1:
+cosmiconfig@7.0.1:
   version "7.0.1"
   resolved "https://registry.npmjs.org/cosmiconfig/-/cosmiconfig-7.0.1.tgz"
+  dependencies:
+    "@types/parse-json" "^4.0.0"
+    import-fresh "^3.2.1"
+    parse-json "^5.0.0"
+    path-type "^4.0.0"
+    yaml "^1.10.0"
+
+cosmiconfig@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-7.1.0.tgz#1443b9afa596b670082ea46cbd8f6a62b84635f6"
   dependencies:
     "@types/parse-json" "^4.0.0"
     import-fresh "^3.2.1"
@@ -1582,6 +1605,10 @@ decamelize@^4.0.0:
 decamelize@^5.0.0:
   version "5.0.1"
   resolved "https://registry.npmjs.org/decamelize/-/decamelize-5.0.1.tgz"
+
+decamelize@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-6.0.0.tgz#8cad4d916fde5c41a264a43d0ecc56fe3d31749e"
 
 deep-eql@^4.1.2:
   version "4.1.2"
@@ -1981,19 +2008,9 @@ eslint-config-prettier@^8.5.0:
   version "8.5.0"
   resolved "https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-8.5.0.tgz"
 
-eslint-config-xo-typescript@^0.53.0:
-  version "0.53.0"
-  resolved "https://registry.npmjs.org/eslint-config-xo-typescript/-/eslint-config-xo-typescript-0.53.0.tgz"
-
 eslint-config-xo-typescript@^0.55.0:
   version "0.55.0"
   resolved "https://registry.yarnpkg.com/eslint-config-xo-typescript/-/eslint-config-xo-typescript-0.55.0.tgz#84b008cb927ec43f57ad0d7969fb30fe8ba1968a"
-
-eslint-config-xo@^0.42.0:
-  version "0.42.0"
-  resolved "https://registry.npmjs.org/eslint-config-xo/-/eslint-config-xo-0.42.0.tgz"
-  dependencies:
-    confusing-browser-globals "1.0.11"
 
 eslint-config-xo@^0.43.1:
   version "0.43.1"
@@ -2203,18 +2220,18 @@ eslint-plugin-modules-newline@0.0.6:
   dependencies:
     requireindex "~1.1.0"
 
-eslint-plugin-n@^15.2.5:
-  version "15.3.0"
-  resolved "https://registry.npmjs.org/eslint-plugin-n/-/eslint-plugin-n-15.3.0.tgz"
+eslint-plugin-n@^15.5.1:
+  version "15.5.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-15.5.1.tgz#b3991857d1edaa47e0108ead825470ce63f391c1"
   dependencies:
     builtins "^5.0.1"
     eslint-plugin-es "^4.1.0"
     eslint-utils "^3.0.0"
     ignore "^5.1.1"
-    is-core-module "^2.10.0"
+    is-core-module "^2.11.0"
     minimatch "^3.1.2"
     resolve "^1.22.1"
-    semver "^7.3.7"
+    semver "^7.3.8"
 
 eslint-plugin-no-use-extend-native@^0.5.0:
   version "0.5.0"
@@ -2236,7 +2253,7 @@ eslint-plugin-node@^11.1.0:
     resolve "^1.10.1"
     semver "^6.1.0"
 
-eslint-plugin-prettier@^4.0.0, eslint-plugin-prettier@^4.2.1:
+eslint-plugin-prettier@^4.2.1:
   version "4.2.1"
   resolved "https://registry.npmjs.org/eslint-plugin-prettier/-/eslint-plugin-prettier-4.2.1.tgz"
   dependencies:
@@ -2276,25 +2293,6 @@ eslint-plugin-typescript-sort-keys@^2.1.0:
     "@typescript-eslint/experimental-utils" "^5.0.0"
     json-schema "^0.4.0"
     natural-compare-lite "^1.4.0"
-
-eslint-plugin-unicorn@^42.0.0:
-  version "42.0.0"
-  resolved "https://registry.npmjs.org/eslint-plugin-unicorn/-/eslint-plugin-unicorn-42.0.0.tgz"
-  dependencies:
-    "@babel/helper-validator-identifier" "^7.15.7"
-    ci-info "^3.3.0"
-    clean-regexp "^1.0.0"
-    eslint-utils "^3.0.0"
-    esquery "^1.4.0"
-    indent-string "^4.0.0"
-    is-builtin-module "^3.1.0"
-    lodash "^4.17.21"
-    pluralize "^8.0.0"
-    read-pkg-up "^7.0.1"
-    regexp-tree "^0.1.24"
-    safe-regex "^2.1.1"
-    semver "^7.3.5"
-    strip-indent "^3.0.0"
 
 eslint-plugin-unicorn@^43.0.2:
   version "43.0.2"
@@ -2389,7 +2387,7 @@ eslint-visitor-keys@^3.0.0, eslint-visitor-keys@^3.3.0:
   version "3.3.0"
   resolved "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-3.3.0.tgz"
 
-eslint@^8.22.0:
+eslint@^8.22.0, eslint@^8.27.0:
   version "8.27.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.27.0.tgz#d547e2f7239994ad1faa4bb5d84e5d809db7cf64"
   dependencies:
@@ -2578,13 +2576,12 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
-find-cache-dir@^3.3.2:
-  version "3.3.2"
-  resolved "https://registry.npmjs.org/find-cache-dir/-/find-cache-dir-3.3.2.tgz"
+find-cache-dir@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/find-cache-dir/-/find-cache-dir-4.0.0.tgz#a30ee0448f81a3990708f6453633c733e2f6eec2"
   dependencies:
-    commondir "^1.0.1"
-    make-dir "^3.0.2"
-    pkg-dir "^4.1.0"
+    common-path-prefix "^3.0.0"
+    pkg-dir "^7.0.0"
 
 find-root@^1.1.0:
   version "1.1.0"
@@ -2597,7 +2594,7 @@ find-up@5.0.0, find-up@^5.0.0:
     locate-path "^6.0.0"
     path-exists "^4.0.0"
 
-find-up@^4.0.0, find-up@^4.1.0:
+find-up@^4.1.0:
   version "4.1.0"
   resolved "https://registry.npmjs.org/find-up/-/find-up-4.1.0.tgz"
   dependencies:
@@ -2839,7 +2836,7 @@ globby@^11.0.3, globby@^11.1.0:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
-globby@^13.1.1, globby@^13.1.2:
+globby@^13.1.2:
   version "13.1.2"
   resolved "https://registry.npmjs.org/globby/-/globby-13.1.2.tgz"
   dependencies:
@@ -2951,6 +2948,12 @@ hosted-git-info@^4.0.1:
   resolved "https://registry.npmjs.org/hosted-git-info/-/hosted-git-info-4.1.0.tgz"
   dependencies:
     lru-cache "^6.0.0"
+
+hosted-git-info@^5.0.0:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-5.2.1.tgz#0ba1c97178ef91f3ab30842ae63d6a272341156f"
+  dependencies:
+    lru-cache "^7.5.1"
 
 html-escaper@^2.0.0:
   version "2.0.2"
@@ -3124,7 +3127,7 @@ is-callable@^1.1.3, is-callable@^1.1.4, is-callable@^1.2.7:
   version "1.2.7"
   resolved "https://registry.npmjs.org/is-callable/-/is-callable-1.2.7.tgz"
 
-is-core-module@^2.10.0, is-core-module@^2.5.0, is-core-module@^2.7.0, is-core-module@^2.8.1, is-core-module@^2.9.0:
+is-core-module@^2.10.0, is-core-module@^2.11.0, is-core-module@^2.5.0, is-core-module@^2.7.0, is-core-module@^2.8.1, is-core-module@^2.9.0:
   version "2.11.0"
   resolved "https://registry.npmjs.org/is-core-module/-/is-core-module-2.11.0.tgz"
   dependencies:
@@ -3554,13 +3557,17 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
+lru-cache@^7.5.1:
+  version "7.14.1"
+  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-7.14.1.tgz#8da8d2f5f59827edb388e63e459ac23d6d408fea"
+
 lru-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/lru-queue/-/lru-queue-0.1.0.tgz"
   dependencies:
     es5-ext "~0.10.2"
 
-make-dir@^3.0.0, make-dir@^3.0.2, make-dir@^3.1.0:
+make-dir@^3.0.0, make-dir@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/make-dir/-/make-dir-3.1.0.tgz"
   dependencies:
@@ -3574,7 +3581,7 @@ map-obj@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/map-obj/-/map-obj-1.0.1.tgz"
 
-map-obj@^4.1.0:
+map-obj@^4.1.0, map-obj@^4.3.0:
   version "4.3.0"
   resolved "https://registry.npmjs.org/map-obj/-/map-obj-4.3.0.tgz"
 
@@ -3611,6 +3618,23 @@ meow@^10.1.2:
     trim-newlines "^4.0.2"
     type-fest "^1.2.2"
     yargs-parser "^20.2.9"
+
+meow@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/meow/-/meow-11.0.0.tgz#273a19c12d49d013c56effe9f011994022887157"
+  dependencies:
+    "@types/minimist" "^1.2.2"
+    camelcase-keys "^8.0.2"
+    decamelize "^6.0.0"
+    decamelize-keys "^1.1.0"
+    hard-rejection "^2.1.0"
+    minimist-options "4.1.0"
+    normalize-package-data "^4.0.1"
+    read-pkg-up "^9.1.0"
+    redent "^4.0.0"
+    trim-newlines "^4.0.2"
+    type-fest "^3.1.0"
+    yargs-parser "^21.1.1"
 
 merge-stream@^2.0.0:
   version "2.0.0"
@@ -3832,6 +3856,15 @@ normalize-package-data@^3.0.2:
     is-core-module "^2.5.0"
     semver "^7.3.4"
     validate-npm-package-license "^3.0.1"
+
+normalize-package-data@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-4.0.1.tgz#b46b24e0616d06cadf9d5718b29b6d445a82a62c"
+  dependencies:
+    hosted-git-info "^5.0.0"
+    is-core-module "^2.8.1"
+    semver "^7.3.5"
+    validate-npm-package-license "^3.0.4"
 
 normalize-path@^2.1.1:
   version "2.1.1"
@@ -4075,17 +4108,17 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.2, picomatch@^2.3.1:
   version "2.3.1"
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz"
 
-pkg-dir@^4.1.0:
-  version "4.2.0"
-  resolved "https://registry.npmjs.org/pkg-dir/-/pkg-dir-4.2.0.tgz"
-  dependencies:
-    find-up "^4.0.0"
-
 pkg-dir@^5.0.0:
   version "5.0.0"
   resolved "https://registry.npmjs.org/pkg-dir/-/pkg-dir-5.0.0.tgz"
   dependencies:
     find-up "^5.0.0"
+
+pkg-dir@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-7.0.0.tgz#8f0c08d6df4476756c5ff29b3282d0bab7517d11"
+  dependencies:
+    find-up "^6.3.0"
 
 plur@^4.0.0:
   version "4.0.0"
@@ -4115,7 +4148,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@2.7.1, prettier@^2.6.2:
+prettier@2.7.1, prettier@^2.7.1:
   version "2.7.1"
   resolved "https://registry.npmjs.org/prettier/-/prettier-2.7.1.tgz"
 
@@ -4177,6 +4210,10 @@ quick-lru@^5.1.1:
   version "5.1.1"
   resolved "https://registry.npmjs.org/quick-lru/-/quick-lru-5.1.1.tgz"
 
+quick-lru@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-6.1.1.tgz#f8e5bf9010376c126c80c1a62827a526c0e60adf"
+
 rambda@^7.1.0:
   version "7.3.0"
   resolved "https://registry.npmjs.org/rambda/-/rambda-7.3.0.tgz"
@@ -4217,6 +4254,14 @@ read-pkg-up@^8.0.0:
     read-pkg "^6.0.0"
     type-fest "^1.0.1"
 
+read-pkg-up@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-9.1.0.tgz#38ca48e0bc6c6b260464b14aad9bcd4e5b1fbdc3"
+  dependencies:
+    find-up "^6.3.0"
+    read-pkg "^7.1.0"
+    type-fest "^2.5.0"
+
 read-pkg@^5.2.0:
   version "5.2.0"
   resolved "https://registry.npmjs.org/read-pkg/-/read-pkg-5.2.0.tgz"
@@ -4234,6 +4279,15 @@ read-pkg@^6.0.0:
     normalize-package-data "^3.0.2"
     parse-json "^5.2.0"
     type-fest "^1.0.1"
+
+read-pkg@^7.1.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/read-pkg/-/read-pkg-7.1.0.tgz#438b4caed1ad656ba359b3e00fd094f3c427a43e"
+  dependencies:
+    "@types/normalize-package-data" "^2.4.1"
+    normalize-package-data "^3.0.2"
+    parse-json "^5.2.0"
+    type-fest "^2.0.0"
 
 readable-stream@^3.4.0, readable-stream@^3.6.0:
   version "3.6.0"
@@ -4502,6 +4556,10 @@ slash@^3.0.0:
 slash@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/slash/-/slash-4.0.0.tgz"
+
+slash@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/slash/-/slash-5.0.0.tgz#8c18a871096b71ee0e002976a4fe3374991c3074"
 
 source-map-js@^1.0.2:
   version "1.0.2"
@@ -4877,13 +4935,17 @@ type-fest@^1.0.1, type-fest@^1.0.2, type-fest@^1.2.1, type-fest@^1.2.2:
   version "1.4.0"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-1.4.0.tgz"
 
-type-fest@^2.0.0, type-fest@^2.18.1:
+type-fest@^2.0.0, type-fest@^2.13.0, type-fest@^2.18.1, type-fest@^2.5.0:
   version "2.19.0"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-2.19.0.tgz"
 
 type-fest@^3.0.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-3.1.0.tgz"
+
+type-fest@^3.1.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.2.0.tgz#2c8b49e775d9e314a73ea6fcee0b2e8549d5f886"
 
 type@^1.0.1:
   version "1.2.0"
@@ -4893,9 +4955,9 @@ type@^2.7.2:
   version "2.7.2"
   resolved "https://registry.npmjs.org/type/-/type-2.7.2.tgz"
 
-typescript@^4.7.3:
-  version "4.8.4"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.8.4.tgz"
+typescript@^4.9.3:
+  version "4.9.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.3.tgz#3aea307c1746b8c384435d8ac36b8a2e580d85db"
 
 typescript@^5.0.0-dev.20221102:
   version "5.0.0-dev.20221117"
@@ -5002,7 +5064,7 @@ v8-to-istanbul@^9.0.0:
     "@types/istanbul-lib-coverage" "^2.0.1"
     convert-source-map "^1.6.0"
 
-validate-npm-package-license@^3.0.1:
+validate-npm-package-license@^3.0.1, validate-npm-package-license@^3.0.4:
   version "3.0.4"
   resolved "https://registry.npmjs.org/validate-npm-package-license/-/validate-npm-package-license-3.0.4.tgz"
   dependencies:
@@ -5180,46 +5242,46 @@ xmlbuilder@~9.0.1:
   version "9.0.7"
   resolved "https://registry.npmjs.org/xmlbuilder/-/xmlbuilder-9.0.7.tgz"
 
-xo@^0.52.3:
-  version "0.52.4"
-  resolved "https://registry.npmjs.org/xo/-/xo-0.52.4.tgz"
+xo@^0.53.0:
+  version "0.53.0"
+  resolved "https://registry.yarnpkg.com/xo/-/xo-0.53.0.tgz#cb91c1a833146a2f3d9bfbcd82d695783957be3d"
   dependencies:
-    "@eslint/eslintrc" "^1.3.0"
-    "@typescript-eslint/eslint-plugin" "^5.35.1"
-    "@typescript-eslint/parser" "^5.35.1"
+    "@eslint/eslintrc" "^1.3.3"
+    "@typescript-eslint/eslint-plugin" "^5.43.0"
+    "@typescript-eslint/parser" "^5.43.0"
     arrify "^3.0.0"
-    cosmiconfig "^7.0.1"
+    cosmiconfig "^7.1.0"
     define-lazy-prop "^3.0.0"
-    eslint "^8.22.0"
+    eslint "^8.27.0"
     eslint-config-prettier "^8.5.0"
-    eslint-config-xo "^0.42.0"
-    eslint-config-xo-typescript "^0.53.0"
+    eslint-config-xo "^0.43.1"
+    eslint-config-xo-typescript "^0.55.0"
     eslint-formatter-pretty "^4.1.0"
     eslint-import-resolver-webpack "^0.13.2"
     eslint-plugin-ava "^13.2.0"
     eslint-plugin-eslint-comments "^3.2.0"
     eslint-plugin-import "^2.26.0"
-    eslint-plugin-n "^15.2.5"
+    eslint-plugin-n "^15.5.1"
     eslint-plugin-no-use-extend-native "^0.5.0"
-    eslint-plugin-prettier "^4.0.0"
-    eslint-plugin-unicorn "^42.0.0"
+    eslint-plugin-prettier "^4.2.1"
+    eslint-plugin-unicorn "^44.0.2"
     esm-utils "^4.1.0"
-    find-cache-dir "^3.3.2"
+    find-cache-dir "^4.0.0"
     find-up "^6.3.0"
     get-stdin "^9.0.0"
-    globby "^13.1.1"
+    globby "^13.1.2"
     imurmurhash "^0.1.4"
     json-stable-stringify-without-jsonify "^1.0.1"
     json5 "^2.2.1"
     lodash-es "^4.17.21"
-    meow "^10.1.2"
+    meow "^11.0.0"
     micromatch "^4.0.5"
     open-editor "^4.0.0"
-    prettier "^2.6.2"
-    semver "^7.3.7"
-    slash "^4.0.0"
+    prettier "^2.7.1"
+    semver "^7.3.8"
+    slash "^5.0.0"
     to-absolute-glob "^2.0.2"
-    typescript "^4.7.3"
+    typescript "^4.9.3"
 
 y18n@^5.0.5:
   version "5.0.8"
@@ -5257,7 +5319,7 @@ yargs-parser@^20.2.2, yargs-parser@^20.2.9:
   version "20.2.9"
   resolved "https://registry.npmjs.org/yargs-parser/-/yargs-parser-20.2.9.tgz"
 
-yargs-parser@^21.0.0:
+yargs-parser@^21.0.0, yargs-parser@^21.1.1:
   version "21.1.1"
   resolved "https://registry.npmjs.org/yargs-parser/-/yargs-parser-21.1.1.tgz"
 
