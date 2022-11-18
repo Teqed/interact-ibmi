@@ -4960,8 +4960,8 @@ typescript@^4.9.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.3.tgz#3aea307c1746b8c384435d8ac36b8a2e580d85db"
 
 typescript@^5.0.0-dev.20221102:
-  version "5.0.0-dev.20221117"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.0-dev.20221117.tgz#92c94909fd3b9c942f14966a7b209c44095cbe6d"
+  version "5.0.0-dev.20221118"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.0-dev.20221118.tgz#c26007743441ff15e681a822810a125a3f418992"
 
 umzug@^2.3.0:
   version "2.3.0"
