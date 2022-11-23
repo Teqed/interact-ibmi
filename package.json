@@ -57,7 +57,7 @@
     "mocha-reporter-badge": "^0.1.0",
     "mock-aws-s3": "^4.0.2",
     "nock": "^13.2.9",
-    "prettier": "2.7.1",
+    "prettier": "2.8.0",
     "rollup-plugin-visualizer": "^5.8.1",
     "sequelize-cli": "^6.5.1",
     "sequelize-typescript": "^2.1.3",
