@@ -4980,13 +4980,9 @@ type-fest@^2.0.0, type-fest@^2.13.0, type-fest@^2.18.1, type-fest@^2.5.0:
   version "2.19.0"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-2.19.0.tgz"
 
-type-fest@^3.0.0:
-  version "3.1.0"
-  resolved "https://registry.npmjs.org/type-fest/-/type-fest-3.1.0.tgz"
-
-type-fest@^3.1.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.2.0.tgz#2c8b49e775d9e314a73ea6fcee0b2e8549d5f886"
+type-fest@^3.0.0, type-fest@^3.1.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.3.0.tgz#3378c9664eecfd1eb4f0522b13cb0630bc1ec044"
 
 type@^1.0.1:
   version "1.2.0"
