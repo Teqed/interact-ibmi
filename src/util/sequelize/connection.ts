@@ -21,7 +21,7 @@ export default async function (loginId: string, loginPw: string, system = `PUB40
 		console.error(`Unable to connect to the database:`, error);
 	}
 
-	initModels(sequelize);
+	void initModels(sequelize);
 
 	return sequelize;
 }
