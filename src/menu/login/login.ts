@@ -31,28 +31,27 @@ export default async () => {
 	});
 
 	const odbcLoginThing = odbcLogin(loginId, loginPw, loginSys);
-	const sequelizeLoginThing = sequelizeLogin(loginId, loginPw, loginSys);
-	let fail;
+	// const sequelizeLoginThing = sequelizeLogin(loginId, loginPw, loginSys);
 
 	const spinner = ora(`Logging in to ODBC...`).start();
-	if (await odbcLoginThing) {
+	try {
+		await odbcLoginThing;
 		spinner.succeed(`Logged in to ODBC!`);
-	} else {
+		// eslint-disable-next-line @typescript-eslint/no-implicit-any-catch
+	} catch (error) {
 		spinner.fail(`Login failed!`);
-		fail = true;
+		throw new Error(`Login failed!`, { cause: error as Error });
 	}
 
-	const spinner2 = ora(`Logging in to Sequelize...`).start();
-	if (await sequelizeLoginThing) {
+	/* const spinner2 = ora(`Logging in to Sequelize...`).start();
+	try {
+		await sequelizeLoginThing;
 		spinner2.succeed(`Logged in to Sequelize!`);
-	} else {
+		// eslint-disable-next-line @typescript-eslint/no-implicit-any-catch
+	} catch (error) {
 		spinner2.fail(`Login failed!`);
-		fail = true;
-	}
-
-	if (fail) {
-		throw new Error(`Login failed!`);
-	}
+		throw new Error(`Login failed!`, { cause: error as Error });
+	} */
 
 	return { loginId, loginPw, loginSys };
 };
