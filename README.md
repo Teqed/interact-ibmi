@@ -7,7 +7,6 @@
 
 <p align="center">Menus for interacting with IBMi AS400 using the <a href="https://github.com/markdirish/node-odbc/">node-odbc</a> package.</p>
 <p align="center">
-<img src="https://user-images.githubusercontent.com/5181964/200132449-eddf82ab-f2c8-4e96-810a-53b179334716.png" alt="prototype image of interact-ibmi showing some the login menu">
 <img src="https://user-images.githubusercontent.com/5181964/200132471-ed36feae-064e-49bd-989d-82b8a59738d6.png" alt="prototype image of interact-ibmi showing the main menu">
 </p><br><br>
  This is a work-in-progress with the goals of being able to view file records using ODBC, insert new records, and delete selected records, as well as perform some system commands.
