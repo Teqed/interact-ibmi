@@ -696,14 +696,14 @@
     tar "^6.1.11"
 
 "@microsoft/eslint-formatter-sarif@^2.1.7":
-  "integrity" "sha512-gDNc2elHjX0eqk34HxxRxEwEL49SrvXImOoK1bZHq7IDYfuY1xY/CUx8/gOWgvwf6Qv2Yy3HirzjIvKXKH82vQ=="
-  "resolved" "https://registry.npmjs.org/@microsoft/eslint-formatter-sarif/-/eslint-formatter-sarif-2.1.7.tgz"
-  "version" "2.1.7"
+  version "2.1.7"
+  resolved "https://registry.npmjs.org/@microsoft/eslint-formatter-sarif/-/eslint-formatter-sarif-2.1.7.tgz"
+  integrity sha512-gDNc2elHjX0eqk34HxxRxEwEL49SrvXImOoK1bZHq7IDYfuY1xY/CUx8/gOWgvwf6Qv2Yy3HirzjIvKXKH82vQ==
   dependencies:
-    "eslint" "^8.9.0"
-    "jschardet" "latest"
-    "lodash" "^4.17.14"
-    "utf8" "^3.0.0"
+    eslint "^8.9.0"
+    jschardet latest
+    lodash "^4.17.14"
+    utf8 "^3.0.0"
 
 "@next/eslint-plugin-next@^12.2.5":
   version "12.3.4"
@@ -2578,21 +2578,10 @@ eslint-visitor-keys@^3.0.0, eslint-visitor-keys@^3.3.0:
   version "3.3.0"
   resolved "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-3.3.0.tgz"
 
-<<<<<<< HEAD
-"eslint-visitor-keys@^3.0.0", "eslint-visitor-keys@^3.3.0":
-  "integrity" "sha512-mQ+suqKJVyeuwGYHAdjMFqjCyfl8+Ldnxuyp3ldiMBFKkvytrXUZWaiPCEav8qDHKty44bD+qV1IP4T+w+xXRA=="
-  "resolved" "https://registry.npmjs.org/eslint-visitor-keys/-/eslint-visitor-keys-3.3.0.tgz"
-  "version" "3.3.0"
-
-"eslint@^8.22.0", "eslint@^8.27.0", "eslint@^8.9.0":
-  "integrity" "sha512-isQ4EEiyUjZFbEKvEGJKKGBwXtvXX+zJbkVKCgTuB9t/+jUBcy8avhkEwWJecI15BkRkOYmvIM5ynbhRjEkoeg=="
-  "resolved" "https://registry.npmjs.org/eslint/-/eslint-8.29.0.tgz"
-  "version" "8.29.0"
-=======
-eslint@^8.22.0, eslint@^8.27.0:
+eslint@^8.22.0, eslint@^8.27.0, eslint@^8.9.0:
   version "8.29.0"
   resolved "https://registry.npmjs.org/eslint/-/eslint-8.29.0.tgz"
->>>>>>> 2c278c81f1f9f10489cefc5e6497f6135636074c
+  integrity sha512-isQ4EEiyUjZFbEKvEGJKKGBwXtvXX+zJbkVKCgTuB9t/+jUBcy8avhkEwWJecI15BkRkOYmvIM5ynbhRjEkoeg==
   dependencies:
     "@eslint/eslintrc" "^1.3.3"
     "@humanwhocodes/config-array" "^0.11.6"
@@ -3567,21 +3556,14 @@ js-yaml@4.1.0, js-yaml@^4.1.0:
   dependencies:
     argparse "^2.0.1"
 
-<<<<<<< HEAD
-"jschardet@latest":
-  "integrity" "sha512-lJH6tJ77V8Nzd5QWRkFYCLc13a3vADkh3r/Fi8HupZGWk2OVVDfnZP8V/VgQgZ+lzW0kG2UGb5hFgt3V3ndotQ=="
-  "resolved" "https://registry.npmjs.org/jschardet/-/jschardet-3.0.0.tgz"
-  "version" "3.0.0"
+jschardet@latest:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/jschardet/-/jschardet-3.0.0.tgz"
+  integrity sha512-lJH6tJ77V8Nzd5QWRkFYCLc13a3vADkh3r/Fi8HupZGWk2OVVDfnZP8V/VgQgZ+lzW0kG2UGb5hFgt3V3ndotQ==
 
-"jsdoc-type-pratt-parser@~3.1.0":
-  "integrity" "sha512-MgtD0ZiCDk9B+eI73BextfRrVQl0oyzRG8B2BjORts6jbunj4ScKPcyXGTbB6eXL4y9TzxCm6hyeLq/2ASzNdw=="
-  "resolved" "https://registry.npmjs.org/jsdoc-type-pratt-parser/-/jsdoc-type-pratt-parser-3.1.0.tgz"
-  "version" "3.1.0"
-=======
 jsdoc-type-pratt-parser@~3.1.0:
   version "3.1.0"
   resolved "https://registry.npmjs.org/jsdoc-type-pratt-parser/-/jsdoc-type-pratt-parser-3.1.0.tgz"
->>>>>>> 2c278c81f1f9f10489cefc5e6497f6135636074c
 
 jsesc@^2.5.1:
   version "2.5.2"
@@ -3728,16 +3710,9 @@ lodash.zip@^4.2.0:
   version "4.2.0"
   resolved "https://registry.npmjs.org/lodash.zip/-/lodash.zip-4.2.0.tgz"
 
-<<<<<<< HEAD
-"lodash@^4.13.1", "lodash@^4.17.14", "lodash@^4.17.21":
-  "integrity" "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
-  "resolved" "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
-  "version" "4.17.21"
-=======
-lodash@^4.13.1, lodash@^4.17.21:
+lodash@^4.13.1, lodash@^4.17.14, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
->>>>>>> 2c278c81f1f9f10489cefc5e6497f6135636074c
 
 log-symbols@4.1.0, log-symbols@^4.0.0:
   version "4.1.0"
@@ -5255,21 +5230,14 @@ url@0.10.3:
     punycode "1.3.2"
     querystring "0.2.0"
 
-<<<<<<< HEAD
-"utf8@^3.0.0":
-  "integrity" "sha512-E8VjFIQ/TyQgp+TZfS6l8yp/xWppSAHzidGiRrqe4bK4XP9pTRyKFgGJpO3SN7zdX4DeomTrwaseCHovfpFcqQ=="
-  "resolved" "https://registry.npmjs.org/utf8/-/utf8-3.0.0.tgz"
-  "version" "3.0.0"
+utf8@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.npmjs.org/utf8/-/utf8-3.0.0.tgz"
+  integrity sha512-E8VjFIQ/TyQgp+TZfS6l8yp/xWppSAHzidGiRrqe4bK4XP9pTRyKFgGJpO3SN7zdX4DeomTrwaseCHovfpFcqQ==
 
-"util-deprecate@^1.0.1":
-  "integrity" "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw=="
-  "resolved" "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
-  "version" "1.0.2"
-=======
 util-deprecate@^1.0.1:
   version "1.0.2"
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"
->>>>>>> 2c278c81f1f9f10489cefc5e6497f6135636074c
 
 util@^0.12.4:
   version "0.12.5"
