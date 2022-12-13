@@ -11,10 +11,30 @@ import select from './inquirer-select.js';
 // The function takes a prompt object as an argument, which asks the user for input.
 // It might say something like "Please enter a command:".
 export const genericGetCommand = async (prompt: GenericInputPrompt) => {
-	const command: string = await input(
+	let command: string = await input(
 		{ default: prompt.default, message: prompt.message },
 		{ clearPromptOnDone: prompt.clearPromptOnDone ?? true },
 	);
+
+	while (
+		(command === `` || command === undefined || command === null) &&
+		prompt.allowEmpty === false
+	) {
+		// Print a message in red, 'Cannot be empty'.
+		console.log(chalk.red(`Cannot be empty`));
+		// Play a sound.
+		process.stdout.write(`\u0007`);
+
+		process.stdout.moveCursor(0, -2);
+
+		// eslint-disable-next-line no-await-in-loop
+		command = await input(
+			{ default: prompt.default, message: prompt.message },
+			{ clearPromptOnDone: prompt.clearPromptOnDone ?? true },
+		);
+
+		process.stdout.clearLine(0);
+	}
 
 	return command;
 };
