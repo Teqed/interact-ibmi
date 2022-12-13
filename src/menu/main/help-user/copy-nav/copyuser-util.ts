@@ -128,7 +128,7 @@ function convertUserInterface(
 
 	switch (copyUser.CHARACTER_CODE_SET_ID) {
 		// TODO These values need to be confirmed.
-		case `-2`:
+		case -2:
 			userCharacterCodeSetId = `*SYSVAL`;
 			break;
 		case `QCCSID`:
