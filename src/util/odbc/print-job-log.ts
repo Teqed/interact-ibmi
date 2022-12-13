@@ -3,7 +3,7 @@ import getJobInfo from './get-job-info.js';
 import getJobMessages from './get-job-messages.js';
 
 export default async function () {
-	const jobName = await getJobInfo(); // TODO - Get the job name at initialization.
+	const jobName = await getJobInfo();
 	const jobMessages = await getJobMessages(jobName);
 	// Log the job messages to the console.
 	// Color the message based on MESSAGE_TYPE using chalk.

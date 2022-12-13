@@ -109,6 +109,7 @@ export type CreateUserInterface = {
 
 // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
 export interface GenericInputPrompt {
+	allowEmpty?: boolean;
 	clearPromptOnDone?: boolean;
 	default?: string;
 	message: string;
