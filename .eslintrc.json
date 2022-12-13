@@ -16,8 +16,8 @@
 		"eslint:recommended",
 		"prettier",
 		"xo",
-		"airbnb-base",
-		"canonical"
+		"airbnb-base"
+		// "canonical"
 	],
 	"overrides": [
 		{
