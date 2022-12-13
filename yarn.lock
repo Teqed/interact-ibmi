@@ -239,13 +239,101 @@
     "@esbuild-kit/core-utils" "^3.0.0"
     get-tsconfig "^4.2.0"
 
+"@esbuild/android-arm64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/android-arm64/-/android-arm64-0.16.4.tgz#4b31b9e3da2e4c12a8170bd682f713c775f68ab1"
+
 "@esbuild/android-arm@0.15.11":
   version "0.15.11"
   resolved "https://registry.yarnpkg.com/@esbuild/android-arm/-/android-arm-0.15.11.tgz#bdd9c3e098183bdca97075aa4c3e0152ed3e10ee"
 
+"@esbuild/android-arm@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/android-arm/-/android-arm-0.16.4.tgz#057d3e8b0ee41ff59386c33ba6dcf20f4bedd1f7"
+
+"@esbuild/android-x64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/android-x64/-/android-x64-0.16.4.tgz#62ccab8ac1d3e6ef1df3fa2e1974bc2b8528d74a"
+
+"@esbuild/darwin-arm64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/darwin-arm64/-/darwin-arm64-0.16.4.tgz#c19a6489d626c36fc611c85ccd8a3333c1f2a930"
+
+"@esbuild/darwin-x64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/darwin-x64/-/darwin-x64-0.16.4.tgz#b726bbc84a1e277f6ec2509d10b8ee03f242b776"
+
+"@esbuild/freebsd-arm64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/freebsd-arm64/-/freebsd-arm64-0.16.4.tgz#364568e6ca2901297f247de0681c9b14bbe658c8"
+
+"@esbuild/freebsd-x64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/freebsd-x64/-/freebsd-x64-0.16.4.tgz#44701ba4a5497ba64eec0a6c9e221d8f46a25e72"
+
+"@esbuild/linux-arm64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-arm64/-/linux-arm64-0.16.4.tgz#b58fb418ec9ac714d8dbb38c787ff2441eb1d9db"
+
+"@esbuild/linux-arm@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-arm/-/linux-arm-0.16.4.tgz#b37f15ecddb53eeea466e5960e31a58f33e0e87e"
+
+"@esbuild/linux-ia32@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-ia32/-/linux-ia32-0.16.4.tgz#117e32a9680b5deac184ebee122f8575369fad1b"
+
 "@esbuild/linux-loong64@0.15.11":
   version "0.15.11"
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.15.11.tgz#2f4f9a1083dcb4fc65233b6f59003c406abf32e5"
+
+"@esbuild/linux-loong64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.16.4.tgz#dd504fb83c280752d4b485d9acb3cf391cb7bf5b"
+
+"@esbuild/linux-mips64el@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-mips64el/-/linux-mips64el-0.16.4.tgz#9ab77e31cf3be1e35572afff94b51df8149d15bd"
+
+"@esbuild/linux-ppc64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-ppc64/-/linux-ppc64-0.16.4.tgz#69d56c2a960808bee1c7b9b84a115220ec9ce05c"
+
+"@esbuild/linux-riscv64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-riscv64/-/linux-riscv64-0.16.4.tgz#9fc23583f4a1508a8d352bd376340e42217e8a90"
+
+"@esbuild/linux-s390x@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-s390x/-/linux-s390x-0.16.4.tgz#4cae1f70ac2943f076dd130c3c80d28f57bf75d1"
+
+"@esbuild/linux-x64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/linux-x64/-/linux-x64-0.16.4.tgz#fdf494de07cda23a2dc4b71ff1e0848e4ee6539c"
+
+"@esbuild/netbsd-x64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/netbsd-x64/-/netbsd-x64-0.16.4.tgz#b59ecb49087119c575c0f64d7e66001d52799e24"
+
+"@esbuild/openbsd-x64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/openbsd-x64/-/openbsd-x64-0.16.4.tgz#c51e36db875948b7b11d08bafa355605a1aa289c"
+
+"@esbuild/sunos-x64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/sunos-x64/-/sunos-x64-0.16.4.tgz#0b50e941cd44f069e9f2573321aec984244ec228"
+
+"@esbuild/win32-arm64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/win32-arm64/-/win32-arm64-0.16.4.tgz#d1c93b20f17355ab2221cd18e13ae2f1b68013e3"
+
+"@esbuild/win32-ia32@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/win32-ia32/-/win32-ia32-0.16.4.tgz#df5910e76660e0acbbdceb8d4ae6bf1efeade6ae"
+
+"@esbuild/win32-x64@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.16.4.tgz#6ec594468610c176933da1387c609558371d37e0"
 
 "@eslint-community/eslint-utils@^4.1.0":
   version "4.1.2"
@@ -694,7 +782,7 @@
   dependencies:
     "@types/chai" "*"
 
-"@types/chai@*", "@types/chai@^4.3.3":
+"@types/chai@*", "@types/chai@^4.3.3", "@types/chai@^4.3.4":
   version "4.3.4"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.3.4.tgz#e913e8175db8307d78b4e8fa690408ba6b65dee4"
 
@@ -935,11 +1023,11 @@
     eslint-visitor-keys "^3.3.0"
 
 "@vitest/coverage-c8@^0.25.0":
-  version "0.25.5"
-  resolved "https://registry.yarnpkg.com/@vitest/coverage-c8/-/coverage-c8-0.25.5.tgz#515c06d7c00eed2337ca0aa317616bfbe9482c59"
+  version "0.25.8"
+  resolved "https://registry.yarnpkg.com/@vitest/coverage-c8/-/coverage-c8-0.25.8.tgz#a46d171b1b2291089dd5518642bbbec9890617e5"
   dependencies:
     c8 "^7.12.0"
-    vitest "0.25.5"
+    vitest "0.25.8"
 
 "@vitest/ui@^0.25.0":
   version "0.25.5"
@@ -1326,7 +1414,7 @@ caniuse-lite@^1.0.30001400:
   version "1.0.30001422"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001422.tgz"
 
-chai@^4.3.6:
+chai@^4.3.6, chai@^4.3.7:
   version "4.3.7"
   resolved "https://registry.yarnpkg.com/chai/-/chai-4.3.7.tgz#ec63f6df01829088e8bf55fca839bcd464a8ec51"
   dependencies:
@@ -1934,6 +2022,33 @@ esbuild@^0.15.9, esbuild@~0.15.10:
     esbuild-windows-32 "0.15.11"
     esbuild-windows-64 "0.15.11"
     esbuild-windows-arm64 "0.15.11"
+
+esbuild@^0.16.3:
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.16.4.tgz#06c86298d233386f5e41bcc14d36086daf3f40bd"
+  optionalDependencies:
+    "@esbuild/android-arm" "0.16.4"
+    "@esbuild/android-arm64" "0.16.4"
+    "@esbuild/android-x64" "0.16.4"
+    "@esbuild/darwin-arm64" "0.16.4"
+    "@esbuild/darwin-x64" "0.16.4"
+    "@esbuild/freebsd-arm64" "0.16.4"
+    "@esbuild/freebsd-x64" "0.16.4"
+    "@esbuild/linux-arm" "0.16.4"
+    "@esbuild/linux-arm64" "0.16.4"
+    "@esbuild/linux-ia32" "0.16.4"
+    "@esbuild/linux-loong64" "0.16.4"
+    "@esbuild/linux-mips64el" "0.16.4"
+    "@esbuild/linux-ppc64" "0.16.4"
+    "@esbuild/linux-riscv64" "0.16.4"
+    "@esbuild/linux-s390x" "0.16.4"
+    "@esbuild/linux-x64" "0.16.4"
+    "@esbuild/netbsd-x64" "0.16.4"
+    "@esbuild/openbsd-x64" "0.16.4"
+    "@esbuild/sunos-x64" "0.16.4"
+    "@esbuild/win32-arm64" "0.16.4"
+    "@esbuild/win32-ia32" "0.16.4"
+    "@esbuild/win32-x64" "0.16.4"
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -4173,6 +4288,14 @@ postcss@^8.4.18:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
+postcss@^8.4.20:
+  version "8.4.20"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.20.tgz#64c52f509644cecad8567e949f4081d98349dc56"
+  dependencies:
+    nanoid "^3.3.4"
+    picocolors "^1.0.0"
+    source-map-js "^1.0.2"
+
 prelude-ls@^1.2.1:
   version "1.2.1"
   resolved "https://registry.npmjs.org/prelude-ls/-/prelude-ls-1.2.1.tgz"
@@ -4451,6 +4574,12 @@ rollup-plugin-visualizer@^5.8.1:
 rollup@^2.79.1:
   version "2.79.1"
   resolved "https://registry.npmjs.org/rollup/-/rollup-2.79.1.tgz"
+  optionalDependencies:
+    fsevents "~2.3.2"
+
+rollup@^3.7.0:
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-3.7.4.tgz#993c3b30eff1df96f5eafb7c2ef7648960f2fa34"
   optionalDependencies:
     fsevents "~2.3.2"
 
@@ -5132,7 +5261,18 @@ vite-plugin-progress@^0.0.6:
     progress "^2.0.3"
     rd "^2.0.1"
 
-vite@^3.0.0, vite@^3.1.0:
+"vite@^3.0.0 || ^4.0.0":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-4.0.1.tgz#e0a54d818c28ae47fd27bcac6a4a952c6a658502"
+  dependencies:
+    esbuild "^0.16.3"
+    postcss "^8.4.20"
+    resolve "^1.22.1"
+    rollup "^3.7.0"
+  optionalDependencies:
+    fsevents "~2.3.2"
+
+vite@^3.1.0:
   version "3.2.5"
   resolved "https://registry.yarnpkg.com/vite/-/vite-3.2.5.tgz#dee5678172a8a0ab3e547ad4148c3d547f90e86a"
   dependencies:
@@ -5143,16 +5283,16 @@ vite@^3.0.0, vite@^3.1.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-vitest@0.25.5:
-  version "0.25.5"
-  resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.25.5.tgz#efb8bf0dc0438af11346cb8ecde47cd5ad830934"
+vitest@0.25.8, vitest@^0.25.0:
+  version "0.25.8"
+  resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.25.8.tgz#9b57e0b41cd6f2d2d92aa94a39b35c36f715f8cc"
   dependencies:
-    "@types/chai" "^4.3.3"
+    "@types/chai" "^4.3.4"
     "@types/chai-subset" "^1.3.3"
     "@types/node" "*"
-    acorn "^8.8.0"
+    acorn "^8.8.1"
     acorn-walk "^8.2.0"
-    chai "^4.3.6"
+    chai "^4.3.7"
     debug "^4.3.4"
     local-pkg "^0.4.2"
     source-map "^0.6.1"
@@ -5160,26 +5300,7 @@ vitest@0.25.5:
     tinybench "^2.3.1"
     tinypool "^0.3.0"
     tinyspy "^1.0.2"
-    vite "^3.0.0"
-
-vitest@^0.25.0:
-  version "0.25.6"
-  resolved "https://registry.yarnpkg.com/vitest/-/vitest-0.25.6.tgz#3db1692671c702c84165984e6651f8f6c36fbdf5"
-  dependencies:
-    "@types/chai" "^4.3.3"
-    "@types/chai-subset" "^1.3.3"
-    "@types/node" "*"
-    acorn "^8.8.0"
-    acorn-walk "^8.2.0"
-    chai "^4.3.6"
-    debug "^4.3.4"
-    local-pkg "^0.4.2"
-    source-map "^0.6.1"
-    strip-literal "^1.0.0"
-    tinybench "^2.3.1"
-    tinypool "^0.3.0"
-    tinyspy "^1.0.2"
-    vite "^3.0.0"
+    vite "^3.0.0 || ^4.0.0"
 
 wcwidth@^1.0.1:
   version "1.0.1"
