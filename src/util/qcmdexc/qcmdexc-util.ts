@@ -22,21 +22,6 @@ export const qualifyObject = (QualifiedObject: QualifiedObject): string => {
 	// return a string in the format 'library/object'.
 	return `${innerLibrary}/${QualifiedObject.object}`;
 };
-
-/* Parse the input into an object with two properties: 'errorIdentifier' and 'messageText'. */
-/* Remove the prefix '[IBM][System i Access ODBC Driver][DB2 for i5/OS]' from the error message. */
-/* Separate the error number from the error message where the first space hyphen space is. */
-export const parseErrorMessage = async (error: odbc.NodeOdbcError) => {
-	// https://www.ibm.com/docs/en/i/7.2?topic=odbc-i-access-error-messages
-	// [vendor][ODBC-component][data-source] error-message
-	let { message } = error.odbcErrors[0];
-	/* Remove the prefix '[IBM][System i Access ODBC Driver][DB2 for i5/OS]' from the error message. */
-	message = message.replace(/^\[IBM\]\[System i Access ODBC Driver\]\[DB2 for i5\/OS\] /u, ``);
-	const errorIdentifier = message.split(` - `)[0];
-	const messageText = message.split(` - `)[1];
-	return { errorIdentifier, messageText };
-};
-
 export const parseODBCErrorMessage = async (error: odbc.NodeOdbcError) => {
 	/* https://www.ibm.com/docs/en/i/7.2?topic=odbc-i-access-error-messages
 	Error messages have the following format:

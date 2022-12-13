@@ -6,7 +6,7 @@ import { queryOdbc } from '../../../../util/odbc/odbc-util.js';
 import CHGOBJOWN from '../../../../util/qcmdexc/chgobjown.js';
 import CHGUSRPRF from '../../../../util/qcmdexc/chgusrprf.js';
 import CRTUSRPRF from '../../../../util/qcmdexc/crtusrprf.js';
-import { parseErrorMessage } from '../../../../util/qcmdexc/qcmdexc-util.js';
+import { parseODBCErrorMessage } from '../../../../util/qcmdexc/qcmdexc-util.js';
 import QCMDEXC from '../../../../util/qcmdexc/qcmdexc.js';
 import {
 	type IbmiUserInterface,
@@ -366,8 +366,8 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 
 	/* Assemble the user variables into a string using template literals. */
 	await QCMDEXC(CRTUSRPRF(toUser)).catch(async (error: odbc.NodeOdbcError) => {
-		const parseError = await parseErrorMessage(error);
-		throw new Error(`${parseError.errorIdentifier}: ${parseError.messageText}`);
+		const parseError = await parseODBCErrorMessage(error);
+		throw new Error(`${parseError.messageIdentifier}: ${parseError.messageText}`);
 	});
 
 	const query5 = await queryOdbc(
@@ -400,8 +400,8 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 				USRPRF: toUser.userId,
 			}),
 		);
-		const parseError = await parseErrorMessage(error);
-		throw new Error(`${parseError.errorIdentifier}: ${parseError.messageText}`);
+		const parseError = await parseODBCErrorMessage(error);
+		throw new Error(`${parseError.messageIdentifier}: ${parseError.messageText}`);
 	});
 
 	/* Change object owner to QSECOFR. */
@@ -423,19 +423,19 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 				})`,
 				// eslint-disable-next-line promise/prefer-await-to-then
 			).catch(async (error: odbc.NodeOdbcError) => {
-				const parseError = await parseErrorMessage(error);
-				if (parseError.errorIdentifier === `CPF2282`) {
+				const parseError = await parseODBCErrorMessage(error);
+				if (parseError.messageIdentifier === `CPF2282`) {
 					// If the user already exists on the authorization list, do nothing.
 					console.error(
 						chalk.yellow.bgBlack(
-							`${parseError.errorIdentifier}: ${parseError.messageText} ${thing.AUTHORIZATION_LIST}`,
+							`${parseError.messageIdentifier}: ${parseError.messageText} ${thing.AUTHORIZATION_LIST}`,
 						),
 					);
 					return 0;
 				}
 
 				// Otherwise, throw an error.
-				throw new Error(`${parseError.errorIdentifier}: ${parseError.messageText}`);
+				throw new Error(`${parseError.messageIdentifier}: ${parseError.messageText}`);
 			});
 			AuthorizationListPromises.push(AddAuthorizationList);
 		});
@@ -451,17 +451,17 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		}'') USER(${newUser.toUpperCase()})`,
 		// eslint-disable-next-line promise/prefer-await-to-then
 	).catch(async (error: odbc.NodeOdbcError) => {
-		const parseError = await parseErrorMessage(error);
-		if (parseError.errorIdentifier === `CPF9082`) {
+		const parseError = await parseODBCErrorMessage(error);
+		if (parseError.messageIdentifier === `CPF9082`) {
 			// If the user already exists on the directory list, do nothing.
 			console.error(
-				chalk.yellow.bgBlack(`${parseError.errorIdentifier}: ${parseError.messageText}`),
+				chalk.yellow.bgBlack(`${parseError.messageIdentifier}: ${parseError.messageText}`),
 			);
 			return 0;
 		}
 
 		// Otherwise, throw an error.
-		throw new Error(`${parseError.errorIdentifier}: ${parseError.messageText}`);
+		throw new Error(`${parseError.messageIdentifier}: ${parseError.messageText}`);
 	});
 
 	// ! Resolve remaining promises.

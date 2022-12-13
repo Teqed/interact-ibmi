@@ -13,15 +13,9 @@ export default async function () {
 	const commandExecute = await executeCommand(inputCommand, {
 		pauseOnError: false,
 		throwOnError: false,
+		alwaysPrintJobLog: true,
 	});
-	// Console log commandExecute if it's not void.
-	if (commandExecute) {
-		console.log(commandExecute);
-	} else {
-		console.log(`
-		${chalk.blueBright(`Command failed. See job log for details.`)}
-`);
-	}
+	void commandExecute;
 
 	return genericPressEnterPrompt();
 }

@@ -6,7 +6,7 @@ import { queryOdbc } from '../../../../util/odbc/odbc-util.js';
 import CHGUSRPRF from '../../../../util/qcmdexc/chgusrprf.js';
 import CPYNAVUSR from '../../../../util/qcmdexc/cpynavusr.js';
 import executeCommand from '../../../../util/qcmdexc/execute-command.js';
-import { parseErrorMessage } from '../../../../util/qcmdexc/qcmdexc-util.js';
+import { parseODBCErrorMessage } from '../../../../util/qcmdexc/qcmdexc-util.js';
 import {
 	type QualifiedObject,
 	type CreateUserInterface,
@@ -351,8 +351,8 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 	await executeCommand(
 		CPYNAVUSR(fromUser.AUTHORIZATION_NAME, toUser.userId, toUser.userText, toUser.userEmail),
 	).catch(async (error: odbc.NodeOdbcError) => {
-		const parseError = await parseErrorMessage(error);
-		throw new Error(`${parseError.errorIdentifier}: ${parseError.messageText}`);
+		const parseError = await parseODBCErrorMessage(error);
+		throw new Error(`${parseError.messageIdentifier}: ${parseError.messageText}`);
 	});
 
 	const query5 = await queryOdbc(
@@ -370,8 +370,8 @@ export default async (copyFromUser: string, newUser: string, userDescription: st
 		// eslint-disable-next-line promise/prefer-await-to-then
 	).catch(async (error: odbc.NodeOdbcError) => {
 		console.log(error);
-		const parseError = await parseErrorMessage(error);
-		throw new Error(`${parseError.errorIdentifier}: ${parseError.messageText}`);
+		const parseError = await parseODBCErrorMessage(error);
+		throw new Error(`${parseError.messageIdentifier}: ${parseError.messageText}`);
 	});
 
 	/* If the result of query4 is empty, then the user failed to create. */

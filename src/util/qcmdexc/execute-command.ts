@@ -12,6 +12,7 @@ export default async function (
 		debug?: boolean;
 		pauseOnError?: boolean;
 		printJobLog?: boolean;
+		alwaysPrintJobLog?: boolean;
 		spinner?: boolean;
 		throwOnError?: boolean;
 	},
@@ -53,6 +54,10 @@ export default async function (
 
 	if ((options?.spinner ?? true) && !failure) {
 		spinner.succeed(`Command executed!`);
+	}
+
+	if ((options?.alwaysPrintJobLog ?? false) && !failure && (options?.printJobLog ?? true)) {
+		await printJobLog();
 	}
 
 	return doCommand;
