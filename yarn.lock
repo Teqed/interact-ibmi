@@ -615,7 +615,8 @@
 
 "@inquirer/input@^0.0.27-alpha.0":
   version "0.0.27-alpha.0"
-  resolved "https://registry.npmjs.org/@inquirer/input/-/input-0.0.27-alpha.0.tgz"
+  resolved "https://registry.yarnpkg.com/@inquirer/input/-/input-0.0.27-alpha.0.tgz#cff143b3fa1efec713c7e99b06720b3b3cf96bbd"
+  integrity sha512-VZ08HuaWWm6y497vQNF43QBHI3634Ygkie1FqlD8qtx5C+r+BuyZLrIu69HWNpsjUAXUwYBa9L5Ud6a7XrcR1Q==
   dependencies:
     "@inquirer/core" "^0.0.26-alpha.0"
     chalk "^5.0.1"
