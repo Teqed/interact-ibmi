@@ -5162,8 +5162,9 @@ typescript@^4.9.3:
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.9.4.tgz"
 
 typescript@^5.0.0-dev.20221102:
-  version "5.0.0-dev.20221213"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-5.0.0-dev.20221213.tgz"
+  version "5.0.0-dev.20221215"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.0-dev.20221215.tgz#1ea76ae0cf912259c8ed023607d2af4c34928fbe"
+  integrity sha512-c4J+NP7IxANpf/vw1dGIbXNzewcl6PEjRo8MR/DXHZJgNIZZBmtgq0AcR27+jnUZsXhuXIVjmNPTxcNNJpnPqw==
 
 umzug@^2.3.0:
   version "2.3.0"
