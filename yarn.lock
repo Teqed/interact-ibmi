@@ -1067,10 +1067,13 @@
     c8 "^7.12.0"
     vitest "0.25.8"
 
-"@vitest/ui@^0.25.0":
-  version "0.25.8"
-  resolved "https://registry.npmjs.org/@vitest/ui/-/ui-0.25.8.tgz"
+"@vitest/ui@^0.26.0":
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-0.26.0.tgz#e0c361902722b70d7b1ef1e821d87834b5e42389"
+  integrity sha512-aEThdF469KCaU8m0eQ3C8TRa1UOlDjHEdIzmqKdKrwYtZrDsx/CHTzb6wXjmr7L+ldHyCctkss7uNTlMXRQjtg==
   dependencies:
+    fast-glob "^3.2.12"
+    flatted "^3.2.7"
     sirv "^2.0.2"
 
 "@whatwg-node/fetch@0.5.3", "@whatwg-node/fetch@^0.5.0":
@@ -2813,7 +2816,7 @@ flat@^5.0.2:
   version "5.0.2"
   resolved "https://registry.npmjs.org/flat/-/flat-5.0.2.tgz"
 
-flatted@^3.1.0:
+flatted@^3.1.0, flatted@^3.2.7:
   version "3.2.7"
   resolved "https://registry.npmjs.org/flatted/-/flatted-3.2.7.tgz"
 
