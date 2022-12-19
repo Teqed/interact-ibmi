@@ -5162,9 +5162,9 @@ typescript@^4.9.3:
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.9.4.tgz"
 
 typescript@^5.0.0-dev.20221102:
-  version "5.0.0-dev.20221216"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.0-dev.20221216.tgz#a7a0402dc10ecc69d093e64f1120cbb8b42ee826"
-  integrity sha512-69mskYxo8qKjwdtzRxpbZrueutt4BTbbTUlZvcl8Lu5pM42ZJ7GuJw6ZLb6GVUx6T8/dk46erSFT3O4SNCi7LA==
+  version "5.0.0-dev.20221219"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.0-dev.20221219.tgz#8c31058e979a2e2aa0ec47ef7c9045bd53729467"
+  integrity sha512-/ZglDGQtpeVudCAVJuEdM8K8vUCA1yPMpsk3y08/ZXn6dxk/D1hy59FEI25/EHqsACElN++9CoKzkJS1wBTiRw==
 
 umzug@^2.3.0:
   version "2.3.0"
