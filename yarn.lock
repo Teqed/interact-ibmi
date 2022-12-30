@@ -5304,9 +5304,9 @@ typescript@^4.9.3:
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.9.4.tgz"
 
 typescript@^5.0.0-dev.20221102:
-  version "5.0.0-dev.20221229"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.0-dev.20221229.tgz#2c6a4b0a3bb4d36648130fe6af8835ab642e1ff6"
-  integrity sha512-LpxWw2BJ32Pl9R7TLln2+WVkiSLvCsXplYjEgkrizlq7jGbaOuy+d5eLyFsjPqNoaUBKkUvB9dKtbG61XMIA3A==
+  version "5.0.0-dev.20221230"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.0-dev.20221230.tgz#b52361c67bd66a431d94ea02f20c0da541f5364a"
+  integrity sha512-6Qsxtt4f0FmoruK7IadYRoisOOp14oPKIuNYKp4eYwWtSo/R9vpiDQtQuZ5fs20tUVfMvxAvN7/BYwTMXPfsxA==
 
 ufo@^1.0.0:
   version "1.0.1"
