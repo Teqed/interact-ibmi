@@ -2235,10 +2235,10 @@ eslint-config-airbnb-typescript@^17.0.0:
   dependencies:
     eslint-config-airbnb-base "^15.0.0"
 
-eslint-config-canonical@^37.0.3:
-  version "37.0.4"
-  resolved "https://registry.yarnpkg.com/eslint-config-canonical/-/eslint-config-canonical-37.0.4.tgz#839c5bd245c060036294ec79658abeaf0b3f907e"
-  integrity sha512-GvhGSF6i+LNZ88rd2q/46AbQOFMinbb0/bEj9eir3j+TIWno12WdOJKbAoiKO1LPnCvGVSZmJybomnQVqZBTWg==
+eslint-config-canonical@^38.0.2:
+  version "38.0.2"
+  resolved "https://registry.yarnpkg.com/eslint-config-canonical/-/eslint-config-canonical-38.0.2.tgz#007a5da0098771f6494c771fc4e364afb1b65cd2"
+  integrity sha512-FO0TEKCOtRJwzs+4fpKf/r1Gu8HIXCGqb6d0OowdNZyN+aHOixP8eIc+bS0vOa5RRb6l8XRUsbMxXuQ4jKiddA==
   dependencies:
     "@babel/core" "^7.20.7"
     "@babel/eslint-parser" "^7.19.1"
@@ -2264,6 +2264,7 @@ eslint-config-canonical@^37.0.3:
     eslint-plugin-mocha "^10.1.0"
     eslint-plugin-modules-newline "0.0.6"
     eslint-plugin-node "^11.1.0"
+    eslint-plugin-prettier "^4.2.1"
     eslint-plugin-promise "^6.1.1"
     eslint-plugin-react "^7.31.11"
     eslint-plugin-react-hooks "^4.6.0"
