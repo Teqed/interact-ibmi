@@ -5467,9 +5467,10 @@ vite-node@0.27.0:
     source-map-support "^0.5.21"
     vite "^3.0.0 || ^4.0.0"
 
-vite-plugin-node@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.npmjs.org/vite-plugin-node/-/vite-plugin-node-1.0.0.tgz"
+vite-plugin-node@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/vite-plugin-node/-/vite-plugin-node-3.0.2.tgz#91e702dfe342d31c5abf501ad00edecf68b129f1"
+  integrity sha512-pA/QZDe4VRFUSChTrR64EfdsnwHbTnkXKx1Be8MP2oW43TPeQgtIfqiGOuXTPUKjwINtyEl8JMzRN0+dYyfTow==
   dependencies:
     "@rollup/pluginutils" "^4.1.1"
     chalk "^4.1.2"
