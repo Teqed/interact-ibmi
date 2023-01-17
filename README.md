@@ -34,6 +34,13 @@
 <sup><small><i>Some basic user diagnostics already done!</i></small></sup>
 </p>
 
+* [🔜] Execute commands provided by argument
+* [🔜] Clean-up menus and output
+* [🔜] Handle bad logins gracefully
+* [🔜] Add a dotfile configuration
+* [🔜] Improve generic usage -- input, output
+* [🔜] Optimize for bsh env
+
 ## Who is this for?
 
 This is mostly a personal pet project to learn some new technologies, and may involve a lot of refactoring or swapping of dependencies as I experiment. When finished, I hope this tool could be useful for quickly performing routine diagnostics, simple query tasks, and perhaps aid in troubleshooting. 
