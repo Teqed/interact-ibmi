@@ -4937,8 +4937,9 @@ semver@^7.0.0, semver@^7.3.4, semver@^7.3.5, semver@^7.3.7, semver@^7.3.8:
     lru-cache "^6.0.0"
 
 sequelize-cli@^6.5.1:
-  version "6.5.2"
-  resolved "https://registry.npmjs.org/sequelize-cli/-/sequelize-cli-6.5.2.tgz"
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/sequelize-cli/-/sequelize-cli-6.6.0.tgz#f11588c93b53321637f8aedd5b10ed57d6d06482"
+  integrity sha512-FwTClhGRvXKanFRHMZbgfXOBV8UC2B3VkE0WOdW1n39/36PF4lWyurF95f246une/V4eaO3a7/Ywvy++3r+Jmg==
   dependencies:
     cli-color "^2.0.3"
     fs-extra "^9.1.0"
