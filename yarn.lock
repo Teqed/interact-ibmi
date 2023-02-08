@@ -2345,9 +2345,9 @@ eslint-config-airbnb-typescript@^17.0.0:
     eslint-config-airbnb-base "^15.0.0"
 
 eslint-config-canonical@^40.0.1:
-  version "40.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-canonical/-/eslint-config-canonical-40.0.1.tgz#fd703602dcc81986f2e5e9cd96da2fe937950ebe"
-  integrity sha512-hs+mKwl+C0cvkK8B9z2U58ALC+uScSn7Z8lIILerUcn54nCnjjWxj0odDAFZ9q0AiIA9qJZRMTKwIi/hsAgbOg==
+  version "40.0.5"
+  resolved "https://registry.yarnpkg.com/eslint-config-canonical/-/eslint-config-canonical-40.0.5.tgz#268b365ff6c7c604943f7645fa1dfa732d73239c"
+  integrity sha512-oyEPAgA0vFrS3vnny84gTFy4IGteqo6moa4int9ciooOF7OIsnILjUScCWSSXu3biUE2qZ7LAyOkcqB4Wgji4A==
   dependencies:
     "@babel/core" "^7.20.12"
     "@babel/eslint-parser" "^7.19.1"
@@ -2358,6 +2358,7 @@ eslint-config-canonical@^40.0.1:
     "@typescript-eslint/eslint-plugin" "^5.48.0"
     "@typescript-eslint/parser" "^5.48.0"
     eslint-config-prettier "^8.6.0"
+    eslint-import-resolver-typescript "^3.5.3"
     eslint-plugin-ava "^13.2.0"
     eslint-plugin-canonical "^3.2.4"
     eslint-plugin-cypress "^2.12.1"
@@ -2430,7 +2431,7 @@ eslint-import-resolver-node@^0.3.7:
     is-core-module "^2.11.0"
     resolve "^1.22.1"
 
-eslint-import-resolver-typescript@^3.5.1:
+eslint-import-resolver-typescript@^3.5.1, eslint-import-resolver-typescript@^3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/eslint-import-resolver-typescript/-/eslint-import-resolver-typescript-3.5.3.tgz#db5ed9e906651b7a59dd84870aaef0e78c663a05"
   integrity sha512-njRcKYBc3isE42LaTcJNVANR3R99H9bAxBDMNDr2W7yq5gYPxbU3MkdhsQukxZ/Xg9C2vcyLlDsbKfRDg0QvCQ==
