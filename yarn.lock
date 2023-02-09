@@ -1318,7 +1318,7 @@ airbnb@^0.0.2:
   dependencies:
     chalk "^2.4.2"
 
-ajv@^6.10.0, ajv@^6.12.4:
+ajv@^6.10.0, ajv@^6.11.0, ajv@^6.12.4:
   version "6.12.6"
   resolved "https://registry.npmjs.org/ajv/-/ajv-6.12.6.tgz"
   dependencies:
@@ -1540,6 +1540,11 @@ bl@^5.0.0:
 bluebird@^3.5.1, bluebird@^3.7.2:
   version "3.7.2"
   resolved "https://registry.npmjs.org/bluebird/-/bluebird-3.7.2.tgz"
+
+boolean@^3.1.4:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/boolean/-/boolean-3.2.0.tgz#9e5294af4e98314494cbb17979fa54ca159f116b"
+  integrity sha512-d0II/GO9uf9lfUHH2BQsjxzRJZBdsjgsBiW4BvhWk/3qoKwQFjIDVN19PfX8F2D/r9PCMTtLWjYVCFrpeYUzsw==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -2345,9 +2350,9 @@ eslint-config-airbnb-typescript@^17.0.0:
     eslint-config-airbnb-base "^15.0.0"
 
 eslint-config-canonical@^40.0.1:
-  version "40.0.5"
-  resolved "https://registry.yarnpkg.com/eslint-config-canonical/-/eslint-config-canonical-40.0.5.tgz#268b365ff6c7c604943f7645fa1dfa732d73239c"
-  integrity sha512-oyEPAgA0vFrS3vnny84gTFy4IGteqo6moa4int9ciooOF7OIsnILjUScCWSSXu3biUE2qZ7LAyOkcqB4Wgji4A==
+  version "40.0.7"
+  resolved "https://registry.yarnpkg.com/eslint-config-canonical/-/eslint-config-canonical-40.0.7.tgz#573b608a6dfcaeeae0ea5b67e93624a81e9c35e6"
+  integrity sha512-pXasvkmZM7nAtAx3Qeh/7mpHWLbbhRbD2lfibXHSmSNe9rLSceGBf4Rz44xAfChOjCte5OZovvaH6XEImdcuRA==
   dependencies:
     "@babel/core" "^7.20.12"
     "@babel/eslint-parser" "^7.19.1"
@@ -2360,12 +2365,12 @@ eslint-config-canonical@^40.0.1:
     eslint-config-prettier "^8.6.0"
     eslint-import-resolver-typescript "^3.5.3"
     eslint-plugin-ava "^13.2.0"
-    eslint-plugin-canonical "^3.2.4"
+    eslint-plugin-canonical "^4.2.0"
     eslint-plugin-cypress "^2.12.1"
     eslint-plugin-eslint-comments "^3.2.0"
     eslint-plugin-flowtype "^8.0.3"
     eslint-plugin-fp "^2.3.0"
-    eslint-plugin-import "^2.26.0"
+    eslint-plugin-import "^2.27.5"
     eslint-plugin-jest "^27.2.0"
     eslint-plugin-jsdoc "^39.6.4"
     eslint-plugin-jsonc "^2.6.0"
@@ -2479,17 +2484,21 @@ eslint-plugin-ava@^13.2.0:
     pkg-dir "^5.0.0"
     resolve-from "^5.0.0"
 
-eslint-plugin-canonical@^3.2.4:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-canonical/-/eslint-plugin-canonical-3.3.0.tgz#75bc2162b866bcec15549649e13b8a76d801bd44"
-  integrity sha512-aAVuNSaOTVP+dMTcQB2oxH4yINj2AQ2ss62+/xQmjHyGoGA/RRpb1op+39vxHsBEAw/xvRTGT+Sj625x06f/5g==
+eslint-plugin-canonical@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-canonical/-/eslint-plugin-canonical-4.2.0.tgz#68190aeec108d1cf419b93ee310adc9cf7f64433"
+  integrity sha512-LGJn8d7q/DPGFFEQyrYfbPfT2y3GMS01DR8eGeepudx5k5BufPeDv1UVTfUpWsrjQ1zVr72BCW7c2PCmMT1Kyg==
   dependencies:
+    eslint-import-resolver-typescript "^3.5.3"
+    eslint-module-utils "^2.7.4"
     is-get-set-prop "^1.0.0"
     is-js-type "^2.0.0"
     is-obj-prop "^1.0.0"
     is-proto-prop "^2.0.0"
     lodash "^4.17.21"
     natural-compare "^1.4.0"
+    roarr "^7.14.2"
+    ts-unused-exports "^9.0.3"
     xregexp "^5.1.1"
 
 eslint-plugin-cypress@^2.12.1:
@@ -2535,7 +2544,7 @@ eslint-plugin-fp@^2.3.0:
     lodash "^4.13.1"
     req-all "^0.1.0"
 
-eslint-plugin-import@^2.26.0:
+eslint-plugin-import@^2.26.0, eslint-plugin-import@^2.27.5:
   version "2.27.5"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.27.5.tgz#876a6d03f52608a3e5bb439c2550588e51dd6c65"
   integrity sha512-LmEt3GVofgiGuiE+ORpnvP+kAm3h6MLZJ4Q5HCyHADofsb4VzXFsRiWj3c0OFiV+3DWFh0qg3v9gcPlfc3zRow==
@@ -2986,9 +2995,26 @@ fast-json-stable-stringify@^2.0.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz"
 
+fast-json-stringify@^2.7.10:
+  version "2.7.13"
+  resolved "https://registry.yarnpkg.com/fast-json-stringify/-/fast-json-stringify-2.7.13.tgz#277aa86c2acba4d9851bd6108ed657aa327ed8c0"
+  integrity sha512-ar+hQ4+OIurUGjSJD1anvYSDcUflywhKjfxnsW4TBTD7+u0tJufv6DKRWoQk3vI6YBOWMoz0TQtfbe7dxbQmvA==
+  dependencies:
+    ajv "^6.11.0"
+    deepmerge "^4.2.2"
+    rfdc "^1.2.0"
+    string-similarity "^4.0.1"
+
 fast-levenshtein@^2.0.6:
   version "2.0.6"
   resolved "https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz"
+
+fast-printf@^1.6.9:
+  version "1.6.9"
+  resolved "https://registry.yarnpkg.com/fast-printf/-/fast-printf-1.6.9.tgz#212f56570d2dc8ccdd057ee93d50dd414d07d676"
+  integrity sha512-FChq8hbz65WMj4rstcQsFB0O7Cy++nmbNfLYnD9cYv2cRn8EG6k/MGn9kO/tjO66t09DLDugj3yL+V2o6Qftrg==
+  dependencies:
+    boolean "^3.1.4"
 
 fastq@^1.6.0:
   version "1.14.0"
@@ -3253,6 +3279,13 @@ globals@^13.19.0:
   resolved "https://registry.npmjs.org/globals/-/globals-13.19.0.tgz"
   dependencies:
     type-fest "^0.20.2"
+
+globalthis@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/globalthis/-/globalthis-1.0.3.tgz#5852882a52b80dc301b0660273e1ed082f0b6ccf"
+  integrity sha512-sFdI5LyBiNTHjRd7cGPWapiHWMOXKyuBNX/cWJ3NfzrZQVa8GI/8cofCl74AOVqq9W5kNmguTIzJ/1s2gyI9wA==
+  dependencies:
+    define-properties "^1.1.3"
 
 globalyzer@0.1.0:
   version "0.1.0"
@@ -4954,11 +4987,28 @@ reusify@^1.0.4:
   version "1.0.4"
   resolved "https://registry.npmjs.org/reusify/-/reusify-1.0.4.tgz"
 
+rfdc@^1.2.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/rfdc/-/rfdc-1.3.0.tgz#d0b7c441ab2720d05dc4cf26e01c89631d9da08b"
+  integrity sha512-V2hovdzFbOi77/WajaSMXk2OLm+xNIeQdMMuB7icj7bk6zi2F8GGAxigcnDFpJHbNyNcgyJDiP+8nOrY5cZGrA==
+
 rimraf@^3.0.2:
   version "3.0.2"
   resolved "https://registry.npmjs.org/rimraf/-/rimraf-3.0.2.tgz"
   dependencies:
     glob "^7.1.3"
+
+roarr@^7.14.2:
+  version "7.14.2"
+  resolved "https://registry.yarnpkg.com/roarr/-/roarr-7.14.2.tgz#2d4865b9f06779901258f1a5a8f6b4315fc46f5f"
+  integrity sha512-9vC/n53oTJEyAl0ZJczKjJ5mJheb2DaqiaNSnxDWrqiRTrozxSvSq05yCTN+Fc7e5mhDRTTZ14RlMu1x4tEc0w==
+  dependencies:
+    boolean "^3.1.4"
+    fast-json-stringify "^2.7.10"
+    fast-printf "^1.6.9"
+    globalthis "^1.0.2"
+    safe-stable-stringify "^2.4.1"
+    semver-compare "^1.0.0"
 
 rollup-plugin-visualizer@^5.8.1:
   version "5.9.0"
@@ -5011,6 +5061,11 @@ safe-regex@^2.1.1:
   dependencies:
     regexp-tree "~0.1.1"
 
+safe-stable-stringify@^2.4.1:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/safe-stable-stringify/-/safe-stable-stringify-2.4.2.tgz#ec7b037768098bf65310d1d64370de0dc02353aa"
+  integrity sha512-gMxvPJYhP0O9n2pvcfYfIuYgbledAOJFcqRThtPRmjscaipiwcwPPKLytpVzMkG2HAN87Qmo2d4PtGiri1dSLA==
+
 "safer-buffer@>= 2.1.2 < 3":
   version "2.1.2"
   resolved "https://registry.npmjs.org/safer-buffer/-/safer-buffer-2.1.2.tgz"
@@ -5027,6 +5082,11 @@ scslre@^0.1.6:
     refa "^0.9.0"
     regexp-ast-analysis "^0.2.3"
     regexpp "^3.2.0"
+
+semver-compare@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/semver-compare/-/semver-compare-1.0.0.tgz#0dee216a1c941ab37e9efb1788f6afc5ff5537fc"
+  integrity sha512-YM3/ITh2MJ5MtzaM429anh+x2jiLVjqILF4m4oyQB18W7Ggea7BfqdH/wGMK7dDiMghv/6WG7znWMwUDzJiXow==
 
 "semver@2 || 3 || 4 || 5", semver@^5.6.0, semver@^5.7.1:
   version "5.7.1"
@@ -5202,6 +5262,11 @@ string-env-interpolation@1.0.1:
 string-natural-compare@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/string-natural-compare/-/string-natural-compare-3.0.1.tgz"
+
+string-similarity@^4.0.1:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/string-similarity/-/string-similarity-4.0.4.tgz#42d01ab0b34660ea8a018da8f56a3309bb8b2a5b"
+  integrity sha512-/q/8Q4Bl4ZKAPjj8WerIBJWALKkaPRfrvhfF8k/B23i4nzrlRj2/go1m90In7nG/3XDSbOo0+pu6RvCTM9RGMQ==
 
 "string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
   version "4.2.3"
@@ -5462,7 +5527,15 @@ ts-node@^10.9.1:
     v8-compile-cache-lib "^3.0.1"
     yn "3.1.1"
 
-tsconfig-paths@^3.14.1:
+ts-unused-exports@^9.0.3:
+  version "9.0.3"
+  resolved "https://registry.yarnpkg.com/ts-unused-exports/-/ts-unused-exports-9.0.3.tgz#99a4e58708811fb29642352888759bcfb4c6cb4d"
+  integrity sha512-LCGLYL0EVdXNj1O/cGfpP2Fx+zfqoV936iMyIhvSVnXk4RUjwmSjMzzCNXI9b1j9PCs946a2TbRMhJh7/XUyUA==
+  dependencies:
+    chalk "^4.0.0"
+    tsconfig-paths "^3.9.0"
+
+tsconfig-paths@^3.14.1, tsconfig-paths@^3.9.0:
   version "3.14.1"
   resolved "https://registry.npmjs.org/tsconfig-paths/-/tsconfig-paths-3.14.1.tgz"
   dependencies:
