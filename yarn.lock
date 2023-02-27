@@ -1249,10 +1249,10 @@
   dependencies:
     tinyspy "^1.0.2"
 
-"@vitest/ui@^0.28.1":
-  version "0.28.5"
-  resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-0.28.5.tgz#baddbfef0f31355f2f41bc8cf604166e544e8674"
-  integrity sha512-hzzZzv38mH/LMFh54QEJpWFuGixZZBOD+C0fHU81d1lsvochPwNZhWJbuRJQNyZLSMZYCYW4hF6PpNQJXDHDmg==
+"@vitest/ui@^0.29.1":
+  version "0.29.1"
+  resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-0.29.1.tgz#beadd3f8e4c169e725bdc7a8cead5a51bb5f043b"
+  integrity sha512-CtcFlqcxNFT+5geTYfjOMOje4iae2DGsOnW1//7cre2xc43mFVOJYG7ZPq1wOUisDqSCyPLP2+zvAAlFJxBiUA==
   dependencies:
     fast-glob "^3.2.12"
     flatted "^3.2.7"
