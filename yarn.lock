@@ -1369,8 +1369,9 @@ ansi-escapes@^5.0.0:
     type-fest "^1.0.2"
 
 ansi-escapes@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-6.0.0.tgz"
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-6.1.0.tgz#f2912cdaa10785f3f51f4b562a2497b885aadc5e"
+  integrity sha512-bQyg9bzRntwR/8b89DOEhGwctcwCrbWW/TuqTQnpqpy5Fz3aovcOTj5i8NJV6AHc8OGNdMaqdxAWww8pz2kiKg==
   dependencies:
     type-fest "^3.0.0"
 
