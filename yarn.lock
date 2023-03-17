@@ -1275,9 +1275,9 @@
     tinyspy "^1.0.2"
 
 "@vitest/ui@^0.29.1":
-  version "0.29.2"
-  resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-0.29.2.tgz#b5c9d6e7c98163a5136c91760a602cf61edc473b"
-  integrity sha512-GpCExCMptrS1z3Xf6kz35Xdvjc2eTBy9OIIwW3HjePVxw9Q++ZoEaIBVimRTTGzSe40XiAI/ZyR0H0Ya9brqLA==
+  version "0.29.3"
+  resolved "https://registry.yarnpkg.com/@vitest/ui/-/ui-0.29.3.tgz#568194b11d12d57610e755e0643fe8dc748cea68"
+  integrity sha512-6xJyLhfSBRCzMbI9ip4BI7KIMnIM5cqOFl1sj4GSuHfRai17Q3FYZRcNvgo4TlE0f38/MSXDfjOc35/ZepYIWw==
   dependencies:
     fast-glob "^3.2.12"
     flatted "^3.2.7"
