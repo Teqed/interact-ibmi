@@ -730,6 +730,23 @@
     strip-ansi "^7.0.1"
     wrap-ansi "^8.0.1"
 
+"@inquirer/core@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@inquirer/core/-/core-1.0.0.tgz#911ae31f121ba96995f4bc226b97702fa54b7b65"
+  integrity sha512-HPKmtpdQJtomp+hDtMNyuLtKqveVEP2YHWZC6P/1z/5dVB2wRTjPSfXJG0tBPDEToRD42GePnLWu7ZEMiM0dLw==
+  dependencies:
+    "@inquirer/type" "^0.1.0"
+    ansi-escapes "^6.0.0"
+    chalk "^5.2.0"
+    cli-spinners "^2.7.0"
+    cli-width "^4.0.0"
+    lodash "^4.17.21"
+    mute-stream "^1.0.0"
+    run-async "^2.3.0"
+    string-width "^5.1.2"
+    strip-ansi "^7.0.1"
+    wrap-ansi "^8.1.0"
+
 "@inquirer/input@^0.0.26-alpha.0":
   version "0.0.26-alpha.0"
   resolved "https://registry.npmjs.org/@inquirer/input/-/input-0.0.26-alpha.0.tgz"
@@ -737,13 +754,14 @@
     "@inquirer/core" "^0.0.26-alpha.0"
     chalk "^5.0.1"
 
-"@inquirer/input@^0.0.27-alpha.0":
-  version "0.0.27-alpha.0"
-  resolved "https://registry.yarnpkg.com/@inquirer/input/-/input-0.0.27-alpha.0.tgz#cff143b3fa1efec713c7e99b06720b3b3cf96bbd"
-  integrity sha512-VZ08HuaWWm6y497vQNF43QBHI3634Ygkie1FqlD8qtx5C+r+BuyZLrIu69HWNpsjUAXUwYBa9L5Ud6a7XrcR1Q==
+"@inquirer/input@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@inquirer/input/-/input-0.1.0.tgz#d53784fbbb067c130a249f653284390d214c4812"
+  integrity sha512-4z/T2p2O6sYVbFQIGzxUnL1mSJ98f2ZrR5LXjIB67PHB/DyJ92QWHmk/9BT1DtGsK/trhibpQcGMsr8o5I1bYQ==
   dependencies:
-    "@inquirer/core" "^0.0.26-alpha.0"
-    chalk "^5.0.1"
+    "@inquirer/core" "^1.0.0"
+    "@inquirer/type" "^0.1.0"
+    chalk "^5.2.0"
 
 "@inquirer/rawlist@^0.0.10-alpha.0":
   version "0.0.10-alpha.0"
@@ -760,6 +778,11 @@
     ansi-escapes "^5.0.0"
     chalk "^5.0.1"
     figures "^5.0.0"
+
+"@inquirer/type@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@inquirer/type/-/type-0.1.0.tgz#ec9170280e369ac835e1b6c6e27d359dfb5f92f4"
+  integrity sha512-qdrtWL1x0BpEU276Y18a9dYJIrkzdEr+jHCKrStzXf4XzcT+H2optYChiCVtXu77Yeke3X7r2P0Burnc6eBtWQ==
 
 "@istanbuljs/schema@^0.1.2", "@istanbuljs/schema@^0.1.3":
   version "0.1.3"
@@ -1738,7 +1761,7 @@ chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.2:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^5.0.0, chalk@^5.0.1, chalk@^5.1.2:
+chalk@^5.0.0, chalk@^5.0.1, chalk@^5.1.2, chalk@^5.2.0:
   version "5.2.0"
   resolved "https://registry.npmjs.org/chalk/-/chalk-5.2.0.tgz"
 
@@ -4365,6 +4388,11 @@ mute-stream@0.0.8, mute-stream@^0.0.8:
   version "0.0.8"
   resolved "https://registry.npmjs.org/mute-stream/-/mute-stream-0.0.8.tgz"
 
+mute-stream@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-1.0.0.tgz#e31bd9fe62f0aed23520aa4324ea6671531e013e"
+  integrity sha512-avsJQhyd+680gKXyG/sQc0nXaC6rBkPOfyHYcFb9+hdkqQkR9bdnkJ0AMZhke0oesPqIO+mFFJ+IdBc7mst4IA==
+
 nanoid@3.3.3:
   version "3.3.3"
   resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.3.3.tgz"
@@ -5982,6 +6010,15 @@ wrap-ansi@^7.0.0:
 wrap-ansi@^8.0.1:
   version "8.0.1"
   resolved "https://registry.npmjs.org/wrap-ansi/-/wrap-ansi-8.0.1.tgz"
+  dependencies:
+    ansi-styles "^6.1.0"
+    string-width "^5.0.1"
+    strip-ansi "^7.0.1"
+
+wrap-ansi@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-8.1.0.tgz#56dc22368ee570face1b49819975d9b9a5ead214"
+  integrity sha512-si7QWI6zUMq56bESFvagtmzMdGOtoxfR+Sez11Mobfc7tm+VkUckk9bW2UeffTGVUbOksxmSw0AA2gs8g71NCQ==
   dependencies:
     ansi-styles "^6.1.0"
     string-width "^5.0.1"
