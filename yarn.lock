@@ -770,13 +770,15 @@
     "@inquirer/core" "^0.0.26-alpha.0"
     chalk "^5.0.1"
 
-"@inquirer/select@^0.0.27-alpha.0":
-  version "0.0.27-alpha.0"
-  resolved "https://registry.npmjs.org/@inquirer/select/-/select-0.0.27-alpha.0.tgz"
+"@inquirer/select@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@inquirer/select/-/select-0.1.0.tgz#7654b7927d3b14542110d10253c318a224d51c5a"
+  integrity sha512-loQqLx9wT9YQl9exqHz3IvVSPg4TNohe4+vGtMRpPHcZC/KgNNq4UKd/IeHz4pAdM75NXYWblRi/PqbOmOxQ9g==
   dependencies:
-    "@inquirer/core" "^0.0.26-alpha.0"
-    ansi-escapes "^5.0.0"
-    chalk "^5.0.1"
+    "@inquirer/core" "^1.0.0"
+    "@inquirer/type" "^0.1.0"
+    ansi-escapes "^6.0.0"
+    chalk "^5.2.0"
     figures "^5.0.0"
 
 "@inquirer/type@^0.1.0":
