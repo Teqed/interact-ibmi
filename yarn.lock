@@ -707,13 +707,15 @@
   version "1.2.1"
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
 
-"@inquirer/confirm@^0.0.25-alpha.0":
-  version "0.0.25-alpha.0"
-  resolved "https://registry.npmjs.org/@inquirer/confirm/-/confirm-0.0.25-alpha.0.tgz"
+"@inquirer/confirm@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@inquirer/confirm/-/confirm-0.1.0.tgz#c3fa4ca977a3b57e02e10581e1f823b65c2872ee"
+  integrity sha512-Ok9OteTNql0KZ5iw2DAaxwdyjrNTLq5DF9fp48tTCBv0fjx6lAMr43i8P2mm7AUhgmY6hZcrGYNsjtgHPKrV+Q==
   dependencies:
-    "@inquirer/core" "^0.0.26-alpha.0"
-    "@inquirer/input" "^0.0.26-alpha.0"
-    chalk "^5.0.1"
+    "@inquirer/core" "^1.0.0"
+    "@inquirer/input" "^0.1.0"
+    "@inquirer/type" "^0.1.0"
+    chalk "^5.2.0"
 
 "@inquirer/core@^0.0.26-alpha.0":
   version "0.0.26-alpha.0"
@@ -746,13 +748,6 @@
     string-width "^5.1.2"
     strip-ansi "^7.0.1"
     wrap-ansi "^8.1.0"
-
-"@inquirer/input@^0.0.26-alpha.0":
-  version "0.0.26-alpha.0"
-  resolved "https://registry.npmjs.org/@inquirer/input/-/input-0.0.26-alpha.0.tgz"
-  dependencies:
-    "@inquirer/core" "^0.0.26-alpha.0"
-    chalk "^5.0.1"
 
 "@inquirer/input@^0.1.0":
   version "0.1.0"
