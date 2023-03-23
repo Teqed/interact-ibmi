@@ -4,7 +4,7 @@
     "@inquirer/confirm": "^0.1.0",
     "@inquirer/core": "^1.0.0",
     "@inquirer/input": "^0.1.0",
-    "@inquirer/rawlist": "^0.0.10-alpha.0",
+    "@inquirer/rawlist": "^0.1.0",
     "@inquirer/select": "^0.1.0",
     "@types/inquirer-autocomplete-prompt": "^3.0.0",
     "ansi-escapes": "^6.0.0",

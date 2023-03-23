@@ -717,21 +717,6 @@
     "@inquirer/type" "^0.1.0"
     chalk "^5.2.0"
 
-"@inquirer/core@^0.0.26-alpha.0":
-  version "0.0.26-alpha.0"
-  resolved "https://registry.npmjs.org/@inquirer/core/-/core-0.0.26-alpha.0.tgz"
-  dependencies:
-    ansi-escapes "^5.0.0"
-    chalk "^5.0.1"
-    cli-spinners "^2.7.0"
-    cli-width "^4.0.0"
-    lodash "^4.17.21"
-    mute-stream "^0.0.8"
-    run-async "^2.3.0"
-    string-width "^5.1.2"
-    strip-ansi "^7.0.1"
-    wrap-ansi "^8.0.1"
-
 "@inquirer/core@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@inquirer/core/-/core-1.0.0.tgz#911ae31f121ba96995f4bc226b97702fa54b7b65"
@@ -758,12 +743,14 @@
     "@inquirer/type" "^0.1.0"
     chalk "^5.2.0"
 
-"@inquirer/rawlist@^0.0.10-alpha.0":
-  version "0.0.10-alpha.0"
-  resolved "https://registry.npmjs.org/@inquirer/rawlist/-/rawlist-0.0.10-alpha.0.tgz"
+"@inquirer/rawlist@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@inquirer/rawlist/-/rawlist-0.1.0.tgz#91ec19284922f9d6c60fd04f55efd9b440acedea"
+  integrity sha512-ZR0NWssgirLpzJNmGsEwMfU8FuBB2VZyybcY81lHr8jQIuNUq90xOuO08csWPH3ZnMP/WmrymiyAJ9rxn3zBiA==
   dependencies:
-    "@inquirer/core" "^0.0.26-alpha.0"
-    chalk "^5.0.1"
+    "@inquirer/core" "^1.0.0"
+    "@inquirer/type" "^0.1.0"
+    chalk "^5.2.0"
 
 "@inquirer/select@^0.1.0":
   version "0.1.0"
@@ -1422,12 +1409,6 @@ ansi-escapes@^4.2.1:
   resolved "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-4.3.2.tgz"
   dependencies:
     type-fest "^0.21.3"
-
-ansi-escapes@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-5.0.0.tgz"
-  dependencies:
-    type-fest "^1.0.2"
 
 ansi-escapes@^6.0.0:
   version "6.1.0"
@@ -4443,10 +4424,6 @@ mute-stream@1.0.0, mute-stream@^1.0.0:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-1.0.0.tgz#e31bd9fe62f0aed23520aa4324ea6671531e013e"
   integrity sha512-avsJQhyd+680gKXyG/sQc0nXaC6rBkPOfyHYcFb9+hdkqQkR9bdnkJ0AMZhke0oesPqIO+mFFJ+IdBc7mst4IA==
 
-mute-stream@^0.0.8:
-  version "0.0.8"
-  resolved "https://registry.npmjs.org/mute-stream/-/mute-stream-0.0.8.tgz"
-
 nanoid@3.3.3:
   version "3.3.3"
   resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.3.3.tgz"
@@ -5744,7 +5721,7 @@ type-fest@^0.8.1:
   version "0.8.1"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-0.8.1.tgz"
 
-type-fest@^1.0.1, type-fest@^1.0.2, type-fest@^1.2.1, type-fest@^1.2.2:
+type-fest@^1.0.1, type-fest@^1.2.1, type-fest@^1.2.2:
   version "1.4.0"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-1.4.0.tgz"
 
@@ -6070,7 +6047,7 @@ wrap-ansi@^7.0.0:
     string-width "^4.1.0"
     strip-ansi "^6.0.0"
 
-wrap-ansi@^8.0.1, wrap-ansi@^8.1.0:
+wrap-ansi@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-8.1.0.tgz#56dc22368ee570face1b49819975d9b9a5ead214"
   integrity sha512-si7QWI6zUMq56bESFvagtmzMdGOtoxfR+Sez11Mobfc7tm+VkUckk9bW2UeffTGVUbOksxmSw0AA2gs8g71NCQ==
