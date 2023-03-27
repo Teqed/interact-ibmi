@@ -5696,9 +5696,9 @@ type-fest@^2.0.0, type-fest@^2.13.0, type-fest@^2.18.1, type-fest@^2.5.0:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-2.19.0.tgz"
 
 type-fest@^3.0.0, type-fest@^3.1.0:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.7.0.tgz#32a38fb199857df6e92af5fbe3c804c314f9a901"
-  integrity sha512-A2qUJ/j8vkKIT+UorxayZjFJoEdNkIPZkjOJSWezoAbRQd7QEhnz2iJlfVy4Or0GuEnCXts5cNorQNUvdLkaSQ==
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.7.1.tgz#94f1bac89863e507c3635d96010012040aba9215"
+  integrity sha512-8LZNdvuztgxCF4eYpEmPYUPS0lbbByM2qHcp2oMxHZhWLIQB9QE36EeQ1PKwsUIDZXEP8HCBEmkBbT1//kLU4Q==
 
 type@^1.0.1:
   version "1.2.0"
