@@ -68,7 +68,7 @@
     "typescript": "^5.0.0-dev.20221102",
     "vite": "^4.0.1",
     "vite-plugin-node": "^3.0.2",
-    "vite-plugin-progress": "^0.0.6",
+    "vite-plugin-progress": "^0.0.7",
     "vitest": "^0.29.1",
     "xo": "^0.53.0"
   },
