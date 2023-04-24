@@ -733,12 +733,12 @@
     "@inquirer/type" "^0.1.0"
     chalk "^5.2.0"
 
-"@inquirer/core@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@inquirer/core/-/core-1.0.0.tgz#911ae31f121ba96995f4bc226b97702fa54b7b65"
-  integrity sha512-HPKmtpdQJtomp+hDtMNyuLtKqveVEP2YHWZC6P/1z/5dVB2wRTjPSfXJG0tBPDEToRD42GePnLWu7ZEMiM0dLw==
+"@inquirer/core@^1.0.0", "@inquirer/core@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@inquirer/core/-/core-1.0.1.tgz#e6a528ace280f9cde731b6e834b909915668394c"
+  integrity sha512-AqPfFqX7xCuNlxml1bH6vSK0tzArvI+0qWKY1e5Uk+O6UFPugom8juZuVn48d7pKUOwm250QXxVjYgLc9RIo3Q==
   dependencies:
-    "@inquirer/type" "^0.1.0"
+    "@inquirer/type" "^1.0.0"
     ansi-escapes "^6.0.0"
     chalk "^5.2.0"
     cli-spinners "^2.7.0"
@@ -768,13 +768,13 @@
     "@inquirer/type" "^0.1.0"
     chalk "^5.2.0"
 
-"@inquirer/select@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@inquirer/select/-/select-0.1.0.tgz#7654b7927d3b14542110d10253c318a224d51c5a"
-  integrity sha512-loQqLx9wT9YQl9exqHz3IvVSPg4TNohe4+vGtMRpPHcZC/KgNNq4UKd/IeHz4pAdM75NXYWblRi/PqbOmOxQ9g==
+"@inquirer/select@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@inquirer/select/-/select-1.0.0.tgz#b933b4b17419a0cbf3720dad2edf52f7617dfeae"
+  integrity sha512-mSXqBGgpkL3VM2capK/OYSkGyBYGMkUuCVx98wi3v6QbMWb38yQB+szq3FtIfRy6BzP2ImtS0wsb2h2Mv591Aw==
   dependencies:
-    "@inquirer/core" "^1.0.0"
-    "@inquirer/type" "^0.1.0"
+    "@inquirer/core" "^1.0.1"
+    "@inquirer/type" "^1.0.0"
     ansi-escapes "^6.0.0"
     chalk "^5.2.0"
     figures "^5.0.0"
@@ -783,6 +783,11 @@
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/@inquirer/type/-/type-0.1.0.tgz#ec9170280e369ac835e1b6c6e27d359dfb5f92f4"
   integrity sha512-qdrtWL1x0BpEU276Y18a9dYJIrkzdEr+jHCKrStzXf4XzcT+H2optYChiCVtXu77Yeke3X7r2P0Burnc6eBtWQ==
+
+"@inquirer/type@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@inquirer/type/-/type-1.0.0.tgz#8d7e8a4de5f09f4f8eff5b3f666703d0eca71ced"
+  integrity sha512-ZbkvJfVAQc4qJlykqAVJvh0zDbdsB9wo1CKgz611oJxgBz0qmBPkpvgBlMS24201ns+7gRtRaMycyGoMDR+KjA==
 
 "@istanbuljs/schema@^0.1.2", "@istanbuljs/schema@^0.1.3":
   version "0.1.3"
