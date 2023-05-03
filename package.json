@@ -3,7 +3,7 @@
   "dependencies": {
     "@inquirer/confirm": "^0.1.0",
     "@inquirer/core": "^1.0.0",
-    "@inquirer/input": "^0.1.0",
+    "@inquirer/input": "^1.0.0",
     "@inquirer/rawlist": "^1.0.0",
     "@inquirer/select": "^1.0.0",
     "@types/inquirer-autocomplete-prompt": "^3.0.0",
