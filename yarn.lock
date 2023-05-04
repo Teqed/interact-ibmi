@@ -733,15 +733,15 @@
     "@inquirer/type" "^1.0.0"
     chalk "^5.2.0"
 
-"@inquirer/core@^1.0.0", "@inquirer/core@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@inquirer/core/-/core-1.0.1.tgz#e6a528ace280f9cde731b6e834b909915668394c"
-  integrity sha512-AqPfFqX7xCuNlxml1bH6vSK0tzArvI+0qWKY1e5Uk+O6UFPugom8juZuVn48d7pKUOwm250QXxVjYgLc9RIo3Q==
+"@inquirer/core@^1.0.0", "@inquirer/core@^1.0.1", "@inquirer/core@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@inquirer/core/-/core-1.0.2.tgz#096d85ac160520d93f01345ca42b5d7e17df8872"
+  integrity sha512-oXGODbtRPP+qI7//UXObv7xdqyBqGyGcqQAHyUsfEt0WrNUHvprdV0qhJ2FqWFk+vOB0h/K8SLyhTrisWBuNPg==
   dependencies:
-    "@inquirer/type" "^1.0.0"
-    ansi-escapes "^6.0.0"
+    "@inquirer/type" "^1.0.1"
+    ansi-escapes "^6.2.0"
     chalk "^5.2.0"
-    cli-spinners "^2.7.0"
+    cli-spinners "^2.8.0"
     cli-width "^4.0.0"
     lodash "^4.17.21"
     mute-stream "^1.0.0"
@@ -751,12 +751,12 @@
     wrap-ansi "^8.1.0"
 
 "@inquirer/input@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@inquirer/input/-/input-1.0.0.tgz#30c0ea8f845169ece897388e1ae9f78d56f34794"
-  integrity sha512-uZQerMIZ2cHAyuLNSoIxMRl5SZsc1cpahSiw/l+TFawUrnMIu//QzlyHrrUkA5DoZfFAesbk7TKgUuC3UlLo9g==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@inquirer/input/-/input-1.0.1.tgz#163ec5abf90075383a0a8d826a4c953bb00d3fbd"
+  integrity sha512-g3oBmKduO9X1E5/4jpz/lULWAgPBKv7IwNYrqtYEzEh+/BeJe5PLcIjgIQkpnd4YvZVNa7CbYBqyNFipXKC2gA==
   dependencies:
-    "@inquirer/core" "^1.0.1"
-    "@inquirer/type" "^1.0.0"
+    "@inquirer/core" "^1.0.2"
+    "@inquirer/type" "^1.0.1"
     chalk "^5.2.0"
 
 "@inquirer/rawlist@^1.0.0":
@@ -779,10 +779,10 @@
     chalk "^5.2.0"
     figures "^5.0.0"
 
-"@inquirer/type@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@inquirer/type/-/type-1.0.0.tgz#8d7e8a4de5f09f4f8eff5b3f666703d0eca71ced"
-  integrity sha512-ZbkvJfVAQc4qJlykqAVJvh0zDbdsB9wo1CKgz611oJxgBz0qmBPkpvgBlMS24201ns+7gRtRaMycyGoMDR+KjA==
+"@inquirer/type@^1.0.0", "@inquirer/type@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@inquirer/type/-/type-1.0.1.tgz#82110f9c7d2942a4c35b5c55a16a7a4d4d53b33c"
+  integrity sha512-vo9dS/54ChfUiqJDg26gmXqaBkKfVnsFxGMziSoan089Ro/tqdOKxAHDuJ5wTPXxZtHT/187HhOHN7o+w5QZQg==
 
 "@istanbuljs/schema@^0.1.2", "@istanbuljs/schema@^0.1.3":
   version "0.1.3"
@@ -1428,6 +1428,13 @@ ansi-escapes@^6.0.0:
   dependencies:
     type-fest "^3.0.0"
 
+ansi-escapes@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-6.2.0.tgz#8a13ce75286f417f1963487d86ba9f90dccf9947"
+  integrity sha512-kzRaCqXnpzWs+3z5ABPQiVke+iq0KXkHo8xiWV4RPTi5Yli0l97BEQuhXV1s7+aSU/fu1kUuxgS4MsQ0fRuygw==
+  dependencies:
+    type-fest "^3.0.0"
+
 ansi-regex@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmjs.org/ansi-regex/-/ansi-regex-5.0.1.tgz"
@@ -1862,9 +1869,14 @@ cli-cursor@^4.0.0:
   dependencies:
     restore-cursor "^4.0.0"
 
-cli-spinners@^2.6.1, cli-spinners@^2.7.0:
+cli-spinners@^2.6.1:
   version "2.7.0"
   resolved "https://registry.npmjs.org/cli-spinners/-/cli-spinners-2.7.0.tgz"
+
+cli-spinners@^2.8.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-2.9.0.tgz#5881d0ad96381e117bbe07ad91f2008fe6ffd8db"
+  integrity sha512-4/aL9X3Wh0yiMQlE+eeRhWP6vclO3QRtw1JHKIT0FFUs5FjpFmESqtMvYZ0+lbzBw900b95mS0hohy+qn2VK/g==
 
 cli-width@^4.0.0:
   version "4.0.0"
