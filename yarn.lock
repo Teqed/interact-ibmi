@@ -719,14 +719,14 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
 
 "@inquirer/confirm@^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@inquirer/confirm/-/confirm-1.0.1.tgz#00598a6142bee9d9ccd39b39ccff5f2478f54ae6"
-  integrity sha512-S0E3jaT1hRSeU7cCDXwuUP3JPVHw4VW2BXoro3CCmBvUdcpxsk0gABfTp/akWarU7I0NG+QEG8hWCGJlnVM4oQ==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@inquirer/confirm/-/confirm-1.0.3.tgz#fd44cfda19f27a38079e4d35828c5ebc2df021e8"
+  integrity sha512-nbmFyc6fvN8soKxjfWZopqRlBSzoDUERELnvnsW1Mn5W6jABLfuYFiUjPbflZ5vLkWjXo7hVxAUuc1zVCtQm+Q==
   dependencies:
-    "@inquirer/core" "^1.0.2"
-    "@inquirer/input" "^1.0.1"
-    "@inquirer/type" "^1.0.1"
-    chalk "^5.2.0"
+    "@inquirer/core" "^1.0.4"
+    "@inquirer/input" "^1.0.3"
+    "@inquirer/type" "^1.0.3"
+    chalk "^4.1.2"
 
 "@inquirer/core@^1.0.0", "@inquirer/core@^1.0.2", "@inquirer/core@^1.0.4":
   version "1.0.4"
@@ -745,14 +745,14 @@
     strip-ansi "^7.0.1"
     wrap-ansi "^6.0.1"
 
-"@inquirer/input@^1.0.0", "@inquirer/input@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@inquirer/input/-/input-1.0.1.tgz#163ec5abf90075383a0a8d826a4c953bb00d3fbd"
-  integrity sha512-g3oBmKduO9X1E5/4jpz/lULWAgPBKv7IwNYrqtYEzEh+/BeJe5PLcIjgIQkpnd4YvZVNa7CbYBqyNFipXKC2gA==
+"@inquirer/input@^1.0.0", "@inquirer/input@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@inquirer/input/-/input-1.0.3.tgz#ac222a2437ffc15b53ef5f23321db4f9c9302140"
+  integrity sha512-gEpmDM8OnBA6XDHvxhUDhikf27Wqj6HByspekdJ6E1opKP/rRWdAK2SSReOjTRpMYHD7JuaZUGp3q7rcyUifTg==
   dependencies:
-    "@inquirer/core" "^1.0.2"
-    "@inquirer/type" "^1.0.1"
-    chalk "^5.2.0"
+    "@inquirer/core" "^1.0.4"
+    "@inquirer/type" "^1.0.3"
+    chalk "^4.1.2"
 
 "@inquirer/rawlist@^1.0.0":
   version "1.0.3"
