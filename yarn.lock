@@ -728,7 +728,7 @@
     "@inquirer/type" "^1.0.3"
     chalk "^4.1.2"
 
-"@inquirer/core@^1.0.0", "@inquirer/core@^1.0.2", "@inquirer/core@^1.0.4":
+"@inquirer/core@^1.0.0", "@inquirer/core@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@inquirer/core/-/core-1.0.4.tgz#f8d36015eae15e7adaab7d93cf033196f1a7e217"
   integrity sha512-x72QfavRkuRKtOKx8iupG9cWC3avatWcMNVgTr332MO03WaRHw+xTjVwo/TtePcoT0dfUBTviAR7cxtdW+gosg==
@@ -764,17 +764,17 @@
     chalk "^4.1.2"
 
 "@inquirer/select@^1.0.0":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@inquirer/select/-/select-1.0.1.tgz#649e89b51a0ea69dca92abc03ee58b8384d2cf88"
-  integrity sha512-rDI5MbHstTppgiDkV8kB6mBpyD6LZmnMKrSuIUDcYAKDJXSo3JwTMnBV0wFTwi79CSXKlRF1LZnv/i35oa1hTQ==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@inquirer/select/-/select-1.0.3.tgz#10f8dffb8d44228c08ad6515ecfd21047b30805b"
+  integrity sha512-RCU8jFKtXmgBsNqHfy5pp3NsVhouBmOGWTY2IXiwxllFkbD/prKEs/2B11/A0Db3d/kOZ2Oe/4vgFgH7vOh5kw==
   dependencies:
-    "@inquirer/core" "^1.0.2"
-    "@inquirer/type" "^1.0.1"
-    ansi-escapes "^6.2.0"
-    chalk "^5.2.0"
-    figures "^5.0.0"
+    "@inquirer/core" "^1.0.4"
+    "@inquirer/type" "^1.0.3"
+    ansi-escapes "^4.3.2"
+    chalk "^4.1.2"
+    figures "^3.2.0"
 
-"@inquirer/type@^1.0.1", "@inquirer/type@^1.0.3":
+"@inquirer/type@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@inquirer/type/-/type-1.0.3.tgz#069b6ca1fbdcec2c1ce05d7eb4c0e8cd529366dd"
   integrity sha512-I/lWe9qRqiwrvf4QCsZS4OfLLMI4IPOrm+oj4cvfmiM4c4pnCbjuPG9PhJ5oGYpv8TvQia5MYMjfKTcIGcbs4A==
@@ -1418,7 +1418,7 @@ ansi-escapes@^4.2.1, ansi-escapes@^4.3.2:
   dependencies:
     type-fest "^0.21.3"
 
-ansi-escapes@^6.0.0, ansi-escapes@^6.2.0:
+ansi-escapes@^6.0.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-6.2.0.tgz#8a13ce75286f417f1963487d86ba9f90dccf9947"
   integrity sha512-kzRaCqXnpzWs+3z5ABPQiVke+iq0KXkHo8xiWV4RPTi5Yli0l97BEQuhXV1s7+aSU/fu1kUuxgS4MsQ0fRuygw==
@@ -3229,6 +3229,13 @@ fflate@^0.7.4:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/fflate/-/fflate-0.7.4.tgz#61587e5d958fdabb5a9368a302c25363f4f69f50"
   integrity sha512-5u2V/CDW15QM1XbbgS+0DfPxVB+jUKhWEKuuFuHncbk3tEEqzmoXL+2KyOFuKGqOnmdIy0/davWF1CkuwtibCw==
+
+figures@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/figures/-/figures-3.2.0.tgz#625c18bd293c604dc4a8ddb2febf0c88341746af"
+  integrity sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==
+  dependencies:
+    escape-string-regexp "^1.0.5"
 
 figures@^5.0.0:
   version "5.0.0"
