@@ -729,21 +729,21 @@
     chalk "^5.2.0"
 
 "@inquirer/core@^1.0.0", "@inquirer/core@^1.0.1", "@inquirer/core@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@inquirer/core/-/core-1.0.2.tgz#096d85ac160520d93f01345ca42b5d7e17df8872"
-  integrity sha512-oXGODbtRPP+qI7//UXObv7xdqyBqGyGcqQAHyUsfEt0WrNUHvprdV0qhJ2FqWFk+vOB0h/K8SLyhTrisWBuNPg==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@inquirer/core/-/core-1.0.4.tgz#f8d36015eae15e7adaab7d93cf033196f1a7e217"
+  integrity sha512-x72QfavRkuRKtOKx8iupG9cWC3avatWcMNVgTr332MO03WaRHw+xTjVwo/TtePcoT0dfUBTviAR7cxtdW+gosg==
   dependencies:
-    "@inquirer/type" "^1.0.1"
-    ansi-escapes "^6.2.0"
-    chalk "^5.2.0"
+    "@inquirer/type" "^1.0.3"
+    ansi-escapes "^4.3.2"
+    chalk "^4.1.2"
     cli-spinners "^2.8.0"
     cli-width "^4.0.0"
     lodash "^4.17.21"
     mute-stream "^1.0.0"
     run-async "^2.3.0"
-    string-width "^5.1.2"
+    string-width "^4.2.3"
     strip-ansi "^7.0.1"
-    wrap-ansi "^8.1.0"
+    wrap-ansi "^6.0.1"
 
 "@inquirer/input@^1.0.0", "@inquirer/input@^1.0.1":
   version "1.0.1"
@@ -774,10 +774,10 @@
     chalk "^5.2.0"
     figures "^5.0.0"
 
-"@inquirer/type@^1.0.0", "@inquirer/type@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@inquirer/type/-/type-1.0.1.tgz#82110f9c7d2942a4c35b5c55a16a7a4d4d53b33c"
-  integrity sha512-vo9dS/54ChfUiqJDg26gmXqaBkKfVnsFxGMziSoan089Ro/tqdOKxAHDuJ5wTPXxZtHT/187HhOHN7o+w5QZQg==
+"@inquirer/type@^1.0.0", "@inquirer/type@^1.0.1", "@inquirer/type@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@inquirer/type/-/type-1.0.3.tgz#069b6ca1fbdcec2c1ce05d7eb4c0e8cd529366dd"
+  integrity sha512-I/lWe9qRqiwrvf4QCsZS4OfLLMI4IPOrm+oj4cvfmiM4c4pnCbjuPG9PhJ5oGYpv8TvQia5MYMjfKTcIGcbs4A==
 
 "@istanbuljs/schema@^0.1.2", "@istanbuljs/schema@^0.1.3":
   version "0.1.3"
@@ -1412,7 +1412,7 @@ ansi-colors@4.1.1:
   version "4.1.1"
   resolved "https://registry.npmjs.org/ansi-colors/-/ansi-colors-4.1.1.tgz"
 
-ansi-escapes@^4.2.1:
+ansi-escapes@^4.2.1, ansi-escapes@^4.3.2:
   version "4.3.2"
   resolved "https://registry.npmjs.org/ansi-escapes/-/ansi-escapes-4.3.2.tgz"
   dependencies:
@@ -1859,11 +1859,7 @@ cli-cursor@^4.0.0:
   dependencies:
     restore-cursor "^4.0.0"
 
-cli-spinners@^2.6.1:
-  version "2.7.0"
-  resolved "https://registry.npmjs.org/cli-spinners/-/cli-spinners-2.7.0.tgz"
-
-cli-spinners@^2.8.0:
+cli-spinners@^2.6.1, cli-spinners@^2.8.0:
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/cli-spinners/-/cli-spinners-2.9.0.tgz#5881d0ad96381e117bbe07ad91f2008fe6ffd8db"
   integrity sha512-4/aL9X3Wh0yiMQlE+eeRhWP6vclO3QRtw1JHKIT0FFUs5FjpFmESqtMvYZ0+lbzBw900b95mS0hohy+qn2VK/g==
@@ -6213,6 +6209,15 @@ word-wrap@^1.2.3:
 workerpool@6.2.1:
   version "6.2.1"
   resolved "https://registry.npmjs.org/workerpool/-/workerpool-6.2.1.tgz"
+
+wrap-ansi@^6.0.1:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-6.2.0.tgz#e9393ba07102e6c91a3b221478f0257cd2856e53"
+  integrity sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==
+  dependencies:
+    ansi-styles "^4.0.0"
+    string-width "^4.1.0"
+    strip-ansi "^6.0.0"
 
 wrap-ansi@^7.0.0:
   version "7.0.0"
