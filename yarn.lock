@@ -740,33 +740,32 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
 
 "@inquirer/confirm@^1.0.0":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@inquirer/confirm/-/confirm-1.0.3.tgz#fd44cfda19f27a38079e4d35828c5ebc2df021e8"
-  integrity sha512-nbmFyc6fvN8soKxjfWZopqRlBSzoDUERELnvnsW1Mn5W6jABLfuYFiUjPbflZ5vLkWjXo7hVxAUuc1zVCtQm+Q==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@inquirer/confirm/-/confirm-1.0.7.tgz#e54b44fc4c49b926e242b3ab9420d7b51d88f150"
+  integrity sha512-DShu755GyhtVxASIzmRu2p855yZlemU94fg9iLOXcyp7XqubwzvJspngo1Ydj/akrQNQkbqkZvUyom2nvp9d/g==
   dependencies:
-    "@inquirer/core" "^1.0.4"
-    "@inquirer/input" "^1.0.3"
+    "@inquirer/core" "^1.1.3"
     "@inquirer/type" "^1.0.3"
     chalk "^4.1.2"
 
-"@inquirer/core@^1.0.0", "@inquirer/core@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@inquirer/core/-/core-1.0.4.tgz#f8d36015eae15e7adaab7d93cf033196f1a7e217"
-  integrity sha512-x72QfavRkuRKtOKx8iupG9cWC3avatWcMNVgTr332MO03WaRHw+xTjVwo/TtePcoT0dfUBTviAR7cxtdW+gosg==
+"@inquirer/core@^1.0.0", "@inquirer/core@^1.0.4", "@inquirer/core@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@inquirer/core/-/core-1.1.3.tgz#750933c1098c0108025a903fa2eaf43ec1195de8"
+  integrity sha512-km2PtkKdquFsjeLv5RQfGM8t9oix6JfsOz90PGKf4tvO6R15hnWopt/o4nHE9d7Q2lthJKQuqKivt2dJENnSxw==
   dependencies:
     "@inquirer/type" "^1.0.3"
     ansi-escapes "^4.3.2"
     chalk "^4.1.2"
     cli-spinners "^2.8.0"
     cli-width "^4.0.0"
-    lodash "^4.17.21"
+    figures "^3.2.0"
     mute-stream "^1.0.0"
-    run-async "^2.3.0"
+    run-async "^3.0.0"
     string-width "^4.2.3"
-    strip-ansi "^7.0.1"
+    strip-ansi "^6.0.1"
     wrap-ansi "^6.0.1"
 
-"@inquirer/input@^1.0.0", "@inquirer/input@^1.0.3":
+"@inquirer/input@^1.0.0":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@inquirer/input/-/input-1.0.3.tgz#ac222a2437ffc15b53ef5f23321db4f9c9302140"
   integrity sha512-gEpmDM8OnBA6XDHvxhUDhikf27Wqj6HByspekdJ6E1opKP/rRWdAK2SSReOjTRpMYHD7JuaZUGp3q7rcyUifTg==
@@ -5357,7 +5356,7 @@ rollup@^3.21.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-run-async@^2.3.0, run-async@^2.4.1:
+run-async@^2.4.1:
   version "2.4.1"
   resolved "https://registry.npmjs.org/run-async/-/run-async-2.4.1.tgz"
 
