@@ -766,11 +766,11 @@
     wrap-ansi "^6.0.1"
 
 "@inquirer/input@^1.0.0":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@inquirer/input/-/input-1.0.3.tgz#ac222a2437ffc15b53ef5f23321db4f9c9302140"
-  integrity sha512-gEpmDM8OnBA6XDHvxhUDhikf27Wqj6HByspekdJ6E1opKP/rRWdAK2SSReOjTRpMYHD7JuaZUGp3q7rcyUifTg==
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@inquirer/input/-/input-1.0.7.tgz#0655183ce17ac02361edcb45685ec427d3935fc1"
+  integrity sha512-RomBrvSroozMMMsm6KeDDMrNkZ+2TPSVinGuJEVw80JUc6sz7FuejYuAS5HS94WMPAvEzIQQyAS/ZrVIEm+0Qg==
   dependencies:
-    "@inquirer/core" "^1.0.4"
+    "@inquirer/core" "^1.1.3"
     "@inquirer/type" "^1.0.3"
     chalk "^4.1.2"
 
@@ -1362,15 +1362,6 @@
     pathe "^1.1.0"
     picocolors "^1.0.0"
     sirv "^2.0.3"
-
-"@vitest/utils@0.31.0":
-  version "0.31.0"
-  resolved "https://registry.yarnpkg.com/@vitest/utils/-/utils-0.31.0.tgz#d0aae17150b95ebf7afdf4e5db8952ac21610ffa"
-  integrity sha512-kahaRyLX7GS1urekRXN2752X4gIgOGVX4Wo8eDUGUkTWlGpXzf5ZS6N9RUUS+Re3XEE8nVGqNyxkSxF5HXlGhQ==
-  dependencies:
-    concordance "^5.0.4"
-    loupe "^2.3.6"
-    pretty-format "^27.5.1"
 
 "@vitest/utils@0.31.1":
   version "0.31.1"
