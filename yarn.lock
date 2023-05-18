@@ -1363,15 +1363,6 @@
     picocolors "^1.0.0"
     sirv "^2.0.3"
 
-"@vitest/utils@0.31.0":
-  version "0.31.0"
-  resolved "https://registry.yarnpkg.com/@vitest/utils/-/utils-0.31.0.tgz#d0aae17150b95ebf7afdf4e5db8952ac21610ffa"
-  integrity sha512-kahaRyLX7GS1urekRXN2752X4gIgOGVX4Wo8eDUGUkTWlGpXzf5ZS6N9RUUS+Re3XEE8nVGqNyxkSxF5HXlGhQ==
-  dependencies:
-    concordance "^5.0.4"
-    loupe "^2.3.6"
-    pretty-format "^27.5.1"
-
 "@vitest/utils@0.31.1":
   version "0.31.1"
   resolved "https://registry.yarnpkg.com/@vitest/utils/-/utils-0.31.1.tgz#b810a458b37ef16931ab0d384ce79a9500f34e07"
@@ -4821,9 +4812,9 @@ object.values@^1.1.6:
     es-abstract "^1.20.4"
 
 odbc@^2.4.6:
-  version "2.4.7"
-  resolved "https://registry.yarnpkg.com/odbc/-/odbc-2.4.7.tgz#63bb722ffc1f776e296a4584e27db18eb02de1e8"
-  integrity sha512-S/aviaPk/Ku85qkExFUA4m9QLSyq+tpDVYlhvDIeasBaWpdyNSXMBnJ97VU1ak/plBKT4cxaM0z849eRROCOjQ==
+  version "2.4.8"
+  resolved "https://registry.yarnpkg.com/odbc/-/odbc-2.4.8.tgz#56e34a1cafbaf1c2c53eec229b3a7604f890e3bf"
+  integrity sha512-W4VkBcr8iSe8hqpp2GoFPybCAJefC7eK837XThJkYCW4tBzyQisqkciwt1UYidU1OpKy1589y9dMN0tStiVB1Q==
   dependencies:
     "@mapbox/node-pre-gyp" "^1.0.5"
     async "^3.0.1"
