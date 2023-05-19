@@ -740,11 +740,11 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
 
 "@inquirer/confirm@^1.0.0":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@inquirer/confirm/-/confirm-1.0.7.tgz#e54b44fc4c49b926e242b3ab9420d7b51d88f150"
-  integrity sha512-DShu755GyhtVxASIzmRu2p855yZlemU94fg9iLOXcyp7XqubwzvJspngo1Ydj/akrQNQkbqkZvUyom2nvp9d/g==
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@inquirer/confirm/-/confirm-1.0.8.tgz#c6f6857c5ac931c457222c9dcc84e1785ab05a05"
+  integrity sha512-o563BsuKpWVmdUK8nSLUWxlZSzVX1L8R6ra+NQ756cDJgSL/dDrYzqGN6+WCm9KDI63TzO5snJrnn8vP2iaNpw==
   dependencies:
-    "@inquirer/core" "^1.1.3"
+    "@inquirer/core" "^1.2.0"
     "@inquirer/type" "^1.0.3"
     chalk "^4.1.2"
 
