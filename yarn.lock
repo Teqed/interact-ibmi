@@ -748,12 +748,12 @@
     "@inquirer/type" "^1.0.3"
     chalk "^4.1.2"
 
-"@inquirer/core@^1.0.0", "@inquirer/core@^1.0.4", "@inquirer/core@^1.1.3", "@inquirer/core@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@inquirer/core/-/core-1.2.0.tgz#bbbcced9f028728d1d84b21cab7a8cab14ce29a5"
-  integrity sha512-FOzCGW8VhmlOXwfQ/c/kjvMvz63YDWWFd7IWg3K+xj9aBtL9yuEduvzf+PRncH8Z1VQ3HlriY6UILyCKurleCw==
+"@inquirer/core@^1.0.0", "@inquirer/core@^1.1.3", "@inquirer/core@^1.2.0", "@inquirer/core@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@inquirer/core/-/core-1.3.0.tgz#469427e51daa519f2b1332745a2222629c03c701"
+  integrity sha512-W7EA48gIMahFLiGW/zF+rgoineqTDK5IQizsOmwvbFfYgiQ8Asetut94THBmB3KnW0nrZL5UPHUK6QzcjEzaCw==
   dependencies:
-    "@inquirer/type" "^1.0.3"
+    "@inquirer/type" "^1.0.5"
     ansi-escapes "^4.3.2"
     chalk "^4.1.2"
     cli-spinners "^2.8.0"
@@ -784,20 +784,20 @@
     chalk "^4.1.2"
 
 "@inquirer/select@^1.0.0":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@inquirer/select/-/select-1.1.4.tgz#5f64c4b6954c414df56a85e13d8b324881749e68"
-  integrity sha512-Rr1g5Vv9LpGabnNSbqyJ1ON6DqJAnse9DzQfDeqnwdcegawltWHkwPWfwD30xctOQjT0i9YkQTLR0Q2FIdjclg==
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/@inquirer/select/-/select-1.1.7.tgz#1ad35a032d0eafbc3ec8f531ac330324a50baaf4"
+  integrity sha512-3Ym0WOoVduu/AG5GwIxa+fNz8Eop7S1zADbUmMsllrubdYu7qMe9HaTHCb5JOjaVNSoFJuYPH6TizFzGVFVrCQ==
   dependencies:
-    "@inquirer/core" "^1.2.0"
-    "@inquirer/type" "^1.0.3"
+    "@inquirer/core" "^1.3.0"
+    "@inquirer/type" "^1.0.5"
     ansi-escapes "^4.3.2"
     chalk "^4.1.2"
     figures "^3.2.0"
 
-"@inquirer/type@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@inquirer/type/-/type-1.0.3.tgz#069b6ca1fbdcec2c1ce05d7eb4c0e8cd529366dd"
-  integrity sha512-I/lWe9qRqiwrvf4QCsZS4OfLLMI4IPOrm+oj4cvfmiM4c4pnCbjuPG9PhJ5oGYpv8TvQia5MYMjfKTcIGcbs4A==
+"@inquirer/type@^1.0.3", "@inquirer/type@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@inquirer/type/-/type-1.0.5.tgz#9e443fdd0a7554f5b40cbe5fbd0d2d3736875297"
+  integrity sha512-MCEsk3Ep4D8UwwyCGdMmtoTwfC78oxHusUKex1qR+WTJP4MKK/mykCTCXApbYYRBYuTpT71kdoOr9vxySh+l5Q==
 
 "@istanbuljs/schema@^0.1.2", "@istanbuljs/schema@^0.1.3":
   version "0.1.3"
