@@ -70,7 +70,7 @@
     "vite-plugin-node": "^3.0.2",
     "vite-plugin-progress": "^0.0.7",
     "vitest": "^0.31.0",
-    "xo": "^0.53.0"
+    "xo": "^0.54.2"
   },
   "keywords": [
     "ibmi",

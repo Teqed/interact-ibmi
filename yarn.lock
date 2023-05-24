@@ -1059,13 +1059,6 @@
   dependencies:
     "@types/ms" "*"
 
-"@types/eslint@^7.2.13":
-  version "7.29.0"
-  resolved "https://registry.npmjs.org/@types/eslint/-/eslint-7.29.0.tgz"
-  dependencies:
-    "@types/estree" "*"
-    "@types/json-schema" "*"
-
 "@types/eslint@^8.0.0":
   version "8.21.3"
   resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-8.21.3.tgz#5794b3911f0f19e34e3a272c49cbdf48d6f543f2"
@@ -1138,10 +1131,6 @@
   dependencies:
     ora "*"
 
-"@types/parse-json@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/@types/parse-json/-/parse-json-4.0.0.tgz"
-
 "@types/resolve@1.20.2":
   version "1.20.2"
   resolved "https://registry.npmjs.org/@types/resolve/-/resolve-1.20.2.tgz"
@@ -1171,7 +1160,7 @@
   dependencies:
     "@types/node" "*"
 
-"@typescript-eslint/eslint-plugin@^5.39.0", "@typescript-eslint/eslint-plugin@^5.43.0", "@typescript-eslint/eslint-plugin@^5.59.2":
+"@typescript-eslint/eslint-plugin@^5.39.0", "@typescript-eslint/eslint-plugin@^5.59.1", "@typescript-eslint/eslint-plugin@^5.59.2":
   version "5.59.7"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-5.59.7.tgz#e470af414f05ecfdc05a23e9ce6ec8f91db56fe2"
   integrity sha512-BL+jYxUFIbuYwy+4fF86k5vdT9lT0CNJ6HtwrIvGh0PhH8s0yy5rjaKH2fDCrz5ITHy07WCzVGNvAmjJh4IJFA==
@@ -1193,7 +1182,7 @@
   dependencies:
     "@typescript-eslint/utils" "5.46.1"
 
-"@typescript-eslint/parser@^5.39.0", "@typescript-eslint/parser@^5.43.0", "@typescript-eslint/parser@^5.59.2":
+"@typescript-eslint/parser@^5.39.0", "@typescript-eslint/parser@^5.59.1", "@typescript-eslint/parser@^5.59.2":
   version "5.59.7"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.59.7.tgz#02682554d7c1028b89aa44a48bf598db33048caa"
   integrity sha512-VhpsIEuq/8i5SF+mPg9jSdIwgMBBp0z9XqjiEay+81PYLJuroN+ET1hM5IhkiYMJd9MkTz8iJLt7aaGAgzWUbQ==
@@ -1867,7 +1856,7 @@ chownr@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/chownr/-/chownr-2.0.0.tgz"
 
-ci-info@^3.4.0, ci-info@^3.6.1, ci-info@^3.8.0:
+ci-info@^3.6.1, ci-info@^3.8.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-3.8.0.tgz#81408265a5380c929f0bc665d62256628ce9ef91"
   integrity sha512-eXTggHWSooYhq49F2opQhuHWgzucfF2YgODK4e1566GQs5BIfP30B0oenwBJHfWxAs2fyPB1s7Mg949zLf61Yw==
@@ -2017,15 +2006,15 @@ cosmiconfig@8.0.0:
     parse-json "^5.0.0"
     path-type "^4.0.0"
 
-cosmiconfig@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.npmjs.org/cosmiconfig/-/cosmiconfig-7.1.0.tgz"
+cosmiconfig@^8.1.3:
+  version "8.1.3"
+  resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-8.1.3.tgz#0e614a118fcc2d9e5afc2f87d53cd09931015689"
+  integrity sha512-/UkO2JKI18b5jVMJUp0lvKFMpa/Gye+ZgZjKD+DGEN9y7NRcf/nK1A0sp67ONmKtnDCNMS44E6jrk0Yc3bDuUw==
   dependencies:
-    "@types/parse-json" "^4.0.0"
     import-fresh "^3.2.1"
+    js-yaml "^4.1.0"
     parse-json "^5.0.0"
     path-type "^4.0.0"
-    yaml "^1.10.0"
 
 create-eslint-index@^1.0.0:
   version "1.0.0"
@@ -2577,10 +2566,6 @@ eslint-config-prettier@^8.5.0, eslint-config-prettier@^8.8.0:
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.8.0.tgz#bfda738d412adc917fd7b038857110efe98c9348"
   integrity sha512-wLbQiFre3tdGgpDv67NQKnJuTlcUVYHas3k+DZCc2U2BadthoEY4B7hLPvAxaqdyOGCzuLfii2fqGph10va7oA==
 
-eslint-config-xo-typescript@^0.55.0:
-  version "0.55.1"
-  resolved "https://registry.npmjs.org/eslint-config-xo-typescript/-/eslint-config-xo-typescript-0.55.1.tgz"
-
 eslint-config-xo-typescript@^0.57.0:
   version "0.57.0"
   resolved "https://registry.yarnpkg.com/eslint-config-xo-typescript/-/eslint-config-xo-typescript-0.57.0.tgz#a1b5fe010657cbdea237a9ebfbd1e4e231b1b899"
@@ -2591,19 +2576,6 @@ eslint-config-xo@^0.43.1:
   resolved "https://registry.npmjs.org/eslint-config-xo/-/eslint-config-xo-0.43.1.tgz"
   dependencies:
     confusing-browser-globals "1.0.11"
-
-eslint-formatter-pretty@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.npmjs.org/eslint-formatter-pretty/-/eslint-formatter-pretty-4.1.0.tgz"
-  dependencies:
-    "@types/eslint" "^7.2.13"
-    ansi-escapes "^4.2.1"
-    chalk "^4.1.0"
-    eslint-rule-docs "^1.1.5"
-    log-symbols "^4.0.0"
-    plur "^4.0.0"
-    string-width "^4.2.0"
-    supports-hyperlinks "^2.0.0"
 
 eslint-formatter-pretty@^5.0.0:
   version "5.0.0"
@@ -2663,19 +2635,6 @@ eslint-module-utils@^2.7.4:
   resolved "https://registry.npmjs.org/eslint-module-utils/-/eslint-module-utils-2.7.4.tgz"
   dependencies:
     debug "^3.2.7"
-
-eslint-plugin-ava@^13.2.0:
-  version "13.2.0"
-  resolved "https://registry.npmjs.org/eslint-plugin-ava/-/eslint-plugin-ava-13.2.0.tgz"
-  dependencies:
-    enhance-visitors "^1.0.0"
-    eslint-utils "^3.0.0"
-    espree "^9.0.0"
-    espurify "^2.1.1"
-    import-modules "^2.1.0"
-    micro-spelling-correcter "^1.1.1"
-    pkg-dir "^5.0.0"
-    resolve-from "^5.0.0"
 
 eslint-plugin-ava@^14.0.0:
   version "14.0.0"
@@ -2844,9 +2803,10 @@ eslint-plugin-modules-newline@0.0.6:
   dependencies:
     requireindex "~1.1.0"
 
-eslint-plugin-n@^15.5.1:
-  version "15.6.0"
-  resolved "https://registry.npmjs.org/eslint-plugin-n/-/eslint-plugin-n-15.6.0.tgz"
+eslint-plugin-n@^15.7.0:
+  version "15.7.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-n/-/eslint-plugin-n-15.7.0.tgz#e29221d8f5174f84d18f2eb94765f2eeea033b90"
+  integrity sha512-jDex9s7D/Qial8AGVIHq4W7NswpUD5DPDL2RH8Lzd9EloWUuvUkHfv4FRLMipH5q2UtyurorBkPeNi1wVWNh3Q==
   dependencies:
     builtins "^5.0.1"
     eslint-plugin-es "^4.1.0"
@@ -2940,25 +2900,6 @@ eslint-plugin-typescript-sort-keys@^2.3.0:
     json-schema "^0.4.0"
     natural-compare-lite "^1.4.0"
 
-eslint-plugin-unicorn@^44.0.2:
-  version "44.0.2"
-  resolved "https://registry.npmjs.org/eslint-plugin-unicorn/-/eslint-plugin-unicorn-44.0.2.tgz"
-  dependencies:
-    "@babel/helper-validator-identifier" "^7.19.1"
-    ci-info "^3.4.0"
-    clean-regexp "^1.0.0"
-    eslint-utils "^3.0.0"
-    esquery "^1.4.0"
-    indent-string "^4.0.0"
-    is-builtin-module "^3.2.0"
-    lodash "^4.17.21"
-    pluralize "^8.0.0"
-    read-pkg-up "^7.0.1"
-    regexp-tree "^0.1.24"
-    safe-regex "^2.1.1"
-    semver "^7.3.7"
-    strip-indent "^3.0.0"
-
 eslint-plugin-unicorn@^46.0.0:
   version "46.0.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-46.0.0.tgz#b5cdcc9465fd6e46ab7968b87dd4a43adc8d6031"
@@ -3029,7 +2970,7 @@ eslint-rule-composer@^0.3.0:
   version "0.3.0"
   resolved "https://registry.npmjs.org/eslint-rule-composer/-/eslint-rule-composer-0.3.0.tgz"
 
-eslint-rule-docs@^1.1.235, eslint-rule-docs@^1.1.5:
+eslint-rule-docs@^1.1.235:
   version "1.1.235"
   resolved "https://registry.npmjs.org/eslint-rule-docs/-/eslint-rule-docs-1.1.235.tgz"
 
@@ -3073,7 +3014,7 @@ eslint-visitor-keys@^3.0.0, eslint-visitor-keys@^3.3.0, eslint-visitor-keys@^3.4
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.4.1.tgz#c22c48f48942d08ca824cc526211ae400478a994"
   integrity sha512-pZnmmLwYzf+kWaM/Qgrvpen51upAktaaiI01nsJD/Yr3lMOdNtq0cxkrrg16w64VtisN6okbs7Q8AfGqj4c9fA==
 
-eslint@^8.22.0, eslint@^8.27.0, eslint@^8.9.0:
+eslint@^8.22.0, eslint@^8.37.0, eslint@^8.9.0:
   version "8.41.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.41.0.tgz#3062ca73363b4714b16dbc1e60f035e6134b6f1c"
   integrity sha512-WQDQpzGBOP5IrXPo4Hc0814r4/v2rrIsB0rhT7jtunIalgg6gYXWhRMOejVO8yH21T/FGaxjmFjBMNqcIlmH1Q==
@@ -3118,11 +3059,12 @@ eslint@^8.22.0, eslint@^8.27.0, eslint@^8.9.0:
     strip-json-comments "^3.1.0"
     text-table "^0.2.0"
 
-esm-utils@^4.1.0:
-  version "4.1.1"
-  resolved "https://registry.npmjs.org/esm-utils/-/esm-utils-4.1.1.tgz"
+esm-utils@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/esm-utils/-/esm-utils-4.1.2.tgz#baa8efd77b9e85d48bbc359f2156db6f19a74c0c"
+  integrity sha512-hYKPzOCkAU11rMIiH6gvvReARaSLiRhJkGWPcwJB/S4zg7em//YKAcRxwZYw4sW5mRmI6lhV59wWWTdWKwOXvQ==
   dependencies:
-    import-meta-resolve "2.2.0"
+    import-meta-resolve "2.2.2"
     url-or-path "2.1.0"
 
 espree@^9.0.0, espree@^9.4.0, espree@^9.5.2:
@@ -3728,9 +3670,10 @@ import-fresh@^3.0.0, import-fresh@^3.2.1:
     parent-module "^1.0.0"
     resolve-from "^4.0.0"
 
-import-meta-resolve@2.2.0:
-  version "2.2.0"
-  resolved "https://registry.npmjs.org/import-meta-resolve/-/import-meta-resolve-2.2.0.tgz"
+import-meta-resolve@2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/import-meta-resolve/-/import-meta-resolve-2.2.2.tgz#75237301e72d1f0fbd74dbc6cca9324b164c2cc9"
+  integrity sha512-f8KcQ1D80V7RnqVm+/lirO9zkOxjGxhaTC1IPrBGd3MEfNgmNG67tSUO9gTi2F3Blr2Az6g1vocaxzkVnWl9MA==
 
 import-modules@^2.1.0:
   version "2.1.0"
@@ -4209,10 +4152,6 @@ json5@^1.0.1:
   integrity sha512-g1MWMLBiz8FKi1e4w0UyVL3w+iJceWAFBAaBnnGKOpNa5f8TLktkbre1+s6oICydWAm+HRUGTmI+//xv2hvXYA==
   dependencies:
     minimist "^1.2.0"
-
-json5@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.npmjs.org/json5/-/json5-2.2.1.tgz"
 
 json5@^2.2.2:
   version "2.2.3"
@@ -5044,7 +4983,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@2.8.8, prettier@^2.7.1, prettier@^2.8.8:
+prettier@2.8.8, prettier@^2.8.7, prettier@^2.8.8:
   version "2.8.8"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.8.tgz#e8c5d7e98a4305ffe3de2e1fc4aca1a71c28b1da"
   integrity sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==
@@ -5847,9 +5786,10 @@ tmp@^0.0.33:
   dependencies:
     os-tmpdir "~1.0.2"
 
-to-absolute-glob@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/to-absolute-glob/-/to-absolute-glob-2.0.2.tgz"
+to-absolute-glob@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/to-absolute-glob/-/to-absolute-glob-3.0.0.tgz#d13663608718fd44bf68fa0f034abdd4fd157eca"
+  integrity sha512-loO/XEWTRqpfcpI7+Jr2RR2Umaaozx1t6OSVWtMi0oy5F/Fxg3IC+D/TToDnxyAGs7uZBGT/6XmyDUxgsObJXA==
   dependencies:
     is-absolute "^1.0.0"
     is-negated-glob "^1.0.0"
@@ -5992,14 +5932,10 @@ type@^2.7.2:
   version "2.7.2"
   resolved "https://registry.npmjs.org/type/-/type-2.7.2.tgz"
 
-typescript@^4.9.3:
-  version "4.9.4"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.9.4.tgz"
-
-typescript@^5.0.0-dev.20221102:
-  version "5.0.0-dev.20230120"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.0-dev.20230120.tgz#8b8872448cfb88296c7dc530dc4a60e138230c75"
-  integrity sha512-vgmInMYmRogavAvGVDd+gnrckZJPFbfBp2l7ubTRtZ4CDw9YeUu3121tclQy+0FlmzvhfPUvbJ/ZWEqjQTKGbw==
+typescript@^5.0.0-dev.20221102, typescript@^5.0.3:
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.4.tgz#b217fd20119bd61a94d4011274e0ab369058da3b"
+  integrity sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==
 
 ufo@^1.1.1:
   version "1.1.1"
@@ -6343,46 +6279,47 @@ xmlbuilder@~11.0.0:
   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-11.0.1.tgz#be9bae1c8a046e76b31127726347d0ad7002beb3"
   integrity sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA==
 
-xo@^0.53.0:
-  version "0.53.1"
-  resolved "https://registry.npmjs.org/xo/-/xo-0.53.1.tgz"
+xo@^0.54.2:
+  version "0.54.2"
+  resolved "https://registry.yarnpkg.com/xo/-/xo-0.54.2.tgz#f4b205f8c06f5da15b497262fbb1bfef2ae60d9d"
+  integrity sha512-1S3r+ecCg8OVPtu711as+cgwxOg+WQNRgSzqZ+OHzYlsa8CpW3ych0Ve9k8Q2QG6gqO3HSpaS5AXi9D0yPUffg==
   dependencies:
     "@eslint/eslintrc" "^1.3.3"
-    "@typescript-eslint/eslint-plugin" "^5.43.0"
-    "@typescript-eslint/parser" "^5.43.0"
+    "@typescript-eslint/eslint-plugin" "^5.59.1"
+    "@typescript-eslint/parser" "^5.59.1"
     arrify "^3.0.0"
-    cosmiconfig "^7.1.0"
+    cosmiconfig "^8.1.3"
     define-lazy-prop "^3.0.0"
-    eslint "^8.27.0"
-    eslint-config-prettier "^8.5.0"
+    eslint "^8.37.0"
+    eslint-config-prettier "^8.8.0"
     eslint-config-xo "^0.43.1"
-    eslint-config-xo-typescript "^0.55.0"
-    eslint-formatter-pretty "^4.1.0"
+    eslint-config-xo-typescript "^0.57.0"
+    eslint-formatter-pretty "^5.0.0"
     eslint-import-resolver-webpack "^0.13.2"
-    eslint-plugin-ava "^13.2.0"
+    eslint-plugin-ava "^14.0.0"
     eslint-plugin-eslint-comments "^3.2.0"
-    eslint-plugin-import "^2.26.0"
-    eslint-plugin-n "^15.5.1"
+    eslint-plugin-import "^2.27.5"
+    eslint-plugin-n "^15.7.0"
     eslint-plugin-no-use-extend-native "^0.5.0"
     eslint-plugin-prettier "^4.2.1"
-    eslint-plugin-unicorn "^44.0.2"
-    esm-utils "^4.1.0"
+    eslint-plugin-unicorn "^46.0.0"
+    esm-utils "^4.1.2"
     find-cache-dir "^4.0.0"
     find-up "^6.3.0"
     get-stdin "^9.0.0"
+    get-tsconfig "^4.5.0"
     globby "^13.1.2"
     imurmurhash "^0.1.4"
     json-stable-stringify-without-jsonify "^1.0.1"
-    json5 "^2.2.1"
     lodash-es "^4.17.21"
     meow "^11.0.0"
     micromatch "^4.0.5"
     open-editor "^4.0.0"
-    prettier "^2.7.1"
+    prettier "^2.8.7"
     semver "^7.3.8"
     slash "^5.0.0"
-    to-absolute-glob "^2.0.2"
-    typescript "^4.9.3"
+    to-absolute-glob "^3.0.0"
+    typescript "^5.0.3"
 
 xregexp@^5.1.1:
   version "5.1.1"
@@ -6416,10 +6353,6 @@ yaml-eslint-parser@^1.1.0, yaml-eslint-parser@^1.2.0:
     eslint-visitor-keys "^3.0.0"
     lodash "^4.17.21"
     yaml "^2.0.0"
-
-yaml@^1.10.0:
-  version "1.10.2"
-  resolved "https://registry.npmjs.org/yaml/-/yaml-1.10.2.tgz"
 
 yaml@^2.0.0:
   version "2.1.3"
