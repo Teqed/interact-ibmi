@@ -2527,9 +2527,9 @@ eslint-config-airbnb-typescript@^17.0.0:
     eslint-config-airbnb-base "^15.0.0"
 
 eslint-config-canonical@^41.0.1:
-  version "41.0.4"
-  resolved "https://registry.yarnpkg.com/eslint-config-canonical/-/eslint-config-canonical-41.0.4.tgz#ca16f98d28abbf05816eeb6ba0f372eb64b04b54"
-  integrity sha512-2wRKw0VsBzP+GyWMMy0cuNkEs3NI5mWNk83rHAXZtkBA72AUanQw+ufoGhN0Uso4OiH0tb+Mj0kQkPDnr0DTbg==
+  version "41.0.5"
+  resolved "https://registry.yarnpkg.com/eslint-config-canonical/-/eslint-config-canonical-41.0.5.tgz#1265ab982dc6abb9bccbb4fcd17779fa78f2b774"
+  integrity sha512-mYBNGMtTFj5LcuRLQKOF+vwNhFaGYU9Xa8hWXtp5aYBRXwZsKgJVN0k/dH0MxzJAQUoLq/Q/6b6gCBuDSSiUeg==
   dependencies:
     "@babel/core" "^7.21.8"
     "@babel/eslint-parser" "^7.21.8"
