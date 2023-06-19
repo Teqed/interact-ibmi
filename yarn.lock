@@ -1305,9 +1305,9 @@
     eslint-visitor-keys "^3.3.0"
 
 "@vitest/coverage-c8@^0.32.0":
-  version "0.32.1"
-  resolved "https://registry.yarnpkg.com/@vitest/coverage-c8/-/coverage-c8-0.32.1.tgz#dfa7891169e4be0bbff18eb973ddf153bc5bd715"
-  integrity sha512-In76s7bYSABEO2cM7ykLbrlyu7WxpPiSV1rwfme58ZNOoDrRHt5avLtBpBpNfxlzWgQIWVqne10wEc8mhf3BwA==
+  version "0.32.2"
+  resolved "https://registry.yarnpkg.com/@vitest/coverage-c8/-/coverage-c8-0.32.2.tgz#dc0e1159d07bd6eb343529046d0f50521b673c3f"
+  integrity sha512-z07kMTN6e4t1jDY4XXU6W1LxCb3V5Rw7KAZId4VM6BCIGLGz1QqwH9UWYWv7LemqQVnARl5CwaDDwVrkcYgwPg==
   dependencies:
     "@ampproject/remapping" "^2.2.1"
     c8 "^7.13.0"
