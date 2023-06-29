@@ -766,11 +766,11 @@
     wrap-ansi "^6.0.1"
 
 "@inquirer/input@^1.0.0":
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/@inquirer/input/-/input-1.2.1.tgz#d3af30ed9b312fb410b189c56f0d464b2c02c0ca"
-  integrity sha512-OYwG3dEo1+lMAE6rYB8b1HTg8eSP++jk0pHSjKZu00gTlN5IHW/dliB82nsWe9Bn//93E9LJ1KrhjFMqOzkCFw==
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@inquirer/input/-/input-1.2.2.tgz#c7b09359a38981087f234945f9df30b7b5ea0e3e"
+  integrity sha512-ZMwt3+ov5yQgIWgVhP0vUpGccL/RtH7Nls6vJhPrpA+TaU9KJArSEOWFqQNIXwvsbWjcSO3nE1fIwi63TsLt7Q==
   dependencies:
-    "@inquirer/core" "^2.1.0"
+    "@inquirer/core" "^2.2.0"
     "@inquirer/type" "^1.1.0"
     chalk "^4.1.2"
 
