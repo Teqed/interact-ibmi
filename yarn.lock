@@ -784,11 +784,11 @@
     chalk "^4.1.2"
 
 "@inquirer/select@^1.0.0":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@inquirer/select/-/select-1.2.2.tgz#4b86a31214f0f9ff75669539ff9555a95834ae5e"
-  integrity sha512-asiP4Ej4AR0uWsQt8/ajAtF5IjBuTZ/YQgn/Xk7kviWN/wuFfUBo0dYntr0/rSvhNyt0jY6/yDhMM6mSPFLHRg==
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@inquirer/select/-/select-1.2.3.tgz#95062d783478cefa089f7050ec82c3f09f4316f2"
+  integrity sha512-kipYkf5iVok9i22YSLJiwf4m0Ek6S67tJm20jJr/kjuSmbnbpO0mJGFuhgbrGS4uDqkeEOB3tQ81mqb7cVIVbA==
   dependencies:
-    "@inquirer/core" "^2.2.0"
+    "@inquirer/core" "^2.3.0"
     "@inquirer/type" "^1.1.0"
     ansi-escapes "^4.3.2"
     chalk "^4.1.2"
