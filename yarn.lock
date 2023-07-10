@@ -2582,9 +2582,9 @@ eslint-config-airbnb-typescript@^17.0.0:
     eslint-config-airbnb-base "^15.0.0"
 
 eslint-config-canonical@^41.0.1:
-  version "41.0.5"
-  resolved "https://registry.yarnpkg.com/eslint-config-canonical/-/eslint-config-canonical-41.0.5.tgz#1265ab982dc6abb9bccbb4fcd17779fa78f2b774"
-  integrity sha512-mYBNGMtTFj5LcuRLQKOF+vwNhFaGYU9Xa8hWXtp5aYBRXwZsKgJVN0k/dH0MxzJAQUoLq/Q/6b6gCBuDSSiUeg==
+  version "41.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-canonical/-/eslint-config-canonical-41.1.0.tgz#04e513a3c78c2d0fee4725ea8694be80711d02e0"
+  integrity sha512-UBqxBxnIlh73Uf5VxVCvx81Xu2AnIsUVXkidVf1FDBw7w66ZmMkr/AUTGDjpZ74sNErF0sPtaogG6jBj/rremg==
   dependencies:
     "@babel/core" "^7.21.8"
     "@babel/eslint-parser" "^7.21.8"
@@ -2598,7 +2598,7 @@ eslint-config-canonical@^41.0.1:
     eslint-config-prettier "^8.8.0"
     eslint-import-resolver-typescript "^3.5.5"
     eslint-plugin-ava "^14.0.0"
-    eslint-plugin-canonical "^4.2.1"
+    eslint-plugin-canonical "^4.3.0"
     eslint-plugin-cypress "^2.13.3"
     eslint-plugin-eslint-comments "^3.2.0"
     eslint-plugin-flowtype "^8.0.3"
@@ -2746,10 +2746,10 @@ eslint-plugin-ava@^14.0.0:
     pkg-dir "^5.0.0"
     resolve-from "^5.0.0"
 
-eslint-plugin-canonical@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-canonical/-/eslint-plugin-canonical-4.2.1.tgz#03ca17c370f0125421a240fc58866cc215e77e01"
-  integrity sha512-a2qpYVifeqX4/8u/m7Gf7R06SG9+GAoN3vo8NqgIBJ1FjRmCkr4XNDYLxUqaQRPiLSi/rZTNa/3K7IHjQEEDJQ==
+eslint-plugin-canonical@^4.3.0:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-canonical/-/eslint-plugin-canonical-4.3.1.tgz#16a39ae6b7ec2a0dd4be76161c873fe7de219af8"
+  integrity sha512-ADYrlJ4uek1Cl1VuEKvi9dXzKGzXxYG5M8kPN/yUsEwToGuF8yV7BxYIVhDjUGAPU4Twsa9hxZM21+Wtui1G4A==
   dependencies:
     eslint-import-resolver-typescript "^3.5.3"
     eslint-module-utils "^2.7.4"
