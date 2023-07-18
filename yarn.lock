@@ -803,12 +803,12 @@
     chalk "^4.1.2"
 
 "@inquirer/rawlist@^1.0.0":
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/@inquirer/rawlist/-/rawlist-1.2.3.tgz#4af40249bb6f3e6fde360d334e42c1cccff40df4"
-  integrity sha512-Rmb+5Ju7JHN1xTa1H7BwO5vsy3FqQz7kefEAGoZOawfeeB1zenJolb7LKVvv3nrpH16itDLl79sBTixokoe9lg==
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@inquirer/rawlist/-/rawlist-1.2.5.tgz#2b8f8b8d544ecb3fb9f763167d7a270d187b2e1b"
+  integrity sha512-QKo1hIyKgKrCFaBhvtRn9xkjbyzjATWDn10LxVadh1lwSuQyplHbcwOpMUa8TaB/xMtm2fnec3TIez7NB5Rqlg==
   dependencies:
-    "@inquirer/core" "^2.3.0"
-    "@inquirer/type" "^1.1.0"
+    "@inquirer/core" "^3.0.0"
+    "@inquirer/type" "^1.1.1"
     chalk "^4.1.2"
 
 "@inquirer/select@^1.0.0":
