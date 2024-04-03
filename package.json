@@ -66,7 +66,7 @@
     "tslib": "^2.4.0",
     "tsx": "^3.9.0",
     "typescript": "^5.0.0-dev.20221102",
-    "vite": "^4.0.1",
+    "vite": "^4.5.3",
     "vite-plugin-node": "^3.0.2",
     "vite-plugin-progress": "^0.0.7",
     "vitest": "^0.33.0",
