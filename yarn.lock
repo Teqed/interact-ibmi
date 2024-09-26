@@ -2310,8 +2310,9 @@ dot@^1.0.3:
   resolved "https://registry.npmjs.org/dot/-/dot-1.1.3.tgz"
 
 dottie@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.npmjs.org/dottie/-/dottie-2.0.2.tgz"
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/dottie/-/dottie-2.0.4.tgz#9ce42965f45e577a6fa7d988d47852fac70c4e82"
+  integrity sha512-iz64WUOmp/ECQhWMJjTWFzJN/wQ7RJ5v/a6A2OiCwjaGCpNo66WGIjlSf+IULO9DQd0b4cFawLOTbiKSrpKodw==
 
 dset@3.1.2:
   version "3.1.2"
